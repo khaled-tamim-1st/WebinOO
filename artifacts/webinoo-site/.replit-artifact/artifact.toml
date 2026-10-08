@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "webinOO — الكويت"
+description = "صفحة هبوط عربية لخدمات تصميم المواقع وتحسين محركات البحث، تستهدف مقدمي الخدمات والأعمال في دولة الكويت."
+version = "1.0.0"
+id = "artifacts/webinoo-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20247
+
+[services.development]
+run = "pnpm --filter @workspace/webinoo-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/webinoo-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/webinoo-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20247"
+BASE_PATH = "/"
