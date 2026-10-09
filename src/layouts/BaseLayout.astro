@@ -28,7 +28,7 @@ const description = Astro.props.description || (lang === 'ar'
   ? business.description.ar
   : business.description.en);
 
-const ogImage = Astro.props.ogImage || `${siteBase}/webinoo-logo.png`;
+const ogImage = Astro.props.ogImage || `${siteBase}/og-image.jpg`;
 
 // Canonical and hreflang resolution
 const currentPath = url.pathname.replace(/^\/en/, '').replace(/\/$/, '') || '/';
@@ -107,18 +107,25 @@ const finalSchema = [...baseSchema, ...customSchema];
     <link rel="alternate" hreflang="en" href={enURL} />
     <link rel="alternate" hreflang="x-default" href={arURL} />
 
-    <!-- Favicon -->
+    <!-- Favicon (Google, iOS, Android, Desktop) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph (WhatsApp, Facebook, LinkedIn, Google Discover) -->
     <meta property="og:site_name" content={business.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content={lang === 'ar' ? 'ar_KW' : 'en_US'} />
 
     <!-- Twitter Card -->
