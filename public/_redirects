@@ -1,1 +1,11 @@
+# ==========================================
+# 1. Enforce HTTPS and non-www (Cloudflare Pages / Netlify)
+# ==========================================
+https://www.webinoo.online/*  https://webinoo.online/:splat  301!
+http://www.webinoo.online/*   https://webinoo.online/:splat  301!
+http://webinoo.online/*       https://webinoo.online/:splat  301!
+
+# ==========================================
+# 2. Sitemap alias
+# ==========================================
 /sitemap.xml  /sitemap-index.xml  200

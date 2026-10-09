@@ -3,8 +3,6 @@
    Design tokens extracted from approved Kuwait atelier landing page
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-
 :root {
   /* Brand Palette */
   --color-primary: #6518ac;
@@ -31,7 +29,7 @@
   /* Text & Inks */
   --color-ink-primary: #292239;
   --color-ink-secondary: #595264;
-  --color-ink-muted: #716b7a;
+  --color-ink-muted: #544c60;
   --color-ink-light: #c5b8ce;
   --color-ink-inverse: #ffffff;
 
@@ -350,7 +348,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .hero-copy {
   max-width: 500px;
-  color: #696272;
+  color: #544c60;
   font-size: 17px;
   line-height: 1.95;
   margin-bottom: 28px;
@@ -479,13 +477,15 @@ h1, h2, h3, h4, h5, h6, p {
   text-align: right;
 }
 
-.mock-page h3 {
+.mock-page h3,
+.mock-page .mock-page-title {
   width: 220px;
   text-align: right;
   margin: 34px 0 10px auto;
   font-size: 24px;
   line-height: 1.4;
   color: #342b3f;
+  font-weight: 700;
 }
 
 .mock-page p {
@@ -572,7 +572,8 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* Animations */
 .reveal {
-  animation: rise 0.7s both;
+  opacity: 1;
+  animation: rise 0.7s ease-out;
 }
 
 .delay-1 {
@@ -585,7 +586,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 @keyframes rise {
   from {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(18px);
   }
   to {
@@ -672,7 +673,8 @@ h1, h2, h3, h4, h5, h6, p {
     min-height: 220px;
     padding: 20px;
   }
-  .mock-page h3 {
+  .mock-page h3,
+  .mock-page .mock-page-title {
     font-size: 20px;
     width: auto;
   }
@@ -758,7 +760,8 @@ h1, h2, h3, h4, h5, h6, p {
   .mock-page::before {
     display: none;
   }
-  .mock-page h3 {
+  .mock-page h3,
+  .mock-page .mock-page-title {
     font-size: 17px;
     margin: 12px 0 6px;
     width: 100%;

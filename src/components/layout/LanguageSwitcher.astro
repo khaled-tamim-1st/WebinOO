@@ -12,7 +12,10 @@ const translatePath = useTranslatedPath(currentLang);
 
 const targetLang = currentLang === 'ar' ? 'en' : 'ar';
 const targetLabel = currentLang === 'ar' ? 'EN' : 'عربي';
-const targetHref = translatePath(currentUrl.pathname, targetLang);
+const is404 = currentUrl.pathname.includes('404');
+const targetHref = is404
+  ? (targetLang === 'en' ? '/en/' : '/')
+  : translatePath(currentUrl.pathname, targetLang);
 ---
 
 <a

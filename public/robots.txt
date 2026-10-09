@@ -2,7 +2,10 @@
 User-agent: *
 Allow: /
 
-# Explicit AI and LLM Search Crawlers
+# Explicit AI and LLM Search Crawlers & Indexers
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
@@ -18,8 +21,20 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
 User-agent: Applebot-Extended
 Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# AI Context Reference
+# LLM Knowledge: https://webinoo.online/llms.txt
 
 # Sitemap
 Sitemap: https://webinoo.online/sitemap-index.xml

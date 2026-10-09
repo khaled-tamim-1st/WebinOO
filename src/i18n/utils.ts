@@ -19,7 +19,7 @@ export function useTranslations(lang: SupportedLanguage) {
 
 export function useTranslatedPath(lang: SupportedLanguage) {
   return function translatePath(path: string, l: SupportedLanguage = lang): string {
-    const cleanPath = path.replace(/^\/(ar|en)/, '');
+    const cleanPath = path.replace(/^\/(ar|en)(?=\/|$)/, '');
     const normalized = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
     if (l === defaultLang) {
       return normalized === '/' ? '/' : normalized.replace(/\/$/, '') + '/';

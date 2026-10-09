@@ -1,0 +1,28 @@
+[[redirects]]
+  from = "https://www.webinoo.online/*"
+  to = "https://webinoo.online/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.webinoo.online/*"
+  to = "https://webinoo.online/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://webinoo.online/*"
+  to = "https://webinoo.online/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"

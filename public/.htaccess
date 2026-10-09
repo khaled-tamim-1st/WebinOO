@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Redirect HTTP to HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://webinoo.online%{REQUEST_URI} [L,R=301]
+
+  # 2. Redirect www to non-www
+  RewriteCond %{HTTP_HOST} ^www\.webinoo\.online$ [NC]
+  RewriteRule ^ https://webinoo.online%{REQUEST_URI} [L,R=301]
+
+  # 3. Enforce trailing slash on directories / pages (avoid duplicate content)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,5}$
+  RewriteRule ^(.*)$ https://webinoo.online/$1/ [L,R=301]
+
+  # 4. Rewrite /sitemap.xml to /sitemap-index.xml
+  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L]
+</IfModule>
+
+# Security Headers & HSTS (Strict Transport Security)
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>
