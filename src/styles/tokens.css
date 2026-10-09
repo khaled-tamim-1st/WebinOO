@@ -573,7 +573,6 @@ h1, h2, h3, h4, h5, h6, p {
 /* Animations */
 .reveal {
   opacity: 1;
-  animation: rise 0.7s ease-out;
 }
 
 .delay-1 {
@@ -587,11 +586,11 @@ h1, h2, h3, h4, h5, h6, p {
 @keyframes rise {
   from {
     opacity: 1;
-    transform: translateY(18px);
+    transform: none;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
