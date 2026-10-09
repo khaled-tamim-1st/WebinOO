@@ -1,11 +1,10 @@
 # ==========================================
-# 1. Enforce HTTPS and non-www (Cloudflare Pages / Netlify)
+# Cloudflare Pages / Static Hosting Redirects
+# Note: Cloudflare _redirects requires relative source paths
+# and numeric status codes (301, 302, 200).
+# Domains & HTTPS (www to non-www and http to https) are handled
+# automatically by Cloudflare SSL/TLS & Page Rules at DNS level.
 # ==========================================
-https://www.webinoo.online/*  https://webinoo.online/:splat  301!
-http://www.webinoo.online/*   https://webinoo.online/:splat  301!
-http://webinoo.online/*       https://webinoo.online/:splat  301!
 
-# ==========================================
-# 2. Sitemap alias
-# ==========================================
+# Sitemap alias
 /sitemap.xml  /sitemap-index.xml  200
