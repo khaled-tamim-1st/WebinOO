@@ -1,0 +1,237 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import { business } from '@/data/business';
+import { Award, FileCode } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Terms of Service' },
+];
+
+const lastUpdated = 'October 8, 2026';
+---
+
+<BaseLayout
+  title={`Terms of Service | ${business.name} Kuwait`}
+  description="Terms of service, intellectual property ownership, and contractual guidelines for web development and SEO services with webinOO in the State of Kuwait."
+  lang="en"
+>
+  <Header slot="header" lang="en" />
+
+  <main id="main-content" class="legal-page">
+    <div class="container breadcrumbs-wrap">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <section class="container legal-hero">
+      <div class="hero-badge">Contractual Transparency</div>
+      <h1 class="legal-title">Terms of Service & Engagement Guidelines</h1>
+      <p class="legal-date">Last Updated: {lastUpdated}</p>
+    </section>
+
+    <section class="container legal-content-section">
+      <div class="legal-body">
+        <div class="legal-card-intro">
+          <FileCode size={28} class="intro-icon" />
+          <p>
+            These Terms of Service govern the professional collaboration between <strong>{business.name}</strong> and our valued clients in the State of Kuwait. We uphold total clarity regarding scope of work, delivery milestones, and quality guarantees.
+          </p>
+        </div>
+
+        <article class="legal-section">
+          <h2>1. Scope of Work & Proposals</h2>
+          <p>
+            The project specifications and deliverables are established within the approved formal Proposal and technical agreement. Any substantive additions outside the agreed scope are managed via a mutually approved change order prior to implementation.
+          </p>
+        </article>
+
+        <article class="legal-section">
+          <h2>2. Source Code & Design Ownership (100% IP Rights)</h2>
+          <div class="highlight-callout">
+            <Award size={20} class="callout-icon" />
+            <p>
+              <strong>Complete Ownership:</strong> Upon settlement of the final project balance, full ownership of the website, source code, design assets, and content transfers unconditionally to the client. We do not enforce proprietary locks or mandatory recurring licensing fees.
+            </p>
+          </div>
+        </article>
+
+        <article class="legal-section">
+          <h2>3. Payment Schedule & Milestones</h2>
+          <p>Project payments are structured according to a clear milestone plan:</p>
+          <ul>
+            <li><strong>Initial Deposit (50%):</strong> Due upon project kickoff, wireframing, and architecture confirmation.</li>
+            <li><strong>Final Milestone (50%):</strong> Due upon final quality assurance, domain DNS configuration, and production launch.</li>
+            <li>We accept approved local Kuwait wire transfers, Knet, and major credit cards.</li>
+          </ul>
+        </article>
+
+        <article class="legal-section">
+          <h2>4. Client Reviews & Feedback Iterations</h2>
+          <p>
+            Each development phase includes two dedicated feedback rounds. We address and incorporate all functional and aesthetic observations to ensure full alignment with client expectations.
+          </p>
+        </article>
+
+        <article class="legal-section">
+          <h2>5. Warranty & Technical Support</h2>
+          <p>
+            Every custom project is backed by a complimentary <strong>3-month technical warranty</strong> starting on the launch date, covering:
+          </p>
+          <ul>
+            <li>Correction of any unexpected code anomalies or display defects without cost.</li>
+            <li>Monitoring of server stability and SSL security certificates.</li>
+            <li>Automated data backups to ensure uninterrupted continuity.</li>
+          </ul>
+        </article>
+
+        <article class="legal-section">
+          <h2>6. Search Engine Optimization Standards</h2>
+          <p>
+            We adhere strictly to white-hat technical SEO practices, verified Schema markup, and Core Web Vitals optimization. While search engine algorithms depend on competitive market factors, we guarantee top-tier technical implementation without making unrealistic overnight ranking claims.
+          </p>
+        </article>
+
+        <article class="legal-section">
+          <h2>7. Governing Law & Jurisdiction</h2>
+          <p>
+            These Terms of Service and all agreements with {business.name} are governed by the laws and regulations of the <strong>State of Kuwait</strong>, with exclusive jurisdiction vested in the courts of Kuwait.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-bottom: 96px;
+  }
+
+  .breadcrumbs-wrap {
+    padding-top: 24px;
+  }
+
+  .legal-hero {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    max-width: 820px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent, #10b981);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .legal-title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+  }
+
+  .legal-date {
+    font-size: 14px;
+    color: var(--color-ink-muted, #716b7a);
+  }
+
+  .legal-content-section {
+    max-width: 840px;
+  }
+
+  .legal-body {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 16px);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  @media (max-width: 600px) {
+    .legal-body {
+      padding: 24px 20px;
+    }
+  }
+
+  .legal-card-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: var(--radius-md, 12px);
+  }
+
+  .intro-icon {
+    color: var(--color-accent, #10b981);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .legal-card-intro p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-ink-primary, #292239);
+    margin: 0;
+  }
+
+  .legal-section h2 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    border-left: 3px solid var(--color-primary, #6518ac);
+    padding-left: 12px;
+  }
+
+  .legal-section p {
+    font-size: 15px;
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .legal-section ul {
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  .highlight-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px dashed var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-md, 8px);
+  }
+
+  .callout-icon {
+    color: var(--color-accent, #10b981);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .highlight-callout p {
+    margin: 0;
+    font-size: 14px;
+  }
+</style>

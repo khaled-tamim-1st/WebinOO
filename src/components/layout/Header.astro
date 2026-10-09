@@ -1,0 +1,295 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { ArrowLeft, ChevronDown, Menu, X } from '@lucide/astro';
+
+export interface Props {
+  lang?: 'ar' | 'en';
+}
+
+const { lang = 'ar' } = Astro.props;
+
+const prefix = lang === 'ar' ? '' : '/en';
+
+const services = [
+  { href: `${prefix}/services/web-design-kuwait/`, label: lang === 'ar' ? 'تصميم مواقع الشركات' : 'Corporate Web Design' },
+  { href: `${prefix}/services/ecommerce-kuwait/`, label: lang === 'ar' ? 'متاجر إلكترونية' : 'E-Commerce Stores' },
+  { href: `${prefix}/services/custom-websites-kuwait/`, label: lang === 'ar' ? 'مواقع برمجية خاصة' : 'Custom Web Apps' },
+  { href: `${prefix}/services/seo-kuwait/`, label: lang === 'ar' ? 'تحسين محركات البحث (SEO)' : 'SEO in Kuwait' },
+  { href: `${prefix}/services/local-seo-kuwait/`, label: lang === 'ar' ? 'الظهور المحلي وخرائط Google' : 'Local SEO & Maps' },
+  { href: `${prefix}/services/geo-ai-search-kuwait/`, label: lang === 'ar' ? 'الظهور في الذكاء الاصطناعي (GEO)' : 'AI Search Optimization' },
+  { href: `${prefix}/services/content-writing-kuwait/`, label: lang === 'ar' ? 'صياغة المحتوى المتخصص' : 'Content Writing' },
+  { href: `${prefix}/services/hosting-maintenance-kuwait/`, label: lang === 'ar' ? 'الاستضافة والصيانة السريعة' : 'Hosting & Maintenance' },
+];
+
+const industries = [
+  { href: `${prefix}/industries/interior-design-websites/`, label: lang === 'ar' ? 'الديكور والتصميم الداخلي' : 'Interior Design' },
+  { href: `${prefix}/industries/contracting-maintenance-websites/`, label: lang === 'ar' ? 'المقاولات والصيانة' : 'Contracting & Maintenance' },
+  { href: `${prefix}/industries/cleaning-companies-websites/`, label: lang === 'ar' ? 'شركات التنظيف' : 'Cleaning Services' },
+  { href: `${prefix}/industries/clinics-medical-websites/`, label: lang === 'ar' ? 'العيادات والمراكز الطبية' : 'Clinics & Medical' },
+  { href: `${prefix}/industries/restaurants-cafes-websites/`, label: lang === 'ar' ? 'المطاعم والكافيهات' : 'Restaurants & Cafes' },
+  { href: `${prefix}/industries/logistics-shipping-websites/`, label: lang === 'ar' ? 'الشحن والنقل اللوجستي' : 'Logistics & Shipping' },
+];
+---
+
+<header class="topbar-wrapper">
+  <div class="container topbar">
+    <a class="brand" href={lang === 'ar' ? '/' : '/en/'} aria-label={lang === 'ar' ? 'webinOO الصفحة الرئيسية' : 'webinOO Homepage'}>
+      <img src="/webinoo-logo.png" alt="webinOO" width="1024" height="512" />
+    </a>
+
+    <!-- Desktop Navigation with Dropdowns -->
+    <nav class="navlinks" aria-label={lang === 'ar' ? 'التنقل الرئيسي' : 'Main Navigation'}>
+      <div class="nav-item has-dropdown">
+        <a href={`${prefix}/services/`} class="nav-link">
+          {lang === 'ar' ? 'خدماتنا' : 'Services'} <ChevronDown size={14} class="chevron" />
+        </a>
+        <div class="dropdown-menu">
+          <div class="dropdown-grid">
+            {services.map((item) => (
+              <a href={item.href} class="dropdown-item">{item.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <a href={`${prefix}/industries/`} class="nav-link">
+          {lang === 'ar' ? 'القطاعات' : 'Industries'} <ChevronDown size={14} class="chevron" />
+        </a>
+        <div class="dropdown-menu">
+          <div class="dropdown-grid">
+            {industries.map((item) => (
+              <a href={item.href} class="dropdown-item">{item.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <a href={`${prefix}/areas/`} class="nav-link">{lang === 'ar' ? 'مناطق الكويت' : 'Kuwait Areas'}</a>
+      <a href={`${prefix}/portfolio/`} class="nav-link">{lang === 'ar' ? 'أعمالنا' : 'Portfolio'}</a>
+      <a href={`${prefix}/pricing/`} class="nav-link">{lang === 'ar' ? 'الأسعار' : 'Pricing'}</a>
+      <a href={`${prefix}/blog/`} class="nav-link">{lang === 'ar' ? 'المدونة' : 'Blog'}</a>
+      <a href={`${prefix}/about/`} class="nav-link">{lang === 'ar' ? 'عن webinOO' : 'About'}</a>
+      <a href={`${prefix}/contact/`} class="nav-link">{lang === 'ar' ? 'تواصل معنا' : 'Contact'}</a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="topbar-actions">
+      <LanguageSwitcher />
+      <a class="button button-primary cta-btn" href={`${prefix}/contact/`}>
+        {lang === 'ar' ? 'خلّنا نبدأ' : "Let's Start"} <ArrowLeft size={16} style={lang === 'en' ? 'transform: rotate(180deg);' : ''} />
+      </a>
+      
+      <!-- Mobile Menu Trigger (accessible details disclosure) -->
+      <details class="mobile-menu-details">
+        <summary class="mobile-menu-btn" aria-label={lang === 'ar' ? 'افتح القائمة' : 'Toggle Menu'}>
+          <span class="open-icon"><Menu size={22} /></span>
+          <span class="close-icon"><X size={22} /></span>
+        </summary>
+        <div class="mobile-drawer">
+          <nav class="mobile-nav">
+            <a href={lang === 'ar' ? '/' : '/en/'} class="mobile-link">{lang === 'ar' ? 'الرئيسية' : 'Home'}</a>
+            
+            <div class="mobile-group-title">{lang === 'ar' ? 'الخدمات' : 'Services'}</div>
+            {services.map((item) => (
+              <a href={item.href} class="mobile-sublink">{item.label}</a>
+            ))}
+
+            <div class="mobile-group-title">{lang === 'ar' ? 'القطاعات' : 'Industries'}</div>
+            {industries.map((item) => (
+              <a href={item.href} class="mobile-sublink">{item.label}</a>
+            ))}
+
+            <div class="mobile-group-title">{lang === 'ar' ? 'روابط هامة' : 'Quick Links'}</div>
+            <a href={`${prefix}/areas/`} class="mobile-link">{lang === 'ar' ? 'مناطق الكويت' : 'Kuwait Areas'}</a>
+            <a href={`${prefix}/portfolio/`} class="mobile-link">{lang === 'ar' ? 'أعمالنا' : 'Portfolio'}</a>
+            <a href={`${prefix}/pricing/`} class="mobile-link">{lang === 'ar' ? 'الأسعار' : 'Pricing'}</a>
+            <a href={`${prefix}/blog/`} class="mobile-link">{lang === 'ar' ? 'المدونة' : 'Blog'}</a>
+            <a href={`${prefix}/about/`} class="mobile-link">{lang === 'ar' ? 'عن الشركة' : 'About Us'}</a>
+            <a href={`${prefix}/contact/`} class="mobile-link">{lang === 'ar' ? 'تواصل معنا' : 'Contact Us'}</a>
+
+            <div class="mobile-actions">
+              <a href={`${prefix}/contact/`} class="button button-primary" style="width: 100%;">
+                {lang === 'ar' ? 'خلّنا نبدأ' : "Let's Start"}
+              </a>
+            </div>
+          </nav>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<style>
+  .topbar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: rgba(248, 246, 241, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(221, 213, 225, 0.6);
+  }
+  .topbar {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand img {
+    width: 156px;
+    height: 58px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    mix-blend-mode: multiply;
+  }
+  .navlinks {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 14px;
+  }
+  .nav-link {
+    text-decoration: none;
+    color: var(--color-ink-secondary, #595264);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 4px;
+    transition: color 0.2s;
+  }
+  .nav-link:hover {
+    color: var(--color-primary, #6419a9);
+  }
+  .nav-item {
+    position: relative;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    inset-inline-start: 0;
+    min-width: 280px;
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: var(--radius-md, 20px);
+    box-shadow: var(--shadow-floating, 0 28px 65px rgba(74, 35, 99, 0.1));
+    padding: 16px;
+    display: none;
+    z-index: 100;
+  }
+  .nav-item:hover .dropdown-menu,
+  .nav-item:focus-within .dropdown-menu {
+    display: block;
+  }
+  .dropdown-grid {
+    display: grid;
+    gap: 6px;
+  }
+  .dropdown-item {
+    padding: 8px 12px;
+    border-radius: var(--radius-xs, 8px);
+    text-decoration: none;
+    color: var(--color-ink-primary, #292239);
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+  }
+  .dropdown-item:hover {
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+  }
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  /* Mobile details/summary drawer */
+  .mobile-menu-details {
+    display: none;
+  }
+  .mobile-menu-btn {
+    list-style: none;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    color: var(--color-ink-primary, #292239);
+  }
+  .mobile-menu-btn::-webkit-details-marker {
+    display: none;
+  }
+  .close-icon {
+    display: none;
+  }
+  details[open] .open-icon {
+    display: none;
+  }
+  details[open] .close-icon {
+    display: block;
+  }
+  .mobile-drawer {
+    position: fixed;
+    top: 83px;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    background: var(--color-bg-body, #f8f6f1);
+    overflow-y: auto;
+    padding: 24px;
+    z-index: 99;
+  }
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mobile-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .mobile-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    margin-top: 14px;
+    padding-bottom: 4px;
+  }
+  .mobile-sublink {
+    font-size: 14px;
+    color: var(--color-ink-secondary, #595264);
+    text-decoration: none;
+    padding: 6px 12px;
+  }
+  .mobile-actions {
+    margin-top: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .navlinks {
+      display: none;
+    }
+    .cta-btn {
+      display: none;
+    }
+    .mobile-menu-details {
+      display: block;
+    }
+    .topbar {
+      min-height: 72px;
+    }
+    .brand img {
+      width: 132px;
+    }
+  }
+</style>

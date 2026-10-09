@@ -1,0 +1,361 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { getCollection } from 'astro:content';
+import { MapPin, ArrowLeft, ArrowUpLeft } from '@lucide/astro';
+
+const areas = await getCollection('areas');
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'المناطق التي نخدمها في الكويت' },
+];
+
+const areasSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'المناطق ومحافظات الكويت التي نخدمها | webinOO',
+  description: 'دليل تغطية webinOO لخدمات تصميم المواقع وتحسين محركات البحث المحلي في مدينة الكويت، حولي، السالمية، الفروانية، الجهراء، والأحمدي.',
+  url: 'https://webinoo.online/areas/',
+};
+---
+
+<BaseLayout
+  title="المناطق التي نخدمها في الكويت | تصميم مواقع وSEO محلي | webinOO"
+  description="نقدم خدمات تصميم المواقع والـ SEO المحلي لكافة محافظات الكويت: العاصمة، حولي، السالمية، الفروانية، الجهراء والأحمدي. تصدر نتائج البحث في منطقتك."
+  schema={areasSchema}
+>
+  <Header />
+
+  <main id="main-content" class="areas-hub-page">
+    <div class="container breadcrumbs-wrap">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <!-- Hero Section -->
+    <section class="container areas-hero">
+      <div class="hero-badge">تغطية شاملة لكافة محافظات الكويت</div>
+      <h1 class="page-title">تصميم مواقع وSEO محلي مصمم لخصوصية منطقتك في الكويت.</h1>
+      <p class="hero-desc">
+        طبيعة الجمهور وسلوك البحث في العاصمة تختلف تماماً عن حولي أو الجهراء أو الأحمدي. في webinOO، نبني استراتيجية موقعك وتهيئته لمحركات البحث وفق النطاق الجغرافي والأنشطة الأكثر طلباً في منطقتك.
+      </p>
+    </section>
+
+    <!-- Areas Grid -->
+    <section class="container areas-grid-section">
+      <div class="areas-grid">
+        {
+          areas.map((area) => (
+            <article class="area-card">
+              <div class="card-top">
+                <span class="gov-badge">{area.data.governorate}</span>
+                <a href={`/areas/${area.id}/`} class="card-arrow" aria-label={`تفاصيل ${area.data.areaNameAr}`}>
+                  <ArrowUpLeft size={18} />
+                </a>
+              </div>
+
+              <div class="area-title-wrap">
+                <MapPin size={22} class="pin-icon" />
+                <h2>
+                  <a href={`/areas/${area.id}/`}>{area.data.areaNameAr}</a>
+                </h2>
+              </div>
+
+              <p class="area-desc">{area.data.commercialProfile}</p>
+
+              <div class="prominent-section">
+                <span class="prominent-label">أبرز الأنشطة المستهدفة:</span>
+                <ul class="prominent-list">
+                  {area.data.prominentBusinesses.slice(0, 3).map((biz) => (
+                    <li>{biz}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="card-footer">
+                <a href={`/areas/${area.id}/`} class="more-link">
+                  استكشف استراتيجية المنطقة <ArrowLeft size={15} />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Why Local SEO Matters in Kuwait -->
+    <section class="container local-strategy-section">
+      <div class="strategy-box">
+        <div class="strategy-content">
+          <span class="strategy-badge">لماذا السيو المحلي في الكويت؟</span>
+          <h2>أكثر من 72% من عمليات البحث في الكويت تنتهي باتصال أو زيارة مباشرة خلال 24 ساعة</h2>
+          <p>
+            سواء كان عميلك يبحث عن "مكتب محاماة في شرق" أو "صالون في السالمية" أو "مقاول في المطلاع"، الظهور في حزمة خرائط Google الثلاثية الأولى (Google Local 3-Pack) هو الضمان الوحيد لتحويل هذا الباحث إلى عميل فوري يدفع لك.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="container cta-wrap">
+      <CTA
+        title="تبي تتصدر نتائج البحث في منطقتك بالكويت؟"
+        description="خلنا نضبط موقعك وبياناتك على خرائط Google ليشوفك عملاؤك القريبون قبل منافسيك."
+        buttonText="احجز استشارة محلية مجانية"
+        whatsappMessage="السلام عليكم، أود استشارة حول تحسين ظهور نشاطي التجاري في منطقتي داخل الكويت."
+      />
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .areas-hub-page {
+    padding-bottom: var(--space-20);
+  }
+
+  .breadcrumbs-wrap {
+    padding-top: var(--space-6);
+  }
+
+  .areas-hero {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-12);
+    max-width: 860px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-desc {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+
+  .areas-grid-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .areas-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .areas-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .area-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-7);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .area-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+  }
+
+  .gov-badge {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-accent);
+    background: rgba(16, 185, 129, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+  }
+
+  .card-arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-full);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .area-card:hover .card-arrow {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .area-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .pin-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .area-title-wrap h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .area-title-wrap h2 a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .area-title-wrap h2 a:hover {
+    color: var(--color-accent);
+  }
+
+  .area-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+    flex-grow: 1;
+  }
+
+  .prominent-section {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .prominent-label {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .prominent-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  .prominent-list li::before {
+    content: "•";
+    color: var(--color-accent);
+    margin-left: var(--space-2);
+  }
+
+  .card-footer {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+  }
+
+  .more-link:hover {
+    gap: var(--space-3);
+  }
+
+  .local-strategy-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .strategy-box {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10) var(--space-8);
+  }
+
+  .strategy-content {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .strategy-badge {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .strategy-content h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .strategy-content p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+
+  .cta-wrap {
+    margin-top: var(--space-8);
+  }
+</style>

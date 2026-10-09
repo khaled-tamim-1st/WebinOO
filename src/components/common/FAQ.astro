@@ -1,0 +1,148 @@
+---
+export interface FAQItem {
+  question: string;
+  answer: string;
+  isReviewed?: boolean;
+}
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  items?: FAQItem[];
+  faqs?: FAQItem[];
+  id?: string;
+  class?: string;
+}
+
+const {
+  eyebrow = 'خل نوضح الصورة',
+  title = 'أسئلة على بالك؟',
+  description = 'هذي إجابات سريعة، وإذا عندك سؤال ثاني نسمع منك بكل رحابة.',
+  items: rawItems,
+  faqs: rawFaqs,
+  id = 'faq',
+  class: className = '',
+} = Astro.props;
+
+const items = rawItems || rawFaqs || [];
+
+// Build FAQPage Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<section id={id} class={`faq-section section ${className}`.trim()}>
+  <div class="container faq-layout">
+    <div class="section-head">
+      {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+      {title && <h2 set:html={title} />}
+      {description && <p set:html={description} />}
+    </div>
+
+    <div class="faq-list">
+      {
+        items.map((item, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p set:html={item.answer} />
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- FAQPage Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>
+
+<style>
+  .faq-section {
+    background-color: var(--color-bg-faq, #efeaf1);
+    padding: var(--section-padding-y, 112px) 0;
+  }
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .faq-list {
+    border-top: 1px solid var(--color-border-default, #d9d0df);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-border-default, #d9d0df);
+  }
+  .faq-question {
+    list-style: none;
+    padding: 21px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-ink-primary, #342b3f);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-question:hover {
+    color: var(--color-primary, #6518ac);
+  }
+  .faq-question:focus-visible {
+    outline: 2px solid var(--color-primary, #6518ac);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  .faq-plus {
+    color: var(--color-primary, #6a239e);
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 400;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  details[open] .faq-plus {
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    color: var(--color-ink-muted, #6b6471);
+    font-size: 14px;
+    line-height: 1.9;
+    padding-bottom: 20px;
+  }
+  .faq-answer p {
+    margin: 0;
+  }
+  @media (max-width: 850px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .faq-section {
+      padding: 78px 0;
+    }
+  }
+  @media (max-width: 520px) {
+    .faq-question span:first-child {
+      font-size: 14px;
+    }
+  }
+</style>

@@ -1,0 +1,226 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { business, getWhatsAppUrl } from '@/data/business';
+import { House, ArrowLeft, Search, MessageSquare } from '@lucide/astro';
+---
+
+<BaseLayout
+  title={`الصفحة غير موجودة 404 | ${business.name}`}
+  description="الصفحة التي تبحث عنها غير موجودة أو تم نقلها. استكشف خدمات webinOO في تصميم المواقع والـ SEO في الكويت."
+>
+  <Header />
+
+  <main id="main-content" class="not-found-page">
+    <div class="container not-found-container">
+      <div class="error-badge">خطأ 404</div>
+      <h1 class="error-title">الصفحة هذي شكلها ضاعت أو تم نقلها!</h1>
+      <p class="error-desc">
+        لا تحاتي، الموقع شغال وأمورك طيبة. تقدر ترجع للصفحة الرئيسية أو تستكشف خدماتنا وباقات الأسعار من الروابط بالأسفل:
+      </p>
+
+      <div class="quick-links-grid">
+        <a href="/" class="quick-link-card">
+          <div class="card-icon"><House size={22} /></div>
+          <div class="card-text">
+            <h3>الصفحة الرئيسية</h3>
+            <p>العودة لواجهة webinOO الرئيسية</p>
+          </div>
+          <ArrowLeft size={16} class="arrow-indicator" />
+        </a>
+
+        <a href="/services/" class="quick-link-card">
+          <div class="card-icon"><Search size={22} /></div>
+          <div class="card-text">
+            <h3>خدماتنا في الكويت</h3>
+            <p>تصميم مواقع، SEO، ومتاجر إلكترونية</p>
+          </div>
+          <ArrowLeft size={16} class="arrow-indicator" />
+        </a>
+
+        <a href="/pricing/" class="quick-link-card">
+          <div class="card-icon"><span class="kd-sign">د.ك</span></div>
+          <div class="card-text">
+            <h3>باقات الأسعار</h3>
+            <p>باقات شفافة تبدأ من باقة الانطلاق</p>
+          </div>
+          <ArrowLeft size={16} class="arrow-indicator" />
+        </a>
+
+        <a href="/contact/" class="quick-link-card">
+          <div class="card-icon"><MessageSquare size={22} /></div>
+          <div class="card-text">
+            <h3>تواصل معنا</h3>
+            <p>استشارة فورية ومحادثة واتساب مباشرة</p>
+          </div>
+          <ArrowLeft size={16} class="arrow-indicator" />
+        </a>
+      </div>
+
+      <div class="whatsapp-fallback">
+        <p>تدور على شيء معين وما حصلته؟</p>
+        <a
+          href={getWhatsAppUrl('السلام عليكم، كنت أتصفح موقع webinOO ولم أجد الصفحة المطلوبة، أود المساعدة.')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-wa-help"
+        >
+          راسلنا على الواتساب وسنساعدك فوراً
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .not-found-page {
+    padding: var(--space-16) 0 var(--space-24);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .not-found-container {
+    max-width: 760px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .error-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-4);
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+  }
+
+  .error-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin-bottom: var(--space-4);
+  }
+
+  .error-desc {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-10);
+  }
+
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    text-align: right;
+    margin-bottom: var(--space-10);
+  }
+
+  @media (min-width: 640px) {
+    .quick-links-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .quick-link-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .quick-link-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    background: var(--color-bg-alt);
+  }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .kd-sign {
+    font-weight: 800;
+    font-size: var(--font-size-sm);
+  }
+
+  .card-text {
+    flex: 1;
+  }
+
+  .card-text h3 {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+  }
+
+  .card-text p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .arrow-indicator {
+    color: var(--color-text-muted);
+    transition: transform var(--transition-fast);
+  }
+
+  .quick-link-card:hover .arrow-indicator {
+    color: var(--color-accent);
+    transform: translateX(-4px);
+  }
+
+  .whatsapp-fallback {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .whatsapp-fallback p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .btn-wa-help {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-accent);
+    color: #ffffff;
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background var(--transition-fast);
+  }
+
+  .btn-wa-help:hover {
+    background: #059669;
+  }
+</style>

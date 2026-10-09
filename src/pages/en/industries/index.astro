@@ -1,0 +1,244 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { ArrowRight, ArrowUpRight } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Industries We Serve in Kuwait' },
+];
+
+const englishIndustries = [
+  {
+    id: 'interior-design-websites',
+    num: '01',
+    name: 'Interior Design & Architecture',
+    desc: 'Visually captivating portfolio websites engineered to showcase Kuwait luxury residential villas and commercial spaces with seamless WhatsApp consultation scheduling.',
+  },
+  {
+    id: 'contracting-maintenance-websites',
+    num: '02',
+    name: 'Contracting & Construction Works',
+    desc: 'Authoritative corporate websites for civil contractors, MEP, and renovation specialists, targeting housing projects in Al-Mutlaa, Sabah Al-Ahmad, and commercial tenders.',
+  },
+  {
+    id: 'cleaning-companies-websites',
+    num: '03',
+    name: 'Cleaning & Facility Management',
+    desc: 'High-converting booking sites for residential and commercial cleaning services across Kuwait governorates with instant dispatch and WhatsApp customer support.',
+  },
+  {
+    id: 'clinics-medical-websites',
+    num: '04',
+    name: 'Medical Centers & Specialty Clinics',
+    desc: 'Ministry of Health-compliant websites for dental, dermatology, and surgical practices in Salmiya, Jabriya, and Hawally with smart patient appointment workflows.',
+  },
+  {
+    id: 'restaurants-cafes-websites',
+    num: '05',
+    name: 'Restaurants & Specialty Cafes',
+    desc: 'Instant interactive digital menus and table reservation workflows that eliminate clunky PDF files and accelerate direct delivery ordering across Kuwait.',
+  },
+  {
+    id: 'logistics-shipping-websites',
+    num: '06',
+    name: 'Logistics, Shipping & Freight',
+    desc: 'Professional freight forwarding and customs clearance websites for trade businesses connecting Shuwaikh, Kuwait International Airport, and regional GCC ports.',
+  },
+];
+---
+
+<BaseLayout
+  title="Industry-Specific Web Design & SEO Solutions in Kuwait | webinOO"
+  description="Discover webinOO's tailored website and SEO solutions engineered for Kuwait's key business sectors: Interior Design, Contracting, Healthcare, F&B, and Logistics."
+  lang="en"
+>
+  <Header slot="header" lang="en" />
+
+  <main class="industries-hub">
+    <!-- Hub Header -->
+    <section class="container hub-header">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">Sector-Specific Solutions in Kuwait</div>
+      <h1>Tailored web design and search strategy built for your exact industry in Kuwait.</h1>
+      <p class="hub-desc">
+        A medical clinic in Salmiya requires an entirely different digital strategy from an engineering contractor in Shuwaikh or an interior architecture atelier in Sharq. We build websites calibrated to the precise buying habits of your sector.
+      </p>
+    </section>
+
+    <!-- Industries Grid -->
+    <section class="container industries-grid-section">
+      <div class="industries-grid">
+        {
+          englishIndustries.map((ind) => (
+            <article class="industry-card">
+              <div class="card-top">
+                <span class="card-num">{ind.num}</span>
+                <a href={`/en/industries/${ind.id}/`} class="card-arrow" aria-label={`View solutions for ${ind.name}`}>
+                  <ArrowUpRight size={18} />
+                </a>
+              </div>
+              <h2>
+                <a href={`/en/industries/${ind.id}/`}>{ind.name}</a>
+              </h2>
+              <p class="card-desc">{ind.desc}</p>
+              <div class="card-footer">
+                <a href={`/en/industries/${ind.id}/`} class="more-link">
+                  Explore sector solution <ArrowRight size={15} />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="container cta-wrap">
+      <CTA
+        eyebrow="Customized for Your Industry"
+        title="Ready to dominate search results in your industry?"
+        description="Let's tailor a high-converting digital architecture that positions your brand as the leading authority in Kuwait."
+        ctaText="Consult With Our Sector Specialists"
+        whatsappMessage="Hello, I would like to consult on a tailored website and SEO solution for my industry in Kuwait."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .industries-hub {
+    padding-bottom: 96px;
+  }
+
+  .hub-header {
+    padding-top: 48px;
+    padding-bottom: 64px;
+    max-width: 860px;
+  }
+
+  .hub-header h1 {
+    font-size: clamp(32px, 4.2vw, 54px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 20px 0 16px;
+  }
+
+  .hub-desc {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 17px;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  .industries-grid-section {
+    margin-bottom: 96px;
+  }
+
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+  }
+
+  .industry-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 16px);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .industry-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+    border-color: var(--color-primary, #6518ac);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .card-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    font-family: var(--font-latin);
+  }
+
+  .card-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-bg-alt, #f7f3f9);
+    display: grid;
+    place-items: center;
+    color: var(--color-ink-primary, #292239);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .industry-card:hover .card-arrow {
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+  }
+
+  .industry-card h2 {
+    font-size: 20px;
+    margin: 0 0 12px;
+    line-height: 1.4;
+  }
+
+  .industry-card h2 a {
+    color: var(--color-ink-primary, #292239);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .industry-card h2 a:hover {
+    color: var(--color-primary, #6518ac);
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.75;
+    margin: 0 0 24px;
+    flex-grow: 1;
+  }
+
+  .card-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-default, #ddd5e1);
+  }
+
+  .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .more-link:hover {
+    gap: 12px;
+  }
+
+  .cta-wrap {
+    margin-top: 48px;
+  }
+</style>

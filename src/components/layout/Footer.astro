@@ -1,0 +1,191 @@
+---
+import { business } from '@/data/business';
+import { MapPin, Phone, Mail } from '@lucide/astro';
+
+export interface Props {
+  lang?: 'ar' | 'en';
+}
+
+const { lang = 'ar' } = Astro.props;
+const year = new Date().getFullYear();
+const prefix = lang === 'ar' ? '' : '/en';
+---
+
+<footer class="footer-section">
+  <div class="container footer-grid">
+    <!-- Col 1: Brand & NAP -->
+    <div class="footer-col brand-col">
+      <a class="brand" href={lang === 'ar' ? '/' : '/en/'}>
+        <img src="/webinoo-logo-white.png" alt="webinOO" width="1024" height="512" />
+      </a>
+      <p class="tagline">
+        {lang === 'ar' ? business.description.ar : business.description.en}
+      </p>
+      
+      <div class="nap-block">
+        <div class="nap-item">
+          <MapPin size={16} />
+          <span>{lang === 'ar' ? 'خدماتنا تغطي كافة محافظات ومناطق الكويت (عن بُعد وأونلاين)' : 'Serving all Kuwait governorates (Remote & Online)'}</span>
+        </div>
+        <div class="nap-item">
+          <Phone size={16} />
+          <a href={`https://wa.me/${business.whatsappNumber}`} target="_blank" rel="noopener noreferrer" dir="ltr">{business.phone} (WhatsApp)</a>
+        </div>
+        {business.email && (
+          <div class="nap-item">
+            <Mail size={16} />
+            <a href={`mailto:${business.email}`}>{business.email}</a>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Col 2: Services -->
+    <div class="footer-col">
+      <h4>{lang === 'ar' ? 'خدماتنا في الكويت' : 'Services in Kuwait'}</h4>
+      <ul class="footer-links">
+        <li><a href={`${prefix}/services/web-design-kuwait/`}>{lang === 'ar' ? 'تصميم مواقع الشركات' : 'Corporate Web Design'}</a></li>
+        <li><a href={`${prefix}/services/ecommerce-kuwait/`}>{lang === 'ar' ? 'متاجر إلكترونية' : 'E-Commerce Stores'}</a></li>
+        <li><a href={`${prefix}/services/seo-kuwait/`}>{lang === 'ar' ? 'تحسين محركات البحث SEO' : 'SEO Kuwait'}</a></li>
+        <li><a href={`${prefix}/services/local-seo-kuwait/`}>{lang === 'ar' ? 'الظهور المحلي وخرائط Google' : 'Local SEO & Maps'}</a></li>
+        <li><a href={`${prefix}/services/geo-ai-search-kuwait/`}>{lang === 'ar' ? 'الظهور في الذكاء الاصطناعي GEO' : 'GEO & AI Search'}</a></li>
+        <li><a href={`${prefix}/services/content-writing-kuwait/`}>{lang === 'ar' ? 'صياغة المحتوى المتخصص' : 'Content Writing'}</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3: Industries & Areas -->
+    <div class="footer-col">
+      <h4>{lang === 'ar' ? 'القطاعات والمناطق' : 'Sectors & Areas'}</h4>
+      <ul class="footer-links">
+        <li><a href={`${prefix}/industries/interior-design-websites/`}>{lang === 'ar' ? 'مواقع الديكور والتصميم الداخلي' : 'Interior Design Websites'}</a></li>
+        <li><a href={`${prefix}/industries/contracting-maintenance-websites/`}>{lang === 'ar' ? 'مواقع المقاولات والصيانة' : 'Contracting Websites'}</a></li>
+        <li><a href={`${prefix}/industries/clinics-medical-websites/`}>{lang === 'ar' ? 'مواقع العيادات والمراكز' : 'Medical & Clinic Websites'}</a></li>
+        <li><a href={`${prefix}/areas/`}>{lang === 'ar' ? 'مناطق الكويت المخدومة' : 'Kuwait Areas Covered'}</a></li>
+        <li><a href={`${prefix}/portfolio/`}>{lang === 'ar' ? 'دراسات الحالة وأعمالنا' : 'Portfolio & Case Studies'}</a></li>
+        <li><a href={`${prefix}/pricing/`}>{lang === 'ar' ? 'باقات الأسعار' : 'Pricing Plans'}</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4: Company & Legal -->
+    <div class="footer-col">
+      <h4>{lang === 'ar' ? 'عن webinOO' : 'About webinOO'}</h4>
+      <ul class="footer-links">
+        <li><a href={`${prefix}/about/`}>{lang === 'ar' ? 'من نحن وفلسفتنا' : 'About Us & Philosophy'}</a></li>
+        <li><a href={`${prefix}/blog/`}>{lang === 'ar' ? 'مدونة التسويق والويب' : 'Knowledge Blog'}</a></li>
+        <li><a href={`${prefix}/contact/`}>{lang === 'ar' ? 'تواصل مع فريقنا' : 'Contact Our Team'}</a></li>
+        <li><a href={`${prefix}/privacy/`}>{lang === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}</a></li>
+        <li><a href={`${prefix}/terms/`}>{lang === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© {year} {business.name}. {lang === 'ar' ? 'جميع الحقوق محفوظة. مُصمم لأعمال الكويت.' : 'All rights reserved. Built for Kuwait businesses.'}</span>
+    <nav class="footer-bottom-nav">
+      <a href="#home">{lang === 'ar' ? 'للأعلى ↑' : 'Back to top ↑'}</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer-section {
+    background-color: #241a2e;
+    color: #e2d9eb;
+    padding: 80px 0 30px;
+    margin-top: 80px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+  .brand img {
+    width: 140px;
+    height: auto;
+    margin-bottom: 18px;
+  }
+  .tagline {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #bdaecb;
+    margin-bottom: 24px;
+    max-width: 320px;
+  }
+  .nap-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+    color: #d1c4df;
+  }
+  .nap-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nap-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nap-item a:hover {
+    color: var(--color-accent-coral, #f07956);
+  }
+  .footer-col h4 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-links a {
+    color: #b9a9c8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover {
+    color: #ffffff;
+  }
+  .footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #9d8aaF;
+  }
+  .footer-bottom-nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .footer-bottom-nav a:hover {
+    color: #ffffff;
+  }
+  @media (max-width: 980px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+  }
+  @media (max-width: 600px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+    }
+  }
+</style>

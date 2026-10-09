@@ -1,0 +1,230 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { ArrowLeft, ShieldCheck } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'أعمالنا ودراسات الحالة' },
+];
+
+const projects = [
+  {
+    title: 'نموذج ستوديو دار للتصميم الداخلي',
+    category: 'تصميم داخلي ومعمار',
+    scope: 'تصميم موقع كامل + تهيئة SEO محلي في الكويت + هوية بصرية',
+    results: 'سرعة تحميل 1.2 ثانية وتجربة تصفح غامرة على شاشات الموبايل.',
+    badge: 'نموذج تجريبي معتمد',
+    isConcept: true,
+  },
+  {
+    title: 'شركة مقاولات وإنشاءات عامة بالكويت',
+    category: 'مقاولات وبناء',
+    scope: 'بروفايل رقمي + كتالوج قسائم ومشاريع منجزة + طلب مقايسة',
+    results: 'هيكلة صفحات للمطلاع وصباح الأحمد ومناطق العمران الحديثة.',
+    badge: '[قيد النشر والتحديث]',
+    isConcept: false,
+  },
+  {
+    title: 'مركز رعاية وعيادة طبية متخصصة',
+    category: 'رعاية صحية وطبية',
+    scope: 'حجز مواعيد ذكي + ملفات الأطباء + تهيئة كلمات البحث الطبي في السالمية',
+    results: 'تقليل ضغط الاتصالات الهاتفية وزيادة الحجوزات المؤكدة.',
+    badge: '[قيد النشر والتحديث]',
+    isConcept: false,
+  },
+  {
+    title: 'منصة تجارة إلكترونية وتوصيل سريع',
+    category: 'متاجر رقمية',
+    scope: 'متجر فائق السرعة + ربط Knet وApple Pay + إشعارات واتساب فورية',
+    results: 'إتمام عملية الشراء في أقل من 40 ثانية من الجوال.',
+    badge: '[قيد النشر والتحديث]',
+    isConcept: false,
+  },
+];
+---
+
+<BaseLayout
+  title="أعمالنا ودراسات الحالة | webinOO الكويت"
+  description="استعرض نماذج أعمالنا ومشاريعنا المصممة للشركات في الكويت. جودة حقيقية، سرعة استثنائية، ونتائج قابلة للقياس."
+  lang="ar"
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="portfolio-page">
+    <section class="container page-header">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">جودة عملية تتحدث عن نفسها</div>
+      <h1>أعمال صُممت لتحدث فرقاً حقيقياً في الكويت</h1>
+      <p class="page-lead">
+        نحن نؤمن بأن أفضل دليل على كفاءتنا هو جودة عملنا. كل موقع نبنيه يخضع لأعلى معايير السرعة، الأمان، والتوافق مع محركات البحث.
+      </p>
+
+      <!-- Transparency Notice per Rule 5-ج -->
+      <div class="transparency-banner">
+        <ShieldCheck size={20} class="banner-icon" />
+        <span>
+          <strong>ملاحظة شفافية:</strong> نقوم حالياً بتحديث هذا القسم بدراسات الحالة والأرقام التفصيلية بعد أخذ موافقة العملاء الخطية لحفظ سرية بياناتهم التجارية في الكويت.
+        </span>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="container projects-grid-section">
+      <div class="projects-grid">
+        {
+          projects.map((proj) => (
+            <article class="project-card">
+              <div class="card-badge-line">
+                <span class="category-tag">{proj.category}</span>
+                <span class="status-tag">{proj.badge}</span>
+              </div>
+              <h2>{proj.title}</h2>
+              <div class="project-meta">
+                <div class="meta-row">
+                  <strong>نطاق العمل:</strong>
+                  <span>{proj.scope}</span>
+                </div>
+                <div class="meta-row">
+                  <strong>النتيجة والهدف:</strong>
+                  <span>{proj.results}</span>
+                </div>
+              </div>
+              <div class="project-footer">
+                <a href="/contact/" class="inquire-btn">
+                  اطلب موقعاً مشابهاً لمشروعك <ArrowLeft size={15} />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Portfolio CTA -->
+    <CTA
+      eyebrow="مشروعك هو قصة نجاحنا القادمة"
+      title="خلّنا نبني موقعاً يليق بنشاطك في الكويت."
+      description="تواصل معنا اليوم وسنشاركك عينات ومقترحات تناسب قطاعك التجاري تحديداً."
+      ctaText="ابدأ مشروعك معنا"
+      whatsappMessage="السلام عليكم، أود الاطلاع على أمثلة أعمال ومناقشة مشروع موقع جديد."
+    />
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
+
+<style>
+  .portfolio-page {
+    padding: 30px 0 60px;
+  }
+  .page-header {
+    max-width: 820px;
+    margin-bottom: 50px;
+  }
+  .page-header h1 {
+    font-size: clamp(34px, 4.5vw, 56px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 16px 0;
+    color: var(--color-ink-primary, #292239);
+  }
+  .page-lead {
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--color-ink-muted, #716b7a);
+    margin-bottom: 24px;
+  }
+  .transparency-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f4eafa;
+    border: 1px solid #ebd9f5;
+    border-radius: var(--radius-sm, 14px);
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #551c88;
+    line-height: 1.7;
+  }
+  .banner-icon {
+    color: var(--color-primary, #6518ac);
+    flex-shrink: 0;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+    margin-bottom: 70px;
+  }
+  .project-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: var(--radius-lg, 24px);
+    padding: 34px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(56, 32, 75, 0.03);
+  }
+  .card-badge-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+  .category-tag {
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+  }
+  .status-tag {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 11px;
+  }
+  .project-card h2 {
+    font-size: 21px;
+    margin-bottom: 18px;
+    color: var(--color-ink-primary, #292239);
+  }
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .meta-row strong {
+    display: block;
+    color: var(--color-ink-primary, #292239);
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+  .meta-row span {
+    color: var(--color-ink-muted, #716b7a);
+  }
+  .project-footer {
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .inquire-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-primary, #6518ac);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    transition: gap 0.2s;
+  }
+  .inquire-btn:hover {
+    gap: 10px;
+  }
+</style>

@@ -1,0 +1,147 @@
+---
+import '@/styles/tokens.css';
+import { getLangFromUrl, getDirFromLang } from '@/i18n/utils';
+import type { SupportedLanguage } from '@/i18n/utils';
+import { business } from '@/data/business';
+import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  schema?: Record<string, any> | Array<Record<string, any>>;
+  lang?: SupportedLanguage;
+}
+
+const url = Astro.url;
+const lang = Astro.props.lang || getLangFromUrl(url);
+const dir = getDirFromLang(lang);
+
+const siteBase = Astro.site ? Astro.site.origin : 'https://webinoo.online';
+
+const title = Astro.props.title || (lang === 'ar' 
+  ? `${business.tagline.ar} | ${business.name}`
+  : `${business.name} | ${business.tagline.en}`);
+
+const description = Astro.props.description || (lang === 'ar'
+  ? business.description.ar
+  : business.description.en);
+
+const ogImage = Astro.props.ogImage || `${siteBase}/webinoo-logo.png`;
+
+// Canonical and hreflang resolution
+const currentPath = url.pathname.replace(/^\/en/, '').replace(/\/$/, '') || '/';
+const canonicalURL = Astro.props.canonical || new URL(url.pathname, siteBase).href;
+const arURL = new URL(currentPath === '/' ? '/' : `${currentPath}/`, siteBase).href;
+const enURL = new URL(currentPath === '/' ? '/en/' : `/en${currentPath}/`, siteBase).href;
+
+// Base Organization & LocalBusiness JSON-LD schema
+const baseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${siteBase}/#organization`,
+    name: business.name,
+    legalName: business.legalName,
+    url: siteBase,
+    logo: `${siteBase}/webinoo-logo.png`,
+    image: `${siteBase}/webinoo-logo.png`,
+    description: lang === 'ar' ? business.description.ar : business.description.en,
+    telephone: business.phone,
+    ...(business.email ? { email: business.email } : {}),
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: business.address.locality,
+      addressRegion: business.address.region,
+      addressCountry: business.address.countryCode,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: business.geo.latitude,
+      longitude: business.geo.longitude,
+    },
+    areaServed: business.areasServed.map((area) => ({
+      '@type': 'AdministrativeArea',
+      name: area,
+    })),
+    priceRange: '$$',
+    sameAs: [
+      business.social.instagram,
+      business.social.linkedin,
+      business.social.x,
+    ].filter(Boolean),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteBase}/#website`,
+    url: siteBase,
+    name: business.name,
+    inLanguage: [lang === 'ar' ? 'ar-KW' : 'en-KW'],
+  },
+];
+
+const customSchema = Astro.props.schema
+  ? Array.isArray(Astro.props.schema)
+    ? Astro.props.schema
+    : [Astro.props.schema]
+  : [];
+
+const finalSchema = [...baseSchema, ...customSchema];
+---
+
+<!doctype html>
+<html lang={lang} dir={dir}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8f6f1" />
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="ar" href={arURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={arURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'ar' ? 'ar_KW' : 'en_US'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <slot name="header" />
+      <slot />
+      <slot name="footer" />
+    </div>
+    <FloatingWhatsApp lang={lang} />
+  </body>
+</html>

@@ -1,0 +1,856 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import CTA from '@/components/common/CTA.astro';
+import FAQ from '@/components/common/FAQ.astro';
+import { getWhatsAppUrl } from '@/data/business';
+import {
+  ArrowLeft,
+  ArrowUpLeft,
+  Check,
+  Search,
+  MapPin,
+} from '@lucide/astro';
+
+const contactHref = getWhatsAppUrl('Hello webinOO, I would like to inquire about website design, local SEO, and AI search visibility in Kuwait.');
+
+const faqs = [
+  {
+    question: 'How long does it take to launch a website?',
+    answer: 'Timeline depends on project scope and content readiness. We agree on a transparent milestone schedule from day one and guide you step-by-step through launch.',
+  },
+  {
+    question: 'Is the website optimized for mobile phones?',
+    // <!-- TODO: REVIEW -->
+    answer: 'Absolutely. Every site we build is 100% responsive across mobile, tablet, and desktop. Most of your clients in Kuwait search on smartphones, so we prioritize fast loading, clear call and WhatsApp actions, and seamless navigation.',
+  },
+  {
+    question: 'Do you help my business rank on Google and AI search?',
+    // <!-- TODO: REVIEW -->
+    answer: 'Yes. We engineer your site from scratch with technical SEO and Generative Engine Optimization (GEO). We structure your Kuwait local presence, target high-intent search terms, and ensure high page speeds to maximize visibility on Google Search, Maps, and AI answers.',
+  },
+  {
+    question: 'What do I need to prepare before we start?',
+    // <!-- TODO: REVIEW -->
+    answer: 'Nothing complicated. We start with a focused discovery call to understand your business, services, and ideal customers. We assist with content hierarchy, messaging, and layout structure, staying by your side until your site is live.',
+  },
+];
+---
+
+<BaseLayout
+  title="Web Design, SEO & GEO in Kuwait | webinOO"
+  description="webinOO crafts high-performance websites and local SEO/GEO strategies tailored for service businesses and companies in Kuwait."
+  lang="en"
+>
+  <Header slot="header" lang="en" />
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="container hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Web Design & SEO in Kuwait | Digital Authority Starts Here</div>
+          <h1 id="hero-title">
+            Make Your Business
+            <br />
+            Seen <em>Online.</em>
+          </h1>
+          <p class="hero-copy">
+            We build websites worthy of your craft in Kuwait, and optimize your presence on Google and AI search so customers seeking your service reach you first.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href={contactHref} target="_blank" rel="noopener noreferrer">
+              Start My Project <ArrowLeft size={17} style="transform: rotate(180deg);" />
+            </a>
+            <a class="button button-quiet" href="#services">
+              Explore Services
+            </a>
+          </div>
+          <div class="proofline">
+            <span><i></i> Bilingual Core</span>
+            <span><i></i> Designed for Kuwait</span>
+            <span><i></i> Mobile-First</span>
+          </div>
+        </div>
+
+        <div class="hero-art reveal delay-1" aria-label="Professional website preview tailored for Kuwait">
+          <div class="orbit"></div>
+          <div class="floating-note note-search">
+            <span class="note-icon">
+              <Search size={17} />
+            </span>
+            <span>
+              <strong>Smart Local Search</strong>
+              <small>Nearby services in Kuwait</small>
+            </span>
+          </div>
+          <div class="mock-browser">
+            <div class="browser-top">
+              <b></b><b></b><b></b>
+              <div class="browser-address">yourbusiness.com</div>
+            </div>
+            <div class="mock-page">
+              <div class="mock-brand">DAR | INTERIOR STUDIO</div>
+              <h3>
+                Your Space…
+                <br />
+                Your Style.
+              </h3>
+              <p>
+                Interior architecture creating meaningful transformation in every corner.
+              </p>
+              <span class="mock-cta"></span>
+            </div>
+          </div>
+          <div class="floating-note note-map">
+            <span class="note-icon">
+              <MapPin size={17} />
+            </span>
+            <span>
+              <strong>From Kuwait to Your Client</strong>
+              <small>Clear details, established authority</small>
+            </span>
+          </div>
+          <div class="local-tag">Built for Kuwait Businesses</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-label="Websites, SEO, Local Search, Business Growth">
+      <div class="ticker-track">
+        <span>
+          Web Design <b>✳</b> Search Engine Optimization <b>✳</b> Local Authority <b>✳</b> Business Growth <b>✳</b>
+        </span>
+        <span aria-hidden="true">
+          Web Design <b>✳</b> Search Engine Optimization <b>✳</b> Local Authority <b>✳</b> Business Growth <b>✳</b>
+        </span>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section id="services" class="container section services-section">
+      <div class="service-layout">
+        <div class="service-intro">
+          <div class="eyebrow">Everything Your Brand Needs</div>
+          <h2
+            class="section-head"
+            style="font-size:clamp(32px,4vw,48px);line-height:1.35;letter-spacing:-.04em;margin:14px 0;"
+          >
+            From First Concept…
+            <br />
+            To First Client.
+          </h2>
+          <p style="color:#716b7a;line-height:1.9;font-size:15px;">
+            Not just an attractive layout. We build digital authority that answers your client’s buying intent and drives inquiries.
+          </p>
+          <a href="#contact" class="button button-quiet">
+            Discuss Your Project <ArrowLeft size={16} style="transform: rotate(180deg);" />
+          </a>
+        </div>
+        <div class="service-list">
+          <article class="service-item">
+            <span class="service-num">01</span>
+            <div>
+              <h3>Website Design & Development</h3>
+              <p>
+                Fast, responsive, mobile-first websites designed to turn visitors into qualified leads.
+              </p>
+            </div>
+            <a href="/en/services/web-design-kuwait/" class="service-arrow" aria-label="Web Design in Kuwait">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+          <article class="service-item">
+            <span class="service-num">02</span>
+            <div>
+              <h3>Google SEO & Search Visibility</h3>
+              <p>
+                Targeted keyword architecture and technical structure to rank high on search results in Kuwait.
+              </p>
+            </div>
+            <a href="/en/services/seo-kuwait/" class="service-arrow" aria-label="SEO Kuwait">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+          <article class="service-item">
+            <span class="service-num">03</span>
+            <div>
+              <h3>Local Search & Google Business</h3>
+              <p>
+                Establish prominence in local map packs, search queries, and nearby recommendations.
+              </p>
+            </div>
+            <a href="/en/services/local-seo-kuwait/" class="service-arrow" aria-label="Local SEO Kuwait">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+          <article class="service-item">
+            <span class="service-num">04</span>
+            <div>
+              <h3>Arabic & English Copywriting</h3>
+              <p>
+                Persuasive messaging tuned to Kuwait audience expectations and clear conversion paths.
+              </p>
+            </div>
+            <a href="/en/services/content-writing-kuwait/" class="service-arrow" aria-label="Content Writing">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google / SEO Showcase -->
+    <section id="why-webinoo" class="showcase">
+      <div class="container showcase-grid">
+        <div class="showcase-copy">
+          <div class="eyebrow">Not Just A Static Page</div>
+          <h2>
+            Let Google
+            <br />
+            Lead Them To You.
+          </h2>
+          <p>
+            When prospective clients in Kuwait search for your service, your business must deliver a clear, credible answer. We build search foundations from day one.
+          </p>
+          <ul class="check-list">
+            <li>
+              <span class="check"><Check size={13} /></span>
+              Structured for Search Engines and AI Overviews
+            </li>
+            <li>
+              <span class="check"><Check size={13} /></span>
+              Ultra-fast mobile loading and responsive design
+            </li>
+            <li>
+              <span class="check"><Check size={13} /></span>
+              Transparent service details and instant contact links
+            </li>
+          </ul>
+        </div>
+        <div class="search-card" aria-label="Illustrative Kuwait local search card">
+          <div class="search-label">
+            <span>G</span><span style="color:#ea4335">o</span><i>o</i><span style="color:#4285f4">g</span><strong>l</strong><em>e</em>
+          </div>
+          <div class="search-input">
+            <span>Interior designer in Kuwait</span>
+            <Search size={16} color="#7e7785" />
+          </div>
+          <div class="result">
+            <small>www.yourbusiness.com</small>
+            <h3>Dar Interior Studio | Kuwait</h3>
+            <p>
+              Transforming spaces into refined, practical environments. Explore our interior services and contact our studio.
+            </p>
+            <div class="search-example-note">
+              Illustrative example — not an actual result
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>Content</strong>
+              <small>Answers client search</small>
+            </div>
+            <div class="stat">
+              <strong>Local</strong>
+              <small>Tuned for Kuwait</small>
+            </div>
+            <div class="stat">
+              <strong>Speed</strong>
+              <small>Effortless mobile UX</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="process-section section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Clear, Transparent Steps</div>
+          <h2>
+            From First Discussion…
+            <br />
+            To Your Live Website.
+          </h2>
+          <p>
+            No technical jargon required. We partner with you from discovery through launch day.
+          </p>
+        </div>
+        <div class="process-row">
+          <article class="process-step">
+            <div class="step-number">01</div>
+            <h3>Discovery</h3>
+            <p>We listen to your business model, customer profiles, and growth targets.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-number">02</div>
+            <h3>Roadmap</h3>
+            <p>We structure pages, content priorities, and keyword opportunities.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-number">03</div>
+            <h3>Build & Review</h3>
+            <p>We craft the bespoke experience and review every detail together.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-number">04</div>
+            <h3>Launch Live</h3>
+            <p>Your site goes live for your customers, on every device, 24/7.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- First Impression -->
+    <section class="container section stories">
+      <div class="section-head">
+        <div class="eyebrow">First Impressions Matter</div>
+        <h2>
+          When Clients Find You…
+          <br />
+          What Do They See?
+        </h2>
+        <p>
+          Your website is your prime storefront. Make it communicate competence before the first call.
+        </p>
+      </div>
+      <div class="story-layout">
+        <article class="story-main">
+          <span class="story-label">The Digital Experience We Build</span>
+          <div>
+            <div class="quote-mark">01</div>
+            <p class="story-statement">
+              A site that articulates your service, makes details effortless to find, and turns visitors into clients.
+            </p>
+            <div class="story-credit">
+              Our commitment: Distinct digital authority from the first click
+            </div>
+          </div>
+        </article>
+        <div class="story-side">
+          <article class="story-mini">
+            <span class="story-mini-tag">Clarity from Day One</span>
+            <p>Your client immediately knows what you do, where you serve, and how to get started.</p>
+            <small>Clean service structure and transparent info</small>
+          </article>
+          <article class="story-mini">
+            <span class="story-mini-tag">Unified Information</span>
+            <p>Services, locations, and direct contact options unified in one intuitive interface.</p>
+            <small>Custom-engineered for your sector</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <FAQ
+      eyebrow="Clear Answers"
+      title="Common Questions"
+      description="Quick answers to frequent inquiries. If you have any further questions, we are here to help."
+      items={faqs}
+      id="faq"
+    />
+
+    <!-- Final CTA -->
+    <CTA
+      eyebrow="Your Business Deserves Stronger Authority"
+      title="Let's Talk About Your Growth."
+      description="Tell us about your services, and we will share actionable digital strategies tailored to your market in Kuwait."
+      ctaText="Chat on WhatsApp"
+      whatsappMessage="Hello webinOO, I would like to discuss a website project in Kuwait."
+      id="contact"
+    />
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .services-section {
+    padding-top: 108px;
+  }
+  .service-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .service-intro {
+    position: sticky;
+    top: 36px;
+  }
+  .service-intro .button {
+    margin-top: 22px;
+  }
+  .service-list {
+    border-top: 1px solid var(--color-border-default, #ddd5e1);
+  }
+  .service-item {
+    padding: 25px 0;
+    border-bottom: 1px solid var(--color-border-default, #ddd5e1);
+    display: grid;
+    grid-template-columns: 54px 1fr 34px;
+    gap: 17px;
+    align-items: start;
+    transition: padding 0.25s;
+  }
+  .service-item:hover {
+    padding-inline: 10px;
+  }
+  .service-num {
+    font: 600 12px var(--font-latin);
+    color: #a28caf;
+    padding-top: 5px;
+    direction: ltr;
+  }
+  .service-item h3 {
+    margin: 0 0 7px;
+    font-size: 20px;
+  }
+  .service-item p {
+    margin: 0;
+    color: var(--color-ink-muted, #777180);
+    line-height: 1.8;
+    font-size: 14px;
+    max-width: 440px;
+  }
+  .service-arrow {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-border-default, #dfd6e5);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #722caf;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .service-item:hover .service-arrow {
+    transform: translateX(4px);
+  }
+  .showcase {
+    background: var(--color-bg-alt, #eee8f0);
+    padding: 96px 0;
+    position: relative;
+  }
+  .showcase::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #e7d9ec;
+    right: -120px;
+    top: 10%;
+  }
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    align-items: center;
+    position: relative;
+  }
+  .showcase-copy h2 {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.35;
+    letter-spacing: -0.04em;
+    margin: 16px 0;
+  }
+  .showcase-copy p {
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.95;
+    font-size: 15px;
+    max-width: 480px;
+  }
+  .check-list {
+    list-style: none;
+    padding: 0;
+    margin: 26px 0 0;
+    display: grid;
+    gap: 13px;
+  }
+  .check-list li {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 14px;
+    color: #45404d;
+  }
+  .check {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #e0d2e9;
+    color: #6c239e;
+    flex: none;
+  }
+  .search-card {
+    background: var(--color-bg-card, #fffefa);
+    border-radius: var(--radius-lg, 24px);
+    padding: 30px;
+    box-shadow: var(--shadow-floating);
+    transform: rotate(2deg);
+  }
+  .search-label {
+    text-align: left;
+    direction: ltr;
+    font: 700 18px var(--font-latin);
+    color: #56515d;
+    margin-bottom: 20px;
+  }
+  .search-label span {
+    color: #4285f4;
+  }
+  .search-label strong {
+    color: #34a853;
+  }
+  .search-label i {
+    color: #fbbc05;
+    font-style: normal;
+  }
+  .search-label em {
+    color: #ea4335;
+    font-style: normal;
+  }
+  .search-input {
+    height: 48px;
+    border: 1px solid var(--color-border-subtle, #e4dfe7);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 17px;
+    color: #65606b;
+    font-size: 13px;
+    box-shadow: 0 2px 7px rgba(51, 35, 64, 0.04);
+  }
+  .result {
+    margin-top: 19px;
+    padding: 18px;
+    border: 1px solid var(--color-border-subtle, #eee9f0);
+    border-radius: 15px;
+  }
+  .result small {
+    color: #5a9b66;
+    font: 11px var(--font-latin);
+    direction: ltr;
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+  }
+  .result h3 {
+    color: #44278a;
+    font: 600 17px var(--font-latin);
+    direction: ltr;
+    text-align: left;
+    margin: 0 0 5px;
+  }
+  .result p {
+    direction: ltr;
+    text-align: left;
+    font: 12px/1.6 var(--font-latin);
+    color: #68636d;
+    margin: 0;
+  }
+  .search-example-note {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 9px;
+    border-radius: var(--radius-pill);
+    background: #f1e9f6;
+    color: #69438a;
+    font-size: 10px;
+  }
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid #eae4eb;
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+  .stat strong {
+    display: block;
+    font: 700 20px var(--font-latin);
+    color: #59248b;
+  }
+  .stat small {
+    color: #827b87;
+    font-size: 10px;
+  }
+  .process-section {
+    background: var(--color-bg-dark, #2d2139);
+    color: #f8f3fa;
+    position: relative;
+    padding: var(--section-padding-y, 112px) 0;
+  }
+  .process-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.11;
+    background-image: radial-gradient(#e4c9fa 1px, transparent 1px);
+    background-size: 23px 23px;
+    pointer-events: none;
+  }
+  .process-section .section-head, .process-row {
+    position: relative;
+    z-index: 1;
+  }
+  .process-section .eyebrow {
+    color: #e1b4f3;
+  }
+  .process-section .section-head h2 {
+    color: #ffffff;
+  }
+  .process-section .section-head p {
+    color: var(--color-ink-light, #c5b8ce);
+  }
+  .process-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-row::before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    right: 9%;
+    left: 9%;
+    height: 1px;
+    background: var(--color-border-dark, #78658a);
+  }
+  .process-step {
+    padding-inline: 17px;
+    position: relative;
+  }
+  .step-number {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #8c739c;
+    border-radius: 50%;
+    background: var(--color-bg-dark, #2d2139);
+    color: #f4ad8d;
+    font: 600 14px var(--font-latin);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .process-step h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+    color: #ffffff;
+  }
+  .process-step p {
+    color: var(--color-ink-light, #c5b8ce);
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+  }
+  .stories {
+    background: var(--color-bg-body, #f8f6f1);
+    padding: var(--section-padding-y, 112px) 0;
+  }
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+  }
+  .story-main {
+    min-height: 335px;
+    background: var(--color-accent-lavender, #d8c3e5);
+    border-radius: var(--radius-lg, 24px);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .story-main::before {
+    content: "";
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    left: -20px;
+    bottom: -116px;
+    background: #bb98d0;
+  }
+  .story-main::after {
+    content: "";
+    position: absolute;
+    width: 155px;
+    height: 155px;
+    border: 1px solid #9e79b6;
+    border-radius: 50%;
+    left: 39px;
+    bottom: -55px;
+  }
+  .story-main > * {
+    z-index: 1;
+  }
+  .story-label {
+    background: #f6eff9;
+    color: #612b88;
+    border-radius: 20px;
+    padding: 7px 12px;
+    font-size: 11px;
+    width: max-content;
+  }
+  .quote-mark {
+    color: #6b3290;
+    font: 700 18px var(--font-latin);
+    line-height: 1.2;
+  }
+  .story-statement {
+    max-width: 540px;
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.65;
+    margin: 10px 0 20px;
+    font-weight: 600;
+  }
+  .story-credit {
+    font-size: 12px;
+    color: #675575;
+  }
+  .story-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .story-mini {
+    flex: 1;
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid #ebe4ed;
+    border-radius: var(--radius-md, 20px);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .story-mini p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 16px 0 22px;
+  }
+  .story-mini small {
+    color: #847b8a;
+  }
+  .story-mini-tag {
+    background: #f1e9f6;
+    color: #69438a;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 11px;
+    align-self: flex-start;
+  }
+  @media (max-width: 850px) {
+    .service-layout, .showcase-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .service-intro {
+      position: static;
+    }
+    .showcase-grid {
+      gap: 32px;
+    }
+    .search-card {
+      max-width: 520px;
+      width: 100%;
+      margin: auto;
+    }
+    .story-layout {
+      grid-template-columns: 1fr;
+    }
+    .story-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .process-row {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 34px;
+    }
+    .process-row::before {
+      display: none;
+    }
+    .process-section,
+    .stories {
+      padding: var(--section-padding-y-mobile, 72px) 0;
+    }
+  }
+  @media (max-width: 520px) {
+    .service-item {
+      grid-template-columns: 37px 1fr 28px;
+      gap: 10px;
+      padding: 21px 0;
+    }
+    .service-item h3 {
+      font-size: 17px;
+    }
+    .service-item p {
+      font-size: 12px;
+    }
+    .service-num {
+      font-size: 10px;
+    }
+    .showcase {
+      padding: 73px 0;
+    }
+    .search-card {
+      padding: 20px;
+    }
+    .search-label {
+      font-size: 16px;
+    }
+    .search-input {
+      font-size: 11px;
+    }
+    .result h3 {
+      font-size: 15px;
+    }
+    .stat strong {
+      font-size: 16px;
+    }
+    .stat small {
+      font-size: 9px;
+    }
+    .process-row {
+      gap: 26px 10px;
+    }
+    .process-step {
+      padding-inline: 7px;
+    }
+    .process-step h3 {
+      font-size: 16px;
+    }
+    .process-step p {
+      font-size: 12px;
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 17px;
+    }
+    .story-main {
+      padding: 24px;
+      min-height: 310px;
+    }
+    .story-side {
+      grid-template-columns: 1fr;
+    }
+    .story-mini {
+      min-height: 190px;
+    }
+  }
+</style>

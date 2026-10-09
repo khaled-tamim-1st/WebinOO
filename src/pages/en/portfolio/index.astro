@@ -1,0 +1,304 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { ArrowRight, ShieldCheck } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Portfolio & Case Studies' },
+];
+
+const projects = [
+  {
+    title: 'DAR Studio Interior Architecture Prototype',
+    category: 'Interior Design & Architecture',
+    scope: 'Complete website design + Local SEO Kuwait + Visual art direction',
+    results: '1.2s rapid load time and immersive storytelling on mobile screens.',
+    badge: 'Approved Concept Prototype',
+    isConcept: true,
+  },
+  {
+    title: 'Kuwait General Contracting & Construction',
+    category: 'Construction & Civil Engineering',
+    scope: 'Corporate digital presence + Project catalog + RFQ cost estimator',
+    results: 'Dedicated landing pages for Al-Mutlaa, Sabah Al-Ahmad, and modern housing areas.',
+    badge: '[Client Review & Update]',
+    isConcept: false,
+  },
+  {
+    title: 'Specialized Medical Clinic & Wellness Center',
+    category: 'Healthcare & Specialized Medicine',
+    scope: 'Smart appointment workflow + Doctor credentials + Local SEO in Salmiya',
+    results: 'Streamlined WhatsApp reception bookings and verified patient trust.',
+    badge: '[Client Review & Update]',
+    isConcept: false,
+  },
+  {
+    title: 'Kuwait Direct E-Commerce Storefront',
+    category: 'E-Commerce & Retail',
+    scope: 'Ultra-fast storefront + Knet & Apple Pay + Instant WhatsApp order alerts',
+    results: 'Full mobile checkout completed in under 40 seconds.',
+    badge: '[Client Review & Update]',
+    isConcept: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Portfolio & Case Studies | webinOO Kuwait"
+  description="Explore our website showcases and case studies designed for businesses across Kuwait. Authentic craft, rapid load speeds, and measurable ROI."
+  lang="en"
+>
+  <Header slot="header" lang="en" />
+
+  <main class="portfolio-page">
+    <section class="container page-header">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">Proven Craftsmanship</div>
+      <h1>Work that demonstrates speed, prestige, and search authority.</h1>
+      <p class="page-lead">
+        We do not rely on generic templates or superficial mockups. Every project is crafted from clean static code to solve real commercial bottlenecks for businesses in Kuwait.
+      </p>
+    </section>
+
+    <!-- Transparency Notice -->
+    <section class="container notice-section">
+      <div class="transparency-card">
+        <ShieldCheck size={22} class="shield-icon" />
+        <p>
+          <strong>Transparency Notice:</strong> In compliance with webinOO professional integrity guidelines, experimental prototypes are explicitly labeled as illustrative examples. We never fabricate unverified client reviews or vanity statistics.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="container projects-grid-section">
+      <div class="projects-grid">
+        {
+          projects.map((proj) => (
+            <article class="project-card">
+              <div class="project-header">
+                <span class="project-cat">{proj.category}</span>
+                <span class={`project-badge ${proj.isConcept ? 'badge-concept' : 'badge-prod'}`}>
+                  {proj.badge}
+                </span>
+              </div>
+              <h2 class="project-title">{proj.title}</h2>
+              <div class="project-details">
+                <div class="detail-row">
+                  <span class="detail-label">Scope of Work:</span>
+                  <span class="detail-val">{proj.scope}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Commercial Outcome:</span>
+                  <span class="detail-val">{proj.results}</span>
+                </div>
+              </div>
+              <div class="project-footer">
+                <a href="/en/contact/" class="project-link">
+                  Request a similar solution <ArrowRight size={15} />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="container cta-wrap">
+      <CTA
+        eyebrow="Start Your Success Story"
+        title="Ready to build your company's primary digital asset?"
+        description="Share your project vision and we will engineer a website that commands respect in the Kuwait market."
+        ctaText="Discuss Your Project on WhatsApp"
+        whatsappMessage="Hello, I reviewed your portfolio and would like to discuss building a website for my business in Kuwait."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .portfolio-page {
+    padding-bottom: 96px;
+  }
+
+  .page-header {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    max-width: 860px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(32px, 4.2vw, 54px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 20px 0 16px;
+  }
+
+  .page-lead {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 17px;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  .notice-section {
+    margin-bottom: 48px;
+  }
+
+  .transparency-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 24px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: var(--radius-md, 12px);
+  }
+
+  .shield-icon {
+    color: var(--color-accent, #10b981);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .transparency-card p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--color-ink-primary, #292239);
+    line-height: 1.7;
+  }
+
+  .projects-grid-section {
+    margin-bottom: 80px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .project-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 16px);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+    border-color: var(--color-primary, #6518ac);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .project-cat {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+  }
+
+  .project-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 999px;
+  }
+
+  .badge-concept {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent, #10b981);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+  }
+
+  .badge-prod {
+    background: rgba(101, 24, 172, 0.08);
+    color: var(--color-primary, #6518ac);
+    border: 1px solid rgba(101, 24, 172, 0.2);
+  }
+
+  .project-title {
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 0 0 20px;
+    color: var(--color-ink-primary, #292239);
+  }
+
+  .project-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+    flex-grow: 1;
+    padding-top: 16px;
+    border-top: 1px dashed var(--color-border-subtle, #eae3ef);
+  }
+
+  .detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .detail-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-ink-muted, #716b7a);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .detail-val {
+    font-size: 13px;
+    color: var(--color-ink-primary, #292239);
+    line-height: 1.6;
+  }
+
+  .project-footer {
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border-default, #ddd5e1);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .project-link:hover {
+    gap: 12px;
+  }
+
+  .cta-wrap {
+    margin-top: 48px;
+  }
+</style>

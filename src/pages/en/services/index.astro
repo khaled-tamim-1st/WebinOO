@@ -1,0 +1,294 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { ArrowRight, ArrowUpRight, CircleCheck } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Services in Kuwait' },
+];
+
+const englishServices = [
+  {
+    id: 'web-design-kuwait',
+    num: '01',
+    title: 'Corporate Web Design in Kuwait',
+    desc: 'High-performance bespoke corporate websites built to elevate brand prestige and capture qualified local clients in Kuwait.',
+    deliverables: ['Custom clean code without page builders', '100% Mobile & iPad responsive', 'Rapid load times under 1 second'],
+  },
+  {
+    id: 'ecommerce-kuwait',
+    num: '02',
+    title: 'Kuwait E-Commerce Stores (Knet & Apple Pay)',
+    desc: 'Bespoke online shopping experiences integrated with Kuwait payment gateways (Knet, Apple Pay) and regional shipping logistics.',
+    deliverables: ['One-touch checkout under 40 seconds', 'Full inventory and order management', 'Kuwait governorate delivery setup'],
+  },
+  {
+    id: 'custom-websites-kuwait',
+    num: '03',
+    title: 'Custom Web Applications & Systems',
+    desc: 'Custom web software engineered for specific workflows, booking engines, portals, and client management without bloated WordPress plugins.',
+    deliverables: ['Tailored business logic and database', 'Secure client portal and APIs', 'Full source code ownership'],
+  },
+  {
+    id: 'seo-kuwait',
+    num: '04',
+    title: 'Search Engine Optimization (SEO)',
+    desc: 'Technical, on-page, and authority SEO engineered to dominate commercial search queries across Kuwait on Google.',
+    deliverables: ['Deep keyword research for Kuwait search intent', 'Comprehensive structured data & Schema markup', 'Technical Core Web Vitals optimization'],
+  },
+  {
+    id: 'local-seo-kuwait',
+    num: '05',
+    title: 'Local SEO & Google Maps (Local 3-Pack)',
+    desc: 'Dominate Google Business Profile searches across Kuwait City, Hawally, Salmiya, Farwaniya, Jahra, and Ahmadi.',
+    deliverables: ['Google Business Profile optimization', 'Bilingual NAP consistency across directories', 'WhatsApp-driven local review acquisition'],
+  },
+  {
+    id: 'geo-ai-search-kuwait',
+    num: '06',
+    title: 'Generative Engine Optimization (GEO)',
+    desc: 'Position your Kuwait business as the primary recommended citation in ChatGPT, Google Gemini, and Perplexity answers.',
+    deliverables: ['Direct 40-60 word answer architecture', 'Digital knowledge manifest (llms.txt)', 'AI entity recognition & authority signals'],
+  },
+  {
+    id: 'content-writing-kuwait',
+    num: '07',
+    title: 'Commercial Bilingual Copywriting',
+    desc: 'High-converting Arabic and English copy tailored to Kuwaiti consumer psychology, business culture, and search queries.',
+    deliverables: ['Culturally resonant Arabic & English copy', 'SEO-optimized service landing pages', 'Compelling calls-to-action'],
+  },
+  {
+    id: 'hosting-maintenance-kuwait',
+    num: '08',
+    title: 'Ultra-Fast Hosting & Proactive Maintenance',
+    desc: 'High-availability edge hosting, SSL certificates, automated daily backups, and ongoing technical support in Kuwait.',
+    deliverables: ['99.9% uptime with global edge CDN', 'Automated security updates & backups', 'Dedicated WhatsApp emergency support'],
+  },
+];
+---
+
+<BaseLayout
+  title="Web Design & SEO Services in Kuwait | webinOO"
+  description="Explore webinOO's digital services in Kuwait: corporate web design, e-commerce stores with Knet, Local SEO, and Generative Engine Optimization (GEO)."
+  lang="en"
+>
+  <Header slot="header" lang="en" />
+
+  <main class="services-hub">
+    <!-- Hub Header -->
+    <section class="container hub-header">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">Digital Authority in Kuwait</div>
+      <h1>End-to-end digital services built to establish authority and convert searchers into clients.</h1>
+      <p class="hub-desc">
+        At webinOO, we do not build generic template sites. We build bespoke digital marketing assets engineered to rank at the top of Google Kuwait, get cited in generative AI answers, and deliver lightning-fast experiences on every device.
+      </p>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="container services-grid-section">
+      <div class="services-grid">
+        {
+          englishServices.map((service) => (
+            <article class="service-card">
+              <div class="card-top">
+                <span class="card-num">{service.num}</span>
+                <a href={`/en/services/${service.id}/`} class="card-arrow" aria-label={`Details about ${service.title}`}>
+                  <ArrowUpRight size={18} />
+                </a>
+              </div>
+              <h2>
+                <a href={`/en/services/${service.id}/`}>{service.title}</a>
+              </h2>
+              <p class="card-desc">{service.desc}</p>
+              <div class="card-deliverables">
+                {service.deliverables.map((item) => (
+                  <div class="deliverable-item">
+                    <CircleCheck size={15} class="check-icon" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="card-footer">
+                <a href={`/en/services/${service.id}/`} class="more-link">
+                  Explore service details <ArrowRight size={15} />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <CTA
+      eyebrow="Your Craft Deserves Digital Authority"
+      title="Ready to elevate your business online in Kuwait?"
+      description="Tell us about your services and goals, and let's build a website that delivers measurable results."
+      ctaText="Discuss Your Project on WhatsApp"
+      whatsappMessage="Hello, I would like to discuss web design and SEO services for my business in Kuwait."
+    />
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .services-hub {
+    padding-bottom: 96px;
+  }
+
+  .hub-header {
+    padding-top: 48px;
+    padding-bottom: 64px;
+    max-width: 860px;
+  }
+
+  .hub-header h1 {
+    font-size: clamp(32px, 4.2vw, 54px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 20px 0 16px;
+  }
+
+  .hub-desc {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 17px;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  .services-grid-section {
+    margin-bottom: 96px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+  }
+
+  .service-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 16px);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+    border-color: var(--color-primary, #6518ac);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .card-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    font-family: var(--font-latin);
+  }
+
+  .card-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-bg-alt, #f7f3f9);
+    display: grid;
+    place-items: center;
+    color: var(--color-ink-primary, #292239);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .service-card:hover .card-arrow {
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+  }
+
+  .service-card h2 {
+    font-size: 20px;
+    margin: 0 0 12px;
+    line-height: 1.4;
+  }
+
+  .service-card h2 a {
+    color: var(--color-ink-primary, #292239);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .service-card h2 a:hover {
+    color: var(--color-primary, #6518ac);
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.75;
+    margin: 0 0 24px;
+    flex-grow: 1;
+  }
+
+  .card-deliverables {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--color-border-subtle, #eae3ef);
+  }
+
+  .deliverable-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-ink-primary, #292239);
+  }
+
+  .check-icon {
+    color: var(--color-accent, #10b981);
+    flex-shrink: 0;
+  }
+
+  .card-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-default, #ddd5e1);
+  }
+
+  .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .more-link:hover {
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

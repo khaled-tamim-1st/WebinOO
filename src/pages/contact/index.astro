@@ -1,0 +1,644 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import FAQ from '@/components/common/FAQ.astro';
+import { business, getWhatsAppUrl } from '@/data/business';
+import { Phone, Mail, MapPin, Clock, MessageSquare, Send, ShieldCheck } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'تواصل معنا' },
+];
+
+const contactFaqs = [
+  {
+    question: 'ما هي أسرع طريقة للتواصل معكم والحصول على استشارة؟',
+    answer: 'أسرع طريقة هي مراسلتنا مباشرة عبر الواتساب على الرقم ' + business.phone + '. نرد خلال ساعات العمل الاعتيادية في دقائق معدودة، ونناقش فكرة مشروعك بشكل مباشر وبدون تعقيد.',
+  },
+  {
+    question: 'كم يستغرق استلام عرض السعر وخطة العمل؟',
+    answer: 'بعد جلستنا الاستشارية الأولى وفهم احتياجات نشاطك التجاري في الكويت، نرسل لك عرض سعر تفصيلي موضحاً به كافة المخرجات والجدول الزمني خلال 24 إلى 48 ساعة كحد أقصى.',
+  },
+  {
+    question: 'كيف يتم عقد الاجتماعات ومتابعة سير المشروع؟',
+    answer: 'نعقد اجتماعات تفاعلية مباشرة عبر Google Meet أو Zoom لعرض نماذج التصميم ومناقشة تفاصيل العمل، مع متابعة فورية وتواصل لحظي عبر الواتساب طوال فترة المشروع لضمان سرعة الإنجاز.',
+  },
+  {
+    question: 'هل تقدمون استشارة أولية مجانية؟',
+    answer: 'نعم، الجلسة الاستشارية الأولى (15-30 دقيقة) مجانية تماماً وبدون أي التزام، لتحليل موقعك الحالي أو مناقشة فكرة مشروعك الجديد وتحديد خطة العمل الأنسب.',
+  },
+];
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: `تواصل مع ${business.name} | تصميم مواقع وSEO في الكويت`,
+  description: 'تواصل مع فريق webinOO لمناقشة مشروع موقعك الإلكتروني أو تصدر محركات البحث في الكويت. متواجدون عبر الواتساب واجتماعات العمل أونلاين.',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    name: business.name,
+    telephone: business.phone,
+    ...(business.email ? { email: business.email } : {}),
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: business.address.streetAddress,
+      addressLocality: business.address.locality,
+      addressRegion: business.address.region,
+      addressCountry: business.address.countryCode,
+    },
+  },
+};
+---
+
+<BaseLayout
+  title={`تواصل معنا | استشارة وتصميم مواقع في الكويت | ${business.name}`}
+  description="تواصل مع فريق webinOO الكويتي لمناقشة موقعك الإلكتروني، تحسين محركات البحث SEO، أو الظهور في إجابات الذكاء الاصطناعي. نرد عليك خلال 24 ساعة."
+  schema={contactSchema}
+>
+  <Header />
+
+  <main id="main-content" class="contact-page">
+    <div class="container breadcrumbs-wrap">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <!-- Hero Section -->
+    <section class="container contact-hero">
+      <div class="hero-badge">جاهزون لبدء مشروعك</div>
+      <h1 class="page-title">خلّنا نسولف عن مشروعك القادم ونبنيه بالطريقة الصح.</h1>
+      <p class="hero-desc">
+        سواء كان عندك فكرة موقع جديد، تبي تطور موقعك الحالي ليتصدر في Google بالكويت، أو تبي تستفسر عن أفضل استراتيجية لنشاطك، إحنا هنا لمساعدتك.
+      </p>
+    </section>
+
+    <!-- Main Grid: Info + Form -->
+    <section class="container contact-grid-section">
+      <div class="contact-grid">
+        <!-- Info Column -->
+        <div class="contact-info-col">
+          <div class="direct-chat-card">
+            <div class="chat-icon-wrap">
+              <MessageSquare size={28} />
+            </div>
+            <div class="chat-text">
+              <h3>تفضل التواصل المباشر والسريع؟</h3>
+              <p>راسلنا على الواتساب وسنرد عليك مباشرة لمناقشة التفاصيل.</p>
+            </div>
+            <a
+              href={getWhatsAppUrl('السلام عليكم، أود حجز استشارة ومناقشة موقع إلكتروني لشركتي في الكويت.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp-direct"
+            >
+              مراسلة فورية عبر الواتساب
+            </a>
+          </div>
+
+          <div class="info-items-list">
+            <div class="info-item">
+              <div class="item-icon"><Phone size={20} /></div>
+              <div class="item-content">
+                <span class="item-label">واتساب والتواصل المباشر</span>
+                <a href={`https://wa.me/${business.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="item-val" dir="ltr">{business.phone}</a>
+              </div>
+            </div>
+
+            {business.email && (
+              <div class="info-item">
+                <div class="item-icon"><Mail size={20} /></div>
+                <div class="item-content">
+                  <span class="item-label">البريد الإلكتروني</span>
+                  <a href={`mailto:${business.email}`} class="item-val">{business.email}</a>
+                </div>
+              </div>
+            )}
+
+            <div class="info-item">
+              <div class="item-icon"><MapPin size={20} /></div>
+              <div class="item-content">
+                <span class="item-label">نطاق الخدمة</span>
+                <span class="item-val">نخدم الشركات في كافة محافظات ومناطق الكويت (استشارات واجتماعات أونلاين وتواصل فوري عبر الواتساب)</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="item-icon"><Clock size={20} /></div>
+              <div class="item-content">
+                <span class="item-label">أوقات العمل الرسمية</span>
+                <span class="item-val">{business.workingHours.ar}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust guarantee -->
+          <div class="privacy-promise">
+            <ShieldCheck size={20} class="promise-icon" />
+            <p>خصوصيتك وأمان بياناتك مضمونة. لا نشارك معلوماتك مع أي جهة خارجية أبداً.</p>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="contact-form-col">
+          <div class="form-container">
+            <h2 class="form-heading">أرسل لنا تفاصيل مشروعك</h2>
+            <p class="form-sub">عبّ البيانات بالأسفل وسيتواصل معك أحد مستشارينا خلال أقل من 24 ساعة.</p>
+
+            <form
+              action="https://formspree.io/f/placeholder"
+              method="POST"
+              class="webinoo-contact-form"
+            >
+              {/* Honeypot field for bot protection */}
+              <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off" />
+
+              <div class="form-group">
+                <label for="name">الاسم الكريم / اسم النشاط <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="مثال: يوسف المطيري - شركة دار الإعمار"
+                  class="form-input"
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">رقم الهاتف أو الواتساب (الكويت) <span class="required">*</span></label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    placeholder="+965 xxxxxxxx"
+                    dir="ltr"
+                    class="form-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">البريد الإلكتروني <span class="required">*</span></label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="name@company.com"
+                    dir="ltr"
+                    class="form-input"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="service-type">نوع الخدمة المطلوبة</label>
+                <select id="service-type" name="service" class="form-select">
+                  <option value="web-design">تصميم موقع جديد للشركة</option>
+                  <option value="redesign-seo">إعادة تصميم موقع قائم وتحسين الـ SEO</option>
+                  <option value="ecommerce">متجر إلكتروني مع بوابات دفع كي نت (Knet)</option>
+                  <option value="local-seo">تصدر خرائط Google والظهور المحلي في الكويت</option>
+                  <option value="geo-ai">تهيئة الظهور في محركات الذكاء الاصطناعي (GEO)</option>
+                  <option value="maintenance">صيانة واستضافة ودعم فني للموقع</option>
+                  <option value="consultation">استشارة رقمية عامة</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="budget">الميزانية التقديرية المتوقعة للمشروع</label>
+                <select id="budget" name="budget" class="form-select">
+                  <option value="under-500">أقل من 500 د.ك (باقة الانطلاق)</option>
+                  <option value="500-1200" selected>500 - 1,200 د.ك (باقة الأعمال الشاملة والـ SEO)</option>
+                  <option value="1200-2500">1,200 - 2,500 د.ك (متاجر ونظم متقدمة)</option>
+                  <option value="above-2500">أكثر من 2,500 د.ك (حلول برمجية مخصصة)</option>
+                  <option value="not-sure">غير متأكد، أريد توصية فنية</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">نبذة عن المشروع وما الذي تطمح لتحقيقه <span class="required">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  placeholder="اكتب لنا باختصار عن مجال عملك، أهداف الموقع، أو أي متطلبات خاصة تهمك..."
+                  class="form-textarea"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <span>إرسال تفاصيل المشروع</span>
+                <Send size={18} />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location & Coverage Section -->
+    <section class="container location-section">
+      <div class="location-box">
+        <div class="location-header">
+          <h2>نطاق خدماتنا في دولة الكويت</h2>
+          <p>نعمل مع الشركات والمشاريع في كافة محافظات الكويت: العاصمة، حولي، السالمية، الفروانية، الجهراء، مبارك الكبير والأحمدي.</p>
+        </div>
+        <div class="map-placeholder">
+          <div class="map-card-inner">
+            <MessageSquare size={36} class="map-pin-icon" />
+            <h3>تواصل مباشر واجتماعات أونلاين سريعة</h3>
+            <p>نوفر جلسات عمل واستشارات مباشرة عبر Google Meet وZoom، مع دعم ومتابعة لحظية عبر الواتساب على مدار الساعة.</p>
+            <a
+              href={getWhatsAppUrl('السلام عليكم، أود حجز استشارة ومناقشة مشروعي الرقمي في الكويت.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="map-link-btn"
+            >
+              تواصل معنا مباشرة عبر الواتساب
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container faq-wrap">
+      <FAQ
+        title="الأسئلة الشائعة حول التواصل وبدء العمل"
+        description="إجابات سريعة وواضحة عن إجراءات التواصل والاجتماعات والعروض المقدمة."
+        faqs={contactFaqs}
+      />
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .contact-page {
+    padding-bottom: var(--space-20);
+  }
+
+  .breadcrumbs-wrap {
+    padding-top: var(--space-6);
+  }
+
+  .contact-hero {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+    max-width: 820px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-desc {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+
+  .contact-grid-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1.3fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .direct-chat-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+
+  .chat-icon-wrap {
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .chat-text h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .chat-text p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+
+  .btn-whatsapp-direct {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--space-3) var(--space-5);
+    background: var(--color-accent);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .btn-whatsapp-direct:hover {
+    background: #059669;
+    transform: translateY(-2px);
+  }
+
+  .info-items-list {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .item-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .item-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .item-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .item-val {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  a.item-val:hover {
+    color: var(--color-accent);
+  }
+
+  .privacy-promise {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .promise-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .form-container {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+  }
+
+  .form-heading {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .form-sub {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .webinoo-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-group label {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .required {
+    color: #ef4444;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  }
+
+  .form-select option {
+    background: #0f172a;
+    color: #ffffff;
+  }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-4);
+    background: var(--color-accent);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: var(--font-size-base);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--space-2);
+  }
+
+  .btn-submit:hover {
+    background: #059669;
+    transform: translateY(-2px);
+  }
+
+  .location-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .location-box {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+  }
+
+  .location-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .location-header h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .location-header p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .map-placeholder {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-12) var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .map-card-inner {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .map-pin-icon {
+    color: var(--color-accent);
+  }
+
+  .map-card-inner h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .map-card-inner p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .map-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--color-accent);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .map-link-btn:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .faq-wrap {
+    margin-top: var(--space-12);
+  }
+</style>

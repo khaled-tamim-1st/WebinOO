@@ -1,0 +1,310 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import FAQ from '@/components/common/FAQ.astro';
+import CTA from '@/components/common/CTA.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getWhatsAppUrl } from '@/data/business';
+import { ArrowLeft, Check, TriangleAlert, ArrowRightLeft } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const industries = await getCollection('industries');
+  return industries.map((ind) => ({
+    params: { slug: ind.id },
+    props: { industry: ind },
+  }));
+}
+
+export interface Props {
+  industry: CollectionEntry<'industries'>;
+}
+
+const { industry } = Astro.props;
+const { Content } = await render(industry);
+
+const siteBase = Astro.site ? Astro.site.origin : 'https://webinoo.online';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'القطاعات', href: '/industries/' },
+  { label: industry.data.industryName },
+];
+
+const industrySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: industry.data.title,
+  description: industry.data.description,
+  about: {
+    '@type': 'Thing',
+    name: industry.data.industryName,
+  },
+  provider: {
+    '@id': `${siteBase}/#organization`,
+  },
+};
+
+const whatsappText = `السلام عليكم، أود استشارة حول تصميم موقع مخصص لقطاع: ${industry.data.industryName} في الكويت.`;
+const whatsappHref = getWhatsAppUrl(whatsappText);
+---
+
+<BaseLayout
+  title={industry.data.title}
+  description={industry.data.description}
+  schema={industrySchema}
+  lang="ar"
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="industry-detail">
+    <!-- Hero -->
+    <section class="container industry-hero">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">{industry.data.keyword}</div>
+      <h1>{industry.data.h1}</h1>
+      <p class="industry-lead">{industry.data.description}</p>
+      
+      <div class="hero-actions">
+        <a class="button button-primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+          استشرنا حول مشروعك <ArrowLeft size={16} />
+        </a>
+        <a class="button button-quiet" href="#features">
+          المميزات المخصصة
+        </a>
+      </div>
+    </section>
+
+    <!-- Market Overview & Pain Points -->
+    <section class="container overview-section">
+      <div class="overview-box">
+        <h3>واقع قطاع {industry.data.industryName} في الكويت</h3>
+        <p>{industry.data.marketOverview}</p>
+      </div>
+
+      <div class="pain-points-block">
+        <div class="eyebrow" style="color: #dc3545;">تحديات شائعة يواجهها أصحاب العمل</div>
+        <h2>ما الذي يعطل مبيعاتك بدون موقع مخصص؟</h2>
+        <div class="pain-points-list">
+          {
+            industry.data.buyerPainPoints.map((point) => (
+              <div class="pain-point-item">
+                <TriangleAlert size={20} class="pain-icon" />
+                <span>{point}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section id="features" class="container features-section">
+      <div class="section-head">
+        <div class="eyebrow">حلول مجهزة لقطاعك</div>
+        <h2>ميزات رقمية صُممت خصيصاً لعملائك</h2>
+      </div>
+      <div class="features-grid">
+        {
+          industry.data.keyFeatures.map((feat) => (
+            <div class="feature-card">
+              <span class="feature-badge">
+                <Check size={18} />
+              </span>
+              <h3>{feat.title}</h3>
+              <p>{feat.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Sample Flow -->
+    <section class="container flow-section">
+      <div class="flow-panel">
+        <div class="flow-header">
+          <ArrowRightLeft size={24} class="flow-icon" />
+          <h3>سيناريو تجربة العميل المثالية (User Journey)</h3>
+        </div>
+        <p class="flow-desc">{industry.data.sampleFlow}</p>
+      </div>
+    </section>
+
+    <!-- Deep Guide Content -->
+    <section class="container content-body-section">
+      <div class="markdown-body">
+        <Content />
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FAQ
+      eyebrow="إجابات متخصصة"
+      title={`أسئلة شائعة حول مواقع ${industry.data.industryName}`}
+      description="إجابات مباشرة ومفيدة لتوضيح آليات العمل والتنفيذ."
+      items={industry.data.faqs}
+      id="faq"
+    />
+
+    <!-- Sector Specific CTA -->
+    <CTA
+      eyebrow="ارتقِ بحضور شركتك في الكويت"
+      title={`جاهز لإطلاق موقع يليق بقطاع ${industry.data.industryName}؟`}
+      description="تواصل معنا وسنقدم لك تصوراً شاملاً وتجربة مصممة لتحقيق أفضل نتائج بيع واستفسارات."
+      ctaText="تواصل مع فريقنا عبر واتساب"
+      whatsappMessage={whatsappText}
+    />
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
+
+<style>
+  .industry-detail {
+    padding: 30px 0 60px;
+  }
+  .industry-hero {
+    max-width: 860px;
+    margin-bottom: 50px;
+  }
+  .industry-hero h1 {
+    font-size: clamp(34px, 4.5vw, 56px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 18px 0;
+    color: var(--color-ink-primary, #292239);
+  }
+  .industry-lead {
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--color-ink-muted, #716b7a);
+    margin-bottom: 30px;
+  }
+  .overview-section {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 40px;
+    margin-bottom: 70px;
+    align-items: start;
+  }
+  .overview-box {
+    background: var(--color-bg-alt, #eee8f0);
+    border-radius: var(--radius-lg, 24px);
+    padding: 36px 30px;
+  }
+  .overview-box h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    color: var(--color-primary-text, #6b1eae);
+  }
+  .overview-box p {
+    color: var(--color-ink-secondary, #595264);
+    line-height: 1.9;
+    font-size: 15px;
+    margin: 0;
+  }
+  .pain-points-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .pain-point-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #fdf5f5;
+    border: 1px solid #fae2e2;
+    border-radius: var(--radius-sm, 14px);
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #634343;
+    line-height: 1.7;
+  }
+  .pain-icon {
+    color: #dc3545;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .features-section {
+    margin-bottom: 70px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .feature-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: var(--radius-lg, 24px);
+    padding: 32px 26px;
+    box-shadow: 0 4px 15px rgba(56, 32, 75, 0.03);
+  }
+  .feature-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    display: grid;
+    place-items: center;
+    margin-bottom: 18px;
+  }
+  .feature-card h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+  .feature-card p {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+  }
+  .flow-section {
+    margin-bottom: 70px;
+  }
+  .flow-panel {
+    background: #241a2e;
+    color: #ffffff;
+    border-radius: var(--radius-lg, 24px);
+    padding: 36px 32px;
+  }
+  .flow-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .flow-icon {
+    color: var(--color-accent-coral, #f07956);
+  }
+  .flow-panel h3 {
+    font-size: 20px;
+    margin: 0;
+    color: #ffffff;
+  }
+  .flow-desc {
+    color: #d1c4df;
+    font-size: 15px;
+    line-height: 1.9;
+    margin: 0;
+  }
+  .content-body-section {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .markdown-body {
+    max-width: 800px;
+    line-height: 2;
+    color: var(--color-ink-primary, #292239);
+    font-size: 16px;
+  }
+  @media (max-width: 850px) {
+    .overview-section {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

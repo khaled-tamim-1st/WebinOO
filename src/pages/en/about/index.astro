@@ -1,0 +1,256 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { Shield, Zap, Target, HeartHandshake } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'About webinOO' },
+];
+
+const values = [
+  {
+    icon: Target,
+    title: 'Exclusively Focused on Kuwait',
+    desc: 'We do not dilute our efforts across regional markets. We operate directly in Kuwait, understanding consumer buying psychology and local commercial dynamics from Sharq to Jahra.',
+  },
+  {
+    icon: Zap,
+    title: 'Bespoke Engineering From Scratch',
+    desc: 'We refuse bloated WordPress themes and heavy page builders. We write clean, high-performance static code that loads in under 1 second and requires zero plugin vulnerabilities.',
+  },
+  {
+    icon: Shield,
+    title: 'Authentic SEO & Generative GEO',
+    desc: 'We deliver real search authority. Our own website stands as proof of our technical prowess in ranking at the top of Google Kuwait and winning citations in AI answers.',
+  },
+  {
+    icon: HeartHandshake,
+    title: 'Radical Transparency & Partnership',
+    desc: 'No confusing tech jargon meant to obscure reality. We communicate with clear milestones, transparent deliverables, and ongoing support for your growth.',
+  },
+];
+---
+
+<BaseLayout
+  title="About webinOO | Kuwait Digital Atelier & SEO Agency"
+  description="Learn about webinOO: a specialized digital atelier building high-performance websites, Local SEO, and Generative Engine Optimization exclusively for Kuwait."
+  lang="en"
+>
+  <Header slot="header" lang="en" />
+
+  <main class="about-page">
+    <section class="container page-header">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">Our Philosophy & Heritage</div>
+      <h1>Digital craftsmanship worthy of Kuwait's premier businesses.</h1>
+      <p class="page-lead">
+        webinOO was founded in response to a widespread disconnect in Kuwait: world-class service companies and practices with outdated, sluggish websites that fail to reflect even 10% of their actual craft.
+      </p>
+    </section>
+
+    <!-- Narrative Section -->
+    <section class="container story-section">
+      <div class="story-grid">
+        <div class="story-text">
+          <div class="eyebrow">Our Vision</div>
+          <h2>Why do we focus exclusively on Kuwait?</h2>
+          <p>
+            Kuwait has a distinctive commercial fabric. The customer behavior of a decision-maker searching for an executive law firm in Kuwait City differs markedly from a homeowner booking a contracting specialist in Al-Mutlaa or a food enthusiast looking for a cafe in Salmiya.
+          </p>
+          <p>
+            When agencies attempt to serve the entire GCC with generic templates, the nuance of local relevance is lost. By concentrating our technical and creative energy exclusively on Kuwait, we engineer solutions with unmatched precision and local ranking power.
+          </p>
+        </div>
+        <div class="story-highlight">
+          <div class="highlight-card">
+            <h3>Our Engineering Standard:</h3>
+            <p>
+              "We believe your website is your primary digital asset. It must load in the blink of an eye, tell your story with conviction, and dominate both Google search and generative AI answers."
+            </p>
+            <span class="highlight-tag">webinOO Team — Dedicated Digital Atelier for Kuwait</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Grid -->
+    <section class="container values-section">
+      <div class="section-head">
+        <div class="eyebrow">Core Principles</div>
+        <h2>The Values Guiding Every Line of Code</h2>
+        <p>Four foundational standards behind every project we deliver in Kuwait.</p>
+      </div>
+
+      <div class="values-grid">
+        {
+          values.map((v) => {
+            const Icon = v.icon;
+            return (
+              <div class="value-card">
+                <div class="value-icon">
+                  <Icon size={24} />
+                </div>
+                <h3>{v.title}</h3>
+                <p>{v.desc}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="container cta-wrap">
+      <CTA
+        eyebrow="Let's Build Together"
+        title="Ready to build a website that does justice to your work?"
+        description="Connect directly with our Kuwait team to discuss your project vision and get started."
+        ctaText="Start a Conversation on WhatsApp"
+        whatsappMessage="Hello, I would like to learn more about webinOO and discuss a project for my business in Kuwait."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding-bottom: 96px;
+  }
+
+  .page-header {
+    padding-top: 48px;
+    padding-bottom: 64px;
+    max-width: 860px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(32px, 4.2vw, 54px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 20px 0 16px;
+  }
+
+  .page-lead {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 17px;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  .story-section {
+    margin-bottom: 80px;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (min-width: 850px) {
+    .story-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+
+  .story-text h2 {
+    font-size: clamp(26px, 3.2vw, 38px);
+    line-height: 1.35;
+    margin: 16px 0 20px;
+  }
+
+  .story-text p {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 16px;
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .story-highlight {
+    background: linear-gradient(135deg, rgba(101, 24, 172, 0.06) 0%, rgba(16, 185, 129, 0.06) 100%);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 16px);
+    padding: 36px 30px;
+  }
+
+  .highlight-card h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: var(--color-primary, #6518ac);
+  }
+
+  .highlight-card p {
+    font-size: 15px;
+    line-height: 1.85;
+    font-style: italic;
+    color: var(--color-ink-primary, #292239);
+    margin-bottom: 20px;
+  }
+
+  .highlight-tag {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-ink-muted, #716b7a);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .values-section {
+    margin-bottom: 80px;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+  }
+
+  .value-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 16px);
+    padding: 32px 24px;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+  }
+
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(101, 24, 172, 0.1);
+    color: var(--color-primary, #6518ac);
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+  }
+
+  .value-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .value-card p {
+    font-size: 14px;
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .cta-wrap {
+    margin-top: 48px;
+  }
+</style>

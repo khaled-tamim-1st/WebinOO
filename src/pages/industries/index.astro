@@ -1,0 +1,185 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { getCollection } from 'astro:content';
+import { ArrowLeft, ArrowUpLeft } from '@lucide/astro';
+
+const industries = await getCollection('industries');
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'القطاعات في الكويت' },
+];
+---
+
+<BaseLayout
+  title="تصميم مواقع متخصصة لقطاعات الأعمال في الكويت | webinOO"
+  description="حلول تصميم مواقع مخصصة لقطاعات الأعمال الحيوية في الكويت: الديكور، المقاولات، التنظيف، العيادات، المطاعم، والخدمات اللوجستية."
+  lang="ar"
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="industries-hub">
+    <!-- Hub Header -->
+    <section class="container hub-header">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">حلول مفصلة لبيئة الأعمال في الكويت</div>
+      <h1>مواقع صُممت لتفهم لغة عملائك في قطاعك</h1>
+      <p class="hub-desc">
+        كل قطاع في الكويت له سلوك شراء وتفضيلات مختلفة. مكتب الديكور يحتاج معرض أعمال مبهراً، وشركة التنظيف تحتاج زر اتصال فورياً، والعيادة تحتاج نظام حجز مريح. نحن نبني موقعك وفق متطلبات مجالك الدقيقة.
+      </p>
+    </section>
+
+    <!-- Industries Grid -->
+    <section class="container industries-grid-section">
+      <div class="industries-grid">
+        {
+          industries.map((ind, index) => {
+            const num = String(index + 1).padStart(2, '0');
+            return (
+              <article class="industry-card">
+                <div class="card-top">
+                  <span class="card-num">{num}</span>
+                  <a href={`/industries/${ind.id}/`} class="card-arrow" aria-label={`تفاصيل ${ind.data.industryName}`}>
+                    <ArrowUpLeft size={18} />
+                  </a>
+                </div>
+                <h2>
+                  <a href={`/industries/${ind.id}/`}>{ind.data.industryName}</a>
+                </h2>
+                <p class="card-desc">{ind.data.marketOverview}</p>
+                <div class="card-footer">
+                  <a href={`/industries/${ind.id}/`} class="more-link">
+                    استكشف حلول هذا القطاع <ArrowLeft size={15} />
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <CTA
+      eyebrow="مجالك غير مدرج هنا؟"
+      title="نصمم حلولاً لأي قطاع تجاري في الكويت."
+      description="تواصل معنا واشرح لنا طبيعة عملك، وسنبتكر لك تصميماً مخصصاً يلائم دورتك التشغيلية وتطلعات عملائك."
+      ctaText="تحدث مع مستشارنا الرقمي"
+      whatsappMessage="السلام عليكم، أود استشارة حول تصميم موقع لنشاطي التجاري في الكويت."
+    />
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
+
+<style>
+  .industries-hub {
+    padding: 30px 0 60px;
+  }
+  .hub-header {
+    max-width: 820px;
+    margin-bottom: 50px;
+  }
+  .hub-header h1 {
+    font-size: clamp(34px, 4.5vw, 56px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 16px 0;
+    color: var(--color-ink-primary, #292239);
+  }
+  .hub-desc {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--color-ink-muted, #716b7a);
+  }
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+    margin-bottom: 70px;
+  }
+  .industry-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: var(--radius-lg, 24px);
+    padding: 34px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(56, 32, 75, 0.03);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  }
+  .industry-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card, 0 16px 38px rgba(56, 32, 75, 0.09));
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .card-num {
+    font: 700 14px var(--font-latin);
+    color: var(--color-primary-text, #6b1eae);
+    background: var(--color-primary-light, #eee5f5);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+  }
+  .card-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    display: grid;
+    place-items: center;
+    color: var(--color-primary, #6518ac);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .industry-card:hover .card-arrow {
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+    border-color: var(--color-primary, #6518ac);
+  }
+  .industry-card h2 {
+    font-size: 22px;
+    margin: 0 0 12px;
+  }
+  .industry-card h2 a {
+    color: var(--color-ink-primary, #292239);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .industry-card h2 a:hover {
+    color: var(--color-primary, #6518ac);
+  }
+  .card-desc {
+    color: var(--color-ink-muted, #716b7a);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .card-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-primary, #6518ac);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  @media (max-width: 600px) {
+    .industries-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,1193 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { business, getWhatsAppUrl } from '@/data/business';
+import {
+  Calendar,
+  Clock,
+  User,
+  Tag,
+  BookOpen,
+  Sparkles,
+  MessageCircle,
+  Copy,
+  ChevronLeft,
+} from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter((p) => p.id !== post.id)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+const siteBase = Astro.site ? Astro.site.origin : 'https://webinoo.online';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'المدونة والأدلة', href: '/blog/' },
+  { label: post.data.title.replace(/ \| webinOO$/, '') },
+];
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('ar-KW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(date);
+}
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.h1,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: post.data.pubDate.toISOString(),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${siteBase}/blog/${post.id}/`,
+  },
+  author: {
+    '@type': 'Organization',
+    name: post.data.author,
+    url: siteBase,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: business.name,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteBase}/webinoo-logo.png`,
+    },
+  },
+  keywords: post.data.tags.join(', '),
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  schema={articleSchema}
+>
+  <Header />
+
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
+
+  <main id="main-content" class="article-page">
+    <div class="container breadcrumbs-wrap">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <!-- Article Hero Header -->
+    <header class="container article-hero">
+      <div class="hero-top-badges">
+        <span class="category-pill">{post.data.category}</span>
+        <span class="read-estimate">
+          <Clock size={15} class="meta-icon" />
+          {post.data.readTimeMinutes} دقائق قراءة متعمقة
+        </span>
+        <span class="location-badge">
+          🇰🇼 دليل مخصص لسوق الكويت
+        </span>
+      </div>
+
+      <h1 class="article-h1">{post.data.h1}</h1>
+
+      <p class="article-lead">{post.data.description}</p>
+
+      <div class="hero-meta-bar">
+        <div class="author-block">
+          <div class="author-avatar">
+            <User size={18} />
+          </div>
+          <div class="author-meta-text">
+            <span class="author-name">{post.data.author}</span>
+            <span class="author-role">خبراء التقنية والتسويق الرقمي</span>
+          </div>
+        </div>
+
+        <div class="meta-date-group">
+          <div class="date-badge">
+            <Calendar size={15} class="meta-icon" />
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          </div>
+          <span class="meta-dot">•</span>
+          <button id="copy-article-link" class="share-btn" type="button" title="نسخ رابط المقال">
+            <Copy size={15} />
+            <span id="copy-btn-text">مشاركة الرابط</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Two-Column Layout -->
+    <div class="container article-layout-grid">
+      <!-- Main Content Column -->
+      <article class="article-main-col">
+        <div class="article-card-main">
+          <!-- In-Article Quick TOC on mobile/tablet -->
+          <nav class="in-article-toc" aria-label="فهرس المقال">
+            <div class="toc-header">
+              <BookOpen size={18} class="toc-icon" />
+              <span>فهرس المحتويات السريع</span>
+            </div>
+            <ul id="mobile-toc-list" class="toc-links-list"></ul>
+          </nav>
+
+          <!-- Markdown Content Body -->
+          <div class="markdown-content">
+            <Content />
+          </div>
+
+          <!-- Tags Row -->
+          <div class="article-tags-wrap">
+            <span class="tags-title">
+              <Tag size={16} class="tag-icon" />
+              المواضيع والكلمات الدلالية:
+            </span>
+            <div class="tags-list">
+              {post.data.tags.map((t) => (
+                <span class="tag-badge">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Author Bio Box -->
+          <div class="author-bio-card">
+            <div class="bio-avatar">
+              <User size={28} />
+            </div>
+            <div class="bio-text">
+              <div class="bio-name-row">
+                <h3>كتب بواسطة: {post.data.author}</h3>
+                <span class="verified-badge">
+                  <Sparkles size={14} /> خبير معتمد في الكويت
+                </span>
+              </div>
+              <p>
+                فريق الاستشارات الفنية والـ SEO لدى webinOO في الكويت. نساعد الشركات والمتاجر والعيادات على تملك بنية رقمية حديثة، فائقة السرعة، ومُهيأة لتصدر نتائج محركات البحث والذكاء الاصطناعي (GEO) وفق أعلى معايير الجودة العالمية.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Posts Row -->
+        {relatedPosts.length > 0 && (
+          <section class="related-posts-section">
+            <div class="section-title-wrap">
+              <Sparkles size={20} class="sparkle-icon" />
+              <h2>أدلة ومقالات ذات صلة في الكويت</h2>
+            </div>
+            <div class="related-grid">
+              {relatedPosts.map((rel) => (
+                <a href={`/blog/${rel.id}/`} class="related-card">
+                  <div class="related-cat">{rel.data.category}</div>
+                  <h3 class="related-title">{rel.data.title.replace(/ \| webinOO$/, '')}</h3>
+                  <div class="related-meta">
+                    <span>{rel.data.readTimeMinutes} د قراءة</span>
+                    <span class="read-more-arrow">اقرأ المزيد <ChevronLeft size={14} /></span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+      </article>
+
+      <!-- Sticky Sidebar (Desktop) -->
+      <aside class="article-sidebar-col">
+        <div class="sidebar-sticky-wrapper">
+          <!-- Table of Contents Widget -->
+          <div class="sidebar-widget toc-widget">
+            <div class="widget-head">
+              <BookOpen size={18} class="widget-icon" />
+              <span>محتويات هذا الدليل</span>
+            </div>
+            <nav id="desktop-toc" class="desktop-toc-nav" aria-label="فهرس المقال">
+              <ul id="desktop-toc-list" class="sidebar-toc-list"></ul>
+            </nav>
+          </div>
+
+          <!-- Quick Consultation Card -->
+          <div class="sidebar-widget consult-widget">
+            <div class="consult-badge">
+              <Sparkles size={14} /> استشارة مجانية
+            </div>
+            <h4>تبي نطبق هذي الحلول في موقعك؟</h4>
+            <p>
+              تحدث مباشرة مع مستشارينا في الكويت عبر واتساب لمراجعة حضورك الرقمي ووضع خطة تصدر مدروسة لنشاطك.
+            </p>
+            <a
+              href={getWhatsAppUrl(`السلام عليكم، قرأت مقال "${post.data.h1}" في webinOO وأود استشارة مجانية لمشروعي.`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="sidebar-whatsapp-btn"
+            >
+              <MessageCircle size={18} />
+              استشر خبير webinOO
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container cta-wrap">
+      <CTA
+        title="هل ترغب في تصدر نتائج البحث والذكاء الاصطناعي في الكويت؟"
+        description="فريق webinOO يبني لك مواقع مهيأة برمجياً لتصدر Google وتوصيات ChatGPT وPerplexity."
+        buttonText="تواصل مع فريقنا في الكويت"
+        whatsappMessage={`السلام عليكم، قرأت مقال "${post.data.h1}" على موقعكم، وأود استشارة حول مشروعي.`}
+      />
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Client-side script for Reading Progress, Dynamic TOC, and Copy Link -->
+  <script is:inline>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const progressBar = document.getElementById('reading-progress');
+      if (!progressBar) return;
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      progressBar.style.width = scrolled + '%';
+    });
+
+    // 2. Build Dynamic Table of Contents from H2 elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.querySelector('.markdown-content');
+      const mobileToc = document.getElementById('mobile-toc-list');
+      const desktopToc = document.getElementById('desktop-toc-list');
+      if (!content) return;
+
+      const headings = content.querySelectorAll('h2');
+      if (headings.length === 0) {
+        const inArticleToc = document.querySelector('.in-article-toc');
+        if (inArticleToc) inArticleToc.style.display = 'none';
+        const tocWidget = document.querySelector('.toc-widget');
+        if (tocWidget) tocWidget.style.display = 'none';
+        return;
+      }
+
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          heading.id = 'section-' + (index + 1);
+        }
+        const text = heading.textContent.trim();
+
+        // Create Mobile TOC item
+        if (mobileToc) {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#' + heading.id;
+          a.textContent = text;
+          li.appendChild(a);
+          mobileToc.appendChild(li);
+        }
+
+        // Create Desktop TOC item
+        if (desktopToc) {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#' + heading.id;
+          a.textContent = text;
+          a.setAttribute('data-target', heading.id);
+          li.appendChild(a);
+          desktopToc.appendChild(li);
+        }
+      });
+
+      // Highlight active section on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              document.querySelectorAll('.sidebar-toc-list a').forEach((link) => {
+                link.classList.toggle('active', link.getAttribute('data-target') === id);
+              });
+            }
+          });
+        },
+        { rootMargin: '-80px 0px -70% 0px' }
+      );
+
+      headings.forEach((h) => observer.observe(h));
+
+      // 3. Copy Link Interaction
+      const copyBtn = document.getElementById('copy-article-link');
+      const copyText = document.getElementById('copy-btn-text');
+      if (copyBtn && copyText) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            copyText.textContent = 'تم النسخ بنجاح!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+              copyText.textContent = 'مشاركة الرابط';
+              copyBtn.classList.remove('copied');
+            }, 2500);
+          } catch (err) {
+            copyText.textContent = 'تم النسخ!';
+          }
+        });
+      }
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  /* Reading Progress Bar */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent-coral, #f07956), var(--color-primary, #6518ac));
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+
+  .article-page {
+    padding-bottom: 80px;
+    background-color: var(--color-bg-body, #f8f6f1);
+  }
+
+  .breadcrumbs-wrap {
+    padding-top: 24px;
+  }
+
+  /* Hero Section */
+  .article-hero {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    max-width: 980px;
+  }
+
+  .hero-top-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .category-pill {
+    padding: 6px 16px;
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    border: 1px solid rgba(101, 24, 172, 0.2);
+    border-radius: var(--radius-pill, 999px);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .read-estimate {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--color-ink-muted, #716b7a);
+    font-weight: 500;
+  }
+
+  .location-badge {
+    padding: 4px 12px;
+    background: rgba(102, 162, 139, 0.12);
+    color: #2e6955;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .article-h1 {
+    font-size: clamp(2rem, 3.8vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.32;
+    color: var(--color-ink-primary, #292239);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .article-lead {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-ink-secondary, #595264);
+    margin-bottom: 28px;
+    max-width: 880px;
+  }
+
+  .hero-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 20px;
+    padding-bottom: 24px;
+    border-top: 1px solid var(--color-border-default, #ddd5e1);
+    border-bottom: 1px solid var(--color-border-default, #ddd5e1);
+  }
+
+  .author-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(101, 24, 172, 0.15);
+  }
+
+  .author-meta-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    font-size: 15px;
+  }
+
+  .author-role {
+    font-size: 12px;
+    color: var(--color-ink-muted, #716b7a);
+  }
+
+  .meta-date-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .date-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--color-ink-muted, #716b7a);
+  }
+
+  .meta-dot {
+    color: var(--color-border-default, #ddd5e1);
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: #ffffff;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-pill, 999px);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-ink-secondary, #595264);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .share-btn:hover {
+    border-color: var(--color-primary, #6518ac);
+    color: var(--color-primary, #6518ac);
+    background: var(--color-primary-light, #eee5f5);
+  }
+
+  .share-btn.copied {
+    background: #d1fae5;
+    border-color: #10b981;
+    color: #065f46;
+  }
+
+  /* Two Column Layout Grid */
+  .article-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: 1024px) {
+    .article-layout-grid {
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 48px;
+    }
+  }
+
+  /* Main Card */
+  .article-card-main {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-xl, 30px);
+    padding: 44px 48px;
+    box-shadow: 0 10px 30px rgba(56, 32, 75, 0.04);
+  }
+
+  @media (max-width: 640px) {
+    .article-card-main {
+      padding: 24px 20px;
+      border-radius: var(--radius-lg, 24px);
+    }
+  }
+
+  /* In-Article TOC (Mobile / Tablet) */
+  .in-article-toc {
+    background: var(--color-primary-subtle, #f4eafa);
+    border: 1px solid var(--color-primary-light, #eee5f5);
+    border-radius: var(--radius-md, 20px);
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+
+  @media (min-width: 1024px) {
+    .in-article-toc {
+      display: none;
+    }
+  }
+
+  .toc-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    margin-bottom: 16px;
+  }
+
+  .toc-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .toc-links-list li a {
+    color: var(--color-ink-primary, #292239);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+  }
+
+  .toc-links-list li a::before {
+    content: '←';
+    color: var(--color-primary, #6518ac);
+    font-weight: 700;
+  }
+
+  .toc-links-list li a:hover {
+    color: var(--color-primary, #6518ac);
+  }
+
+  /* ==========================================================================
+     MARKDOWN CONTENT COMPREHENSIVE STYLING
+     ========================================================================== */
+  .markdown-content {
+    font-family: var(--font-arabic);
+    font-size: 17px;
+    line-height: 2.05;
+    color: var(--color-ink-primary, #292239);
+  }
+
+  .markdown-content :global(h2) {
+    font-size: clamp(1.45rem, 2.3vw, 1.95rem);
+    font-weight: 800;
+    color: var(--color-ink-primary, #292239);
+    margin-top: 52px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-border-subtle, #eee7f0);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    scroll-margin-top: 90px;
+  }
+
+  .markdown-content :global(h2::before) {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background: var(--color-primary, #6518ac);
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .markdown-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .markdown-content :global(h3) {
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+    font-weight: 700;
+    color: var(--color-primary-dark, #3b0970);
+    margin-top: 36px;
+    margin-bottom: 16px;
+    scroll-margin-top: 90px;
+  }
+
+  .markdown-content :global(h4) {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
+  .markdown-content :global(p) {
+    font-size: 17px;
+    color: var(--color-ink-secondary, #595264);
+    line-height: 2.05;
+    margin-bottom: 22px;
+  }
+
+  .markdown-content :global(strong) {
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+  }
+
+  /* Links */
+  .markdown-content :global(a) {
+    color: var(--color-primary, #6518ac);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .markdown-content :global(a:hover) {
+    color: var(--color-primary-hover, #4e0d90);
+    background: var(--color-primary-light, #eee5f5);
+    border-radius: 4px;
+  }
+
+  /* Blockquotes & GEO Capsules */
+  .markdown-content :global(blockquote) {
+    margin: 32px 0;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, rgba(101, 24, 172, 0.05) 0%, rgba(240, 121, 86, 0.05) 100%);
+    border-right: 5px solid var(--color-primary, #6518ac);
+    border-radius: var(--radius-md, 20px);
+    box-shadow: 0 4px 16px rgba(101, 24, 172, 0.04);
+  }
+
+  .markdown-content :global(blockquote p) {
+    margin-bottom: 12px;
+    color: var(--color-ink-primary, #292239);
+    font-size: 16px;
+    line-height: 1.95;
+    font-style: normal;
+  }
+
+  .markdown-content :global(blockquote p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .markdown-content :global(blockquote h3) {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 1.25rem;
+    color: var(--color-primary, #6518ac);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .markdown-content :global(blockquote ol),
+  .markdown-content :global(blockquote ul) {
+    margin-bottom: 0;
+  }
+
+  /* Lists */
+  .markdown-content :global(ul),
+  .markdown-content :global(ol) {
+    padding-right: 28px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--color-ink-secondary, #595264);
+    line-height: 1.95;
+  }
+
+  .markdown-content :global(li) {
+    position: relative;
+  }
+
+  .markdown-content :global(ul li::marker) {
+    color: var(--color-primary, #6518ac);
+    font-size: 1.1em;
+  }
+
+  .markdown-content :global(ol li::marker) {
+    color: var(--color-primary, #6518ac);
+    font-weight: 700;
+  }
+
+  /* Responsive Modern Tables */
+  .markdown-content :global(table) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 32px 0 40px;
+    font-size: 15px;
+    display: table;
+    border-radius: var(--radius-md, 20px);
+    overflow: hidden;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    box-shadow: 0 4px 18px rgba(56, 32, 75, 0.03);
+  }
+
+  .markdown-content :global(th) {
+    background: var(--color-primary-dark, #3b0970);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 16px 20px;
+    text-align: right;
+    border: none;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+  }
+
+  .markdown-content :global(td) {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+    color: var(--color-ink-primary, #292239);
+    text-align: right;
+    line-height: 1.7;
+    background: #ffffff;
+  }
+
+  .markdown-content :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .markdown-content :global(tr:nth-child(even) td) {
+    background: var(--color-bg-body, #f8f6f1);
+  }
+
+  .markdown-content :global(tr:hover td) {
+    background: var(--color-primary-subtle, #f4eafa);
+  }
+
+  .markdown-content :global(hr) {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border-default, #ddd5e1), transparent);
+    margin: 44px 0;
+  }
+
+  /* Code Blocks */
+  .markdown-content :global(pre) {
+    background: #1e172a;
+    color: #e2e8f0;
+    padding: 24px;
+    border-radius: var(--radius-md, 20px);
+    overflow-x: auto;
+    direction: ltr;
+    text-align: left;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    margin: 28px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .markdown-content :global(code) {
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-family: 'Consolas', monospace;
+  }
+
+  .markdown-content :global(pre code) {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  /* Tags Wrap */
+  .article-tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--color-border-default, #ddd5e1);
+    border-bottom: 1px solid var(--color-border-default, #ddd5e1);
+  }
+
+  .tags-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-ink-muted, #716b7a);
+  }
+
+  .tag-icon {
+    color: var(--color-primary, #6518ac);
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-badge {
+    padding: 5px 14px;
+    background: var(--color-bg-body, #f8f6f1);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-pill, 999px);
+    font-size: 13px;
+    color: var(--color-ink-secondary, #595264);
+    font-weight: 500;
+  }
+
+  /* Author Bio Card */
+  .author-bio-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px;
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 24px);
+    margin-top: 36px;
+    box-shadow: 0 4px 16px rgba(56, 32, 75, 0.03);
+  }
+
+  @media (max-width: 580px) {
+    .author-bio-card {
+      flex-direction: column;
+    }
+  }
+
+  .bio-avatar {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(101, 24, 172, 0.25);
+  }
+
+  .bio-name-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .bio-name-row h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    margin: 0;
+  }
+
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2e6955;
+    background: rgba(102, 162, 139, 0.15);
+    padding: 3px 10px;
+    border-radius: var(--radius-pill, 999px);
+  }
+
+  .bio-text p {
+    font-size: 14px;
+    color: var(--color-ink-secondary, #595264);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Related Posts Section */
+  .related-posts-section {
+    margin-top: 48px;
+  }
+
+  .section-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .sparkle-icon {
+    color: var(--color-accent-coral, #f07956);
+  }
+
+  .section-title-wrap h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-ink-primary, #292239);
+    margin: 0;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 640px) {
+    .related-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .related-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 24px);
+    padding: 22px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary, #6518ac);
+    box-shadow: 0 10px 24px rgba(101, 24, 172, 0.08);
+  }
+
+  .related-cat {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    margin-bottom: 8px;
+  }
+
+  .related-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .related-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--color-ink-muted, #716b7a);
+  }
+
+  .read-more-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+  }
+
+  /* ==========================================================================
+     STICKY SIDEBAR (DESKTOP)
+     ========================================================================== */
+  .article-sidebar-col {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .article-sidebar-col {
+      display: block;
+    }
+  }
+
+  .sidebar-sticky-wrapper {
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .sidebar-widget {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 24px);
+    padding: 26px;
+    box-shadow: 0 4px 16px rgba(56, 32, 75, 0.03);
+  }
+
+  .widget-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+
+  .widget-icon {
+    color: var(--color-primary, #6518ac);
+  }
+
+  .sidebar-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 380px;
+    overflow-y: auto;
+  }
+
+  .sidebar-toc-list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .sidebar-toc-list::-webkit-scrollbar-thumb {
+    background: var(--color-border-default, #ddd5e1);
+    border-radius: 4px;
+  }
+
+  .sidebar-toc-list li a {
+    color: var(--color-ink-secondary, #595264);
+    text-decoration: none;
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: block;
+    transition: all 0.2s ease;
+    border-right: 2px solid transparent;
+  }
+
+  .sidebar-toc-list li a:hover {
+    color: var(--color-primary, #6518ac);
+    background: var(--color-primary-subtle, #f4eafa);
+  }
+
+  .sidebar-toc-list li a.active {
+    color: var(--color-primary, #6518ac);
+    background: var(--color-primary-light, #eee5f5);
+    border-right-color: var(--color-primary, #6518ac);
+    font-weight: 700;
+  }
+
+  /* Consultation Widget */
+  .consult-widget {
+    background: linear-gradient(135deg, var(--color-primary-dark, #3b0970) 0%, #20073e 100%);
+    color: #ffffff;
+    border: none;
+  }
+
+  .consult-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(240, 121, 86, 0.25);
+    color: var(--color-accent-coral-light, #f5a082);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .consult-widget h4 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+
+  .consult-widget p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 18px;
+    background: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    transition: all 0.2s ease;
+  }
+
+  .sidebar-whatsapp-btn:hover {
+    background: #1eb856;
+    transform: translateY(-2px);
+  }
+
+  .cta-wrap {
+    margin-top: 40px;
+  }
+</style>

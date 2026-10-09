@@ -1,0 +1,237 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import { business } from '@/data/business';
+import { Award, FileCode } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'الشروط والأحكام' },
+];
+
+const lastUpdated = '8 أكتوبر 2026';
+---
+
+<BaseLayout
+  title={`الشروط والأحكام | ${business.name} الكويت`}
+  description="الشروط والأحكام ونموذج العمل التعاقدي لخدمات تصميم المواقع وتحسين محركات البحث في webinOO بدولة الكويت."
+>
+  <Header />
+
+  <main id="main-content" class="legal-page">
+    <div class="container breadcrumbs-wrap">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <section class="container legal-hero">
+      <div class="hero-badge">وضوح وشفافية تعاقدية</div>
+      <h1 class="legal-title">الشروط والأحكام ونموذج تقديم الخدمات</h1>
+      <p class="legal-date">آخر تحديث: {lastUpdated}</p>
+    </section>
+
+    <section class="container legal-content-section">
+      <div class="legal-body">
+        <div class="legal-card-intro">
+          <FileCode size={28} class="intro-icon" />
+          <p>
+            تحدد هذه الشروط والأحكام العلاقة المهنية بين <strong>{business.name}</strong> وعملائنا الكرام في دولة الكويت. نحرص دائماً على الوضوح التام في نطاق العمل، الجداول الزمنية، ومراحل التسليم، لضمان أعلى درجات الرضا والنتائج الملموسة.
+          </p>
+        </div>
+
+        <article class="legal-section">
+          <h2>1. نطاق العمل وعروض الأسعار</h2>
+          <p>
+            يتم تحديد نطاق العمل والمخرجات الفنية لكل مشروع بناءً على عرض السعر الرسمي (Proposal) المتفق عليه مع العميل. أي إضافات أو تعديلات جوهرية خارج النطاق المتفق عليه تخضع لملحق عمل إضافي يتم اعتماده مسبقاً قبل التنفيذ.
+          </p>
+        </article>
+
+        <article class="legal-section">
+          <h2>2. ملكية الكود والتصميم (الملكية الفكرية الكاملة)</h2>
+          <div class="highlight-callout">
+            <Award size={20} class="callout-icon" />
+            <p>
+              <strong>ملكيتك المطلقة:</strong> عند سداد كامل مستحقات المشروع، تنتقل ملكية الموقع الإلكتروني، الكود المصدري (Source Code)، التصاميم، والمحتوى بالكامل للعميل بنسبة 100%. لا نلزمك بأي اشتراكات إجبارية ولا نحتجز ملفات مشروعك.
+            </p>
+          </div>
+        </article>
+
+        <article class="legal-section">
+          <h2>3. خطة السداد والدفعات</h2>
+          <p>تتم التسويات المالية للمشاريع وفق خطة واضحة ومحددة سلفاً في العرض الفني، وعادة ما تتبع النظام التالي:</p>
+          <ul>
+            <li><strong>الدفعة الأولى (50%):</strong> دفعة مقدمة لبدء التحليل، التخطيط، وبناء الهيكل والتصميم.</li>
+            <li><strong>الدفعة الختامية (50%):</strong> عند اكتمال التطوير، المراجعة النهائية، وربط النطاق (Domain) والإطلاق الرسمي للموقع.</li>
+            <li>تقبل المدفوعات عبر التحويلات البنكية المحلية المعتمدة في الكويت أو عبر بوابات الدفع الإلكتروني (كي نت Knet).</li>
+          </ul>
+        </article>
+
+        <article class="legal-section">
+          <h2>4. مراجعة وتعديلات العميل</h2>
+          <p>
+            يتضمن كل مشروع جولتين مخصصتين للمراجعة والملاحظات (Feedback Rounds) في مرحلة التصميم ومرحلة البرمجة. نلتزم بمعالجة كافة الملاحظات الفنية بما يضمن مطابقة المشروع لرؤية العميل ومعايير الجودة المعتمدة.
+          </p>
+        </article>
+
+        <article class="legal-section">
+          <h2>5. الضمان والصيانة والدعم الفني</h2>
+          <p>
+            نمنمّح عملاءنا فترة ضمان ودعم فني مجانية لمدة <strong>3 أشهر</strong> تبدأ من تاريخ إطلاق الموقع، وتشمل:
+          </p>
+          <ul>
+            <li>إصلاح أي أخطاء برمجية أو ثغرات غير متوقعة دون أي تكلفة إضافية.</li>
+            <li>مراقبة استقرار الخوادم وشهادات الأمان SSL.</li>
+            <li>نسخ احتياطية دورية لبيانات الموقع لضمان الاستمرارية.</li>
+          </ul>
+        </article>
+
+        <article class="legal-section">
+          <h2>6. تحسين محركات البحث والنتائج</h2>
+          <p>
+            نلتزم بتطبيق أحدث ممارسات السيو التقني المعتمدة من Google (White-Hat SEO)، وهندسة البيانات المنظمة، والسرعة الفائقة. نظراً لأن خوارزميات محركات البحث والذكاء الاصطناعي تعتمد على عوامل خارجية تنافسية، فإننا نضمن سلامة المعايير الفنية وجودة المحتوى وهندسة الظهور ولكن لا نقدم وعوداً خيالية غير منطقية بتصدر كلمات عامة في أيام قليلة.
+          </p>
+        </article>
+
+        <article class="legal-section">
+          <h2>7. القانون الواجب التطبيق والاختصاص القضائي</h2>
+          <p>
+            تخضع هذه الشروط والأحكام وجميع العقود المبرمة مع {business.name} للقوانين واللوائح السارية في <strong>دولة الكويت</strong>، وتختص محاكم دولة الكويت بالفصل في أي نزاع قد ينشأ عنها.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-bottom: var(--space-20);
+  }
+
+  .breadcrumbs-wrap {
+    padding-top: var(--space-6);
+  }
+
+  .legal-hero {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-title {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .legal-date {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .legal-content-section {
+    max-width: 840px;
+  }
+
+  .legal-body {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  @media (max-width: 640px) {
+    .legal-body {
+      padding: var(--space-6) var(--space-5);
+    }
+  }
+
+  .legal-card-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: var(--radius-lg);
+  }
+
+  .intro-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .legal-card-intro p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    line-height: 1.8;
+  }
+
+  .legal-section h2 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+    border-right: 3px solid var(--color-accent);
+    padding-right: var(--space-3);
+  }
+
+  .legal-section p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-section ul {
+    list-style: disc;
+    padding-right: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    font-size: var(--font-size-sm);
+  }
+
+  .highlight-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .callout-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .highlight-callout p {
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+  }
+</style>

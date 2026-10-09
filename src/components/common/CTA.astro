@@ -1,0 +1,154 @@
+---
+import { getWhatsAppUrl } from '@/data/business';
+import { ArrowLeft, ArrowRight, MapPin, Smartphone, Globe } from '@lucide/astro';
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  ctaText?: string;
+  buttonText?: string;
+  whatsappMessage?: string;
+  class?: string;
+  id?: string;
+  lang?: 'ar' | 'en';
+}
+
+const {
+  eyebrow = 'مشروعك يستاهل حضور أقوى',
+  title = 'خلّنا نحكي عن شغلك.',
+  description = 'قول لنا شنو تقدم، ونشاركك أفكار تناسب مشروعك وتوصلك لعملائك.',
+  ctaText: rawCtaText,
+  buttonText: rawButtonText,
+  whatsappMessage,
+  class: className = '',
+  id = 'contact',
+  lang = 'ar',
+} = Astro.props;
+
+const ctaText = rawCtaText || rawButtonText || (lang === 'en' ? 'Chat on WhatsApp' : 'تواصل معنا على واتساب');
+const contactHref = getWhatsAppUrl(whatsappMessage);
+---
+
+<section id={id} class={`container contact ${className}`.trim()}>
+  <div class="contact-panel">
+    <div>
+      {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+      {title && <h2 set:html={title} />}
+      {description && <p set:html={description} />}
+      <div class="contact-meta">
+        {lang === 'en' ? (
+          <>
+            <span><MapPin size={14} /> Kuwait</span>
+            <span><Smartphone size={14} /> All-Device Responsive</span>
+            <span><Globe size={14} /> Google Search Presence</span>
+          </>
+        ) : (
+          <>
+            <span><MapPin size={14} /> الكويت</span>
+            <span><Smartphone size={14} /> موقع يشتغل على كل الأجهزة</span>
+            <span><Globe size={14} /> حضورك على Google</span>
+          </>
+        )}
+      </div>
+    </div>
+    <a class="button button-white" href={contactHref} target="_blank" rel="noopener noreferrer">
+      {ctaText} {lang === 'en' ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}
+    </a>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 100px 0 40px;
+  }
+  .contact-panel {
+    position: relative;
+    overflow: hidden;
+    background: #6418a8;
+    color: #fff;
+    border-radius: var(--radius-xl, 30px);
+    padding: 58px 7%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 32px;
+  }
+  .contact-panel::after {
+    content: "";
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    left: -70px;
+    top: -205px;
+    box-shadow: 0 0 0 37px rgba(255, 255, 255, 0.04), 0 0 0 78px rgba(255, 255, 255, 0.03);
+  }
+  .contact-panel > * {
+    position: relative;
+    z-index: 1;
+  }
+  .contact-panel .eyebrow {
+    color: #edc9fa;
+  }
+  .contact-panel h2 {
+    font-size: clamp(31px, 4vw, 47px);
+    line-height: 1.35;
+    margin: 12px 0;
+    color: #ffffff;
+  }
+  .contact-panel p {
+    margin: 0;
+    color: #e4d5ec;
+    line-height: 1.8;
+  }
+  .contact-panel .button-white {
+    background: #fff;
+    color: #5a168f;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+  .contact-panel .button-white:hover {
+    background: #f7f0fc;
+  }
+  .contact-meta {
+    margin-top: 23px;
+    display: flex;
+    gap: 19px;
+    flex-wrap: wrap;
+    color: #eadcf0;
+    font-size: 12px;
+  }
+  .contact-meta span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  @media (max-width: 850px) {
+    .contact-panel {
+      grid-template-columns: 1fr;
+    }
+    .contact-panel .button-white {
+      justify-self: start;
+    }
+  }
+  @media (max-width: 520px) {
+    .contact {
+      padding: 72px 0 24px;
+    }
+    .contact-panel {
+      padding: 34px 25px;
+      border-radius: 22px;
+    }
+    .contact-panel h2 {
+      font-size: 32px;
+    }
+    .contact-panel p {
+      font-size: 13px;
+    }
+    .contact-meta {
+      gap: 12px;
+    }
+  }
+</style>

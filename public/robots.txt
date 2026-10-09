@@ -1,0 +1,25 @@
+# robots.txt for webinOO Kuwait
+User-agent: *
+Allow: /
+
+# Explicit AI and LLM Search Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://webinoo.online/sitemap-index.xml

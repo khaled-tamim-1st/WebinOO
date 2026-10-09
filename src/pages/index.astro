@@ -1,0 +1,859 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import CTA from '@/components/common/CTA.astro';
+import FAQ from '@/components/common/FAQ.astro';
+import { getWhatsAppUrl } from '@/data/business';
+import {
+  ArrowLeft,
+  ArrowUpLeft,
+  Check,
+  Search,
+  MapPin,
+} from '@lucide/astro';
+
+const contactHref = getWhatsAppUrl();
+
+const faqs = [
+  {
+    question: 'كم يستغرق إطلاق الموقع؟',
+    answer: 'يعتمد الوقت على حجم المشروع وتجهيز المحتوى، لكننا نحدد معك جدولاً واضحاً من أول جلسة ونمشي خطوة بخطوة حتى الإطلاق.',
+    isReviewed: true,
+  },
+  {
+    question: 'هل الموقع مناسب للجوال؟',
+    // <!-- TODO: REVIEW -->
+    answer: 'أكيد، كل موقع نسويه يكون متوافق 100% مع الجوال والآيباد والكمبيوتر. أغلب عملائك في الكويت يبحثون ويطلبون خدماتهم من تلفوناتهم، عشان جذي نضمن لك سرعة تصفح عالية، أزرار واضحة للاتصال والواتساب، وتجربة سهلة وسلسة تخلّي الزائر يتحول لعميل مباشرة.',
+    isReviewed: false,
+  },
+  {
+    question: 'هل تساعدونني في الظهور على Google؟',
+    // <!-- TODO: REVIEW -->
+    answer: 'نعم، نبني موقعك من الصفر بأساس تقني قوي لمحركات البحث (SEO) والذكاء الاصطناعي (GEO). نجهز بيانات نشاطك في الكويت، كلمات البحث اللي يستعملها عملاؤك، وسرعة فائقة للصفحات عشان تزيد فرص ظهور نشاطك بالنتائج الأولى وفي خرائط Google لما الناس تبحث عن خدماتك.',
+    isReviewed: false,
+  },
+  {
+    question: 'ماذا أحتاج أن أجهز قبل أن نبدأ؟',
+    // <!-- TODO: REVIEW -->
+    answer: 'ما تحتاج تجهز أي شي معقد. يكفينا بالبداية جلسة سوالف سريعة نعرف فيها طبيعة شغلك، خدماتك، وشلون تتواصل مع زباينك. إحنا نساعدك في صياغة المحتوى واقتراح ترتيب الأقسام والصور، ونمشي معاك خطوة بخطوة من الفكرة لحد ما ينطلق موقعك.',
+    isReviewed: false,
+  },
+];
+---
+
+<BaseLayout
+  title="تصميم مواقع وتحسين الظهور في Google بالكويت | webinOO"
+  description="webinOO تصمم مواقع احترافية باللغة العربية وتساعد الأعمال ومقدمي الخدمات في الكويت على تحسين الظهور في Google والوصول إلى عملاء جدد."
+  lang="ar"
+>
+  <Header slot="header" lang="ar" />
+
+  <main id="home">
+    <!-- 4.1 Hero -->
+    <section class="container hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">تصميم مواقع وSEO في الكويت | حضورك الرقمي يبدأ من هنا</div>
+          <h1 id="hero-title">
+            خلّ شغلك
+            <br />
+            ينشاف <em>أونلاين.</em>
+          </h1>
+          <p class="hero-copy">
+            نسوي لك موقع يليق بشغلك بالكويت، ونرتب ظهورك في Google عشان العميل اللي
+            يدور خدمتك بالكويت يوصلك بسهولة.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href={contactHref} target="_blank" rel="noopener noreferrer">
+              أبي أبدأ مشروعي <ArrowLeft size={17} />
+            </a>
+            <a class="button button-quiet" href="#services">
+              اكتشف خدماتنا
+            </a>
+          </div>
+          <div class="proofline">
+            <span><i></i> عربي من البداية</span>
+            <span><i></i> مصمم للكويت</span>
+            <span><i></i> للجوال أولاً</span>
+          </div>
+        </div>
+
+        <div class="hero-art reveal delay-1" aria-label="معاينة موقع إلكتروني احترافي باللغة العربية">
+          <div class="orbit"></div>
+          <div class="floating-note note-search">
+            <span class="note-icon">
+              <Search size={17} />
+            </span>
+            <span>
+              <strong>بحث محلي ذكي</strong>
+              <small>خدمة قريبة منك في الكويت</small>
+            </span>
+          </div>
+          <div class="mock-browser">
+            <div class="browser-top">
+              <b></b><b></b><b></b>
+              <div class="browser-address">yourbusiness.com</div>
+            </div>
+            <div class="mock-page">
+              <div class="mock-brand">دار | DAR STUDIO</div>
+              <h3>
+                مساحتك…
+                <br />
+                على ذوقك.
+              </h3>
+              <p>
+                تصميم داخلي يصنع فرقاً في كل زاوية. نرتب لك بداية أجمل في بيتك.
+              </p>
+              <span class="mock-cta"></span>
+            </div>
+          </div>
+          <div class="floating-note note-map">
+            <span class="note-icon">
+              <MapPin size={17} />
+            </span>
+            <span>
+              <strong>من الكويت إلى عميلك</strong>
+              <small>تفاصيلك واضحة، ومكانك معروف</small>
+            </span>
+          </div>
+          <div class="local-tag">مصمم لناس الكويت وأعمالها</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.3 Marquee -->
+    <div class="ticker" aria-label="مواقع إلكترونية، تحسين محركات البحث، حضور محلي، نمو للأعمال">
+      <div class="ticker-track">
+        <span>
+          مواقع إلكترونية <b>✳</b> تحسين محركات البحث <b>✳</b> حضور محلي <b>✳</b> نمو للأعمال <b>✳</b>
+        </span>
+        <span aria-hidden="true">
+          مواقع إلكترونية <b>✳</b> تحسين محركات البحث <b>✳</b> حضور محلي <b>✳</b> نمو للأعمال <b>✳</b>
+        </span>
+      </div>
+    </div>
+
+    <!-- 4.4 Services -->
+    <section id="services" class="container section services-section">
+      <div class="service-layout">
+        <div class="service-intro">
+          <div class="eyebrow">كل اللي يحتاجه حضورك</div>
+          <h2
+            class="section-head"
+            style="font-size:clamp(32px,4vw,48px);line-height:1.35;letter-spacing:-.04em;margin:14px 0;"
+          >
+            من أول فكرة…
+            <br />
+            إلى أول عميل.
+          </h2>
+          <p style="color:#716b7a;line-height:1.9;font-size:15px;">
+            مو بس موقع شكله حلو. نبني لك حضور رقمي يجاوب عن أسئلة عميلك ويقربه
+            من قرار التواصل.
+          </p>
+          <a href="#contact" class="button button-quiet">
+            احكِ لنا عن مشروعك <ArrowLeft size={16} />
+          </a>
+        </div>
+        <div class="service-list">
+          <article class="service-item">
+            <span class="service-num">01</span>
+            <div>
+              <h3>تصميم وتطوير مواقع</h3>
+              <p>
+                موقع سريع، واضح، ويشتغل بكل سهولة على الجوال. واجهة تعكس جودة
+                شغلك وتحوّل الزيارة إلى تواصل.
+              </p>
+            </div>
+            <a href="/services/web-design-kuwait/" class="service-arrow" aria-label="صفحة تصميم وتطوير مواقع">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+          <article class="service-item">
+            <span class="service-num">02</span>
+            <div>
+              <h3>تحسين الظهور في Google</h3>
+              <p>
+                تهيئة صفحاتك ومحتواك بكلمات يبحث عنها عملاؤك، عشان تزيد فرصتك
+                بالظهور في نتائج البحث.
+              </p>
+            </div>
+            <a href="/services/seo-kuwait/" class="service-arrow" aria-label="صفحة تحسين الظهور في Google">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+          <article class="service-item">
+            <span class="service-num">03</span>
+            <div>
+              <h3>الظهور المحلي في الكويت</h3>
+              <p>
+                خلّ نشاطك واضح للناس القريبة منك: موقعك، خدماتك، ومعلومات
+                التواصل كلها بمكان واحد.
+              </p>
+            </div>
+            <a href="/services/local-seo-kuwait/" class="service-arrow" aria-label="صفحة الظهور المحلي في الكويت">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+          <article class="service-item">
+            <span class="service-num">04</span>
+            <div>
+              <h3>محتوى عربي يعبّر عنك</h3>
+              <p>
+                كلام مفهوم وقريب من عميلك، يشرح شنو تقدم وليش يختارك من بين
+                الخيارات.
+              </p>
+            </div>
+            <a href="/services/content-writing-kuwait/" class="service-arrow" aria-label="صفحة محتوى عربي يعبّر عنك">
+              <ArrowUpLeft size={16} />
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.5 Google / SEO Section -->
+    <section id="why-webinoo" class="showcase">
+      <div class="container showcase-grid">
+        <div class="showcase-copy">
+          <div class="eyebrow">مو مجرد صفحة على الإنترنت</div>
+          <h2>
+            خلّ Google
+            <br />
+            يدلّهم عليك.
+          </h2>
+          <p>
+            إذا عميلك يبحث عن خدمتك في الكويت، لازم يلقى إجابة واضحة
+            وموثوقة. نبني موقعك على أساس قوي لمحركات البحث، ونرتب حضورك
+            الرقمي من أول زيارة.
+          </p>
+          <ul class="check-list">
+            <li>
+              <span class="check"><Check size={13} /></span>
+              صفحات مرتبة لمحركات البحث
+            </li>
+            <li>
+              <span class="check"><Check size={13} /></span>
+              تصميم متجاوب وسريع على الجوال
+            </li>
+            <li>
+              <span class="check"><Check size={13} /></span>
+              تفاصيل نشاطك ومعلومات التواصل واضحة
+            </li>
+          </ul>
+        </div>
+        <div class="search-card" aria-label="مثال على نتيجة بحث لنشاط تجاري محلي">
+          <div class="search-label">
+            <span>G</span><span style="color:#ea4335">o</span><i>o</i><span style="color:#4285f4">g</span><strong>l</strong><em>e</em>
+          </div>
+          <div class="search-input">
+            <span>مصمم داخلي في الكويت</span>
+            <Search size={16} color="#7e7785" />
+          </div>
+          <div class="result">
+            <small>www.yourbusiness.com</small>
+            <h3>دار للتصميم الداخلي | الكويت</h3>
+            <p>
+              نحوّل أفكارك لمساحات مريحة وأنيقة. تعرّف على خدمات التصميم الداخلي
+              وتواصل معنا.
+            </p>
+            <div class="search-example-note">
+              مثال توضيحي — وليس نتيجة حقيقية
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>محتوى</strong>
+              <small>يجيب عن بحث عميلك</small>
+            </div>
+            <div class="stat">
+              <strong>محلي</strong>
+              <small>مهيأ لسوق الكويت</small>
+            </div>
+            <div class="stat">
+              <strong>سريع</strong>
+              <small>تجربة مريحة للجوال</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.6 Process Steps -->
+    <section id="process" class="process-section section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">بخطوات واضحة وبسيطة</div>
+          <h2>
+            من سوالفنا الأولى…
+            <br />
+            لموقعك على الإنترنت.
+          </h2>
+          <p>
+            ما تحتاج تكون خبير تقني. نكون معك من فهم الفكرة إلى يوم الإطلاق.
+          </p>
+        </div>
+        <div class="process-row">
+          <article class="process-step">
+            <div class="step-number">01</div>
+            <h3>نسمع منك</h3>
+            <p>نتعرف على نشاطك، عملائك، وشنو تبي تحقق من موقعك.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-number">02</div>
+            <h3>نرسم الطريق</h3>
+            <p>نرتب الصفحات والمحتوى والكلمات المهمة لظهورك في البحث.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-number">03</div>
+            <h3>نبني ونراجع</h3>
+            <p>نصمم تجربة تناسب شغلك ونراجعها معك قبل الإطلاق.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-number">04</div>
+            <h3>تنطلق أونلاين</h3>
+            <p>موقعك يصير جاهز لعملائك، على كل شاشة وفي كل وقت.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.7 First Impression -->
+    <section class="container section stories">
+      <div class="section-head">
+        <div class="eyebrow">الانطباع يصنع فرق</div>
+        <h2>
+          أول ما يلقاك العميل…
+          <br />
+          شنو يشوف؟
+        </h2>
+        <p>
+          موقعك واجهتك الأولى. خله يشرح شغلك بثقة، حتى قبل أول مكالمة.
+        </p>
+      </div>
+      <div class="story-layout">
+        <article class="story-main">
+          <span class="story-label">تجربة الموقع اللي نصممها لك</span>
+          <div>
+            <div class="quote-mark">01</div>
+            <p class="story-statement">
+              موقع يشرح خدمتك، يسهّل على العميل يلقى التفاصيل، ويفتح له باب
+              التواصل.
+            </p>
+            <div class="story-credit">
+              هدفنا: حضور واضح يبدأ من أول زيارة
+            </div>
+          </div>
+        </article>
+        <div class="story-side">
+          <article class="story-mini">
+            <span class="story-mini-tag">وضوح من البداية</span>
+            <p>يعرف عميلك شنو تقدم، وين تخدم، وشلون يبدأ معاك.</p>
+            <small>صفحات خدمات ومعلومات مرتبة</small>
+          </article>
+          <article class="story-mini">
+            <span class="story-mini-tag">كل التفاصيل بمكان واحد</span>
+            <p>خدماتك، موقعك، وطريقة التواصل معاك في واجهة سهلة.</p>
+            <small>تجربة مصممة لنشاطك</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.8 FAQ (Zero-JS semantic details/summary) -->
+    <FAQ items={faqs} id="faq" />
+
+    <!-- 4.9 Final CTA -->
+    <CTA id="contact" />
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
+
+<style>
+  /* Page-specific overrides matching approved Kuwait atelier styles */
+  .services-section {
+    padding-top: 108px;
+  }
+  .service-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .service-intro {
+    position: sticky;
+    top: 36px;
+  }
+  .service-intro .button {
+    margin-top: 22px;
+  }
+  .service-list {
+    border-top: 1px solid var(--color-border-default, #ddd5e1);
+  }
+  .service-item {
+    padding: 25px 0;
+    border-bottom: 1px solid var(--color-border-default, #ddd5e1);
+    display: grid;
+    grid-template-columns: 54px 1fr 34px;
+    gap: 17px;
+    align-items: start;
+    transition: padding 0.25s;
+  }
+  .service-item:hover {
+    padding-inline: 10px;
+  }
+  .service-num {
+    font: 600 12px var(--font-latin);
+    color: #a28caf;
+    padding-top: 5px;
+    direction: ltr;
+  }
+  .service-item h3 {
+    margin: 0 0 7px;
+    font-size: 20px;
+  }
+  .service-item p {
+    margin: 0;
+    color: var(--color-ink-muted, #777180);
+    line-height: 1.8;
+    font-size: 14px;
+    max-width: 440px;
+  }
+  .service-arrow {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-border-default, #dfd6e5);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #722caf;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .service-item:hover .service-arrow {
+    transform: translateX(-4px);
+  }
+  .showcase {
+    background: var(--color-bg-alt, #eee8f0);
+    padding: 96px 0;
+    position: relative;
+  }
+  .showcase::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #e7d9ec;
+    right: -120px;
+    top: 10%;
+  }
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    align-items: center;
+    position: relative;
+  }
+  .showcase-copy h2 {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.35;
+    letter-spacing: -0.04em;
+    margin: 16px 0;
+  }
+  .showcase-copy p {
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.95;
+    font-size: 15px;
+    max-width: 480px;
+  }
+  .check-list {
+    list-style: none;
+    padding: 0;
+    margin: 26px 0 0;
+    display: grid;
+    gap: 13px;
+  }
+  .check-list li {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 14px;
+    color: #45404d;
+  }
+  .check {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #e0d2e9;
+    color: #6c239e;
+    flex: none;
+  }
+  .search-card {
+    background: var(--color-bg-card, #fffefa);
+    border-radius: var(--radius-lg, 24px);
+    padding: 30px;
+    box-shadow: var(--shadow-floating);
+    transform: rotate(2deg);
+  }
+  .search-label {
+    text-align: left;
+    direction: ltr;
+    font: 700 18px var(--font-latin);
+    color: #56515d;
+    margin-bottom: 20px;
+  }
+  .search-label span {
+    color: #4285f4;
+  }
+  .search-label strong {
+    color: #34a853;
+  }
+  .search-label i {
+    color: #fbbc05;
+    font-style: normal;
+  }
+  .search-label em {
+    color: #ea4335;
+    font-style: normal;
+  }
+  .search-input {
+    height: 48px;
+    border: 1px solid var(--color-border-subtle, #e4dfe7);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 17px;
+    color: #65606b;
+    font-size: 13px;
+    box-shadow: 0 2px 7px rgba(51, 35, 64, 0.04);
+  }
+  .result {
+    margin-top: 19px;
+    padding: 18px;
+    border: 1px solid var(--color-border-subtle, #eee9f0);
+    border-radius: 15px;
+  }
+  .result small {
+    color: #5a9b66;
+    font: 11px var(--font-latin);
+    direction: ltr;
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+  }
+  .result h3 {
+    color: #44278a;
+    font: 600 17px var(--font-latin);
+    direction: ltr;
+    text-align: left;
+    margin: 0 0 5px;
+  }
+  .result p {
+    direction: ltr;
+    text-align: left;
+    font: 12px/1.6 var(--font-latin);
+    color: #68636d;
+    margin: 0;
+  }
+  .search-example-note {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 9px;
+    border-radius: var(--radius-pill);
+    background: #f1e9f6;
+    color: #69438a;
+    font-size: 10px;
+  }
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid #eae4eb;
+    margin-top: 20px;
+    padding-top: 18px;
+    direction: rtl;
+  }
+  .stat strong {
+    display: block;
+    font: 700 20px var(--font-latin);
+    color: #59248b;
+  }
+  .stat small {
+    color: #827b87;
+    font-size: 10px;
+  }
+  .process-section {
+    background: var(--color-bg-dark, #2d2139);
+    color: #f8f3fa;
+    position: relative;
+    padding: var(--section-padding-y, 112px) 0;
+  }
+  .process-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.11;
+    background-image: radial-gradient(#e4c9fa 1px, transparent 1px);
+    background-size: 23px 23px;
+    pointer-events: none;
+  }
+  .process-section .section-head, .process-row {
+    position: relative;
+    z-index: 1;
+  }
+  .process-section .eyebrow {
+    color: #e1b4f3;
+  }
+  .process-section .section-head h2 {
+    color: #ffffff;
+  }
+  .process-section .section-head p {
+    color: var(--color-ink-light, #c5b8ce);
+  }
+  .process-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-row::before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    right: 9%;
+    left: 9%;
+    height: 1px;
+    background: var(--color-border-dark, #78658a);
+  }
+  .process-step {
+    padding-inline: 17px;
+    position: relative;
+  }
+  .step-number {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #8c739c;
+    border-radius: 50%;
+    background: var(--color-bg-dark, #2d2139);
+    color: #f4ad8d;
+    font: 600 14px var(--font-latin);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .process-step h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+    color: #ffffff;
+  }
+  .process-step p {
+    color: var(--color-ink-light, #c5b8ce);
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+  }
+  .stories {
+    background: var(--color-bg-body, #f8f6f1);
+    padding: var(--section-padding-y, 112px) 0;
+  }
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+  }
+  .story-main {
+    min-height: 335px;
+    background: var(--color-accent-lavender, #d8c3e5);
+    border-radius: var(--radius-lg, 24px);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .story-main::before {
+    content: "";
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    left: -20px;
+    bottom: -116px;
+    background: #bb98d0;
+  }
+  .story-main::after {
+    content: "";
+    position: absolute;
+    width: 155px;
+    height: 155px;
+    border: 1px solid #9e79b6;
+    border-radius: 50%;
+    left: 39px;
+    bottom: -55px;
+  }
+  .story-main > * {
+    z-index: 1;
+  }
+  .story-label {
+    background: #f6eff9;
+    color: #612b88;
+    border-radius: 20px;
+    padding: 7px 12px;
+    font-size: 11px;
+    width: max-content;
+  }
+  .quote-mark {
+    color: #6b3290;
+    font: 700 18px var(--font-latin);
+    line-height: 1.2;
+  }
+  .story-statement {
+    max-width: 540px;
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.65;
+    margin: 10px 0 20px;
+    font-weight: 600;
+  }
+  .story-credit {
+    font-size: 12px;
+    color: #675575;
+  }
+  .story-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .story-mini {
+    flex: 1;
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid #ebe4ed;
+    border-radius: var(--radius-md, 20px);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .story-mini p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 16px 0 22px;
+  }
+  .story-mini small {
+    color: #847b8a;
+  }
+  .story-mini-tag {
+    background: #f1e9f6;
+    color: #69438a;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 11px;
+    align-self: flex-start;
+  }
+  @media (max-width: 850px) {
+    .service-layout, .showcase-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .service-intro {
+      position: static;
+    }
+    .showcase-grid {
+      gap: 32px;
+    }
+    .search-card {
+      max-width: 520px;
+      width: 100%;
+      margin: auto;
+    }
+    .story-layout {
+      grid-template-columns: 1fr;
+    }
+    .story-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .process-row {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 34px;
+    }
+    .process-row::before {
+      display: none;
+    }
+    .process-section,
+    .stories {
+      padding: var(--section-padding-y-mobile, 72px) 0;
+    }
+  }
+  @media (max-width: 520px) {
+    .service-item {
+      grid-template-columns: 37px 1fr 28px;
+      gap: 10px;
+      padding: 21px 0;
+    }
+    .service-item h3 {
+      font-size: 17px;
+    }
+    .service-item p {
+      font-size: 12px;
+    }
+    .service-num {
+      font-size: 10px;
+    }
+    .showcase {
+      padding: 73px 0;
+    }
+    .search-card {
+      padding: 20px;
+    }
+    .search-label {
+      font-size: 16px;
+    }
+    .search-input {
+      font-size: 11px;
+    }
+    .result h3 {
+      font-size: 15px;
+    }
+    .stat strong {
+      font-size: 16px;
+    }
+    .stat small {
+      font-size: 9px;
+    }
+    .process-row {
+      gap: 26px 10px;
+    }
+    .process-step {
+      padding-inline: 7px;
+    }
+    .process-step h3 {
+      font-size: 16px;
+    }
+    .process-step p {
+      font-size: 12px;
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 17px;
+    }
+    .story-main {
+      padding: 24px;
+      min-height: 310px;
+    }
+    .story-side {
+      grid-template-columns: 1fr;
+    }
+    .story-mini {
+      min-height: 190px;
+    }
+  }
+</style>

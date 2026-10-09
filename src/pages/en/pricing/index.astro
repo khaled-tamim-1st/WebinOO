@@ -1,0 +1,381 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import FAQ from '@/components/common/FAQ.astro';
+import CTA from '@/components/common/CTA.astro';
+import { getWhatsAppUrl } from '@/data/business';
+import { Check, ArrowRight } from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Pricing Packages' },
+];
+
+const packages = [
+  {
+    name: 'Starter Package',
+    badge: 'Solo Practitioners & Micro-Businesses',
+    highlight: false,
+    desc: 'A high-speed, elegant single-page website to establish your verified presence in Kuwait and drive direct WhatsApp inquiries.',
+    features: [
+      'Comprehensive high-speed One-Page architecture',
+      '100% Mobile, Tablet & iPhone responsive',
+      'Instant smart WhatsApp & Call buttons',
+      'Google Maps Kuwait verification & location embed',
+      'SSL Security Certificate & 1 year fast hosting included',
+      'Delivery within 7 to 10 business days',
+    ],
+    ctaText: 'Inquire About Starter Package',
+    message: 'Hello, I would like to inquire about webinOO Starter Package details and quote in Kuwait.',
+  },
+  {
+    name: 'Business & SEO Package',
+    badge: 'Most Popular for Kuwait Companies',
+    highlight: true,
+    desc: 'A multi-page bespoke website engineered for Search Engine Optimization (SEO) and AI visibility to attract consistent local clients.',
+    features: [
+      '5 to 8 dedicated service and company pages',
+      'Advanced technical SEO foundation & Schema markup',
+      'Generative Engine Optimization (GEO ready for AI search)',
+      'Google Business Profile integration across Kuwait areas',
+      'Culturally tuned bilingual Arabic/English commercial copy',
+      'Intuitive admin dashboard to update projects anytime',
+      '3 months free maintenance and technical support included',
+    ],
+    ctaText: 'Choose Business & SEO Package',
+    message: 'Hello, I would like to order the Business & SEO Package for my company in Kuwait.',
+  },
+  {
+    name: 'E-Commerce & Custom Systems',
+    badge: 'Online Stores & Tailored Software',
+    highlight: false,
+    desc: 'A full-featured e-commerce store or custom web platform engineered from scratch with Kuwait local payment gateways.',
+    features: [
+      'Bespoke e-commerce or web system without bloated templates',
+      'Kuwait payment gateways integration (Knet & Apple Pay)',
+      'Product catalog, inventory control & customer accounts',
+      'Rapid checkout experience under 40 seconds',
+      'Detailed visitor analytics & sales reporting',
+      'Automated cloud backups and hardened security',
+    ],
+    ctaText: 'Discuss Custom Solution',
+    message: 'Hello, I would like to discuss an e-commerce store or custom web system in Kuwait.',
+  },
+];
+
+const pricingFaqs = [
+  {
+    question: 'Are there any hidden recurring fees?',
+    answer: 'None whatsoever. All deliverables, timelines, and payment stages are clearly specified in our formal proposal before commencing work. Annual domain and hosting renewal fees are straightforward and transparent.',
+  },
+  {
+    question: 'Do I own 100% of the website and source code?',
+    answer: 'Yes, absolutely. Upon final project settlement, you own complete rights to your source code, design assets, and content without any lock-in or mandatory subscriptions.',
+  },
+  {
+    question: 'How do project milestone payments work in Kuwait?',
+    answer: 'Typically, projects follow a 50% deposit upon kickoff and architecture approval, and 50% upon final testing, domain linking, and official launch. We accept local bank transfers and Knet.',
+  },
+  {
+    question: 'Can I start with the Starter Package and upgrade later?',
+    answer: 'Definitely! Our clean modular code makes it effortless to expand from a single-page site into a multi-page portal or e-commerce store whenever your business is ready.',
+  },
+];
+---
+
+<BaseLayout
+  title="Website Design & SEO Pricing Packages in Kuwait | webinOO"
+  description="Transparent website design and SEO pricing packages in Kuwait: Starter, Business & SEO, and Custom E-Commerce systems with Knet and Apple Pay."
+  lang="en"
+>
+  <Header slot="header" lang="en" />
+
+  <main class="pricing-page">
+    <div class="container breadcrumbs-wrap">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <!-- Hero Section -->
+    <section class="container pricing-hero">
+      <div class="hero-badge">Transparent Pricing in Kuwait</div>
+      <h1 class="page-title">Clear, transparent investment built to deliver real commercial ROI.</h1>
+      <p class="hero-desc">
+        No ambiguous quotes or hidden fees. We build bespoke digital assets that help Kuwait businesses rank high on Google and turn qualified searchers into paying clients.
+      </p>
+    </section>
+
+    <!-- Pricing Grid -->
+    <section class="container pricing-grid-section">
+      <div class="pricing-grid">
+        {
+          packages.map((pkg) => (
+            <div class={`pricing-card ${pkg.highlight ? 'card-highlighted' : ''}`}>
+              {pkg.highlight && <div class="badge-ribbon">Recommended</div>}
+              
+              <div class="card-header">
+                <span class="plan-badge">{pkg.badge}</span>
+                <h2 class="plan-name">{pkg.name}</h2>
+                <p class="plan-desc">{pkg.desc}</p>
+              </div>
+
+              <div class="features-list">
+                <span class="features-title">What is included:</span>
+                <ul>
+                  {pkg.features.map((feat) => (
+                    <li>
+                      <Check size={18} class="check-icon" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="card-actions">
+                <a
+                  href={getWhatsAppUrl(pkg.message)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`btn-plan ${pkg.highlight ? 'btn-plan-primary' : 'btn-plan-outline'}`}
+                >
+                  {pkg.ctaText} <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container faq-wrap">
+      <FAQ
+        eyebrow="Clear Answers"
+        title="Frequently Asked Pricing Questions"
+        description="Straightforward answers about our packages, payments, and warranties."
+        items={pricingFaqs}
+      />
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="container cta-wrap">
+      <CTA
+        eyebrow="Need a Tailored Quote?"
+        title="Let's build the right solution for your business in Kuwait."
+        description="Share your requirements and we will send you a tailored proposal within 24 hours."
+        ctaText="Book a Free Consultation"
+        whatsappMessage="Hello, I would like to request a tailored quote for my website project in Kuwait."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style>
+  .pricing-page {
+    padding-bottom: 96px;
+  }
+
+  .breadcrumbs-wrap {
+    padding-top: 24px;
+  }
+
+  .pricing-hero {
+    padding-top: 32px;
+    padding-bottom: 48px;
+    max-width: 820px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent, #10b981);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-size: clamp(32px, 4vw, 50px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--color-ink-muted, #716b7a);
+  }
+
+  .pricing-grid-section {
+    margin-bottom: 80px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  @media (min-width: 900px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pricing-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 16px);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-highlighted {
+    border-color: var(--color-primary, #6518ac);
+    background: linear-gradient(180deg, rgba(101, 24, 172, 0.04) 0%, var(--color-bg-card, #fffefa) 100%);
+    box-shadow: 0 8px 24px rgba(101, 24, 172, 0.08);
+  }
+
+  .badge-ribbon {
+    position: absolute;
+    top: -12px;
+    left: 28px;
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .card-header {
+    margin-bottom: 24px;
+  }
+
+  .plan-badge {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--color-primary, #6518ac);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .plan-name {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--color-ink-primary, #292239);
+  }
+
+  .plan-desc {
+    font-size: 14px;
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .features-list {
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+
+  .features-title {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-border-subtle, #eae3ef);
+  }
+
+  .features-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--color-ink-primary, #292239);
+    line-height: 1.6;
+  }
+
+  .check-icon {
+    color: var(--color-accent, #10b981);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .btn-plan {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: var(--radius-md, 10px);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+  }
+
+  .btn-plan-primary {
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+  }
+
+  .btn-plan-primary:hover {
+    background: #50128a;
+    transform: translateY(-2px);
+  }
+
+  .btn-plan-outline {
+    background: transparent;
+    color: var(--color-ink-primary, #292239);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+  }
+
+  .btn-plan-outline:hover {
+    border-color: var(--color-primary, #6518ac);
+    color: var(--color-primary, #6518ac);
+  }
+
+  .faq-wrap {
+    margin-top: 48px;
+  }
+
+  .cta-wrap {
+    margin-top: 48px;
+  }
+</style>

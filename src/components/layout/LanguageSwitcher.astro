@@ -1,0 +1,46 @@
+---
+import { getLangFromUrl, useTranslatedPath } from '@/i18n/utils';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+const currentUrl = Astro.url;
+const currentLang = getLangFromUrl(currentUrl);
+const translatePath = useTranslatedPath(currentLang);
+
+const targetLang = currentLang === 'ar' ? 'en' : 'ar';
+const targetLabel = currentLang === 'ar' ? 'EN' : 'عربي';
+const targetHref = translatePath(currentUrl.pathname, targetLang);
+---
+
+<a
+  href={targetHref}
+  class={`lang-switch ${className}`.trim()}
+  aria-label={currentLang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'}
+>
+  {targetLabel}
+</a>
+
+<style>
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill, 999px);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    background: var(--color-bg-card, #fffefa);
+    color: var(--color-ink-primary, #292239);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .lang-switch:hover {
+    border-color: var(--color-primary, #6518ac);
+    color: var(--color-primary, #6518ac);
+    transform: translateY(-1px);
+  }
+</style>

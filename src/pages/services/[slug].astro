@@ -1,0 +1,288 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import FAQ from '@/components/common/FAQ.astro';
+import CTA from '@/components/common/CTA.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getWhatsAppUrl } from '@/data/business';
+import { ArrowLeft, Check, CircleAlert, Sparkles } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { slug: service.id },
+    props: { service },
+  }));
+}
+
+export interface Props {
+  service: CollectionEntry<'services'>;
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+
+const siteBase = Astro.site ? Astro.site.origin : 'https://webinoo.online';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'خدماتنا', href: '/services/' },
+  { label: service.data.shortTitle },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.data.title,
+  serviceType: service.data.shortTitle,
+  description: service.data.description,
+  provider: {
+    '@id': `${siteBase}/#organization`,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'الكويت',
+  },
+};
+
+const whatsappText = `السلام عليكم، أود الاستفسار عن خدمة: ${service.data.shortTitle} في الكويت.`;
+const whatsappHref = getWhatsAppUrl(whatsappText);
+---
+
+<BaseLayout
+  title={service.data.title}
+  description={service.data.description}
+  schema={serviceSchema}
+  lang="ar"
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="service-detail">
+    <!-- Hero / Header -->
+    <section class="container service-hero">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="eyebrow">{service.data.keyword}</div>
+      <h1>{service.data.h1}</h1>
+      <p class="service-lead">{service.data.description}</p>
+      
+      <div class="hero-actions">
+        <a class="button button-primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+          اطلب الخدمة الآن <ArrowLeft size={16} />
+        </a>
+        <a class="button button-quiet" href="#process">
+          خطوات العمل
+        </a>
+      </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section class="container problem-solution-grid">
+      <div class="card-problem">
+        <div class="card-icon-title">
+          <CircleAlert size={22} class="problem-icon" />
+          <h3>المشكلة الشائعة</h3>
+        </div>
+        <p>{service.data.problem}</p>
+      </div>
+
+      <div class="card-solution">
+        <div class="card-icon-title">
+          <Sparkles size={22} class="solution-icon" />
+          <h3>حل webinOO الفعلي</h3>
+        </div>
+        <p>{service.data.solution}</p>
+      </div>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="container deliverables-section">
+      <div class="section-head">
+        <div class="eyebrow">ماذا ستحصل عليه بالضبط؟</div>
+        <h2>مخرجات تقنية ملموسة تخدم نمو عملك</h2>
+      </div>
+      <div class="deliverables-grid">
+        {
+          service.data.deliverables.map((item) => (
+            <div class="deliverable-card">
+              <span class="deliverable-badge">
+                <Check size={16} />
+              </span>
+              <span>{item}</span>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section id="process" class="process-section section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">خطوة بخطوة</div>
+          <h2>كيف ننفذ خدمة {service.data.shortTitle}؟</h2>
+          <p>خطوات واضحة وجدول زمني محدد من أول جلسة حتى تسليم المشروع بالكامل.</p>
+        </div>
+        <div class="process-row">
+          {
+            service.data.processSteps.map((step) => (
+              <article class="process-step">
+                <div class="step-number">{step.step}</div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Guide Content -->
+    <section class="container content-body-section">
+      <div class="markdown-body">
+        <Content />
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FAQ
+      eyebrow="إجابات واضحة"
+      title={`أسئلة شائعة حول ${service.data.shortTitle}`}
+      description="كل ما تحتاج معرفته حول آليات العمل والتكلفة والضمانات."
+      items={service.data.faqs}
+      id="faq"
+    />
+
+    <!-- Service Specific CTA -->
+    <CTA
+      eyebrow="جاهز لتعزيز حضور شركتك في الكويت؟"
+      title={`خلّنا نبدأ العمل على ${service.data.shortTitle}.`}
+      description="احصل على تقييم مجاني وخطة عمل مخصصة تناسب أهدافك وميزانيتك."
+      ctaText="احجز استشارتك عبر واتساب"
+      whatsappMessage={whatsappText}
+    />
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
+
+<style>
+  .service-detail {
+    padding: 30px 0 60px;
+  }
+  .service-hero {
+    max-width: 860px;
+    margin-bottom: 50px;
+  }
+  .service-hero h1 {
+    font-size: clamp(34px, 4.5vw, 56px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin: 18px 0;
+    color: var(--color-ink-primary, #292239);
+  }
+  .service-lead {
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--color-ink-muted, #716b7a);
+    margin-bottom: 30px;
+  }
+  .problem-solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 70px;
+  }
+  .card-problem {
+    background: #fdf5f5;
+    border: 1px solid #fae2e2;
+    border-radius: var(--radius-lg, 24px);
+    padding: 32px;
+  }
+  .card-problem p {
+    color: #634343;
+    line-height: 1.85;
+    font-size: 15px;
+    margin: 0;
+  }
+  .card-solution {
+    background: #f5fbf7;
+    border: 1px solid #e1f4e7;
+    border-radius: var(--radius-lg, 24px);
+    padding: 32px;
+  }
+  .card-solution p {
+    color: #2b573a;
+    line-height: 1.85;
+    font-size: 15px;
+    margin: 0;
+  }
+  .card-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .problem-icon {
+    color: #dc3545;
+  }
+  .solution-icon {
+    color: #28a745;
+  }
+  .deliverables-section {
+    margin-bottom: 80px;
+  }
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .deliverable-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: var(--radius-md, 20px);
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-ink-primary, #292239);
+    box-shadow: 0 2px 8px rgba(56, 32, 75, 0.02);
+  }
+  .deliverable-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .content-body-section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .markdown-body {
+    max-width: 800px;
+    line-height: 2;
+    color: var(--color-ink-primary, #292239);
+    font-size: 16px;
+  }
+  .markdown-body h2 {
+    font-size: 28px;
+    margin: 36px 0 16px;
+  }
+  .markdown-body p {
+    color: var(--color-ink-muted, #716b7a);
+    margin-bottom: 20px;
+  }
+  @media (max-width: 768px) {
+    .problem-solution-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

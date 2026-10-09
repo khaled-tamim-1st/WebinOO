@@ -1,0 +1,74 @@
+---
+import { getWhatsAppUrl } from '@/data/business';
+
+export interface Props {
+  message?: string;
+  lang?: 'ar' | 'en';
+}
+
+const { message, lang = 'ar' } = Astro.props;
+const whatsappHref = getWhatsAppUrl(message);
+const label = lang === 'ar' ? 'تواصل معنا مباشرة عبر واتساب' : 'Chat with us on WhatsApp';
+---
+
+<aside class="floating-whatsapp-container" aria-label="WhatsApp Support">
+  <a
+    href={whatsappHref}
+    class="floating-whatsapp-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={label}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="28"
+      height="28"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M12.031 2C6.51 2 2.016 6.477 2.016 11.978c0 1.954.568 3.774 1.554 5.32L2 22l4.89-1.529a9.92 9.92 0 0 0 5.141 1.428c5.521 0 10.015-4.478 10.015-9.979C22.046 6.477 17.552 2 12.031 2zm5.826 14.153c-.244.685-1.421 1.309-1.957 1.393-.509.08-1.173.114-1.898-.119a16.03 16.03 0 0 1-5.748-3.565 11.3 11.3 0 0 1-2.483-3.69c-.068-.145-.536-1.428.026-2.22.428-.602.89-.69 1.189-.705.151-.008.307-.008.441-.004.148.005.347-.056.544.417.203.49.69 1.684.75 1.808.061.123.102.268.02.431-.082.164-.123.266-.245.41-.122.143-.257.32-.367.43-.122.122-.25.255-.108.498.143.243.633 1.042 1.36 1.688.933.83 1.72 1.088 1.964 1.21.244.123.388.102.53-.061.144-.164.613-.715.776-.96.163-.245.326-.205.55-.123.224.082 1.42.67 1.664.793.245.122.408.184.469.286.061.102.061.593-.183 1.278z"/>
+    </svg>
+    <span class="whatsapp-badge">{lang === 'ar' ? 'واتساب' : 'WhatsApp'}</span>
+  </a>
+</aside>
+
+<style>
+  .floating-whatsapp-container {
+    position: fixed;
+    bottom: 24px;
+    inset-inline-end: 24px;
+    z-index: 99;
+  }
+  .floating-whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #25d366;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: var(--radius-pill, 999px);
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  }
+  .floating-whatsapp-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45);
+  }
+  @media (max-width: 600px) {
+    .floating-whatsapp-container {
+      bottom: 18px;
+      inset-inline-end: 18px;
+    }
+    .whatsapp-badge {
+      display: none;
+    }
+    .floating-whatsapp-btn {
+      padding: 13px;
+      border-radius: 50%;
+    }
+  }
+</style>

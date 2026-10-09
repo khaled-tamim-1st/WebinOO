@@ -1,0 +1,87 @@
+---
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+
+const siteBase = Astro.site ? Astro.site.origin : 'https://webinoo.online';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href && {
+      item: new URL(item.href, siteBase).href,
+    }),
+  })),
+};
+---
+
+<nav aria-label="مسار التصفح" class={`breadcrumbs-nav ${className}`.trim()}>
+  <ol class="breadcrumbs-list">
+    {
+      items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        return (
+          <li class="breadcrumbs-item">
+            {isLast || !item.href ? (
+              <span aria-current="page" class="current">{item.label}</span>
+            ) : (
+              <a href={item.href} class="link">{item.label}</a>
+            )}
+            {!isLast && <span class="separator" aria-hidden="true">/</span>}
+          </li>
+        );
+      })
+    }
+  </ol>
+
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</nav>
+
+<style>
+  .breadcrumbs-nav {
+    margin: 16px 0 24px;
+    font-size: 13px;
+  }
+  .breadcrumbs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-ink-muted, #716b7a);
+  }
+  .breadcrumbs-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .link {
+    color: var(--color-ink-secondary, #595264);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .link:hover {
+    color: var(--color-primary, #6518ac);
+  }
+  .separator {
+    color: var(--color-border-default, #ddd5e1);
+  }
+  .current {
+    color: var(--color-primary-text, #6b1eae);
+    font-weight: 600;
+  }
+</style>

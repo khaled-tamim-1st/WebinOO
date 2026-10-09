@@ -1,0 +1,38 @@
+---
+export interface Props {
+  id?: string;
+  class?: string;
+  variant?: 'default' | 'showcase' | 'dark' | 'faq' | 'light';
+  ariaLabel?: string;
+  ariaLabelledby?: string;
+}
+
+const {
+  id,
+  class: className = '',
+  variant = 'default',
+  ariaLabel,
+  ariaLabelledby,
+  ...rest
+} = Astro.props;
+
+const variantClass = {
+  default: '',
+  showcase: 'showcase',
+  dark: 'process-section',
+  faq: 'faq-section',
+  light: 'stories',
+}[variant];
+
+const classes = `section ${variantClass} ${className}`.trim();
+---
+
+<section
+  id={id}
+  class={classes}
+  aria-label={ariaLabel}
+  aria-labelledby={ariaLabelledby}
+  {...rest}
+>
+  <slot />
+</section>

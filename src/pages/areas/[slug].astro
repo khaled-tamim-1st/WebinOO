@@ -1,0 +1,383 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import FAQ from '@/components/common/FAQ.astro';
+import CTA from '@/components/common/CTA.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { business } from '@/data/business';
+import { Lightbulb, Building, CircleCheck } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const areas = await getCollection('areas');
+  return areas.map((area) => ({
+    params: { slug: area.id },
+    props: { area },
+  }));
+}
+
+export interface Props {
+  area: CollectionEntry<'areas'>;
+}
+
+const { area } = Astro.props;
+const { Content } = await render(area);
+
+const siteBase = Astro.site ? Astro.site.origin : 'https://webinoo.online';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'المناطق التي نخدمها', href: '/areas/' },
+  { label: area.data.areaNameAr },
+];
+
+const areaSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: `${business.name} - ${area.data.areaNameAr}`,
+  description: area.data.description,
+  url: `${siteBase}/areas/${area.id}/`,
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: area.data.areaNameAr,
+    containedInPlace: {
+      '@type': 'AdministrativeArea',
+      name: area.data.governorate,
+    },
+  },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: business.name,
+    telephone: business.phone,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: business.address.locality,
+      addressCountry: business.address.countryCode,
+    },
+  },
+};
+---
+
+<BaseLayout
+  title={area.data.title}
+  description={area.data.description}
+  schema={areaSchema}
+>
+  <Header />
+
+  <main id="main-content" class="area-detail-page">
+    <div class="container breadcrumbs-wrap">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <!-- Hero Header -->
+    <header class="container area-hero">
+      <div class="hero-top-badges">
+        <span class="gov-badge">{area.data.governorate}</span>
+        <span class="en-badge" dir="ltr">{area.data.areaNameEn}</span>
+      </div>
+      <h1 class="area-h1">{area.data.h1}</h1>
+      <p class="area-commercial-lead">{area.data.commercialProfile}</p>
+    </header>
+
+    <!-- Local Search Strategy Callout -->
+    <section class="container strategy-callout-section">
+      <div class="strategy-card">
+        <div class="strategy-icon-box">
+          <Lightbulb size={26} class="strategy-icon" />
+        </div>
+        <div class="strategy-text">
+          <h2>مفتاح تصدر Google وخرائط البحث في {area.data.areaNameAr}:</h2>
+          <p>{area.data.localSearchTip}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prominent Businesses Grid -->
+    <section class="container prominent-grid-section">
+      <div class="prominent-box">
+        <h2 class="section-title">
+          <Building size={22} class="inline-icon" />
+          الأنشطة الأكثر منافسة وطلباً في {area.data.areaNameAr}
+        </h2>
+        <div class="businesses-tags">
+          {
+            area.data.prominentBusinesses.map((biz) => (
+              <div class="business-tag">
+                <CircleCheck size={16} class="check-icon" />
+                <span>{biz}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Content Section -->
+    <section class="container editorial-section">
+      <div class="editorial-card markdown-content">
+        <Content />
+      </div>
+    </section>
+
+    <!-- Area Specific FAQs -->
+    {
+      area.data.faqs && area.data.faqs.length > 0 && (
+        <section class="container faq-section">
+          <FAQ
+            title={`الأسئلة الشائعة حول خدماتنا في ${area.data.areaNameAr}`}
+            description={`إجابات واضحة تساعد نشاطك في ${area.data.areaNameAr} على اتخاذ القرار الصحيح.`}
+            faqs={area.data.faqs}
+          />
+        </section>
+      )
+    }
+
+    <!-- Bottom CTA -->
+    <section class="container cta-wrap">
+      <CTA
+        title={`هل تدير عملاً أو نشاطاً تجارياً في ${area.data.areaNameAr}؟`}
+        description={`خلنا نبني لك موقعاً يتصدر في منطقتك ويحول باحثي ${area.data.areaNameAr} إلى عملاء متصلين.`}
+        buttonText={`تواصل معنا بخصوص ${area.data.areaNameAr}`}
+        whatsappMessage={`السلام عليكم، أود استشارة حول موقع إلكتروني وتحسين محركات البحث لنشاطي في منطقة ${area.data.areaNameAr}.`}
+      />
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .area-detail-page {
+    padding-bottom: var(--space-20);
+  }
+
+  .breadcrumbs-wrap {
+    padding-top: var(--space-6);
+  }
+
+  .area-hero {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+    max-width: 860px;
+  }
+
+  .hero-top-badges {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .gov-badge {
+    padding: var(--space-1) var(--space-3);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-accent);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+  }
+
+  .en-badge {
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-bg-alt);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+  }
+
+  .area-h1 {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .area-commercial-lead {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+
+  .strategy-callout-section {
+    margin-bottom: var(--space-10);
+  }
+
+  .strategy-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-5);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+  }
+
+  @media (max-width: 640px) {
+    .strategy-card {
+      flex-direction: column;
+      padding: var(--space-6);
+    }
+  }
+
+  .strategy-icon-box {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent);
+    color: #ffffff;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+  }
+
+  .strategy-text h2 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .strategy-text p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .prominent-grid-section {
+    margin-bottom: var(--space-12);
+  }
+
+  .prominent-box {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-6);
+  }
+
+  .inline-icon {
+    color: var(--color-accent);
+  }
+
+  .businesses-tags {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 640px) {
+    .businesses-tags {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .businesses-tags {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .business-tag {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+  }
+
+  .check-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .editorial-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .editorial-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10);
+  }
+
+  @media (max-width: 640px) {
+    .editorial-card {
+      padding: var(--space-6) var(--space-5);
+    }
+  }
+
+  .markdown-content :global(h2) {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    border-right: 3px solid var(--color-accent);
+    padding-right: var(--space-3);
+  }
+
+  .markdown-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .markdown-content :global(h3) {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+
+  .markdown-content :global(p) {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.85;
+    margin-bottom: var(--space-4);
+  }
+
+  .markdown-content :global(ol),
+  .markdown-content :global(ul) {
+    padding-right: var(--space-6);
+    margin-bottom: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+  }
+
+  .markdown-content :global(li strong) {
+    color: var(--color-text-primary);
+  }
+
+  .faq-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .cta-wrap {
+    margin-top: var(--space-8);
+  }
+</style>
