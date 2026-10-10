@@ -80,7 +80,7 @@ const whatsappHref = getWhatsAppUrl(whatsappText);
       <div class="card-problem">
         <div class="card-icon-title">
           <CircleAlert size={22} class="problem-icon" />
-          <h3>The Common Challenge</h3>
+          <h2 class="card-title">The Common Challenge</h2>
         </div>
         <p>{service.problem}</p>
       </div>
@@ -88,7 +88,7 @@ const whatsappHref = getWhatsAppUrl(whatsappText);
       <div class="card-solution">
         <div class="card-icon-title">
           <Sparkles size={22} class="solution-icon" />
-          <h3>The webinOO Solution</h3>
+          <h2 class="card-title">The webinOO Solution</h2>
         </div>
         <p>{service.solution}</p>
       </div>
@@ -226,6 +226,12 @@ const whatsappHref = getWhatsAppUrl(whatsappText);
     align-items: center;
     gap: 10px;
     margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-ink-primary, #292239);
   }
   .problem-icon {
     color: #dc3545;

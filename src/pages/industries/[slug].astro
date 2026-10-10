@@ -80,7 +80,7 @@ const whatsappHref = getWhatsAppUrl(whatsappText);
     <!-- Market Overview & Pain Points -->
     <section class="container overview-section">
       <div class="overview-box">
-        <h3>واقع قطاع {industry.data.industryName} في الكويت</h3>
+        <h2 class="overview-title">واقع قطاع {industry.data.industryName} في الكويت</h2>
         <p>{industry.data.marketOverview}</p>
       </div>
 
@@ -194,7 +194,8 @@ const whatsappHref = getWhatsAppUrl(whatsappText);
     border-radius: var(--radius-lg, 24px);
     padding: 36px 30px;
   }
-  .overview-box h3 {
+  .overview-box h3,
+  .overview-box h2 {
     font-size: 20px;
     margin-bottom: 14px;
     color: var(--color-primary-text, #6b1eae);
