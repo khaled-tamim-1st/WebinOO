@@ -1,0 +1,1481 @@
+﻿---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import { business, getWhatsAppUrl } from '@/data/business';
+import {
+  Clock,
+  Calendar,
+  Sparkles,
+  TrendingUp,
+  Bot,
+  ShoppingBag,
+  ArrowLeft,
+  CheckCircle2,
+  ExternalLink,
+  ShieldCheck,
+  Layers,
+  MessageCircle,
+  BookOpen,
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'ط§ظ„ط±ط¦ظٹط³ظٹط©', href: '/' },
+  { label: 'ط£ط¹ظ…ط§ظ„ظ†ط§ ظˆط¯ط±ط§ط³ط§طھ ط§ظ„ط­ط§ظ„ط©', href: '/portfolio/' },
+  { label: 'ط¯ط±ط§ط³ط© ط­ط§ظ„ط© ظ…طھط¬ط± Clash Market (ط³ظٹظˆ ظˆطھط¬ط§ط±ط© ط¥ظ„ظƒطھط±ظˆظ†ظٹط©)' },
+];
+
+const siteBase = Astro.site ? Astro.site.origin : 'https://webinoo.online';
+
+const caseStudySchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['TechArticle', 'AnalysisNewsArticle'],
+      '@id': `${siteBase}/portfolio/clash-market/#article`,
+      headline: 'ط¯ط±ط§ط³ط© ط­ط§ظ„ط© SEO ظ…طھط¬ط± ط¥ظ„ظƒطھط±ظˆظ†ظٹ: ظƒظٹظپ ط­ظ‚ظ‚ ظ…طھط¬ط± Clash Market ظ…ط¨ظٹط¹ط§طھ ظˆظ†ظ…ظˆ 8 ط£ط¶ط¹ط§ظپ ظ…ط¬ط§ظ†ط§ظ‹ ط¨ط¯ظˆظ† ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط©طں',
+      description: 'طھط­ظ„ظٹظ„ ط£ط¯ط§ط، ط£ظˆظ„ 30 ظٹظˆظ…ط§ظ‹ ظ…ظ† ط³ظٹظˆ ظ…طھط¬ط± ط¥ظ„ظƒطھط±ظˆظ†ظٹ ط³ط¹ظˆط¯ظٹ: 100% ط²ظٹط§ط±ط§طھ ظ…ط¬ط§ظ†ظٹط© ظ…ظ† ط¨ط­ط« Google ط§ظ„ط·ط¨ظٹط¹ظٹ ظˆط°ظƒط§ط، ChatGPT ط§ظ„طھظˆظ„ظٹط¯ظٹطŒ ط£ط³ظپط±طھ ط¹ظ† 5 ظ…ط¨ظٹط¹ط§طھ ظ…ط؛ظ„ظ‚ط© ط¹ط¨ط± ط§ظ„ظˆط§طھط³ط§ط¨ ظˆظ…ط¶ط§ط¹ظپط© ط§ظ„ط¸ظ‡ظˆط± 8.1 ظ…ط±ط§طھ ط¨ط¯ظˆظ† ط£ظٹ ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط©.',
+      datePublished: '2026-10-11T09:00:00+03:00',
+      dateModified: '2026-10-11T09:00:00+03:00',
+      inLanguage: 'ar',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${siteBase}/portfolio/clash-market/`,
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'ظپط±ظٹظ‚ ظ‡ظ†ط¯ط³ط© ط§ظ„ظ€ Fullstack ظˆط§ظ„ظ€ SEO ظپظٹ webinOO',
+        url: siteBase,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: business.name,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${siteBase}/webinoo-logo.png`,
+        },
+      },
+      about: [
+        { '@type': 'Thing', name: 'ط³ظٹظˆ ط§ظ„ظ…طھط§ط¬ط± ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹط©' },
+        { '@type': 'Thing', name: 'ط§ظƒطھط³ط§ط¨ ط§ظ„ط¹ظ…ظ„ط§ط، ط¨ط¯ظˆظ† ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط©' },
+        { '@type': 'Thing', name: 'طھط­ط³ظٹظ† ظ…ط­ط±ظƒط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ GEO' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${siteBase}/portfolio/clash-market/#faq`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'ظ‡ظ„ طھظ… ط§ط³طھط®ط¯ط§ظ… ط£ظٹ ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط© ط£ظˆ ط­ظ…ظ„ط§طھ ط³ظˆط´ظٹط§ظ„ ظ…ظٹط¯ظٹط§ ظ„طھط­ظ‚ظٹظ‚ ظ‡ط°ظ‡ ط§ظ„ظ…ط¨ظٹط¹ط§طھ ظˆط§ظ„ط²ظٹط§ط±ط§طھطں',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'ظ„ط§ ظ†ظ‡ط§ط¦ظٹط§ظ‹. ظ…ظٹط²ط§ظ†ظٹط© ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ظƒط§ظ†طھ 0 ط±ظٹط§ظ„. ظƒظ„ ط²ط§ط¦ط± ظˆظ†ظ‚ط±ط© ظˆظ…ط¨ظٹط¹ط© طھط­ظ‚ظ‚طھ ط¨ظ†ط³ط¨ط© 100% ط¹ط¨ط± ط¨ط­ط« Google ط§ظ„ط·ط¨ظٹط¹ظٹ ط§ظ„ط¹ط¶ظˆظٹ ظˆطھظˆطµظٹط§طھ ط¨ط­ط« ChatGPT ط§ظ„طھظˆظ„ظٹط¯ظٹ ط§ظ„ظ…ط¨ط§ط´ط±ط©. ظ„ظ… ظٹظڈطµط±ظپ ظپظ„ط³ ظˆط§ط­ط¯ ط¹ظ„ظ‰ ط³ظ†ط§ط¨ ط´ط§طھطŒ طھظٹظƒ طھظˆظƒطŒ ط£ظˆ ط¥ط¹ظ„ط§ظ†ط§طھ ط¬ظˆط¬ظ„ ط§ظ„ظ…ظ…ظˆظ„ط©.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'ظ„ظ…ط§ط°ط§ ظٹط¹ط¯ ط¹ظ…ظٹظ„ ط¨ط­ط« Google ط§ظ„ط·ط¨ظٹط¹ظٹ ط£ط¹ظ„ظ‰ طھط­ظˆظٹظ„ط§ظ‹ ظ„ظ„ط´ط±ط§ط، ظ…ظ† ط¹ظ…ظٹظ„ ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط§ظ„ظ…ظ…ظˆظ„ط©طں',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'ظ„ط£ظ† ط¹ظ…ظٹظ„ ط§ظ„ط¨ط­ط« ظٹط¨ط­ط« ط¨ظ†ظٹط© ط´ط±ط§ط، ظˆط§ط¹ظٹط© ظ…ط³ط¨ظ‚ط© (High Purchase Intent) ظˆظ‡ظˆ ظ…ظ† ظٹط·ظ„ط¨ ط§ظ„ظ…ظ†طھط¬ ط¨ظ†ط´ط§ط·طŒ ط¨ظٹظ†ظ…ط§ ط¹ظ…ظٹظ„ ط§ظ„ط³ظˆط´ظٹط§ظ„ ظ…ظٹط¯ظٹط§ ظٹطھطµظپط­ ظ„ظ„ظ…طھط¹ط© ظˆطھطھظ… ظ…ظ‚ط§ط·ط¹طھظ‡ ط¨ط¥ط¹ظ„ط§ظ†. ظ„ط°ظ„ظƒ ظƒط§ظ† ظ…ط¹ط¯ظ„ ط§ط±طھط¯ط§ط¯ ط²ظˆط§ط± ط¬ظˆط¬ظ„ 37.8% ظپظ‚ط· ظˆظˆطµظ„ظˆط§ ظ…ط¨ط§ط´ط±ط© ظ„طµظپط­ط§طھ ط§ظ„ظ…ظ†طھط¬ ظˆط£ط؛ظ„ظ‚ظˆط§ 5 ظ…ط¨ظٹط¹ط§طھ ط¨ظ‚ظٹظ…ط© طھطµظ„ ط¥ظ„ظ‰ 850 ط±ظٹط§ظ„ ظ„ظ„ط·ظ„ط¨ ط§ظ„ظˆط§ط­ط¯.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'ظƒظٹظپ ط¸ظ‡ط± ظ…طھط¬ط± ط¬ط¯ظٹط¯ ظپظٹ ط¨ط­ط« ChatGPT ظˆ AI Overviews ظ…ظ† ط§ظ„ط´ظ‡ط± ط§ظ„ط£ظˆظ„طں',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'ط¹ط¨ط± طھظ‚ظ†ظٹط© ظ‡ظ†ط¯ط³ط© ط§ظ„ظ€ GEO (Generative Engine Optimization) ط§ظ„طھظٹ طھط·ط¨ظ‚ظ‡ط§ webinOOطŒ ط­ظٹط« ظٹظڈط¨ظ†ظ‰ ط§ظ„ظ…ظˆظ‚ط¹ ظƒظƒظٹط§ظ† ظ…ط¹ط±ظپظٹ ظٹظ‚ط¯ظ… ط¥ط¬ط§ط¨ط§طھ ط­ط§ط³ظ…ط© ظˆظ…ط¨ط§ط´ط±ط© ظ„ظ…ط®ط§ظˆظپ ط§ظ„ط´ط±ط§ط،طŒ ظ…ظ…ط§ ط¯ظپط¹ ط®ظˆط§ط±ط²ظ…ظٹط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ظ„ط§ظ‚طھط¨ط§ط³ ط§ظ„ظ…طھط¬ط± ظˆط¥ط±ط³ط§ظ„ 20 ط¹ظ…ظٹظ„ط§ظ‹ ط­ظ‚ظ‚ظˆط§ 3 ط·ظ„ط¨ط§طھ ظˆط§طھط³ط§ط¨.',
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="ط¯ط±ط§ط³ط© ط­ط§ظ„ط© SEO ظ…طھط¬ط± ط¥ظ„ظƒطھط±ظˆظ†ظٹ: ظ‚طµط© ظ†ط¬ط§ط­ Clash Market ط¨ط¯ظˆظ† ط¥ط¹ظ„ط§ظ†ط§طھ | webinOO"
+  description="ط¯ط±ط§ط³ط© ط­ط§ظ„ط© ط³ظٹظˆ طھظپط§ط¹ظ„ظٹط© ط¨ط§ظ„ط£ط±ظ‚ط§ظ…: ظƒظٹظپ ط­ظ‚ظ‚ ظ…طھط¬ط± Clash Market ط§ظ„ط³ط¹ظˆط¯ظٹ 4,270 ط¸ظ‡ظˆط±ط§ظ‹ ظپظٹ Google ظˆ20 ط¹ظ…ظٹظ„ط§ظ‹ ظ…ظ† ChatGPT ظˆ5 ظ…ط¨ظٹط¹ط§طھ ظپظٹ ط£ظˆظ„ ط´ظ‡ط± ط¨طھظƒظ„ظپط© ط¥ط¹ظ„ط§ظ†ظٹط© (0 ط±ظٹط§ظ„)."
+  schema={caseStudySchema}
+  lang="ar"
+>
+  <Header slot="header" lang="ar" />
+
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="reading-progress-bar" aria-hidden="true"></div>
+
+  <main class="case-study-page">
+    <!-- Breadcrumbs -->
+    <div class="container breadcrumbs-container">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+
+    <!-- Hero Section -->
+    <section class="container showcase-hero">
+      <div class="hero-badges-row">
+        <span class="hero-pill pill-free"> 0.00 ط±ظٹط§ظ„ ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط©</span>
+        <span class="hero-pill pill-organic"> 100% ط²ظˆط§ط± ط¨ط­ط« Google ط§ظ„ط¹ط¶ظˆظٹ</span>
+        <span class="hero-pill pill-ai"> ط¹ظ…ظ„ط§ط، ظ…ط¨ط§ط´ط±ظˆظ† ظ…ظ† ط¨ط­ط« ChatGPT</span>
+        <span class="hero-pill pill-gcc">  طھط¬ط§ط±ط© ط¥ظ„ظƒطھط±ظˆظ†ظٹط© ظˆط³ظٹظˆ ط®ظ„ظٹط¬ظٹ</span>
+      </div>
+
+      <h1 class="showcase-h1">
+        ط¯ط±ط§ط³ط© ط­ط§ظ„ط© SEO ظ…طھط¬ط± ط¥ظ„ظƒطھط±ظˆظ†ظٹ: ظƒظٹظپ ط¨ظ†طھ webinOO ظ…طھط¬ط± <mark>Clash Market</mark> ط§ظ„ط³ط¹ظˆط¯ظٹ ظ„ظٹط­ظ‚ظ‚ ظ…ط¨ظٹط¹ط§طھ ظˆظ†ظ…ظˆ 8 ط£ط¶ط¹ط§ظپ ظ…ط¬ط§ظ†ط§ظ‹ ط¨ط¯ظˆظ† ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط©طں
+      </h1>
+
+      <p class="showcase-lead">
+        طھظˆط«ظٹظ‚ ط¹ظ…ظ„ظٹ ط¨ط§ظ„ط£ط±ظ‚ط§ظ… ظˆط§ظ„ط±ط³ظˆظ… ط§ظ„ط¨ظٹط§ظ†ظٹط© ط§ظ„طھظپط§ط¹ظ„ظٹط©: ظƒظٹظپ ظ†ظ‚ظ„طھ webinOO ظ…طھط¬ط±ط§ظ‹ ط¥ظ„ظƒطھط±ظˆظ†ظٹط§ظ‹ ط¬ط¯ظٹط¯ط§ظ‹ ظ…ظ† ط§ظ„طµظپط± ط¥ظ„ظ‰ طµط¯ط§ط±ط© ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰ ظپظٹ GoogleطŒ ظˆط§ط³طھظ‚ط·ط¨طھ ط²ظˆط§ط±ط§ظ‹ ظ„ظ„ط´ط±ط§ط، ط¹ط¨ط± ChatGPTطŒ ظˆط£ط؛ظ„ظ‚طھ 5 ظ…ط¨ظٹط¹ط§طھ ظپط¹ظ„ظٹط© ظ„ط­ط³ط§ط¨ط§طھ ط§ظ„ظ†ط®ط¨ط© ط¹ط¨ط± ط§ظ„ظˆط§طھط³ط§ط¨ ظپظٹ ط£ظˆظ„ 30 ظٹظˆظ…ط§ظ‹ ظپظ‚ط· ط¨ط¯ظˆظ† ط¥ظ†ظپط§ظ‚ ط±ظٹط§ظ„ ظˆط§ط­ط¯ ظپظٹ ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ.
+      </p>
+
+      <!-- Psychological Contrast Banner -->
+      <div class="contrast-shock-banner" id="zero-ad-proof">
+        <div class="contrast-header">
+          <div class="contrast-title">
+            <Sparkles size={18} /> ط§ظ„ط­ظ‚ظٹظ‚ط© ط§ظ„ط±ظ‚ظ…ظٹط© ط§ظ„ظپط§طµظ„ط©: ظ…ط¨ظٹط¹ط§طھ ظˆط²ظٹط§ط±ط§طھ ظ…ط¬ط§ظ†ظٹط© ط¨ط§ظ„ظƒط§ظ…ظ„ (Zero-Ad Architecture)
+          </div>
+          <div class="contrast-badge-pill">
+            Zero-Paid Traffic Proof
+          </div>
+        </div>
+        <div class="contrast-body">
+          <div class="contrast-side bad">
+            <h4> ظپط® ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط§ظ„طھظ‚ظ„ظٹط¯ظٹط© ظˆط­ط±ظ‚ ط§ظ„ظ…ظٹط²ط§ظ†ظٹط§طھ:</h4>
+            <p>
+              ط£ط؛ظ„ط¨ ط§ظ„ظ…طھط§ط¬ط± ط§ظ„ط¬ط¯ظٹط¯ط© طھط­ط±ظ‚ ظ…ط¦ط§طھ ط§ظ„ط¯ظ†ط§ظ†ظٹط± ظˆط¢ظ„ط§ظپ ط§ظ„ط±ظٹط§ظ„ط§طھ ط´ظ‡ط±ظٹط§ظ‹ ط¹ظ„ظ‰ ط¥ط¹ظ„ط§ظ†ط§طھ ط³ظ†ط§ط¨ ط´ط§طھ ظˆطھظٹظƒ طھظˆظƒ ظ„ظ„ظˆطµظˆظ„ ط¥ظ„ظ‰ ط²ظˆط§ط± ط¹ط´ظˆط§ط¦ظٹظٹظ† ط¨ظ„ط§ ظ†ظٹط© ط´ط±ط§ط، ط­ظ‚ظٹظ‚ظٹط©.. ظˆط¨ظ…ط¬ط±ط¯ ط¥ظٹظ‚ط§ظپ ط´ط­ظ† ط¨ط·ط§ظ‚ط© ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھطŒ طھظ…ظˆطھ ط§ظ„ط²ظٹط§ط±ط§طھ ظˆط§ظ„ظ…ط¨ظٹط¹ط§طھ ظپظٹ ظ†ظپط³ ط§ظ„ظ„ط­ط¸ط©!
+            </p>
+          </div>
+          <div class="contrast-side good">
+            <h4> ظ…ط§ ط¨ظ†طھظ‡ webinOO ظپظٹ ظ…طھط¬ط± Clash Market:</h4>
+            <p>
+              <strong>ظƒظ„ ط²ط§ط¦ط± ظˆظ†ظ‚ط±ط© ظˆظ…ط¨ظٹط¹ط© ظپظٹ ظ‡ط°ط§ ط§ظ„طھظ‚ط±ظٹط± طھط­ظ‚ظ‚طھ ط¨طھظƒظ„ظپط© ط¥ط¹ظ„ط§ظ†ظٹط© (0 ط±ظٹط§ظ„).</strong> ظ„ط§ ط­ظ…ظ„ط§طھ ظ…ظ…ظˆظ„ط©طŒ ظ„ط§ ظ…ط´ط§ظ‡ظٹط±طŒ ظˆظ„ط§ ظ…ظ†ط´ظˆط±ط§طھ ط³ظˆط´ظٹط§ظ„ ظ…ظٹط¯ظٹط§. 100% ظ…ظ† ط§ظ„ط¹ظ…ظ„ط§ط، ط¬ط§ط،ظˆط§ ط¹ط¨ط± ظ…ط­ط±ظƒ ط¨ط­ط« Google ظˆطھظˆطµظٹط§طھ ChatGPT ظ„ط£ظ†ظ‡ظ… ظٹط¨ط­ط«ظˆظ† ط¨ظ†ط´ط§ط· ظˆط¨ظ†ظٹط© ط´ط±ط§ط، ط­ط§ط³ظ…ط© ظ…ط³ط¨ظ‚ط©.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive AEO Capsule -->
+      <div class="executive-capsule">
+        <div class="capsule-lead-label">
+          <CheckCircle2 size={15} /> ط§ظ„ظ…ظ„ط®طµ ط§ظ„طھظ†ظپظٹط°ظٹ ط§ظ„ط³ط±ظٹط¹ (GEO/AEO Answer Capsule)
+        </div>
+        <p class="capsule-text">
+          ط¨ظ†طھ <strong>webinOO</strong> ظ…طھط¬ط± <strong>Clash Market</strong> ط§ظ„ط³ط¹ظˆط¯ظٹ (<a href="https://clashmarket.online" target="_blank" rel="dofollow" style="color:var(--color-primary); font-weight:700; text-decoration:underline;">clashmarket.online</a>) ظ…ظ† ط§ظ„طµظپط±طŒ ظˆط£ط·ظ„ظ‚طھظ‡ ط¨ظ‡ظٹظƒظ„ ظ…ط¹ظ…ط§ط±ظٹ ظ…ظ‡ظٹط£ ظ„ظ…ط­ط±ظƒط§طھ ط§ظ„ط¨ط­ط« ظˆط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ. ظˆظپظٹ ط£ظˆظ„ 30 ظٹظˆظ…ط§ظ‹ ظپظ‚ط· ظ…ظ† ط§ظ„ط¹ظ…ظ„ ط¹ظ„ظ‰ ط§ظ„ظ€ SEO ط§ظ„ط¹ط¶ظˆظٹ ظˆط¨ظ…ظٹط²ط§ظ†ظٹط© ط¥ط¹ظ„ط§ظ†ط§طھ <strong>(طµظپط± ط±ظٹط§ظ„)</strong>طŒ ظ‚ظپط² ط¸ظ‡ظˆط± ط§ظ„ظ…طھط¬ط± ظپظٹ Google ط¥ظ„ظ‰ <strong>4,270 ظ…ط±ط©</strong> ط¨ظ†ظ…ظˆ <strong>أ—8.1</strong>طŒ ظˆط²ط§ط±ظ‡ <strong>157 ظ…ط´طھط±ظٹط§ظ‹</strong> ظ…ظ† ط¨ط­ط« Google ط§ظ„ط·ط¨ظٹط¹ظٹ ظˆ<strong>20 ط²ط§ط¦ط±ط§ظ‹ ظ…ظ† ChatGPT</strong>طŒ ظˆط³ط¬ظ‘ظ„ <strong>85 ط²ط§ط¦ط±ظ‹ط§ ظ…ظ† ط§ظ„ط³ط¹ظˆط¯ظٹط©</strong>طŒ ظˆط£ظڈط؛ظ„ظ‚طھ <strong>5 ظ…ط¨ظٹط¹ط§طھ ظپط¹ظ„ظٹط© ظ„ط­ط³ط§ط¨ط§طھ ط§ظ„ظ†ط®ط¨ط© ط¹ط¨ط± ط§ظ„ظˆط§طھط³ط§ط¨</strong>.
+        </p>
+      </div>
+
+      <!-- Live Website Preview Bar -->
+      <div style="background:#ffffff; border:2px solid var(--color-border-default); border-radius:var(--radius-lg); padding:20px 24px; margin-bottom:28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; box-shadow:var(--shadow-card);">
+        <div style="display:flex; flex-direction:column; gap:3px;">
+          <span style="font-size:12px; font-weight:700; color:var(--color-primary); text-transform:uppercase;">ظ…ط¹ط§ظٹظ†ط© ط§ظ„ظ…طھط¬ط± ط§ظ„ظپط¹ظ„ظٹ ط¹ظ„ظ‰ ط£ط±ط¶ ط§ظ„ظˆط§ظ‚ط¹</span>
+          <strong style="font-size:17px; color:var(--color-ink-primary);">ظ…طھط¬ط± Clash Market ظٹط¹ظ…ظ„ ط¨ظƒط§ظ…ظ„ ظƒظپط§ط،طھظ‡:</strong>
+          <span style="font-size:13px; color:var(--color-ink-muted);">طھطµظپط­ ط§ظ„طھطµظ…ظٹظ… ظˆط§ظ„ظ‡ظٹظƒظ„ ط§ظ„ظ…ط¹ظ…ط§ط±ظٹ ظˆط³ط±ط¹ط© ط§ظ„ط£ط¯ط§ط، ط§ظ„ظ…ط¨ط§ط´ط±ط© ط¹ظ„ظ‰ ط§ظ„ظ†ط·ط§ظ‚ ط§ظ„ط­ظٹ.</span>
+        </div>
+        <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="btn btn-primary" style="text-decoration:none;">
+          ط²ظٹط§ط±ط© ط§ظ„ظ…طھط¬ط±: clashmarket.online â†گ
+        </a>
+      </div>
+
+      <!-- Verification Proof Tags -->
+      <div class="author-meta-bar">
+        <div class="author-cell">
+          <div class="author-avatar-img">W</div>
+          <div class="author-text">
+            <strong>ط¥ط¹ط¯ط§ط¯: ظپط±ظٹظ‚ ظ‡ظ†ط¯ط³ط© ط§ظ„ظ€ Fullstack ظˆظ‡ظ†ط¯ط³ط© ط§ظ„ظ€ SEO/GEO ظپظٹ webinOO</strong>
+            <span>طھظˆط«ظٹظ‚ ظ…ط¹طھظ…ط¯ ظ„ط¨ظٹط§ظ†ط§طھ Google Search Console ظˆ Ahrefs Web Analytics آ· ظ‚ط±ط§ط،ط© ظ…طھط¹ظ…ظ‚ط©: 8 ط¯ظ‚ط§ط¦ظ‚</span>
+          </div>
+        </div>
+        <div class="proof-tags">
+          <span class="proof-pill"> Search Console ظ…ظˆط«ظ‚</span>
+          <span class="proof-pill"> طھط­ظ„ظٹظ„ط§طھ Ahrefs</span>
+          <span class="proof-pill"> ط³ط¬ظ„ ط¥ط؛ظ„ط§ظ‚ ط§ظ„ظˆط§طھط³ط§ط¨</span>
+        </div>
+      </div>
+
+      <!-- Bento KPI Dashboard -->
+      <div class="bento-grid">
+        <div class="bento-item highlight-dark">
+          <div class="bento-header">
+            <span class="bento-label">ط¸ظ‡ظˆط± Google ط§ظ„ط¹ط¶ظˆظٹ (ط£ظˆظ„ ط´ظ‡ط± SEO)</span>
+            <span class="bento-badge">أ—8.1 ظ†ظ…ظˆ ط·ط¨ظٹط¹ظٹ</span>
+          </div>
+          <div class="bento-number">4,270</div>
+          <p class="bento-sub">ظ‚ظپط²ط© ظ…ظ† 524 ط¸ظ‡ظˆط±ط§ظ‹ ظپظٹ ط§ظ„ط´ظ‡ط± ط§ظ„ط³ط§ط¨ظ‚.. ط¨ط¯ظˆظ† ط¯ظپط¹ ظپظ„ط³ ظˆط§ط­ط¯ ظپظٹ ط¥ط¹ظ„ط§ظ†ط§طھ Google Ads.</p>
+        </div>
+
+        <div class="bento-item">
+          <div class="bento-header">
+            <span class="bento-label">ظ…طھظˆط³ط· ط§ظ„طھط±طھظٹط¨ ظپظٹ ظ†طھط§ط¦ط¬ Google</span>
+            <span class="bento-badge">ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰</span>
+          </div>
+          <div class="bento-number">7.8</div>
+          <p class="bento-sub">ط§ظ†طھظ‚ط§ظ„ ط­ط§ط³ظ… ظ…ظ† ط¹ظ…ظ‚ ط§ظ„طµظپط­ط© ط§ظ„ط«ط§ظ†ظٹط© (11.2) ط¥ظ„ظ‰ ظˆط§ط¬ظ‡ط© ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰ ط®ظ„ط§ظ„ 30 ظٹظˆظ…ط§ظ‹.</p>
+        </div>
+
+        <div class="bento-item">
+          <div class="bento-header">
+            <span class="bento-label">ط§ظ„ط¸ظ‡ظˆط± ظپظٹ ظ…ظٹط²ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ</span>
+            <span class="bento-badge">AI Overviews</span>
+          </div>
+          <div class="bento-number">190</div>
+          <p class="bento-sub">3.8% ظ…ظ† ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ط¸ظ‡ظˆط± ط¹ط¨ط± ط¥ط¬ط§ط¨ط§طھ Google ط§ظ„طھظˆظ„ظٹط¯ظٹط© (89% ظ…ظ†ظ‡ط§ ظپظٹ ط¢ط®ط± 17 ظٹظˆظ…ط§ظ‹).</p>
+        </div>
+
+        <div class="bento-item">
+          <div class="bento-header">
+            <span class="bento-label">ط¹ظ…ظ„ط§ط، ظ…ظ† ChatGPT ظ…ط¨ط§ط´ط±ط©</span>
+            <span class="bento-badge">35% ط§ط±طھط¯ط§ط¯ ظپظ‚ط·</span>
+          </div>
+          <div class="bento-number">20 ط²ط§ط¦ط±ط§ظ‹</div>
+          <p class="bento-sub">ط§ظ„ظ…طµط¯ط± ط§ظ„ط«ط§ظ„ط« ظ„ظ„ط²ظٹط§ط±ط§طھ ظ…طھظپظˆظ‚ط§ظ‹ ط¹ظ„ظ‰ BingطŒ ظˆظ†طھط¬ ط¹ظ†ظ‡ 3 ظ†ظ‚ط±ط§طھ ط´ط±ط§ط، ظ…ط¤ظƒط¯ط© ظ…ظ† ط§ظ„ط³ط¹ظˆط¯ظٹط©.</p>
+        </div>
+
+        <div class="bento-item">
+          <div class="bento-header">
+            <span class="bento-label">ظ†ظ‚ط±ط§طھ ط§ظ„ط´ط±ط§ط، ط§ظ„ط­ظ‚ظٹظ‚ظٹط© (ظˆط§طھط³ط§ط¨)</span>
+            <span class="bento-badge">ط§ط³طھط¨ط¹ط§ط¯ ط§ظ„ط¨ظˆطھط§طھ</span>
+          </div>
+          <div class="bento-number">53 ظ†ظ‚ط±ط©</div>
+          <p class="bento-sub">ظ…ظ† 37 ط¹ظ…ظٹظ„ط§ظ‹ ظ…ط­طھظ…ظ„ط§ظ‹ ط­ظ‚ظٹظ‚ظٹط§ظ‹ (41% ظ…ظ† ط§ظ„ط³ط¹ظˆط¯ظٹط©) طھظ… ط¹ط²ظ„ ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ط¢ظ„ظٹط© ط¨ط§ظ„ظƒط§ظ…ظ„ ط¹ظ†ظ‡ط§.</p>
+        </div>
+
+        <div class="bento-item">
+          <div class="bento-header">
+            <span class="bento-label">ظ…ط¨ظٹط¹ط§طھ ظ…ط؛ظ„ظ‚ط© ظپظٹ ط£ظˆظ„ 30 ظٹظˆظ…ط§ظ‹</span>
+            <span class="bento-badge">ط¹ط¨ط± ط§ظ„ظˆط§طھط³ط§ط¨</span>
+          </div>
+          <div class="bento-number">5 ظ…ط¨ظٹط¹ط§طھ</div>
+          <p class="bento-sub">طµظپظ‚ط§طھ ط¨ظٹط¹ ظ„ط­ط³ط§ط¨ط§طھ ط§ظ„ظ†ط®ط¨ط© (طھطµظ„ ط¥ظ„ظ‰ 850 ط±ظٹط§ظ„ ظ„ظ„ط·ظ„ط¨) ظ…ط³ط¬ظ„ط© ظپظٹ ط³ط¬ظ„ ط§ظ„ط¹ظ…ظٹظ„ ط§ظ„ظ…ط¤ظƒط¯.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Two-Column Showcase Layout -->
+    <div class="container main-showcase-grid">
+      <!-- Article Column -->
+      <article class="showcase-content-col">
+        <!-- Section 1 -->
+        <h2 id="zero-ad-proof-section">1. ط§ظ„ط­ظ‚ظٹظ‚ط© ط§ظ„ط±ظ‚ظ…ظٹط© ط§ظ„ظپط§طµظ„ط©: 100% ط­ط±ظƒط© ط¨ط­ط« ظ…ط¬ط§ظ†ظٹط© ط·ط¨ظٹط¹ظٹط© ط¨ط¯ظˆظ† ط¥ط¹ظ„ط§ظ†ط§طھ</h2>
+        <p>
+          ظ‚ط¨ظ„ ط§ظ„ط؛ظˆطµ ظپظٹ ط§ظ„ط£ط±ظ‚ط§ظ… ط§ظ„طھظپطµظٹظ„ظٹط©طŒ ظٹط¬ط¨ طھظˆط¶ظٹط­ ط§ظ„ظپط§ط±ظ‚ ط§ظ„ط¬ظˆظ‡ط±ظٹ ط§ظ„ط°ظٹ ظٹط؛ظٹط± ظ‚ظˆط§ط¹ط¯ ط§ظ„ظ„ط¹ط¨ط© ظ„ظƒظ„ طھط§ط¬ط± ظˆطµط§ط­ط¨ ظ…طھط¬ط±:
+        </p>
+        <ul>
+          <li><strong>ظپط® ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط§ظ„ظ…ظ…ظˆظ„ط© ظˆط§ظ„ط³ظˆط´ظٹط§ظ„ ظ…ظٹط¯ظٹط§:</strong> ط£ط؛ظ„ط¨ ط§ظ„ظ…طھط§ط¬ط± ط§ظ„ط¬ط¯ظٹط¯ط© طھط­ط±ظ‚ ظ…ط¦ط§طھ ط§ظ„ط¯ظ†ط§ظ†ظٹط± ظˆط¢ظ„ط§ظپ ط§ظ„ط±ظٹط§ظ„ط§طھ ط´ظ‡ط±ظٹط§ظ‹ ظپظٹ ط­ظ…ظ„ط§طھ ظ…ظ…ظˆظ„ط© ظ„ط¬ظ„ط¨ ط²ظٹط§ط±ط§طھ ط¹ط´ظˆط§ط¦ظٹط© ظ…ظ† ط£ط´ط®ط§طµ ظٹطھطµظپط­ظˆظ† ظ„ظ„طھط±ظپظٹظ‡ط› ظˆط¨ظ…ط¬ط±ط¯ طھظˆظ‚ظپ ط´ط­ظ† ط§ظ„ط¨ط·ط§ظ‚ط© ط§ظ„ط¥ط¹ظ„ط§ظ†ظٹط©طŒ طھطھظˆظ‚ظپ ط§ظ„ط²ظٹط§ط±ط§طھ ظˆط§ظ„ظ…ط¨ظٹط¹ط§طھ ظپظˆط±ط§ظ‹!</li>
+          <li><strong>ظ…ط§ ط¨ظ†طھظ‡ webinOO ظپظٹ ظ…طھط¬ط± Clash Market:</strong> ظƒظ„ ط²ط§ط¦ط±طŒ ظˆظ†ظ‚ط±ط©طŒ ظˆظ…ط¨ظٹط¹ط© ظپظٹ ظ‡ط°ط§ ط§ظ„طھظ‚ط±ظٹط± طھط­ظ‚ظ‚طھ <strong>ط¨طھظƒظ„ظپط© ط¥ط¹ظ„ط§ظ†ظٹط© (0 ط±ظٹط§ظ„)</strong>. ظ„ط§ ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط©طŒ ظˆظ„ط§ ظ…ط´ط§ظ‡ظٹط±طŒ ظˆظ„ط§ ط­ظ…ظ„ط§طھ طھط±ظˆظٹط¬ظٹط©. ط§ظ„ط²ظٹط§ط±ط§طھ ط¬ط§ط،طھ ط¹ط¨ط± ط£ط´ط®ط§طµ ظٹط¨ط­ط«ظˆظ† ط¨ظˆط¹ظٹ ظˆظ†ظٹط© ط´ط±ط§ط، ظ…ط³ط¨ظ‚ط© ط¹ط¨ط± Google ظˆChatGPTطŒ ظ…ظ…ط§ ظٹط¬ط¹ظ„ ط§ظ„ظ…ظˆظ‚ط¹ ط£طµظ„ط§ظ‹ ط±ظ‚ظ…ظٹط§ظ‹ ظ…ط³طھط¯ط§ظ…ط§ظ‹ ظٹط¯ط± ط£ط±ط¨ط§ط­ط§ظ‹ ط´ظ‡ط±ظٹط© ظ…طھط±ط§ظƒظ…ط© ظ…ط¬ط§ظ†ط§ظ‹.</li>
+        </ul>
+
+        <!-- Section 2 -->
+        <h2 id="first-month-seo">2. ط³ظٹظˆ ظ…طھط¬ط± ط¥ظ„ظƒطھط±ظˆظ†ظٹ ط¨ط§ظ„ط£ط±ظ‚ط§ظ… ط§ظ„ظپط¹ظ„ظٹط©: ظ…ظ‚ط§ط±ظ†ط© ظ‚ط¨ظ„ ظˆط¨ط¹ط¯ ط§ظ„ط¹ظ…ظ„ (Before vs After)</h2>
+        <p>
+          ط§ظ„ط£ط±ظ‚ط§ظ… ط§ظ„طھط§ظ„ظٹط© ظ…ط³طھط®ط±ط¬ط© ظ…ظ† ط£ط¯ط§ط© <strong>Ahrefs Web Analytics</strong> ظˆطھط؛ط·ظٹ ط¢ط®ط± 30 ظٹظˆظ…ط§ظ‹طŒ ط£ظٹ ط£ظˆظ„ ط´ظ‡ط± ط¹ظ…ظ„ ط³ظٹظˆ ظˆطھط·ظˆظٹط± ظپط¹ظ„ظٹ ط¨ط¹ط¯ ط¥ط·ظ„ط§ظ‚ ط§ظ„ظ…طھط¬ط±. ظˆظ„ظ„ظ…ظ‚ط§ط±ظ†ط© ط§ظ„طµط±ظٹط­ط© ظˆط§ظ„ظ…ط¬ط±ط¯ط©طŒ ظ‡ط°ظ‡ ط£ط±ظ‚ط§ظ… <strong>Google Search Console</strong> ظ„ظپطھط±ط© 30 ظٹظˆظ…ط§ظ‹ ظ‚ط¨ظ„ ط¨ط¯ط، ط®ط·ط© ط§ظ„ظ€ SEO ظˆظپطھط±ط© 30 ظٹظˆظ…ط§ظ‹ ط¨ط¹ط¯ظ‡ط§:
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ظ…ط¤ط´ط± ط£ط¯ط§ط، Google ط§ظ„ط·ط¨ظٹط¹ظٹ</th>
+                <th>ظ‚ط¨ظ„ ط®ط·ط© ط§ظ„ظ€ SEO (11 ط£ط؛ط³ط·ط³ â€“ 9 ط³ط¨طھظ…ط¨ط±)</th>
+                <th>ط£ظˆظ„ ط´ظ‡ط± ط³ظٹظˆ ظپط¹ظ„ظٹ (10 ط³ط¨طھظ…ط¨ط± â€“ 9 ط£ظƒطھظˆط¨ط±)</th>
+                <th>ط§ظ„طھط؛ظٹظ‘ط± ط§ظ„ط­ظ‚ظٹظ‚ظٹ (Growth)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ط§ظ„ط¸ظ‡ظˆط± ظپظٹ ظ†طھط§ط¦ط¬ ط§ظ„ط¨ط­ط« (Impressions)</strong></td>
+                <td><span class="num-en">524</span></td>
+                <td><span class="num-en">4,270</span></td>
+                <td><span class="badge-up">أ—8.1 ط£ط¶ط¹ط§ظپ</span></td>
+              </tr>
+              <tr>
+                <td><strong>ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ظ…ط¬ط§ظ†ظٹط© (Organic Clicks)</strong></td>
+                <td><span class="num-en">71</span></td>
+                <td><span class="num-en">150</span></td>
+                <td><span class="badge-up">أ—2.1 ط£ط¶ط¹ط§ظپ</span></td>
+              </tr>
+              <tr>
+                <td><strong>ظ…طھظˆط³ط· ط§ظ„طھط±طھظٹط¨ (Average Position)</strong></td>
+                <td><span class="num-en">11.2</span></td>
+                <td><span class="num-en">7.8</span></td>
+                <td><strong>ظ…ظ† ط§ظ„طµظپط­ط© ط§ظ„ط«ط§ظ†ظٹط© ط¥ظ„ظ‰ طµط¯ط§ط±ط© ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰</strong></td>
+              </tr>
+              <tr>
+                <td><strong>ظ†ط³ط¨ط© ط§ظ„ظ†ظ‚ط± ط¥ظ„ظ‰ ط§ظ„ط¸ظ‡ظˆط± (CTR)</strong></td>
+                <td><span class="num-en">13.5%</span></td>
+                <td><span class="num-en">3.5%</span></td>
+                <td>ط§ظ†ط®ظپط§ط¶ ط·ط¨ظٹط¹ظٹ ظ†طھظٹط¬ط© ط§طھط³ط§ط¹ ط§ظ„ط¸ظ‡ظˆط± ظ„ظƒظ„ظ…ط§طھ ط¹ط§ظ…ط© ظƒط¨ط±ظ‰</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ظ…طµط¯ط± ط§ظ„ط²ظٹط§ط±ط§طھ ط§ظ„ظپط¹ظ„ظٹ (Ahrefs)</th>
+                <th>ط§ظ„ط²ظˆط§ط± ط§ظ„ط­ظ‚ظٹظ‚ظٹظˆظ†</th>
+                <th>ظ†ط³ط¨ط© ط§ظ„ط§ط±طھط¯ط§ط¯ (Bounce Rate)</th>
+                <th>ظ…طھظˆط³ط· ظ…ط¯ط© ط§ظ„ط¬ظ„ط³ط©</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ط¨ط­ط« Google ط§ظ„ط·ط¨ظٹط¹ظٹ (Organic Search)</strong></td>
+                <td><span class="num-en">157</span></td>
+                <td><span class="badge-up">37.8%</span></td>
+                <td><span class="num-en">6.5</span> ط¯ظ‚ظٹظ‚ط© ظƒط§ظ…ظ„ط©</td>
+              </tr>
+              <tr>
+                <td><strong>ChatGPT (ط¨ط­ط« ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ط§ظ„طھظˆظ„ظٹط¯ظٹ)</strong></td>
+                <td><span class="num-en">20</span></td>
+                <td><span class="badge-up">35.0%</span></td>
+                <td><span class="num-en">3.5</span> ط¯ظ‚ظٹظ‚ط©</td>
+              </tr>
+              <tr>
+                <td><strong>ظ…ط¨ط§ط´ط± ظˆط؛ظٹط± ظ…ظ†ط³ظˆط¨ (Direct / Team)</strong></td>
+                <td><span class="num-en">223</span></td>
+                <td><span class="num-en">74.8%</span></td>
+                <td><span class="num-en">14.3</span> ط¯ظ‚ظٹظ‚ط©</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="psychology-card">
+          <div class="psychology-card-tag">
+            <Sparkles size={14} /> ط³ظ„ظˆظƒ ط§ظ„ظ…ط´طھط±ظٹظ† ط§ظ„ط¹ط¶ظˆظٹظٹظ† ظˆط¬ظˆط¯ط© ط²ظٹط§ط±ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ
+          </div>
+          <h4>ChatGPT ظٹطھظپظˆظ‚ ط¹ظ„ظ‰ Bing ط¨ط§ط±طھط¯ط§ط¯ ظ…ظ†ط®ظپط¶ (35%) ظˆظ†ظٹط© ط´ط±ط§ط، ط­ظ‚ظٹظ‚ظٹط©:</h4>
+          <p>
+            ط£ط«ط¨طھطھ ط¨ظٹط§ظ†ط§طھ ط§ظ„طھط­ظ„ظٹظ„ ط£ظ† ط§ظ„ط²ط§ط¦ط± ط§ظ„ظ‚ط§ط¯ظ… ظ…ظ† ChatGPT ظ„ظ… ظٹط£طھظگ ظ„ظ„ظ‚ط±ط§ط،ط© ط§ظ„ط¹ط§ط¨ط±ط©طŒ ط¨ظ„ ط³ط¬ظ„ ظ…ط¹ط¯ظ„ ط§ط±طھط¯ط§ط¯ ط£ظپط¶ظ„ ظ…ظ† Google (35% ظ…ظ‚ط§ط¨ظ„ 37.8%)طŒ ظˆط£ط³ظپط± ط¹ظ† 3 ط·ظ„ط¨ط§طھ ظˆط§طھط³ط§ط¨ ط´ط±ط§ط، ظ…ط¨ط§ط´ط±ط© ظ„ط­ط³ط§ط¨ط§طھ ط§ظ„ظ†ط®ط¨ط© ظ…ظ† ط§ظ„ط³ط¹ظˆط¯ظٹط©. ظƒظ…ط§ ط£ظ† 74% ظ…ظ† ط§ظ„ط²ظˆط§ط± ط¯ط®ظ„ظˆط§ ظ…ظ† ط§ظ„ظ‡ط§طھظپ ط§ظ„ط¬ظˆط§ظ„طŒ ظ…ظ…ط§ ط¬ط¹ظ„ ط³ط±ط¹ط© ط§ظ„ظ…طھط¬ط± ط¹ظ„ظ‰ ط§ظ„ظ‡ظˆط§طھظپ ط³ط¨ط¨ط§ظ‹ ط­ط§ط³ظ…ط§ظ‹ ظپظٹ ط¥ط؛ظ„ط§ظ‚ ط§ظ„طµظپظ‚ط§طھ.
+          </p>
+        </div>
+
+        <!-- Section 3 -->
+        <h2 id="executive-data">3. ظ†طھط§ط¦ط¬ Google Search Console ظ…ظ†ط° ط§ظ„ط¥ط·ظ„ط§ظ‚ (65 ظٹظˆظ…ط§ظ‹ ظ…ظ† ط§ظ„طھط±ط§ظƒظ… ط§ظ„ظ…ط¹ط±ظپظٹ)</h2>
+        <p>
+          ط§ظ„ط¬ظ…ط§ظ„ ط§ظ„ط­ظ‚ظٹظ‚ظٹ ظپظٹ ط§ظ„ظ€ SEO ط§ظ„ط·ط¨ظٹط¹ظٹ ظ…ظ‚ط§ط±ظ†ط© ط¨ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط§ظ„ظ…ظ…ظˆظ„ط© ظ‡ظˆ <strong>"ط§ظ„ط£ط«ط± ط§ظ„طھط±ط§ظƒظ…ظٹ ط§ظ„ظ…ط³طھط¯ط§ظ… (Compounding Asset)"</strong>. ظپط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ طھطھظˆظ‚ظپ ط¨ط§ظ†طھظ‡ط§ط، ط§ظ„ظ…ظٹط²ط§ظ†ظٹط©طŒ ط£ظ…ط§ ط§ظ„ظ…ظˆظ‚ط¹ ط§ظ„ظ…ظ‡ظٹط£ ط¨ط±ظ…ط¬ظٹط§ظ‹ ظپظٹط²ط¯ط§ط¯ ط«ظ‚ط© ظˆطھظˆط³ط¹ط§ظ‹ ظƒظ„ ط£ط³ط¨ظˆط¹. ط®ظ„ط§ظ„ 65 ظٹظˆظ…ط§ظ‹طŒ طھط¶ط§ط¹ظپطھ ظ†ظ‚ط±ط§طھ ط§ظ„ظ…طھط¬ط± ط¨ظ…ظ‚ط¯ط§ط± 1.7 ظ…ط±ط©طŒ ط¨ظٹظ†ظ…ط§ <strong>طھط¶ط§ط¹ظپ ط§ظ„ط¸ظ‡ظˆط± 7.6 ط£ط¶ط¹ط§ظپ</strong>:
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ط§ظ„ظ…ط¤ط´ط± ط§ظ„طھط±ط§ظƒظ…ظٹ (Search Console)</th>
+                <th>ط§ظ„ظ‚ظٹظ…ط© ط§ظ„ظپط¹ظ„ظٹط© ط§ظ„ظ…ط³ط¬ظ„ط©</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ط§ظ„ظپطھط±ط© ط§ظ„ط²ظ…ظ†ظٹط© ظ„ظ„ط±طµط¯</strong></td>
+                <td>6 ط£ط؛ط³ط·ط³ â€“ 9 ط£ظƒطھظˆط¨ط± 2026 (65 ظٹظˆظ…ط§ظ‹ ظ…ظ† ط§ظ„ط²ط­ظپ ظˆط§ظ„ظپظ‡ط±ط³ط©)</td>
+              </tr>
+              <tr>
+                <td><strong>ط¥ط¬ظ…ط§ظ„ظٹ ظ…ط±ط§طھ ط§ظ„ط¸ظ‡ظˆط± ط§ظ„ط·ط¨ظٹط¹ظٹ</strong></td>
+                <td><strong>4,966</strong> ط¸ظ‡ظˆط± ظ…ط¬ط§ظ†ظٹ</td>
+              </tr>
+              <tr>
+                <td><strong>ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ط¹ط¶ظˆظٹط© ط§ظ„ظ…ط¬ط§ظ†ظٹط©</strong></td>
+                <td><strong>254</strong> ظ†ظ‚ط±ط© ط´ط±ط§ط، ظˆط§ط¹ظٹط©</td>
+              </tr>
+              <tr>
+                <td><strong>ظ…طھظˆط³ط· ط§ظ„طھط±طھظٹط¨ ط§ظ„طھط±ط§ظƒظ…ظٹ ط§ظ„ط¹ط§ظ…</strong></td>
+                <td><strong>8.0</strong> (ط¯ط§ط®ظ„ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰ ظ„ط¬ظˆط¬ظ„)</td>
+              </tr>
+              <tr>
+                <td><strong>ظ†ظ…ظˆ ط§ظ„ط¸ظ‡ظˆط±: ط£ظˆظ„ 30 ظٹظˆظ…ط§ظ‹ â†گ ط¢ط®ط± 30 ظٹظˆظ…ط§ظ‹</strong></td>
+                <td>561 â†گ 4,270 (<strong>أ—7.6 طھط¶ط§ط¹ظپ</strong>)</td>
+              </tr>
+              <tr>
+                <td><strong>ظƒظ„ظ…ط§طھ ظ…ظپطھط§ط­ظٹط© ظپظٹ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰</strong></td>
+                <td><strong>51 ظ…ظ† ط£طµظ„ 100 ظƒظ„ظ…ط©</strong> ظ…ط³ط¬ظ„ط© ظپظٹ ط§ظ„طھظ‚ط±ظٹط±</td>
+              </tr>
+              <tr>
+                <td><strong>ط§ظ„ط¸ظ‡ظˆط± ط¯ط§ط®ظ„ ظ…ظٹط²ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ (Google AI)</strong></td>
+                <td><strong>190 ط¸ظ‡ظˆط±ط§ظ‹</strong> (ط£ط؛ظ„ط¨ظ‡ط§ ظپظٹ ط¢ط®ط± 17 ظٹظˆظ…ط§ظ‹)</td>
+              </tr>
+              <tr>
+                <td><strong>ظ…ظٹط²ط§ظ†ظٹط© ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط§ظ„ظ…ط¯ظپظˆط¹ط© ط§ظ„ظ…ط³طھظ‡ظ„ظƒط©</strong></td>
+                <td><strong style="color:var(--color-accent-green);">0.00 ط±ظٹط§ظ„ (ظ…ط¬ط§ظ†ط§ظ‹ ط¨ط§ظ„ظƒط§ظ…ظ„)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Section 4 -->
+        <h2 id="ecommerce-seo-challenge">4. ط§ظ„طھط­ط¯ظٹ ط§ظ„ط³ظˆظ‚ظٹ: ظ„ظ…ط§ط°ط§ طھظپط´ظ„ ظ‚ظˆط§ظ„ط¨ آ«ط³ظ„ط©آ» ظˆآ«ط²ط¯آ» ط§ظ„ط¬ط§ظ‡ط²ط© ظپظٹ طھطµط¯ط± ظ‡ط°ط§ ط§ظ„ظ†ظٹطھط´طں</h2>
+        <p>
+          ط¯ط®ظˆظ„ ط³ظˆظ‚ ط¨ظٹط¹ ط­ط³ط§ط¨ط§طھ ط§ظ„ط£ظ„ط¹ط§ط¨ ظ…ط«ظ„ Clash of Clans ظˆClash Royale ظپظٹ ط§ظ„ط³ط¹ظˆط¯ظٹط© ظ„ظٹط³ ط¨ط§ظ„ط£ظ…ط± ط§ظ„ظ‡ظٹظ†ط› ظپط§ظ„ط³ط§ط­ط© ظ…ظ„ظٹط¦ط© ط¨ظ…ظ†طµط§طھ ط­ط±ط§ط¬ ظˆظ…طھط§ط¬ط± طھظ‚ظ„ظٹط¯ظٹط© ظ…ط¨ظ†ظٹط© ط¹ظ„ظ‰ ظ…ظ†طµط§طھ ط¬ط§ظ‡ط²ط© (ظ…ط«ظ„ ط³ظ„ط©). ظˆظ‚ط¯ طھظ…ط«ظ„ ط§ظ„طھط­ط¯ظٹ ظپظٹ ط«ظ„ط§ط«ط© ط­ظˆط§ط¬ط² ظ†ظپط³ظٹط© ظˆطھظ‚ظ†ظٹط©:
+        </p>
+        <ol>
+          <li><strong>ط§ظ„طھط´طھطھ ط§ظ„ط¯ظ„ط§ظ„ظٹ ظپظٹ ظ„ظ‡ط¬ط© ط§ظ„ط¨ط­ط« (Linguistic Dispersion):</strong> ط§ظ„ظ…ط´طھط±ظٹ ط§ظ„ط®ظ„ظٹط¬ظٹ ظ„ط§ ظٹط³طھط®ط¯ظ… ظƒظ„ظ…ط© ظˆط§ط­ط¯ط© ظ…ظˆط­ط¯ط© ظ„ظ„ط¨ط­ط« ط¹ظ† ط§ظ„ظ…ظ†طھط¬ط› ظپط¨ظٹط§ظ†ط§طھ ط§ظ„ط¨ط­ط« طھظƒط´ظپ ط¹ظ† 6 طµظٹط؛ ظ…ط®طھظ„ظپط© ظ„ظ†ظپط³ ط§ظ„ط؛ط±ط¶: <em>(ط­ط³ط§ط¨ط§طھطŒ ظ‚ط±ظٹط§طھطŒ ظ‚ط±ظ‰طŒ ظ…طھط¬ط±طŒ ط³ظˆظ‚طŒ ظ…ط­ظ„)</em>. ط§ظ„ظ‚ظˆط§ظ„ط¨ ط§ظ„ط¬ط§ظ‡ط²ط© طھط¹ط¬ط² ط¹ظ† ط¨ظ†ط§ط، ظ‡ظٹظƒظ„ ظٹط³طھظˆط¹ط¨ ظƒظ„ ظ‡ط°ظ‡ ط§ظ„طھظپط±ط¹ط§طھ ط¨ط¯ظˆظ† طھظƒط±ط§ط± ط£ظˆ ط­ط´ظˆ ط³ظ„ط¨ظٹ.</li>
+          <li><strong>ط¹ط¯ظ… طھظƒط§ظپط¤ ط³ظ„ط·ط© ط§ظ„ظ†ط·ط§ظ‚ (Authority Asymmetry):</strong> ط§ظ„ظ…ظ†ط§ظپط³ظˆظ† ظٹظ…ظ„ظƒظˆظ† ط¯ظˆظ…ظٹظ†ط§طھ ظ‚ط¯ظٹظ…ط© ظ…ظ†ط° ط³ظ†ظˆط§طھ ظˆط±ظˆط§ط¨ط· ط®ظ„ظپظٹط©طŒ ظپظ…ط­ط§ظˆظ„ط© ظ…ظ†ط§ظپط³طھظ‡ظ… ط¹ظ„ظ‰ ط§ظ„ظƒظ„ظ…ط§طھ ط§ظ„ظƒط¨ط±ظ‰ ط¨طµظپط­ط© ظ…طھط¬ط± ط¹ط§ط¯ظٹط© ظپظٹ ط£ظˆظ„ ط´ظ‡ط±ظٹظ† طھط¹ط¯ ظ…ط؛ط§ظ…ط±ط© ط®ط§ط³ط±ط©.</li>
+          <li><strong>ط§ط­طھظƒط§ظƒ ط§ظ„ط«ظ‚ط© ط§ظ„ظ…ط±طھظپط¹ (High Friction & Loss Aversion):</strong> ط´ط±ط§ط، ط­ط³ط§ط¨ ظ„ط¹ط¨ط© ط¨ظ…ط¨ظ„ط؛ 850 ط±ظٹط§ظ„ ظٹط«ظٹط± ط®ظˆظپ ط§ظ„ط¹ظ…ظٹظ„ ظ…ظ† ط§ظ„ط§ط­طھظٹط§ظ„ ط£ظˆ ط§ط³طھط±ط¬ط§ط¹ ط§ظ„ط­ط³ط§ط¨ط› ظپط§ظ„ط³ط¹ط± ط§ظ„ظ…ظ†ط®ظپط¶ ظˆط­ط¯ظ‡ ظ„ط§ ظٹط­ظ‚ظ‚ ظ…ط¨ظٹط¹ط© ط¥ط°ط§ ط§ظپطھظ‚ط± ط§ظ„ظ…ظˆظ‚ط¹ ظ„ط¹ظˆط§ظ…ظ„ ط§ظ„ط£ظ…ط§ظ† ط§ظ„ظ†ظپط³ظٹ.</li>
+        </ol>
+
+        <!-- Section 5 -->
+        <h2 id="semantic-architecture">5. ط§ظ„ظ‡ظٹظƒظ„ ط§ظ„ظ…ط¹ظ…ط§ط±ظٹ ظ„ظ€ webinOO: طھظ‚ط³ظٹظ… ط§ظ„ظ…طھط¬ط± ط¥ظ„ظ‰ 5 ط·ط¨ظ‚ط§طھ ط¯ظ„ط§ظ„ظٹط© طھظ„طھظ‚ط· ط§ظ„ظ…ط´طھط±ظٹ</h2>
+        <p>
+          ط¨ظ†ط§ط، ط§ظ„ظ…طھط¬ط± ط¹ظ„ظ‰ ظ…ظ†طµط© ط¨ط±ظ…ط¬ظٹط© ظ…ط®طµطµط© ظˆظپط§ط¦ظ‚ط© ط§ظ„ط³ط±ط¹ط© ط³ظ…ط­ ظ„ظ†ط§ ط¨ظ‡ظ†ط¯ط³ط© <strong>ظ‡ظٹظƒظ„ ظ…ظ† 5 ط·ط¨ظ‚ط§طھ ظ…طھظƒط§ظ…ظ„ط©</strong> ظٹظˆط§ظƒط¨ ط±ط­ظ„ط© ط§ظ„ط¹ظ…ظٹظ„ ط§ظ„ظ†ظپط³ظٹط© ط®ط·ظˆط© ط¨ط®ط·ظˆط© ظ…ظ† ط§ظ„ط¨ط­ط« ط§ظ„ط¹ط§ظ… ظˆط­طھظ‰ طھط­ظˆظٹظ„ ط§ظ„ط£ظ…ظˆط§ظ„:
+        </p>
+
+        <div class="structural-deck" role="list">
+          <div class="structure-card" role="listitem">
+            <div class="structure-title">
+              <span class="structure-num">1</span> طµظپط­ط§طھ ظپط¦ط§طھ ط§ظ„ط£ظ„ط¹ط§ط¨
+            </div>
+            <div class="structure-urls">/clash-of-clans آ· /clash-royale</div>
+            <div class="structure-role">طھظ„طھظ‚ط· ط§ظ„ط¨ط­ط« ط§ظ„ط¹ط§ظ… ط§ظ„ط¹ط±ظٹط¶ ظ…ط«ظ„ آ«ظ…طھط¬ط± ظƒظ„ط§ط´ ط§ظˆظپ ظƒظ„ط§ظ†ط³آ» ظˆطھط¨ظ†ظٹ ط§ظ„ط«ظ‚ط© ط§ظ„ط£ظˆظ„ظٹط©</div>
+          </div>
+
+          <div class="structure-card" role="listitem">
+            <div class="structure-title">
+              <span class="structure-num">2</span> ظ…ط±ط§ظƒط² ظ…ط³طھظˆظٹط§طھ Town Hall
+            </div>
+            <div class="structure-urls">/clash-of-clans/town-hall-16, 17, 18</div>
+            <div class="structure-role">طھظ„طھظ‚ط· ط¨ط­ط« ط§ظ„ظ…ط´طھط±ظٹ ط§ظ„ط¯ظ‚ظٹظ‚ ط§ظ„ط°ظٹ ط­ط¯ط¯ ظ…ط³ط¨ظ‚ط§ظ‹ ظ„ظٹظپظ„ ظ‚ط±ظٹطھظ‡ ظˆظ…ظٹط²ط§ظ†ظٹطھظ‡</div>
+          </div>
+
+          <div class="structure-card" role="listitem">
+            <div class="structure-title">
+              <span class="structure-num">3</span> طµظپط­ط§طھ ط§ظ„ط­ط³ط§ط¨ط§طھ ط§ظ„ظپط±ط¯ظٹط©
+            </div>
+            <div class="structure-urls">12 طµظپط­ط© ط­ط³ط§ط¨ (ظ…ط«ظ„ /account/coc-th18-l249)</div>
+            <div class="structure-role">طھظ„طھظ‚ط· ط§ظ„ط¨ط­ط« ظپط§ط¦ظ‚ ط§ظ„طھط­ط¯ظٹط¯ ط¨ط§ظ„ظ…ظˆط§طµظپط§طھ ظˆط§ظ„ط£ط³ط¹ط§ط± ظˆطھط¯ظپط¹ ظ…ط¨ط§ط´ط±ط© ظ„ط²ط± ط§ظ„ط´ط±ط§ط،</div>
+          </div>
+
+          <div class="structure-card" role="listitem">
+            <div class="structure-title">
+              <span class="structure-num">4</span> ط§ظ„ظ…ط¯ظˆظ†ط© ط§ظ„ط¥ط±ط´ط§ط¯ظٹط©
+            </div>
+            <div class="structure-urls">6 ظ…ظ‚ط§ظ„ط§طھ (ط§ظ„طھط³ط¹ظٹط±طŒ ط§ظ„ط­ظ…ط§ظٹط©طŒ طھط؛ظٹظٹط± ط§ظ„ط¨ط±ظٹط¯طŒ ظ…ظ‚ط§ط±ظ†ط© TH17 ظˆTH18)</div>
+            <div class="structure-role">طھط¨ظ†ظٹ ط§ظ„ط³ظ„ط·ط© ط§ظ„ظ…ط¹ط±ظپظٹط©طŒ طھط²ظٹظ„ ظ…ط®ط§ظˆظپ ط§ظ„ط´ط±ط§ط،طŒ ظˆطھط؛ط°ظٹ ظ…ط­ط±ظƒط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ (GEO)</div>
+          </div>
+
+          <div class="structure-card" role="listitem">
+            <div class="structure-title">
+              <span class="structure-num">5</span> طµظپط­ط§طھ ط§ظ„ط«ظ‚ط© ظˆط§ظ„ط¶ظ…ط§ظ†
+            </div>
+            <div class="structure-urls">/reviews آ· /guarantee آ· /how-it-works آ· /about</div>
+            <div class="structure-role">طھط¹ط§ظ„ط¬ ط§ظ„ط®ظˆظپ ظ…ظ† ط§ظ„ط§ط­طھظٹط§ظ„طŒ ظˆط­ظ‚ظ‚طھ <strong>56 ط¸ظ‡ظˆط±ط§ظ‹</strong> ظ„ظ…ظ‚طھط·ظپ طھظ‚ظٹظٹظ…ط§طھ ط§ظ„ظ†ط¬ظˆظ… ظپظٹ Google</div>
+          </div>
+        </div>
+
+        <!-- Section 6: Chart 1 -->
+        <h2 id="growth-curve-analysis">6. طھط­ظ„ظٹظ„ ظ…ظ†ط­ظ†ظ‰ ظ†ظ…ظˆ ط§ظ„ط³ظٹظˆ ط§ظ„ط¹ط¶ظˆظٹ: ط§ظ„ط¸ظ‡ظˆط± ظٹط³ط¨ظ‚ ط§ظ„ظ†ظ‚ط±ط§طھ (Growth Visualization)</h2>
+        
+        <!-- Interactive Responsive SVG Chart 1 -->
+        <div class="chart-container">
+          <div class="chart-top">
+            <div class="chart-heading">
+               Google Search Console آ· ظ†ظ…ظˆ ط§ظ„ط¸ظ‡ظˆط± ظˆط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ظ…ط¬ط§ظ†ظٹط© (8 ط£ط؛ط³ط·ط³ â€“ 9 ط£ظƒطھظˆط¨ط± 2026)
+            </div>
+            <div class="chart-keys">
+              <span class="key-badge"><i class="key-color" style="background:#6518ac;"></i> ط§ظ„ط¸ظ‡ظˆط± ط§ظ„ط¹ط¶ظˆظٹ (4,966)</span>
+              <span class="key-badge"><i class="key-color" style="background:#f07956;"></i> ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ظ…ط¬ط§ظ†ظٹط© (254)</span>
+            </div>
+          </div>
+          <svg class="chart-svg" viewBox="0 0 800 230" role="img" aria-label="ظ…ظ†ط­ظ†ظ‰ ظ†ظ…ظˆ ط£ط¯ط§ط، ط³ظٹظˆ ظ…طھط¬ط± ظƒظ„ط§ط´ ظ…ط§ط±ظƒطھ ظپظٹ Search Console">
+            <defs>
+              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#6518ac" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#6518ac" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+            <line x1="50" y1="30" x2="760" y2="30" stroke="#eee7f0" stroke-dasharray="4 4"/>
+            <line x1="50" y1="85" x2="760" y2="85" stroke="#eee7f0" stroke-dasharray="4 4"/>
+            <line x1="50" y1="140" x2="760" y2="140" stroke="#eee7f0" stroke-dasharray="4 4"/>
+            <line x1="50" y1="190" x2="760" y2="190" stroke="#ddd5e1"/>
+
+            <!-- Phase Marker: Sep 10 SEO Start -->
+            <line x1="410" y1="20" x2="410" y2="190" stroke="#6518ac" stroke-width="1.5" stroke-dasharray="5 5"/>
+            <rect x="320" y="14" width="180" height="24" rx="12" fill="#eee5f5"/>
+            <text x="410" y="30" text-anchor="middle" fill="#6518ac" font-size="11.5" font-weight="700" font-family="IBM Plex Sans Arabic">10 ط³ط¨طھظ…ط¨ط±: ط§ظ†ط·ظ„ط§ظ‚ ط£ط¹ظ…ط§ظ„ ط§ظ„ظ€ SEO</text>
+
+            <!-- Organic Impressions Curve -->
+            <path d="M50,182 L140,179 L230,176 L320,174 L410,168 L480,142 L550,108 L620,74 L690,46 L760,34 L760,190 L50,190 Z" fill="url(#areaGrad)"/>
+            <path d="M50,182 L140,179 L230,176 L320,174 L410,168 L480,142 L550,108 L620,74 L690,46 L760,34" fill="none" stroke="#6518ac" stroke-width="3.5" stroke-linecap="round"/>
+
+            <!-- Organic Clicks Curve -->
+            <path d="M50,186 L140,184 L230,182 L320,180 L410,177 L480,169 L550,160 L620,152 L690,145 L760,138" fill="none" stroke="#f07956" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Data Dots -->
+            <circle cx="410" cy="168" r="5" fill="#6518ac"/>
+            <circle cx="760" cy="34" r="6" fill="#6518ac"/>
+            <circle cx="760" cy="138" r="5" fill="#f07956"/>
+
+            <text x="65" y="212" fill="#71697c" font-size="11" font-family="IBM Plex Sans Arabic">11 ط£ط؛ط³ط·ط³ (ط¨ط¯ط§ظٹط© ظ…طھظˆط§ط¶ط¹ط©: 524)</text>
+            <text x="410" y="212" text-anchor="middle" fill="#292239" font-size="11" font-weight="700" font-family="IBM Plex Sans Arabic">10 ط³ط¨طھظ…ط¨ط±</text>
+            <text x="735" y="212" text-anchor="end" fill="#6518ac" font-size="11" font-weight="700" font-family="IBM Plex Sans Arabic">9 ط£ظƒطھظˆط¨ط± (ط§ظ†ظپط¬ط§ط± ط§ظ„ط¸ظ‡ظˆط± ط§ظ„ظ…ط¬ط§ظ†ظٹ أ—8.1)</text>
+          </svg>
+          <div class="chart-note">
+            طھظ…ط«ظٹظ„ ط¯ظ‚ظٹظ‚ ظ„ظ…ظ†ط­ظ†ظ‰ Search Console: ط§طھط³ط§ط¹ ط§ظ„ظپط¬ظˆط© ظٹط«ط¨طھ ط®ط±ظˆط¬ ط§ظ„ظ…طھط¬ط± ظ…ظ† ظ‚ظˆظ‚ط¹ط© ط§ط³ظ…ظ‡ ظˆط§ظ‚طھط­ط§ظ…ظ‡ ظ„ظƒظ„ظ…ط§طھ ط§ظ„ط³ظˆظ‚ ط§ظ„ط¹ط§ظ…ط© ط¨طھط±طھظٹط¨ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰.
+          </div>
+        </div>
+
+        <p>
+          ط§ظ„ظپط±ظ‚ ط¨ظٹظ† ط§ظ„ظ…ظ†ط­ظ†ظٹظٹظ† ظٹط±ظˆظٹ ط§ظ„ظ‚طµط© ط§ظ„ظ‡ظ†ط¯ط³ظٹط© ط¨ظˆط¶ظˆط­: ط§ظ„ط¸ظ‡ظˆط± ط§ظ„ط¬ط¯ظٹط¯ ط¬ط§ط، ظ…ظ† ظƒظ„ظ…ط§طھ ط¹ط§ظ…ط© ط°ط§طھ ظ…ظ†ط§ظپط³ط© ط´ط±ط³ط© ط¨طھط±طھظٹط¨ ظٹطھط±ط§ظˆط­ ط¨ظٹظ† <strong>7 ظˆ8</strong>طŒ ظ…ظ…ط§ ط®ظپظ‘ط¶ ظ†ط³ط¨ط© ط§ظ„ظ†ظ‚ط± ط§ظ„ط¸ط§ظ‡ط±ظٹط© ظ…ظ† 15.7% ط¥ظ„ظ‰ 2.7%. ظ‡ط°ط§ ط§ظ„ظ…ط¤ط´ط± ظ„ظٹط³ طھط±ط§ط¬ط¹ط§ظ‹طŒ ط¨ظ„ ظ‡ظˆ <strong>ط£ظƒط¨ط± ط¯ظ„ظٹظ„ ط¹ظ„ظ‰ ط§ط®طھط±ط§ظ‚ ط§ظ„ظ…ظˆظ‚ط¹ ظ„ظƒظ„ظ…ط§طھ ط§ظ„ط³ظˆظ‚ ط§ظ„ظƒط¨ط±ظ‰</strong> ط®ط§ط±ط¬ ط­ط¯ظˆط¯ ط§ط³ظ…ظ‡ ط§ظ„طھط¬ط§ط±ظٹطŒ ظ…ظ…ظ‡ط¯ط§ظ‹ ظ„ظ…ط±ط­ظ„ط© طھط­ط³ظٹظ† ظ†ط³ط¨ط© ط§ظ„ظ†ظ‚ط± (CTR Optimization) ظ„طھط­ظˆظٹظ„ ظ‡ط°ظ‡ ط§ظ„ط¢ظ„ط§ظپ ظ…ظ† ظ…ط±ط§طھ ط§ظ„ط¸ظ‡ظˆط± ط¥ظ„ظ‰ ط·ظˆظپط§ظ† ظ…ظ† ط§ظ„ظ†ظ‚ط±ط§طھ.
+        </p>
+
+        <!-- Section 7 -->
+        <h2 id="keywords-strategy">7. ط¬ظˆط¯ط© ط§ظ„ظƒظ„ظ…ط§طھ ط§ظ„ظ…ظپطھط§ط­ظٹط©: طھطµط¯ط± ط§ط³ظ… ط§ظ„ظ…طھط¬ط± ظˆط§ط®طھط±ط§ظ‚ ظƒظ„ظ…ط§طھ ط§ظ„ط³ظˆظ‚ ط§ظ„ط¹ط§ظ…ط©</h2>
+        <p>
+          ظ…ظ† ط¨ظٹظ† ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ظ…ظ†ط³ظˆط¨ط© ظ„ظƒظ„ظ…ط§طھ ط¨ط­ط« ظ…ط¹ظ„ظ†ط© (129 ظ†ظ‚ط±ط©)طŒ ط¬ط§ط،طھ 82 ظ†ظ‚ط±ط© (64%) ظ…ظ† ط§ظ„ط¨ط­ط« ط§ظ„ظ…ط¨ط§ط´ط± ط¹ظ† ط§ط³ظ… ط§ظ„ظ…طھط¬ط±ط› ط­ظٹط« ط¹ط±ظ‘ظپ Google ط§ظ„ظƒظٹط§ظ† ظˆط§ط­طھظ„ آ«ظƒظ„ط§ط´ ظ…ط§ط±ظƒطھآ» <strong>ط§ظ„ظ…ط±ظƒط² 1.5</strong> ط¨ظ†ط³ط¨ط© ظ†ظ‚ط± ط³ط§ط­ظ‚ط© <strong>46.7%</strong>:
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>طھطµظ†ظٹظپ ظƒظ„ظ…ط§طھ ط§ظ„ط¨ط­ط«</th>
+                <th>ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ظ…ط¬ط§ظ†ظٹط©</th>
+                <th>ظ…ط±ط§طھ ط§ظ„ط¸ظ‡ظˆط±</th>
+                <th>ظ†ط³ط¨ط© ط§ظ„ظ†ظ‚ط± (CTR)</th>
+                <th>ط£ط¨ط±ط² ط§ط³طھط¹ظ„ط§ظ…ط§طھ ط§ظ„ط¨ط­ط« ط§ظ„ظپط¹ظ„ظٹط©</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ط§ط³ظ… ط§ظ„ط¹ظ„ط§ظ…ط© (Brand Queries)</strong></td>
+                <td><span class="num-en">82</span></td>
+                <td><span class="num-en">212</span></td>
+                <td><span class="num-en">38.7%</span></td>
+                <td>ظƒظ„ط§ط´ ظ…ط§ط±ظƒطھ (63) آ· clash market (16) آ· clashmarket (3)</td>
+              </tr>
+              <tr>
+                <td><strong>ظƒظ„ظ…ط§طھ ط§ظ„ط³ظˆظ‚ ط§ظ„ط¹ط§ظ…ط© (Non-Brand)</strong></td>
+                <td><span class="num-en">47</span></td>
+                <td><span class="num-en">2,928</span></td>
+                <td><span class="num-en">1.6%</span></td>
+                <td>ظ…طھط¬ط± ظƒظ„ط§ط´ ط§ظˆظپ ظƒظ„ط§ظ†ط³ آ· ظ…طھط¬ط± ظƒظ„ط§ط´ آ· ظ…طھط¬ط± ظƒظ„ط§ط´ ط±ظˆظٹط§ظ„</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ط§ظ„ظƒظ„ظ…ط© ط§ظ„ظ…ظپطھط§ط­ظٹط© ط§ظ„ظ…ط³طھظ‡ط¯ظپط©</th>
+                <th>ط§ظ„ط¸ظ‡ظˆط± ط§ظ„ظ…ط¬ط§ظ†ظٹ</th>
+                <th>ط§ظ„ظ†ظ‚ط±ط§طھ</th>
+                <th>ظ†ط³ط¨ط© ط§ظ„ظ†ظ‚ط± CTR</th>
+                <th>ظ…طھظˆط³ط· ط§ظ„طھط±طھظٹط¨ ظپظٹ Google</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ظ…طھط¬ط± ظƒظ„ط§ط´ ط§ظˆظپ ظƒظ„ط§ظ†ط³</strong></td>
+                <td><span class="num-en">1,231</span></td>
+                <td><span class="num-en">14</span></td>
+                <td><span class="num-en">1.14%</span></td>
+                <td><span class="num-en">7.6</span> (ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰)</td>
+              </tr>
+              <tr>
+                <td><strong>ظ…طھط¬ط± ظƒظ„ط§ط´</strong></td>
+                <td><span class="num-en">656</span></td>
+                <td><span class="num-en">12</span></td>
+                <td><span class="num-en">1.83%</span></td>
+                <td><span class="num-en">7.4</span> (ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰)</td>
+              </tr>
+              <tr>
+                <td><strong>ظ…طھط¬ط± ظƒظ„ط§ط´ ط±ظˆظٹط§ظ„</strong></td>
+                <td><span class="num-en">327</span></td>
+                <td><span class="num-en">6</span></td>
+                <td><span class="num-en">1.83%</span></td>
+                <td><span class="num-en">7.4</span> (ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰)</td>
+              </tr>
+              <tr>
+                <td><strong>ط³ظˆظ‚ ظƒظ„ط§ط´ ط§ظˆظپ ظƒظ„ط§ظ†ط³</strong></td>
+                <td><span class="num-en">307</span></td>
+                <td><span class="num-en">1</span></td>
+                <td><span class="num-en">0.33%</span></td>
+                <td><span class="num-en">6.5</span> (ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰)</td>
+              </tr>
+              <tr>
+                <td><strong>ظ…ط­ظ„ ظƒظ„ط§ط´ ط§ظˆظپ ظƒظ„ط§ظ†ط³</strong></td>
+                <td><span class="num-en">85</span></td>
+                <td><span class="num-en">0</span></td>
+                <td><span class="num-en">0%</span></td>
+                <td><span class="num-en">6.7</span> (ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Section 8 -->
+        <h2 id="mobile-saudi-seo">8. طھظˆط·ظٹظ† ط§ظ„ظ…طھط¬ط± ظ„ظ„ط³ظˆظ‚ ط§ظ„ط³ط¹ظˆط¯ظٹ ظˆطھط¬ط±ط¨ط© ط§ظ„ط¬ظˆط§ظ„ ط§ظ„ظپط§ط¦ظ‚ط© (Mobile-First SEO)</h2>
+        <p>
+          ط§ظ„ظ…طھط¬ط± ظٹط³طھظ‡ط¯ظپ ط§ظ„ظ…ط´طھط±ظٹ ظپظٹ ط§ظ„ظ…ظ…ظ„ظƒط© ط§ظ„ط¹ط±ط¨ظٹط© ط§ظ„ط³ط¹ظˆط¯ظٹط© ظˆط§ظ„ط®ظ„ظٹط¬. ط£ط¸ظ‡ط±طھ ط§ظ„طھط­ظ„ظٹظ„ط§طھ <strong>85 ط²ط§ط¦ط±ظ‹ط§ ظ…ظ† ط§ظ„ط³ط¹ظˆط¯ظٹط©</strong> ظپظٹ ط£ظˆظ„ ط´ظ‡ط±طŒ ظ…ظ†ظ‡ظ… <strong>62 ظ…ط´طھط±ظٹط§ظ‹ ظ…ظ† ظ…ط¯ظٹظ†طھظٹ ط§ظ„ط±ظٹط§ط¶ ظˆط¬ط¯ط©</strong> ظˆط­ط¯ظ‡ظ…ط§. ظƒظ…ط§ ط³ط¬ظ„طھ Search Console ظپظٹ ط§ظ„ط³ط¹ظˆط¯ظٹط© <strong>66 ظ†ظ‚ط±ط© ظ…ظ† 351 ط¸ظ‡ظˆط±ط§ظ‹ ط¨ظ†ط³ط¨ط© ظ†ظ‚ط± ظ‚ظٹط§ط³ظٹط© ط¨ظ„ط؛طھ 18.8%</strong> ظˆط¨ظ…طھظˆط³ط· ظ…ط±ظƒط² 12.9طŒ ظˆظ‡ظˆ ظ…ط§ ظٹظ…ط«ظ„ ط£ظƒط¨ط± ظپط±طµط© ظ„ظ…ط¶ط§ط¹ظپط© ط§ظ„ظ…ط¨ظٹط¹ط§طھ ط¹ظ†ط¯ ط§ط±طھظ‚ط§ط، ط§ظ„ظ…طھط¬ط± ط¥ظ„ظ‰ ط§ظ„ظ…ط±ط§ظƒط² ط§ظ„ط«ظ„ط§ط«ط© ط§ظ„ط£ظˆظ„ظ‰ ظپظٹ ط§ظ„ط³ط¹ظˆط¯ظٹط©.
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ظ†ظˆط¹ ط§ظ„ط¬ظ‡ط§ط² ط§ظ„ظ…ط³طھط®ط¯ظ…</th>
+                <th>ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ظ…ط¬ط§ظ†ظٹط©</th>
+                <th>ظ…ط±ط§طھ ط§ظ„ط¸ظ‡ظˆط±</th>
+                <th>ظ†ط³ط¨ط© ط§ظ„ظ†ظ‚ط± CTR</th>
+                <th>ظ…طھظˆط³ط· ط§ظ„طھط±طھظٹط¨</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ط§ظ„ظ‡ط§طھظپ ط§ظ„ط¬ظˆط§ظ„ (Mobile)</strong></td>
+                <td><span class="num-en">204</span></td>
+                <td><span class="num-en">4,392</span></td>
+                <td><span class="num-en">4.6%</span></td>
+                <td><span class="num-en">7.3</span> (ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰)</td>
+              </tr>
+              <tr>
+                <td><strong>ط£ط¬ظ‡ط²ط© ط³ط·ط­ ط§ظ„ظ…ظƒطھط¨ (Desktop)</strong></td>
+                <td><span class="num-en">45</span></td>
+                <td><span class="num-en">444</span></td>
+                <td><span class="num-en">10.1%</span></td>
+                <td><span class="num-en">15.7</span></td>
+              </tr>
+              <tr>
+                <td><strong>ط§ظ„ط£ط¬ظ‡ط²ط© ط§ظ„ظ„ظˆط­ظٹط© (Tablet)</strong></td>
+                <td><span class="num-en">5</span></td>
+                <td><span class="num-en">130</span></td>
+                <td><span class="num-en">3.8%</span></td>
+                <td><span class="num-en">7.4</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Section 9: Chart 2 -->
+        <h2 id="ai-overviews-chatgpt">9. طھطµط¯ط± ظ…ط­ط±ظƒط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ GEO: ظƒظٹظپ ط­ظ‚ظ‚ ط§ظ„ظ…طھط¬ط± 190 ط¸ظ‡ظˆط±ط§ظ‹ ظپظٹ AI Overviews ظˆط²ظˆط§ط±ط§ظ‹ ظ…ظ† ChatGPTطں</h2>
+        <p>
+          ظپظٹ ظٹظˆظ†ظٹظˆ 2026 ط£ط¹ظ„ظ†طھ Google ط±ط³ظ…ظٹط§ظ‹ ط¥ط·ظ„ط§ظ‚ طھظ‚ط§ط±ظٹط± ظ…ط®طµطµط© ظ„ظ‚ظٹط§ط³ ط¸ظ‡ظˆط± ط§ظ„ظ…ظˆط§ظ‚ط¹ ط¯ط§ط®ظ„ ظ…ظٹط²ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ط§ظ„طھظˆظ„ظٹط¯ظٹ (<strong>AI Overviews</strong> ظˆ <strong>AI Mode</strong>). طھط«ط¨طھ ط¯ط±ط§ط³ط© ط­ط§ظ„ط© Clash Market ط¨ط§ظ„ط£ط±ظ‚ط§ظ… ط£ظ† ط§ظ„ظ…طھط¬ط± ط­طµط¯ <strong>190 ط¸ظ‡ظˆط±ط§ظ‹ طھظˆظ„ظٹط¯ظٹط§ظ‹</strong> ط®ظ„ط§ظ„ 65 ظٹظˆظ…ط§ظ‹طŒ ط¬ط§ط، <strong>89% ظ…ظ†ظ‡ط§ ظپظٹ ط¢ط®ط± 17 ظٹظˆظ…ط§ظ‹ ظپظ‚ط·</strong> ط¨ط¹ط¯ ط§ظƒطھظ…ط§ظ„ ظپظ‡ط±ط³ط© ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط¥ط±ط´ط§ط¯ظٹطŒ ظ…ط¹ ط°ط±ظˆط© ط¨ظ„ط؛طھ 27 ط¸ظ‡ظˆط±ط§ظ‹ ظٹظˆظ… 4 ط£ظƒطھظˆط¨ط±طŒ ظˆ<strong>95% ظ…ظ† ظ‡ط°ط§ ط§ظ„ط¸ظ‡ظˆط± ظƒط§ظ† ط¹ظ„ظ‰ ط§ظ„ط¬ظˆط§ظ„</strong>.
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ط§ظ„طµظپط­ط© ط§ظ„ظ…ط¤ظ‡ظ„ط© ظ„ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ</th>
+                <th>ط§ظ„ط¸ظ‡ظˆط± ظپظٹ ظ…ظٹط²ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ (AI)</th>
+                <th>ط¥ط¬ظ…ط§ظ„ظٹ ط¸ظ‡ظˆط± ط§ظ„طµظپط­ط© ط§ظ„ط¹ط§ظ…</th>
+                <th>ط­طµط© ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ظ…ظ† ط§ظ„ط¸ظ‡ظˆط±</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ط¯ظ„ظٹظ„ طھط؛ظٹظٹط± ط¨ط±ظٹط¯ Supercell ID</strong></td>
+                <td><span class="num-en">66</span></td>
+                <td><span class="num-en">434</span></td>
+                <td><span class="badge-up">15.2% ظƒط§ظ…ظ„ط©</span></td>
+              </tr>
+              <tr>
+                <td><strong>ط¯ظ„ظٹظ„ ط­ظ…ط§ظٹط© ط§ظ„ط­ط³ط§ط¨ ظ…ظ† ط§ظ„ط­ط¸ط±</strong></td>
+                <td><span class="num-en">20</span></td>
+                <td><span class="num-en">186</span></td>
+                <td><span class="badge-up">10.8% ظƒط§ظ…ظ„ط©</span></td>
+              </tr>
+              <tr>
+                <td><code>/clash-royale</code> (طµظپط­ط© ظپط¦ط© ط§ظ„ظ„ط¹ط¨ط©)</td>
+                <td><span class="num-en">15</span></td>
+                <td><span class="num-en">324</span></td>
+                <td><span class="num-en">4.6%</span></td>
+              </tr>
+              <tr>
+                <td><code>/clash-of-clans</code> (طµظپط­ط© ظپط¦ط© ط§ظ„ظ„ط¹ط¨ط©)</td>
+                <td><span class="num-en">35</span></td>
+                <td><span class="num-en">1,828</span></td>
+                <td><span class="num-en">1.9%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Responsive SVG Chart 2 -->
+        <div class="chart-container">
+          <div class="chart-top">
+            <div class="chart-heading">
+               طھظˆط²ظٹط¹ ط§ظ‚طھط¨ط§ط³ط§طھ ظˆظ…ظٹط²ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ آ· AI Overviews & Mode (190 ط¸ظ‡ظˆط±ط§ظ‹ ظ…ظˆط«ظ‚ط§ظ‹)
+            </div>
+            <div class="chart-keys">
+              <span class="key-badge"><i class="key-color" style="background:#6518ac;"></i> ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط¥ط±ط´ط§ط¯ظٹ (45%)</span>
+              <span class="key-badge"><i class="key-color" style="background:#f07956;"></i> طµظپط­ط§طھ ط§ظ„ظپط¦ط§طھ ط§ظ„ط±ط¦ظٹط³ظٹط© (27%)</span>
+              <span class="key-badge"><i class="key-color" style="background:#2e856e;"></i> طµظپط­ط§طھ ط§ظ„ط­ط³ط§ط¨ط§طھ ظˆط§ظ„ظ…ط®ط²ظˆظ† (28%)</span>
+            </div>
+          </div>
+          <svg class="chart-svg" viewBox="0 0 800 270" role="img" aria-label="ط±ط³ظ… ط¨ظٹط§ظ†ظٹ ظ„طھظˆط²ظٹط¹ ط§ظ‚طھط¨ط§ط³ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ط§ظ„طھظˆظ„ظٹط¯ظٹ ط¹ظ„ظ‰ طµظپط­ط§طھ ظ…طھط¬ط± ظƒظ„ط§ط´ ظ…ط§ط±ظƒطھ">
+            <defs>
+              <linearGradient id="barGrad1_page" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#6518ac"/>
+                <stop offset="100%" stop-color="#9333ea"/>
+              </linearGradient>
+              <linearGradient id="barGrad2_page" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#f07956"/>
+                <stop offset="100%" stop-color="#fb923c"/>
+              </linearGradient>
+              <linearGradient id="barGrad3_page" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#2e856e"/>
+                <stop offset="100%" stop-color="#10b981"/>
+              </linearGradient>
+              <linearGradient id="barGrad4_page" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#b45309"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Grid Lines -->
+            <line x1="280" y1="40" x2="280" y2="215" stroke="#eee7f0" stroke-dasharray="3 3"/>
+            <line x1="430" y1="40" x2="430" y2="215" stroke="#eee7f0" stroke-dasharray="3 3"/>
+            <line x1="580" y1="40" x2="580" y2="215" stroke="#eee7f0" stroke-dasharray="3 3"/>
+            <line x1="730" y1="40" x2="730" y2="215" stroke="#eee7f0" stroke-dasharray="3 3"/>
+
+            <!-- Bar 1: Supercell ID Guide -->
+            <text x="260" y="65" text-anchor="end" fill="#292239" font-size="13" font-weight="700" font-family="IBM Plex Sans Arabic">ط¯ظ„ظٹظ„ طھط؛ظٹظٹط± ط¨ط±ظٹط¯ Supercell ID</text>
+            <rect x="280" y="48" width="410" height="24" rx="6" fill="#f4eafa"/>
+            <rect x="280" y="48" width="370" height="24" rx="6" fill="url(#barGrad1_page)"/>
+            <text x="660" y="65" fill="#ffffff" font-size="12" font-weight="800" font-family="Manrope">66 ط¸ظ‡ظˆط± (15.2%)</text>
+            <rect x="700" y="48" width="70" height="24" rx="12" fill="#e6f4f0"/>
+            <text x="735" y="64" text-anchor="middle" fill="#2e856e" font-size="11" font-weight="800" font-family="IBM Plex Sans Arabic">ط£ط¹ظ„ظ‰ ط§ظ‚طھط¨ط§ط³</text>
+
+            <!-- Bar 2: Clash of Clans Category -->
+            <text x="260" y="110" text-anchor="end" fill="#292239" font-size="13" font-weight="700" font-family="IBM Plex Sans Arabic">طµظپط­ط© /clash-of-clans ط§ظ„ط±ط¦ظٹط³ظٹط©</text>
+            <rect x="280" y="93" width="410" height="24" rx="6" fill="#f4eafa"/>
+            <rect x="280" y="93" width="195" height="24" rx="6" fill="url(#barGrad2_page)"/>
+            <text x="485" y="110" fill="#292239" font-size="12" font-weight="800" font-family="Manrope"> 35 ط¸ظ‡ظˆط±ط§ظ‹</text>
+
+            <!-- Bar 3: Account Security Guide -->
+            <text x="260" y="155" text-anchor="end" fill="#292239" font-size="13" font-weight="700" font-family="IBM Plex Sans Arabic">ط¯ظ„ظٹظ„ ط­ظ…ط§ظٹط© ط§ظ„ط­ط³ط§ط¨ ظ…ظ† ط§ظ„ط­ط¸ط±</text>
+            <rect x="280" y="138" width="410" height="24" rx="6" fill="#f4eafa"/>
+            <rect x="280" y="138" width="112" height="24" rx="6" fill="url(#barGrad3_page)"/>
+            <text x="402" y="155" fill="#292239" font-size="12" font-weight="800" font-family="Manrope"> 20 ط¸ظ‡ظˆط±ط§ظ‹ (11%)</text>
+
+            <!-- Bar 4: Clash Royale Category -->
+            <text x="260" y="200" text-anchor="end" fill="#292239" font-size="13" font-weight="700" font-family="IBM Plex Sans Arabic">طµظپط­ط© /clash-royale</text>
+            <rect x="280" y="183" width="410" height="24" rx="6" fill="#f4eafa"/>
+            <rect x="280" y="183" width="84" height="24" rx="6" fill="url(#barGrad4_page)"/>
+            <text x="374" y="200" fill="#292239" font-size="12" font-weight="800" font-family="Manrope"> 15 ط¸ظ‡ظˆط±ط§ظ‹ (4.6%)</text>
+
+            <!-- Bottom Highlights -->
+            <rect x="50" y="228" width="180" height="28" rx="14" fill="#eee5f5"/>
+            <text x="140" y="246" text-anchor="middle" fill="#6518ac" font-size="11.5" font-weight="700" font-family="IBM Plex Sans Arabic"> 95% ظ…ظ† ط¸ظ‡ظˆط± ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ط¹ط¨ط± ط§ظ„ط¬ظˆط§ظ„</text>
+
+            <rect x="250" y="228" width="220" height="28" rx="14" fill="#fff3ed"/>
+            <text x="360" y="246" text-anchor="middle" fill="#c2410c" font-size="11.5" font-weight="700" font-family="IBM Plex Sans Arabic"> 89% طھط±ظƒط² ظپظٹ ط¢ط®ط± 17 ظٹظˆظ…ط§ظ‹ ط¨ط¹ط¯ ط§ظ„ظپظ‡ط±ط³ط©</text>
+
+            <rect x="490" y="228" width="280" height="28" rx="14" fill="#e6f4f0"/>
+            <text x="630" y="246" text-anchor="middle" fill="#2e856e" font-size="11.5" font-weight="700" font-family="IBM Plex Sans Arabic"> 20 ط²ط§ط¦ط±ظ‹ط§ ظ…ظ† ChatGPT ط­ظ‚ظ‚ظˆط§ 3 ط·ظ„ط¨ط§طھ ظˆط§طھط³ط§ط¨</text>
+          </svg>
+          <div class="chart-note">
+            طھط­ظ„ظٹظ„ ط§ظ‚طھط¨ط§ط³ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ: ط§ظ„ط£ط¯ظ„ط© ط§ظ„ط¥ط±ط´ط§ط¯ظٹط© ط§ظ„ظ…ظ†ط¸ظ…ط© ط¨ظ†ظ…ظˆط°ط¬ آ«ظƒط¨ط³ظˆظ„ط© ط§ظ„ط¥ط¬ط§ط¨ط©آ» طھط­ط¸ظ‰ ط¨ط£ط¹ظ„ظ‰ ظ…ط¹ط¯ظ„ ط§ط³طھط´ظ‡ط§ط¯ ظپظٹ ط¥ط¬ط§ط¨ط§طھ Google ط§ظ„طھظˆظ„ظٹط¯ظٹط© ظˆChatGPT.
+          </div>
+        </div>
+
+        <!-- Section 10 -->
+        <h2 id="conversion-roadmap">10. ط®ط·ط© ط§ظ„ظ€ 90 ظٹظˆظ…ط§ظ‹ ط§ظ„ظ‚ط§ط¯ظ…ط©: طھط­ظˆظٹظ„ ط¢ظ„ط§ظپ ط§ظ„ط¸ظ‡ظˆط± ط¥ظ„ظ‰ ظ…ط¨ظٹط¹ط§طھ ظ…ط¶ط§ط¹ظپط© (Conversion Optimization)</h2>
+        <p>
+          ط§ظ„ط£ط³ط§ط³ ط§ظ„ظ…ط¹ظ…ط§ط±ظٹ طھظ… ط¥ط±ط³ط§ط¤ظ‡ ط¨ظ†ط¬ط§ط­طŒ ظˆط§ظ„ط£ظˆظ„ظˆظٹط© ط§ظ„ط§ط³طھط±ط§طھظٹط¬ظٹط© ط§ظ„ط¢ظ† ظ‡ظٹ <strong>طھط­ظˆظٹظ„ ظ…ط±ط§طھ ط§ظ„ط¸ظ‡ظˆط± ط§ظ„ظ…طھط±ط§ظƒظ…ط© ط¥ظ„ظ‰ ظ†ظ‚ط±ط§طھ ظˆظ…ط¨ظٹط¹ط§طھ ظ…ط؛ظ„ظ‚ط©</strong>:
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ط§ظ„ط£ظˆظ„ظˆظٹط©</th>
+                <th>ط§ظ„ط¥ط¬ط±ط§ط، ط§ظ„ظ‡ظ†ط¯ط³ظٹ / ط§ظ„طھط³ظˆظٹظ‚ظٹ</th>
+                <th>ط§ظ„ط¯ظ„ظٹظ„ ط§ظ„ط±ظ‚ظ…ظٹ ظ…ظ† ط§ظ„طھظ‚ط±ظٹط±</th>
+                <th>ط§ظ„ظ…ط¤ط´ط± ط§ظ„ظ…ط³طھظ‡ط¯ظپ (KPI)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="num-en">1</span></td>
+                <td><strong>طھظˆط­ظٹط¯ ط±ظˆط§ط¨ط· ط§ظ„ظ…ظˆظ‚ط¹ (301 Redirects & Canonical)</strong></td>
+                <td>طھط´طھطھ ط§ظ„ط±ط¦ظٹط³ظٹط© ظپظٹ 4 ظ†ط³ط® ظˆطµظپط­ط© ط§ظ„ظ„ط¹ط¨ط© ظپظٹ ظ†ط³ط®طھظٹظ†</td>
+                <td>ط­طµط± ط§ظ„طµظپط­ط© ظپظٹ ط±ط§ط¨ط· ظˆط§ط­ط¯ ظ…ظˆط­ط¯ ظ„طھط±ظƒظٹط² ط§ظ„ظ‚ظˆط©</td>
+              </tr>
+              <tr>
+                <td><span class="num-en">2</span></td>
+                <td><strong>ط¥ط¹ط§ط¯ط© ظƒطھط§ط¨ط© ط§ظ„ط¹ظ†ط§ظˆظٹظ† (Meta CTR Optimization)</strong></td>
+                <td>2,606 ط¸ظ‡ظˆط±ط§طھ ظپظٹ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰ ط¨ظ†ط³ط¨ط© ظ†ظ‚ط± 1.3% ظپظ‚ط·</td>
+                <td>ظ…ط¶ط§ط¹ظپط© CTR ط§ظ„ظƒظ„ظ…ط§طھ ط§ظ„ط®ظ…ط³ ط§ظ„ظƒط¨ط±ظ‰ ط¥ظ„ظ‰ 3%</td>
+              </tr>
+              <tr>
+                <td><span class="num-en">3</span></td>
+                <td><strong>طھظˆط·ظٹظ† ط®ظ„ظٹط¬ظٹ ظˆط³ط¹ظˆط¯ظٹ ط¹ظ…ظٹظ‚ ظپظٹ طµظپط­ط§طھ ط§ظ„ظ‡ط¨ظˆط·</strong></td>
+                <td>351 ط¸ظ‡ظˆط±ط§ظ‹ ظپظٹ ط§ظ„ط³ط¹ظˆط¯ظٹط© ط¨ظ†ط³ط¨ط© ظ†ظ‚ط± 18.8% ظˆطھط±طھظٹط¨ 12.9</td>
+                <td>ط¯ط®ظˆظ„ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰ ط¯ط§ط®ظ„ ط§ظ„ط³ط¹ظˆط¯ظٹط© ظˆظ…ط¶ط§ط¹ظپط© ط§ظ„ظ…ط¨ظٹط¹ط§طھ</td>
+              </tr>
+              <tr>
+                <td><span class="num-en">4</span></td>
+                <td><strong>ط±ط¨ط· ط¯ط§ط®ظ„ظٹ ط´ط¨ظƒظٹ ظ…ظ† ط§ظ„ط£ظ„ط¹ط§ط¨ ط¥ظ„ظ‰ ط§ظ„ط­ط³ط§ط¨ط§طھ ط§ظ„ظپط±ط¯ظٹط©</strong></td>
+                <td>طµظپط­ط§طھ ط§ظ„ط­ط³ط§ط¨ط§طھ ظˆط§ظ„ظ…ط®ط²ظˆظ† طھظ…ط«ظ„ 6% ظپظ‚ط· ظ…ظ† ط§ظ„ط¸ظ‡ظˆط±</td>
+                <td>ط±ظپط¹ ط­طµط© ط¸ظ‡ظˆط± طµظپط­ط§طھ ط§ظ„ظ…ط®ط²ظˆظ† ط§ظ„ط¬ط§ظ‡ط²ط© ظ„ظ„ط´ط±ط§ط،</td>
+              </tr>
+              <tr>
+                <td><span class="num-en">5</span></td>
+                <td><strong>طھط؛ط·ظٹط© طµظٹط؛ (ظ‚ط±ظٹط§طھطŒ ظ‚ط±ظ‰ ظ„ظ„ط¨ظٹط¹) ظپظٹ طµظپط­ط§طھ ط§ظ„ظپط¦ط§طھ</strong></td>
+                <td>31 ط§ط³طھط¹ظ„ط§ظ…ط§ظ‹ ط´ط±ط§ط¦ظٹط§ظ‹ طµط±ظٹط­ط§ظ‹ ط®ط§ط±ط¬ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰</td>
+                <td>طھطµط¯ط± ط§ط³طھط¹ظ„ط§ظ…ط§طھ ط§ظ„ط´ط±ط§ط، ط§ظ„ظ…ط¨ط§ط´ط±ط©</td>
+              </tr>
+              <tr>
+                <td><span class="num-en">6</span></td>
+                <td><strong>طھطھط¨ط¹ ظ…طھظ‚ط¯ظ… ظ„ظ…ط³ط§ط± ط§ظ„ط´ط±ط§ط، ط¹ط¨ط± Google Analytics 4</strong></td>
+                <td>ط؛ظٹط§ط¨ ط§ظ„ط±ط¨ط· ط§ظ„ظ„ط­ط¸ظٹ ط¨ظٹظ† ظ…ط³ط§ط± ط§ظ„ظ†ظ‚ط± ظˆظ‚ظٹظ…ط© ط§ظ„ط·ظ„ط¨</td>
+                <td>ظ‚ظٹط§ط³ طھظƒظ„ظپط© ط§ظ„ط§ظƒطھط³ط§ط¨ ظˆظ…ط¹ط¯ظ„ ط§ظ„ط¥ط؛ظ„ط§ظ‚ ظ„ظƒظ„ 100 ظ†ظ‚ط±ط©</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout-box">
+          <strong>ظ…ط¹ط§ط¯ظ„ط© ط§ظ„ط¹ط§ط¦ط¯ ط§ظ„ط¨ط³ظٹط·ط©:</strong> ط¥ط°ط§ ظ†ط¬ط­ظ†ط§ ظپظٹ ط±ظپط¹ ظ†ط³ط¨ط© ط§ظ„ظ†ظ‚ط± (CTR) ظ„ظ„ط§ط³طھط¹ظ„ط§ظ…ط§طھ ط§ظ„ط®ظ…ط³ط© ط§ظ„ط±ط¦ظٹط³ظٹط© ظ…ظ† 1.3% ط¥ظ„ظ‰ 3% ظپظ‚ط· ط¹ظ„ظ‰ ظ†ظپط³ ط§ظ„ط¸ظ‡ظˆط± ط§ظ„ط­ط§ظ„ظٹطŒ ط³طھظ‚ظپط² ط§ظ„ظ†ظ‚ط±ط§طھ ط§ظ„ظ…ط¬ط§ظ†ظٹط© ظ…ظ† 33 ظ†ظ‚ط±ط© ط¥ظ„ظ‰ <strong>78 ظ†ظ‚ط±ط© ط´ط±ط§ط، ظ…ط¤ظƒط¯ط©</strong> ط¯ظˆظ† ط§ظ„ط­ط§ط¬ط© ظ„ط²ظٹط§ط¯ط© ط§ظ„ط¸ظ‡ظˆط± ظ†ظپط³ظ‡!
+        </div>
+
+        <!-- Section 11 -->
+        <h2 id="methodology-transparency">11. ط§ظ„ط´ظپط§ظپظٹط© ط§ظ„ظ…ظ†ظ‡ط¬ظٹط© ظˆط­ط¯ظˆط¯ ط§ظ„ط£ط±ظ‚ط§ظ… (ظ„ظ…ط§ط°ط§ ظ†ظƒط´ظپ ظƒظ„ ط´ظٹط،طں)</h2>
+        <p>
+          ط§ظ„طھط²ط§ظ…ط§ظ‹ ط¨ظپظ„ط³ظپط© webinOO ظپظٹ طھظ‚ط¯ظٹظ… ط§ط³طھط´ط§ط±ط§طھ ط±ظ‚ظ…ظٹط© ظ‚ط§ط¦ظ…ط© ط¹ظ„ظ‰ ط§ظ„طµط¯ظ‚ ط§ظ„ط¹ظ„ظ…ظٹطŒ ظ†ظˆط¶ط­ ط§ظ„ظ…ط­ط¯ط¯ط§طھ ط§ظ„ط¥ط­طµط§ط¦ظٹط© ط§ظ„طھط§ظ„ظٹط© ظ„ط¹ظ…ظ„ط§ط¦ظ†ط§:
+        </p>
+        <ul>
+          <li><strong>ط­ط¬ظ… ط§ظ„ط¹ظٹظ†ط©:</strong> 254 ظ†ظ‚ط±ط© ظƒط§ظپظٹط© ط¬ط¯ط§ظ‹ ظ„ظ‚ط±ط§ط،ط© ط§ظ„ط§طھط¬ط§ظ‡ ط§ظ„ط¹ط§ظ… ظˆط³ظ„ظˆظƒ ط§ظ„ط³ظˆظ‚طŒ ظˆظ„ظƒظ†ظ‡ط§ ظ„ظٹط³طھ ط¹ظٹظ†ط© ظ†ظ‡ط§ط¦ظٹط© ظ„ط­ط³ط§ط¨ ظ…ط¹ط§ط¯ظ„ط§طھ ط§ط­طھظ…ط§ظ„ظٹط© ظ…ط¹ظ‚ط¯ط©.</li>
+          <li><strong>ط§ظ„ط¥ظٹط±ط§ط¯ط§طھ ط§ظ„ظ…ط§ظ„ظٹط©:</strong> ط£ط¯ظˆط§طھ ط§ظ„طھط­ظ„ظٹظ„ ظ„ط§ طھط³ط¬ظ„ ط£ط±ظ‚ط§ظ… ط§ظ„ط­ط³ط§ط¨ط§طھ ط§ظ„ط¨ظ†ظƒظٹط©ط› ظ„ط°ط§ ط§ط¹طھظ…ط¯ظ†ط§ ط¹ط¯ط¯ ط§ظ„ظ…ط¨ظٹط¹ط§طھ (5 طµظپظ‚ط§طھ) ظ…ظ† ظˆط§ظ‚ط¹ ط³ط¬ظ„ ظ…ط­ط§ط¯ط«ط§طھ ط§ظ„ط¹ظ…ظٹظ„ ط§ظ„ظ…ط¨ط§ط´ط±ط©.</li>
+          <li><strong>طھطµظپظٹط© ط§ظ„ط¨ظٹط§ظ†ط§طھ ظ…ظ† ط§ظ„ط²ظٹط§ط±ط§طھ ط§ظ„ظˆظ‡ظ…ظٹط©:</strong> طھظ… ط±طµط¯ 138 ط²ظٹط§ط±ط© ظ…ظ† ط£ظ…ط±ظٹظƒط§طŒ ظ…ظ†ظ‡ط§ 83 ط²ظٹط§ط±ط© ظ…ظ† ظ…ط±ط§ظƒط² ط¨ظٹط§ظ†ط§طھ ط³ط­ط§ط¨ظٹط© AWSطŒ ط¥ط¶ط§ظپط© ظ„ظ€ 27 ط²ظٹط§ط±ط© ظ„طµظپط­ط§طھ ط§ظ„ط£ط¯ظ…ظ†ط› <strong>ظ„ط°ط§ ط±ظپط¶ظ†ط§ ظ†ط´ط± ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ط²ظˆط§ط± (413) ظƒط¹ظ…ظ„ط§ط،</strong> ظˆط§ط¹طھظ…ط¯ظ†ط§ ط­طµط±ظٹط§ظ‹ ط£ط±ظ‚ط§ظ… ط§ظ„ط²ظٹط§ط±ط§طھ ط§ظ„ط¨ط´ط±ظٹط© ط§ظ„ط³ط¹ظˆط¯ظٹط©.</li>
+          <li><strong>طھطµظپظٹط© ظ†ظ‚ط±ط§طھ ط§ظ„ظˆط§طھط³ط§ط¨:</strong> طھظ… ط§ط³طھط¨ط¹ط§ط¯ 20 ظ†ظ‚ط±ط© ط±ظˆط¨ظˆطھ ط­ط¯ط«طھ ظپظٹ ط¯ظ‚ظٹظ‚ط© ظˆط§ط­ط¯ط© ظ…ظ† ط£ظ„ظ…ط§ظ†ظٹط§طŒ ظˆط­طµط±ظ†ط§ 53 ظ†ظ‚ط±ط© ظپط¹ظ„ظٹط© طھط®طµ 37 ظ…ط´طھط±ظٹط§ظ‹ ط¨ط´ط±ظٹط§ظ‹ ط­ظ‚ظٹظ‚ظٹط§ظ‹.</li>
+        </ul>
+
+        <!-- Section 12: AEO FAQ -->
+        <h2 id="faq-aeo-section">12. ط£ط³ط¦ظ„ط© ط´ط§ط¦ط¹ط© ظٹط¬ظٹط¨ ط¹ظ†ظ‡ط§ ط®ط¨ط±ط§ط، webinOO (ظ…ظ‡ظٹط£ط© ظ„ظ…ط­ط±ظƒط§طھ ط§ظ„ط¨ط­ط« ط§ظ„طھظˆظ„ظٹط¯ظٹ AEO)</h2>
+        <div class="aeo-faq-container">
+          <details class="faq-accordion" open>
+            <summary>ظ‡ظ„ ظٹظ…ظƒظ† ظ„ط£ظٹ ظ…طھط¬ط± ط¥ظ„ظƒطھط±ظˆظ†ظٹ ط¬ط¯ظٹط¯ طھط­ظ‚ظٹظ‚ ظ…ط¨ظٹط¹ط§طھ ظ…ظ† ط£ظˆظ„ ط´ظ‡ط± ط¨ط¯ظˆظ† ط¥ط¹ظ„ط§ظ†ط§طھ ظ…ظ…ظˆظ„ط©طں</summary>
+            <p>
+              ظ†ط¹ظ…طŒ ط¨ط´ط±ط· ط§ظ„طھط®ظ„ظٹ ط¹ظ† ظ‚ظˆط§ظ„ط¨ ط§ظ„ظ…طھط§ط¬ط± ط§ظ„طھظ‚ظ„ظٹط¯ظٹط© ط§ظ„طµط§ظ…طھط© ظˆط¨ظ†ط§ط، ط§ظ„ظ…ظˆظ‚ط¹ ظ…ظ† ط§ظ„طµظپط± ط¨ظ‡ظٹظƒظ„ ط¯ظ„ط§ظ„ظٹ ظٹط¬ظٹط¨ ط¹ظ† ط§ط³طھط¹ظ„ط§ظ…ط§طھ ط§ظ„ط´ط±ط§ط، ط§ظ„ظ…ط­ط¯ط¯ط© (ظ…ط«ظ„ ظ…ط³طھظˆظٹط§طھ ط§ظ„ظ…ظ†طھط¬ط§طھ ظˆط§ظ„ط£ط³ط¹ط§ط± ظˆط§ظ„ط¶ظ…ط§ظ†ط§طھ)طŒ ظ…ظ…ط§ ظٹط¬ط¹ظ„ Google ظٹط±ط´ط­ظ‡ ظپظˆط±ط§ظ‹ ظپظٹ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰ ظ„ظ„ط¨ط§ط­ط«ظٹظ† ط§ظ„ط¬ط§ط¯ظٹظ†.
+            </p>
+          </details>
+          <details class="faq-accordion">
+            <summary>ظ„ظ…ط§ط°ط§ طھط¹طھط¨ط± ط²ظٹط§ط±ط§طھ ط¨ط­ط« Google ظˆ ChatGPT ط£ظپط¶ظ„ ظ…ظ† ط²ظٹط§ط±ط§طھ طھظٹظƒ طھظˆظƒ ظˆط¥ظ†ط³طھط؛ط±ط§ظ…طں</summary>
+            <p>
+              ظ„ط£ظ† ط¹ظ…ظٹظ„ ط§ظ„ط¨ط­ط« ظٹط¨ط­ط« ط¨ظ†ظٹط© ط´ط±ط§ط، ظˆط§ط¹ظٹط© (High Purchase Intent) ظˆظ‡ظˆ ظ…ظ† ظٹط¨ط§ط¯ط± ط¨ط·ظ„ط¨ ط§ظ„ظ…ظ†طھط¬طŒ ظپظٹ ط­ظٹظ† ط£ظ† ظ…ط³طھط®ط¯ظ… ط§ظ„ط³ظˆط´ظٹط§ظ„ ظ…ظٹط¯ظٹط§ ظٹطھطµظپط­ ظ„ظ„طھط±ظپظٹظ‡. ط²ظˆط§ط± Google ظپظٹ ظ‡ط°ظ‡ ط§ظ„ط¯ط±ط§ط³ط© ط³ط¬ظ„ظˆط§ ط§ط±طھط¯ط§ط¯ط§ظ‹ ظ…ظ†ط®ظپط¶ط§ظ‹ (37.8%) ظˆط£ط؛ظ„ظ‚ظˆط§ 5 طµظپظ‚ط§طھ ظ„ظ… طھظƒظ† ظ„طھط­ط¯ط« ط¹ط¨ط± ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط§ظ„ط³ط·ط­ظٹط©.
+            </p>
+          </details>
+          <details class="faq-accordion">
+            <summary>ظƒظ… طھط¨ظ„ط؛ طھظƒظ„ظپط© ط§ظ„ط§ط³طھط¹ط§ظ†ط© ط¨ظپط±ظٹظ‚ webinOO ظ„ط¨ظ†ط§ط، ظ…طھط¬ط± ظ…ظ‡ظٹط£ ظ„ظ„ظ€ SEO ظˆط§ظ„ظ€ GEOطں</summary>
+            <p>
+              ظ†ظ‚ط¯ظ… ظپظٹ webinOO ط®ط·ط·ط§ظ‹ ظ…ط®طµطµط© طھط¨ط¯ط£ ط¨طھط­ظ„ظٹظ„ ظ…ط¬ط§ظ†ظٹ ط´ط§ظ…ظ„ ظ„ظˆط¶ط¹ ظ…ظˆظ‚ط¹ظƒ ط§ظ„ط­ط§ظ„ظٹ ظˆظ†ظˆط¹ ظ†ط´ط§ط·ظƒ ظپظٹ ط§ظ„ظƒظˆظٹطھ ط£ظˆ ط§ظ„ط³ط¹ظˆط¯ظٹط©طŒ ظˆظ†ط¨ظ†ظٹ ظ„ظƒ ط§ظ„ط¨ظ†ظٹط© ط§ظ„ط¨ط±ظ…ط¬ظٹط© ظˆط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط°ظٹ ظٹط¶ظ…ظ† ط§ط³طھط¯ط§ظ…ط© ط¸ظ‡ظˆط±ظƒ ظپظٹ ظ…ط­ط±ظƒط§طھ ط§ظ„ط¨ط­ط« ظˆط¥ط¬ط§ط¨ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ط¯ظˆظ† ط§ظ„ط§ط¹طھظ…ط§ط¯ ط§ظ„ط£ط¨ط¯ظٹ ط¹ظ„ظ‰ ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط§ظ„ظ…ظ…ظˆظ„ط©.
+            </p>
+          </details>
+        </div>
+
+        <!-- Read in Blog Banner -->
+        <div class="blog-redirect-card">
+          <div class="redirect-info">
+            <span class="redirect-tag"><BookOpen size={14} /> ظ…ظ‚ط§ظ„ ظˆط¯ظ„ظٹظ„ ظپظ†ظٹ ظپظٹ ط§ظ„ظ…ط¯ظˆظ†ط©</span>
+            <h3>ظ‡ظ„ طھظپط¶ظ„ ظ‚ط±ط§ط،ط© ط§ظ„طھط­ظ„ظٹظ„ ط§ظ„طھظ‚ظ†ظٹ ط§ظ„ظ…ط¹ظ…ط§ط±ظٹ ظ„ظ„ظ…طھط¬ط± ط¨طµظٹط؛ط© ظ…ظ‚ط§ظ„ ظ…ط±ط¬ط¹ظٹطں</h3>
+            <p>ظٹطھظˆظپط± ظ‡ط°ط§ ط§ظ„طھظ‚ط±ظٹط± ط£ظٹط¶ط§ظ‹ ط¶ظ…ظ† ظ…ظ‚ط§ظ„ط§طھ ظ…ط¯ظˆظ†ط© webinOO ظ„ظ„ط¨ط­ط« ظˆط§ظ„طھط·ط¨ظٹظ‚ ط§ظ„ط¹ظ…ظ„ظٹ.</p>
+          </div>
+          <a href="/blog/clash-market-seo-case-study/" class="redirect-btn">
+            ط§ظ‚ط±ط£ ط§ظ„ظ…ظ‚ط§ظ„ ط§ظ„ظƒط§ظ…ظ„ ظپظٹ ط§ظ„ظ…ط¯ظˆظ†ط© <ArrowLeft size={16} />
+          </a>
+        </div>
+      </article>
+
+      <!-- Strategy Sticky Sidebar -->
+      <aside class="showcase-sidebar-col">
+        <div class="sidebar-sticky-wrapper">
+          <!-- Table of Contents Widget -->
+          <div class="sidebar-widget">
+            <div class="widget-title">
+              <BookOpen size={16} /> ظپظ‡ط±ط³ ط¯ط±ط§ط³ط© ط§ظ„ط­ط§ظ„ط©
+            </div>
+            <nav aria-label="ظپظ‡ط±ط³ ط§ظ„ظ…ط­طھظˆظٹط§طھ">
+              <ul class="toc-nav-list" id="toc-nav-list">
+                <li><a href="#zero-ad-proof-section">1. ط­ظ‚ظٹظ‚ط© ط§ظ„ظ…ط¨ظٹط¹ط§طھ ط¨ط¯ظˆظ† ط¥ط¹ظ„ط§ظ†ط§طھ</a></li>
+                <li><a href="#first-month-seo">2. ط£ط±ظ‚ط§ظ… ط§ظ„ط´ظ‡ط± ط§ظ„ط£ظˆظ„ ط¨ط§ظ„ط£ط±ظ‚ط§ظ…</a></li>
+                <li><a href="#executive-data">3. ظ†طھط§ط¦ط¬ Search Console (65 ظٹظˆظ…ط§ظ‹)</a></li>
+                <li><a href="#ecommerce-seo-challenge">4. ط§ظ„طھط­ط¯ظٹ ط§ظ„ط³ظˆظ‚ظٹ ظˆظ‚ظˆط§ظ„ط¨ ط³ظ„ط©</a></li>
+                <li><a href="#semantic-architecture">5. ظ‡ظٹظƒظ„ ط§ظ„ظ€ 5 ط·ط¨ظ‚ط§طھ ظ…ظ† webinOO</a></li>
+                <li><a href="#growth-curve-analysis">6. ظ…ظ†ط­ظ†ظ‰ ظ†ظ…ظˆ ط§ظ„ط¸ظ‡ظˆط± ظˆط§ظ„ظ†ظ‚ط±ط§طھ</a></li>
+                <li><a href="#keywords-strategy">7. ظƒظ„ظ…ط§طھ ط§ظ„ط¨ط­ط« ظˆط§ط³ظ… ط§ظ„ظ…طھط¬ط±</a></li>
+                <li><a href="#mobile-saudi-seo">8. طھظˆط·ظٹظ† ط§ظ„ط³ط¹ظˆط¯ظٹط© ظˆط³ظٹظˆ ط§ظ„ط¬ظˆط§ظ„</a></li>
+                <li><a href="#ai-overviews-chatgpt">9. ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ ظˆChatGPT</a></li>
+                <li><a href="#conversion-roadmap">10. ط®ط·ط© ط§ظ„ظ€ 90 ظٹظˆظ…ط§ظ‹ ظ„ظ„طھط­ظˆظٹظ„ط§طھ</a></li>
+                <li><a href="#methodology-transparency">11. ط§ظ„ط´ظپط§ظپظٹط© ط§ظ„ظ…ظ†ظ‡ط¬ظٹط©</a></li>
+                <li><a href="#faq-aeo-section">12. ط£ط³ط¦ظ„ط© ط´ط§ط¦ط¹ط© (AEO)</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Digital Passport / Project Facts Card -->
+          <div class="sidebar-widget">
+            <div class="widget-title">
+              <ShieldCheck size={16} /> ط¨ط·ط§ظ‚ط© ط§ظ„ظ…ط´ط±ظˆط¹ ط§ظ„ط±ظ‚ظ…ظٹط©
+            </div>
+            <div class="facts-list">
+              <div class="fact-item">
+                <span>ط§ط³ظ… ط§ظ„ظ…طھط¬ط±:</span>
+                <strong>Clash Market </strong>
+              </div>
+              <div class="fact-item">
+                <span>ط§ظ„ظ†ط·ط§ظ‚:</span>
+                <strong dir="ltr">clashmarket.online</strong>
+              </div>
+              <div class="fact-item">
+                <span>ظ…ظٹط²ط§ظ†ظٹط© ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ:</span>
+                <strong style="color:var(--color-accent-green);">0.00 ط±ظٹط§ظ„ (ط¨ط­ط« ط·ط¨ظٹط¹ظٹ)</strong>
+              </div>
+              <div class="fact-item">
+                <span>ظ†ط·ط§ظ‚ ط§ظ„ط¹ظ…ظ„:</span>
+                <strong>ط¨ط±ظ…ط¬ط© ظ…ط®طµطµط© + SEO + GEO</strong>
+              </div>
+              <div class="fact-item">
+                <span>ط¨ط¯ط§ظٹط© ط§ظ„ط³ظٹظˆ:</span>
+                <strong>10 ط³ط¨طھظ…ط¨ط± 2026</strong>
+              </div>
+              <div class="fact-item">
+                <span>ط§ظ„ظ…ط¨ظٹط¹ط§طھ ط§ظ„ظ…ط؛ظ„ظ‚ط©:</span>
+                <strong>5 ط·ظ„ط¨ط§طھ ط¹ط¨ط± ط§ظ„ظˆط§طھط³ط§ط¨</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conversion Strategy Card -->
+          <div class="sidebar-cta-card">
+            <span class="cta-mini-tag">
+              ط§ط³طھط´ط§ط±ط© ظ…ط¬ط§ظ†ظٹط© طµط±ظٹط­ط©
+            </span>
+            <h4>ظƒظ… طھظ†ظپظ‚ ط´ظ‡ط±ظٹط§ظ‹ ط¹ظ„ظ‰ ط§ظ„ط¥ط¹ظ„ط§ظ†ط§طھ ط¨ط¯ظˆظ† ط¹ط§ط¦ط¯ طھط±ط§ظƒظ…ظٹطں</h4>
+            <p>
+              طھظˆظ‚ظپ ط¹ظ† ط­ط±ظ‚ ظ…ظٹط²ط§ظ†ظٹطھظƒ ط§ظ„طھط³ظˆظٹظ‚ظٹط© ط¹ظ„ظ‰ ط­ظ…ظ„ط§طھ طھظ†طھظ‡ظٹ ط¨ط§ظ†طھظ‡ط§ط، ط§ظ„ط±طµظٹط¯. ط¯ط¹ ظپط±ظٹظ‚ <strong>webinOO</strong> ظٹظپط­طµ ظ…ظˆظ‚ط¹ظƒ ط£ظˆ ظٹط¨ظ†ظٹظ‡ ظ…ظ† ط§ظ„طµظپط± ظ„ظٹظ…طھظ„ظƒ ط£طµظˆظ„ ط¨ط­ط« ط·ط¨ظٹط¹ظٹط© ظ…ط¬ط§ظ†ظٹط© طھط¬ظ„ط¨ ط¹ظ…ظ„ط§ط، ظ…ط³طھظ…ط±ظٹظ† ظ…ظ† Google ظˆ ChatGPT.
+            </p>
+            <a
+              href={getWhatsAppUrl('ط§ظ„ط³ظ„ط§ظ… ط¹ظ„ظٹظƒظ…طŒ ط§ط·ظ„ط¹طھ ط¹ظ„ظ‰ ط¯ط±ط§ط³ط© ط­ط§ظ„ط© Clash Market ظپظٹ webinOO ظˆط£ط±ظٹط¯ ظپط­طµ ظ…ظˆظ‚ط¹ظٹ ظˆط§ظ„ط§ظ†طھظ‚ط§ظ„ ط¥ظ„ظ‰ ط§ظ„ط¨ط­ط« ط§ظ„ط·ط¨ظٹط¹ظٹ ظˆط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ.')}
+              target="_blank"
+              rel="dofollow"
+              class="sidebar-cta-btn"
+            >
+              <MessageCircle size={18} />
+              طھط­ط¯ط« ظ…ط¨ط§ط´ط±ط© ظ…ط¹ ط®ط¨ظٹط± webinOO
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <CTA
+      eyebrow="ط§ط³طھط«ظ…ط§ط± ط±ظ‚ظ…ظٹ ظ…ط³طھط¯ط§ظ… ط¨ط¯ظٹظ„ ظ„ظ„ط¥ط¹ظ„ط§ظ†ط§طھ"
+      title="ط¬ط§ظ‡ط² ظ„طھط­ظˆظٹظ„ ظ…طھط¬ط±ظƒ ط¥ظ„ظ‰ ط£طµظ„ ط±ظ‚ظ…ظٹ ظٹط¬ظ„ط¨ ظ…ط¨ظٹط¹ط§طھ ظ…ط¬ط§ظ†ظٹط© ظ…ط³طھظ…ط±ط©طں"
+      description="ظپط±ظٹظ‚ webinOO ظپظٹ ط§ظ„ظƒظˆظٹطھ ظˆط§ظ„ط®ظ„ظٹط¬ ظ…طھط®طµطµ ظپظٹ ط¨ظ†ط§ط، ظ…ظˆط§ظ‚ط¹ ظˆظ…طھط§ط¬ط± ط¨ط±ظ…ط¬ظٹط© ظ…ط®طµطµط©طŒ ظ…طµظ…ظ…ط© ظ‡ظ†ط¯ط³ظٹط§ظ‹ ظ„طھطھطµط¯ط± ظ†طھط§ط¦ط¬ ط¨ط­ط« Google ظˆطھط±ط´ظٹط­ط§طھ ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ (ChatGPT & Perplexity)."
+      ctaText="طھظˆط§طµظ„ ظ…ط¹ظ†ط§ ط¹ط¨ط± ظˆط§طھط³ط§ط¨ ط§ظ„ط¢ظ†"
+      whatsappMessage="ط§ظ„ط³ظ„ط§ظ… ط¹ظ„ظٹظƒظ…طŒ ط£ط±ظٹط¯ ط§ط³طھط´ط§ط±ط© ظ…ط¬ط§ظ†ظٹط© ظ„ظ…طھط¬ط±ظٹ ط¨ظ†ظپط³ ط£ط³ظ„ظˆط¨ ط¯ط±ط§ط³ط© ط­ط§ظ„ط© Clash Market."
+    />
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
+
+<script>
+  // Reading Progress Bar
+  window.addEventListener('scroll', () => {
+    const progressBar = document.getElementById('reading-progress');
+    if (!progressBar) return;
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    progressBar.style.width = scrolled + '%';
+  });
+
+  // Active TOC Scroll Spy
+  const headings = document.querySelectorAll('article h2[id]');
+  const links = document.querySelectorAll('#toc-nav-list a');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          links.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    },
+    { rootMargin: '-90px 0px -70% 0px' }
+  );
+
+  headings.forEach((h) => observer.observe(h));
+</script>
+
+<style>
+  .reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary, #6518ac) 0%, var(--color-accent-coral, #f07956) 100%);
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+
+  .case-study-page {
+    padding-bottom: 60px;
+  }
+
+  .breadcrumbs-container {
+    padding-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .showcase-hero {
+    margin-bottom: 40px;
+  }
+
+  .hero-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .hero-pill {
+    padding: 6px 14px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .pill-free {
+    background: #e6f4f0;
+    color: #2e856e;
+    border: 1px solid rgba(46, 133, 110, 0.3);
+  }
+
+  .pill-organic {
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    border: 1px solid rgba(101, 24, 172, 0.25);
+  }
+
+  .pill-ai {
+    background: rgba(240, 121, 86, 0.14);
+    color: #c2410c;
+    border: 1px solid rgba(240, 121, 86, 0.3);
+  }
+
+  .pill-gcc {
+    background: #fbf5e8;
+    color: #92400e;
+    border: 1px solid #fde68a;
+  }
+
+  .showcase-h1 {
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.28;
+    letter-spacing: -0.025em;
+    color: var(--color-ink-primary, #292239);
+    margin: 0 0 20px;
+    max-width: 1060px;
+  }
+
+  .showcase-h1 mark {
+    background: linear-gradient(120deg, rgba(101, 24, 172, 0.12) 0%, rgba(240, 121, 86, 0.2) 100%);
+    color: var(--color-primary-dark, #3b0970);
+    padding: 2px 10px;
+    border-radius: 8px;
+  }
+
+  .showcase-lead {
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--color-ink-secondary, #595264);
+    margin: 0 0 30px;
+    max-width: 980px;
+  }
+
+  .author-meta-bar {
+    background: #ffffff;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-md, 20px);
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 28px 0 32px;
+  }
+
+  .author-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-primary, #6518ac);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-latin, sans-serif);
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .author-text strong {
+    display: block;
+    color: var(--color-ink-primary, #292239);
+    font-size: 15px;
+  }
+
+  .author-text span {
+    font-size: 12px;
+    color: var(--color-ink-muted, #544c60);
+  }
+
+  .proof-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .proof-pill {
+    background: #ffffff;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink-secondary, #595264);
+  }
+
+  /* Two Column Grid */
+  .main-showcase-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 44px;
+    align-items: start;
+    padding-bottom: 60px;
+  }
+
+  .showcase-content-col {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-xl, 30px);
+    padding: 44px 48px;
+    box-shadow: var(--shadow-card, 0 16px 38px rgba(56, 32, 75, 0.09));
+  }
+
+  .showcase-content-col h2 {
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 800;
+    color: var(--color-ink-primary, #292239);
+    margin: 48px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-border-subtle, #eee7f0);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    scroll-margin-top: 96px;
+  }
+
+  .showcase-content-col h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .showcase-content-col p {
+    font-size: 16.5px;
+    line-height: 2.05;
+    color: var(--color-ink-secondary, #595264);
+    margin: 0 0 22px;
+  }
+
+  .showcase-content-col ul,
+  .showcase-content-col ol {
+    padding-right: 26px;
+    margin: 0 0 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--color-ink-secondary, #595264);
+    font-size: 16px;
+    line-height: 1.95;
+  }
+
+  /* Responsive Tables */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin: 24px 0 32px;
+    border-radius: var(--radius-md, 20px);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    box-shadow: 0 4px 18px rgba(56, 32, 75, 0.03);
+    background: #ffffff;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    min-width: 520px;
+  }
+
+  th {
+    background: var(--color-primary-dark, #3b0970);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 15px 18px;
+    text-align: right;
+    font-size: 14px;
+  }
+
+  td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+    color: var(--color-ink-primary, #292239);
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) td {
+    background: var(--color-bg-body, #f8f6f1);
+  }
+
+  /* Redirect to Blog Card */
+  .blog-redirect-card {
+    background: linear-gradient(135deg, #f4eafa 0%, #ffffff 100%);
+    border: 1px solid #ebd9f5;
+    border-radius: var(--radius-lg, 24px);
+    padding: 28px 32px;
+    margin: 40px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .redirect-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary, #6518ac);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .redirect-info h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    color: var(--color-primary-dark, #3b0970);
+  }
+
+  .redirect-info p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-ink-secondary, #595264);
+  }
+
+  .redirect-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+    padding: 12px 22px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .redirect-btn:hover {
+    background: var(--color-primary-hover, #4e0d90);
+  }
+
+  /* Sticky Sidebar */
+  .showcase-sidebar-col {
+    position: relative;
+  }
+
+  .sidebar-sticky-wrapper {
+    position: sticky;
+    top: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sidebar-widget {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-lg, 24px);
+    padding: 24px;
+    box-shadow: var(--shadow-card, 0 16px 38px rgba(56, 32, 75, 0.09));
+  }
+
+  .widget-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toc-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .toc-nav-list a {
+    display: block;
+    padding: 7px 10px;
+    font-size: 13.5px;
+    color: var(--color-ink-secondary, #595264);
+    text-decoration: none;
+    border-radius: 8px;
+    border-right: 2px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .toc-nav-list a:hover,
+  .toc-nav-list a.active {
+    background: var(--color-primary-subtle, #f4eafa);
+    color: var(--color-primary, #6518ac);
+    border-right-color: var(--color-primary, #6518ac);
+    font-weight: 700;
+  }
+
+  .facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13.5px;
+  }
+
+  .fact-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--color-border-subtle, #eee7f0);
+  }
+
+  .fact-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .fact-item span {
+    color: var(--color-ink-muted, #544c60);
+  }
+
+  .fact-item strong {
+    color: var(--color-ink-primary, #292239);
+    text-align: left;
+  }
+
+  .sidebar-cta-card {
+    background: linear-gradient(150deg, #241a2e 0%, #460f78 100%);
+    color: #ffffff;
+    border-radius: var(--radius-lg, 24px);
+    padding: 26px 24px;
+    box-shadow: var(--shadow-card, 0 16px 38px rgba(56, 32, 75, 0.09));
+  }
+
+  .cta-mini-tag {
+    background: rgba(240, 121, 86, 0.25);
+    color: #ffd8cc;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  .sidebar-cta-card h4 {
+    font-size: 17px;
+    margin: 10px 0 10px;
+    line-height: 1.4;
+    color: #ffffff;
+  }
+
+  .sidebar-cta-card p {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: #e5daf0;
+    margin: 0 0 18px;
+  }
+
+  .sidebar-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: #25d366;
+    color: #ffffff;
+    padding: 13px 18px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .sidebar-cta-btn:hover {
+    background: #1ebc5a;
+    transform: translateY(-2px);
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 1024px) {
+    .main-showcase-grid {
+      grid-template-columns: 1fr;
+    }
+    .sidebar-sticky-wrapper {
+      position: static;
+    }
+    .showcase-content-col {
+      padding: 34px 28px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .showcase-content-col {
+      padding: 24px 18px;
+    }
+    .blog-redirect-card {
+      padding: 22px 18px;
+    }
+    .redirect-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+

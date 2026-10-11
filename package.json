@@ -70,6 +70,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "postcss": "^8.5.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "wrangler": "^4.149.0"
   }
 }
