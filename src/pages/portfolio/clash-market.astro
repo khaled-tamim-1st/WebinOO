@@ -1,0 +1,1801 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import {
+  TrendingUp,
+  Search,
+  Bot,
+  ShieldCheck,
+  CheckCircle,
+  ArrowUpRight,
+  ExternalLink,
+  Target,
+  Sparkles,
+  Zap,
+  DollarSign
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'أعمالنا ودراسات الحالة', href: '/portfolio/' },
+  { label: 'دراسة حالة سيو متجر Clash Market' },
+];
+
+const caseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': 'https://webinoo.online/portfolio/clash-market/#article',
+    'headline': 'دراسة حالة سيو متجر إلكتروني: كيف حقق متجر Clash Market مبيعات ونمو 8 أضعاف بميزانية إعلانات 0 دولار',
+    'name': 'دراسة حالة سيو متجر إلكتروني: متجر Clash Market السعودي',
+    'description': 'دراسة حالة موثقة بالأرقام: كيف بنت webinOO متجر Clash Market السعودي من الصفر، وحققت 4,270 ظهوراً في Google، و190 ظهوراً في AI Overviews، و20 زائراً من ChatGPT، و5 مبيعات فعلية بميزانية إعلانات 0 دولار.',
+    'inLanguage': 'ar-SA',
+    'url': 'https://webinoo.online/portfolio/clash-market/',
+    'datePublished': '2026-10-11T09:00:00+03:00',
+    'dateModified': '2026-10-12T00:00:00+03:00',
+    'author': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'about': [
+      { '@type': 'Thing', 'name': 'سيو المتاجر الإلكترونية' },
+      { '@type': 'Thing', 'name': 'تحسين محركات البحث في السعودية' },
+      { '@type': 'Thing', 'name': 'Generative Engine Optimization (GEO)' },
+      { '@type': 'Thing', 'name': 'زيادة مبيعات المتاجر بدون إعلانات' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'كيف استطاع متجر جديد دخول الصفحة الأولى في Google خلال 30 يوماً بدون إعلانات؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'من خلال بناء الموقع بهيكل عنقودي من 5 طبقات يعكس نية البحث الحقيقية للمشتري (صفحات الألعاب، صفحات مستويات القرية، صفحات الحسابات الفردية، المدونة الإرشادية، وصفحات الثقة)، مما سمح لـ Google بفهم تخصص الكيان فوراً وترقيته من متوسط ترتيب 11.2 إلى 7.8 بميزانية إعلانات صفر دولار.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'لماذا ظهر المتجر في Google AI Overviews و ChatGPT بهذه السرعة؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'لأن webinOO ضمنت منذ الإطلاق مقالات إرشادية تجيب بشكل مباشر ومهيكل عن أسئلة حساسة للمشتري (مثل تغيير بريد Supercell ID وحماية الحساب من الحظر وتسعير الحسابات)، مما أنتج 190 ظهوراً في ميزات الذكاء الاصطناعي و20 زيارة مباشرة من ChatGPT دون إنفاق أي ميزانية تسويقية.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'هل جميع الزوار والمبيعات جاءت من محركات البحث بدون إعلانات ممولة؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'نعم، بنسبة 100%. لم يتم إنفاق أي دولار على إعلانات جوجل أو منصات التواصل الاجتماعي أو المشاهير. جميع المبيعات والزيارات نتجت بالكامل عن تصدر نتائج البحث العضوي وتوصيات محركات الذكاء الاصطناعي.'
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="سيو متجر إلكتروني: دراسة حالة نمو Clash Market بـ 8 أضعاف بدون إعلانات | webinOO"
+  description="دراسة حالة موثقة بالأرقام: كيف بنت webinOO متجر Clash Market السعودي من الصفر، محققة 4,270 ظهوراً في Google، و20 عميلاً من ChatGPT، و5 مبيعات فعلية بميزانية إعلانات 0 دولار."
+  lang="ar"
+  schema={caseSchema}
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="clash-case-study">
+    <!-- Hero / Header Section -->
+    <header class="case-hero">
+      <div class="container hero-container">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="hero-badges">
+          <span class="badge-pill badge-primary">دراسة حالة موثقة بالأرقام</span>
+          <span class="badge-pill badge-green">ميزانية إعلانات 0$ (100% بحث عضوي)</span>
+          <span class="badge-pill badge-coral">سيو وتجارة إلكترونية — السعودية والخليج</span>
+        </div>
+
+        <h1 class="hero-title">
+          دراسة حالة سيو متجر إلكتروني: كيف حقق متجر Clash Market مبيعات ونمو 8 أضعاف بميزانية إعلانات 0$؟
+        </h1>
+
+        <p class="hero-lead">
+          بنت <strong>webinOO</strong> متجر <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market السعودي (clashmarket.online)</a> من الصفر، وأطلقته بهيكل برمجي مخصص لمحركات البحث والذكاء الاصطناعي. وفي أول 30 يوماً فقط، ارتفع ظهور المتجر في بحث Google من 524 إلى <strong>4,270 ظهوراً (نمو 815%)</strong>، واستقطب <strong>157 زائراً من بحث Google</strong> و<strong>20 زائراً مؤكداً من ChatGPT</strong>، وحقق <strong>5 مبيعات فعلية مغلقة عبر واتساب</strong> — دون إنفاق فلس واحد على الإعلانات الممولة أو منصات التواصل.
+        </p>
+
+        <!-- Live Store Preview Action Button -->
+        <div class="hero-actions">
+          <a
+            href="https://clashmarket.online"
+            target="_blank"
+            rel="dofollow"
+            class="live-store-button"
+          >
+            <span>زيارة المتجر المباشر: clashmarket.online</span>
+            <ArrowUpRight size={18} />
+          </a>
+          <span class="live-status-note">
+            رابط مباشر للمعاينة الميدانية (DoFollow معتمد)
+          </span>
+        </div>
+
+        <!-- Philosophical / Psychological Core Premise Callout -->
+        <div class="philosophy-banner">
+          <div class="banner-top">
+            <span class="banner-tag">فلسفة الأصول الرقمية مقابل إيجار الإعلانات الزائل</span>
+            <span class="banner-stat">حقيقة استثمارية مثبتة</span>
+          </div>
+          <p class="banner-text">
+            <strong>معضلة معظم تجار الخليج:</strong> كل ريال أو دينار تدفعه في سناب شات وتيك توك هو مجرد <em>«إيجار مؤقت»</em> يتبخر فور نفاد رصيد بطاقتك الائتمانية. أما هندسة المتجر عبر محركات البحث (SEO & GEO) فهي <strong>بناء أصل رقمي استثماري تملكه بالكامل</strong>؛ ينمو تراكمياً يوماً بعد يوم، ويضع منتجاتك أمام المشتري في اللحظة المحددة التي يبحث فيها بقرار شراء حاسم — مجاناً وبلا توقف.
+          </p>
+        </div>
+
+        <!-- Bento KPI Grid (Before vs After) -->
+        <div class="bento-kpi-grid">
+          <div class="kpi-card highlight-card">
+            <div class="kpi-label">إجمالي الظهور العضوي في Google</div>
+            <div class="kpi-value">4,270</div>
+            <div class="kpi-delta positive">
+              <TrendingUp size={16} /> 8.1X ضعف (ارتفاع من 524)
+            </div>
+            <div class="kpi-sub">زيادة بنسبة +715% في أول 30 يوماً من إطلاق الـ SEO</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">ظهور الذكاء الاصطناعي (AI Overviews)</div>
+            <div class="kpi-value">190</div>
+            <div class="kpi-delta positive">
+              <Bot size={16} /> اقتباس مباشر كإجابة موثوقة
+            </div>
+            <div class="kpi-sub">في ميزات الذكاء الاصطناعي التوليدي من Google بمعدل نقر 5.8%</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">زوار بحث Google العضوي</div>
+            <div class="kpi-value">157</div>
+            <div class="kpi-delta neutral">
+              <Search size={16} /> باحثون بوعي شرائي مؤكد
+            </div>
+            <div class="kpi-sub">زيارات طبيعية مستهدفة مجاناً بنسبة 100% بدون إعلانات</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">زوار من محرك ChatGPT Search</div>
+            <div class="kpi-value">20</div>
+            <div class="kpi-delta positive">
+              <Sparkles size={16} /> عملاء بتوصية الذكاء الاصطناعي
+            </div>
+            <div class="kpi-sub">إحالات مباشرة من محادثات AI الباحثة عن حسابات موثوقة</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">زوار السوق السعودي المستهدف</div>
+            <div class="kpi-value">85</div>
+            <div class="kpi-delta neutral">
+              <Target size={16} /> أعلى شريحة جغرافية مستهدفة
+            </div>
+            <div class="kpi-sub">عملاء حقيقيون من داخل المملكة بمتوسط بقاء مرتفع</div>
+          </div>
+
+          <div class="kpi-card conversion-card">
+            <div class="kpi-label">مبيعات فعلية مغلقة عبر واتساب</div>
+            <div class="kpi-value">5 مبيعات</div>
+            <div class="kpi-delta positive">
+              <DollarSign size={16} /> بميزانية إعلانات 0.00$
+            </div>
+            <div class="kpi-sub">صفقات مدفوعة ومؤكدة في أول شهر من إطلاق المتجر</div>
+          </div>
+        </div>
+
+        <!-- Psychological Zero-Ad Affirmation Box -->
+        <div class="zero-ad-alert">
+          <div class="zero-ad-header">
+            <ShieldCheck size={22} class="alert-icon" />
+            <strong>تأكيد قاطع للشفافية التجارية:</strong>
+          </div>
+          <p>
+            كل رقم معروض في هذه الصفحة هو نتاج <strong>محركات البحث العضوية (Organic Google Search) ومحركات الذكاء الاصطناعي (GEO) فقط</strong>. لم يتم استخدام إعلانات ممولة، ولا حملات مشاهير، ولا منشورات مدفوعة على تيك توك أو سناب شات، ولا تحويلات من منصات وسيطة. المتجر حقق مبيعاته لأن هيكله الهندسي وضعه في صدارة نتائج البحث عندما أراد العميل الشراء.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout (Article + Sticky Sidebar) -->
+    <div class="container case-layout">
+      <!-- Article Body -->
+      <article class="case-article">
+        <!-- Section 1: Month 1 Numbers -->
+        <section class="case-section" id="month-one-numbers">
+          <div class="section-tag">بيانات مثبتة بالأرقام</div>
+          <h2 id="month-one-numbers">الشهر الأول بالأرقام الفعلية (Before vs. After SEO)</h2>
+          
+          <p>
+            توضح البيانات المقارنة بين الشهر السابق (قبل إطلاق استراتيجية الـ SEO مع بقاء الموقع عاملاً) وأول شهر كامل بعد تفعيل استراتيجية الهندسة العضوية من <strong>webinOO</strong>، قفزة جذرية في جميع المؤشرات الحيوية لاكتساب العملاء:
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>المؤشر التجاري الحقيقي</th>
+                  <th>قبل الـ SEO (10 أغسطس – 9 سبتمبر)</th>
+                  <th>بعد الـ SEO (10 سبتمبر – 9 أكتوبر)</th>
+                  <th>التغيير والنمو</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>مرات الظهور في بحث Google</strong></td>
+                  <td>524 ظهوراً</td>
+                  <td><strong>4,270 ظهوراً</strong></td>
+                  <td><span class="pill-growth">+715% (×8.1 أضعاف)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>النقرات العضوية إلى المتجر</strong></td>
+                  <td>25 نقرة</td>
+                  <td><strong>199 نقرة</strong></td>
+                  <td><span class="pill-growth">+696% (×8.0 أضعاف)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>متوسط الترتيب في نتائج البحث</strong></td>
+                  <td>11.2 (الصفحة الثانية)</td>
+                  <td><strong>7.8 (الصفحة الأولى)</strong></td>
+                  <td><span class="pill-growth">تقدم بمقدار +3.4 مراكز</span></td>
+                </tr>
+                <tr>
+                  <td><strong>معدل النقر (CTR)</strong></td>
+                  <td>4.8%</td>
+                  <td><strong>4.7%</strong></td>
+                  <td><span class="pill-neutral">ثابت ومستقر مع تضاعف الظهور 8 مرات</span></td>
+                </tr>
+                <tr>
+                  <td><strong>زوار بحث Google (Ahrefs Analytics)</strong></td>
+                  <td>غير مسجل (موقع ناشئ)</td>
+                  <td><strong>157 زائراً</strong></td>
+                  <td><span class="pill-growth">قاعدة عملاء أولى بدون إعلانات</span></td>
+                </tr>
+                <tr>
+                  <td><strong>زوار من ChatGPT Search</strong></td>
+                  <td>0</td>
+                  <td><strong>20 زائراً</strong></td>
+                  <td><span class="pill-growth">اكتساب عملاء مباشر عبر الذكاء الاصطناعي</span></td>
+                </tr>
+                <tr>
+                  <td><strong>زوار السوق السعودي (KSA)</strong></td>
+                  <td>غير مسجل</td>
+                  <td><strong>85 زائراً</strong></td>
+                  <td><span class="pill-growth">أكبر شريحة جغرافية مستهدفة</span></td>
+                </tr>
+                <tr>
+                  <td><strong>مبيعات فعلية مغلقة عبر واتساب</strong></td>
+                  <td>0</td>
+                  <td><strong>5 مبيعات مؤكدة</strong></td>
+                  <td><span class="pill-growth">تحويل تجاري مباشر بميزانية إعلانات 0$</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Loss Aversion Psychological Box -->
+          <div class="psych-card loss-aversion">
+            <div class="psych-title">
+              <Zap size={20} />
+              <span>سيكولوجية النفور من الخسارة (Loss Aversion): التكلفة الخفية لإهمال السيو</span>
+            </div>
+            <p>
+              كثير من أصحاب المتاجر يتصورون أن عدم الاستثمار في السيو يعني «توفير التكاليف». الحقيقة النفسية والمالية المعاكسة هي أن <strong>كل يوم تغيب فيه عن الصفحة الأولى في Google هو خسارة مزدوجة</strong>:
+            </p>
+            <ul>
+              <li><strong>الخسارة الأولى:</strong> استنزاف ميزانيتك في إعلانات سناب وتيك توك بأسعار نقرات تتصاعد سنوياً بنسبة 35% في الخليج.</li>
+              <li><strong>الخسارة الثانية:</strong> تسليم مئات العملاء الجاهزين للشراء ببحثهم المباشر على طبق من ذهب إلى منافسيك الذين احتلوا المراكز الثلاثة الأولى.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 2: Executive Summary (65 Days) -->
+        <section class="case-section" id="executive-summary">
+          <div class="section-tag">بيانات Search Console الكاملة</div>
+          <h2 id="executive-summary">الملخص التنفيذي: Search Console منذ أول ظهور (65 يوماً)</h2>
+
+          <p>
+            يمتد عمر متجر <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market</a> في محرك Google لـ 65 يوماً (من 6 أغسطس حتى 9 أكتوبر 2026). توثق لوحة التحكم الرسمية الأرقام الإجمالية التالية:
+          </p>
+
+          <div class="metrics-row-card">
+            <div class="metric-item">
+              <div class="metric-num">5,310</div>
+              <div class="metric-lbl">إجمالي الظهور في 65 يوماً</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">254</div>
+              <div class="metric-lbl">إجمالي النقرات العضوية</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">4.8%</div>
+              <div class="metric-lbl">متوسط معدل النقر التراكمي</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">8.4</div>
+              <div class="metric-lbl">متوسط الترتيب التراكمي</div>
+            </div>
+          </div>
+
+          <p class="highlight-callout">
+            <strong>قراءة الدلالة الإحصائية:</strong> 80.4% من إجمالي الظهور التراكمي للمتجر و78.3% من إجمالي النقرات تحققت <strong>في أول 30 يوماً فقط بعد تفعيل استراتيجية الـ SEO</strong>. هذا يثبت علمياً أن مجرد امتلاك موقع على الإنترنت لا يكفي؛ بل إن الهندسة الدقيقة لمحركات البحث هي المحرك الحقيقي للنمو.
+          </p>
+        </section>
+
+        <!-- Section 3: The Challenge -->
+        <section class="case-section" id="challenge">
+          <div class="section-tag">معضلة السوق والحل البرمجي</div>
+          <h2 id="challenge">التحدي التجاري: لماذا تبتلع الإعلانات أرباح المتاجر وكيف يحررك السيو؟</h2>
+
+          <p>
+            قطاع تجارة الحسابات والألعاب الرقمية في السعودية والخليج هو أحد أكثر الأسواق حساسية ومنافسة، ويواجه تحديات معقدة لا تستطيع قوالب المتاجر الجاهزة التغلب عليها:
+          </p>
+
+          <div class="challenges-grid">
+            <div class="challenge-item">
+              <h4>1. أزمة الثقة والأمان الرقمي</h4>
+              <p>شراء حساب لعبة يتطلب ثقة مطلقة في أمان الدفع ونقل الملكية (Supercell ID). المشتري يبحث في Google عن إجابات دقيقة ليتأكد من خلو الحساب من الاحتيال أو الحظر.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>2. قيود الإعلانات الممولة وارتفاع تكلفتها</h4>
+              <p>منصات الإعلانات تفرض قيوداً مشددة ومراجعات معقدة على السلع الرقمية، وتكلفة الاستحواذ على العميل (CAC) عبر سناب شات وإنستغرام تلتهم هامش الربح بالكامل.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>3. عجز منصات وقوالب المتاجر التقليدية</h4>
+              <p>القوالب الجاهزة على منصات التجارة تفتقر إلى الأكواد فائقة السرعة، وتعجز عن توفير بيانات مهيكلة (Schema.org Graph) متوافقة مع محركات الذكاء الاصطناعي مثل ChatGPT وGemini.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Architecture (5 Layers) -->
+        <section class="case-section" id="architecture">
+          <div class="section-tag">الهندسة المعمارية المتطورة</div>
+          <h2 id="architecture">الهيكل المعماري الخماسي (5-Layer Architecture): هندسة متجر يفهمه Google</h2>
+
+          <p>
+            لم تبنِ <strong>webinOO</strong> الموقع كمتجر تقليدي، بل تمت هندسة <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market</a> على هيئة بنية معلومات عنقودية من 5 طبقات متكاملة تلتقط كل مرحلة من مراحل نية بحث المشتري:
+          </p>
+
+          <div class="arch-layers-list">
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 1</div>
+              <div class="layer-content">
+                <h4>صفحة المتجر الرئيسية (Authority Hub)</h4>
+                <p>مركز بناء سلطة النطاق، استهداف كلمات العلامة التجارية والكلمات الرئيسية العامة، وعرض شارات الثقة وطرق الدفع والضمان.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 2</div>
+              <div class="layer-content">
+                <h4>صفحات تصنيف الألعاب (Game Hubs)</h4>
+                <p>صفحات فئوية رئيسية (مثل Clash of Clans وClash Royale) تستهدف الكلمات الفئوية العريضة وتوجه العناكب إلى مستويات المنتجات.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 3</div>
+              <div class="layer-content">
+                <h4>صفحات المستويات والتصنيفات الدقيقة (Town Hall Hubs)</h4>
+                <p>صفحات مستهدفة لنية الشراء الحادة مثل (حساب كلاش اوف كلانس تاون 16، تاون 15، تاون 14)، وهي الصفحات الأكثر حصداً للمبيعات المباشرة.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 4</div>
+              <div class="layer-content">
+                <h4>صفحات المنتجات والحسابات الفردية (Product Decision Pages)</h4>
+                <p>صفحات المنتجات مع بيانات مهيكلة غنية بنظام <code>Product Schema</code> ومواصفات تفصيلية وصور حقيقية ومفتاح الشراء المباشر عبر واتساب.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 5</div>
+              <div class="layer-content">
+                <h4>مقالات الثقة وتهيئة الذكاء الاصطناعي (GEO Knowledge Engine)</h4>
+                <p>أدلة إرشادية تجيب عن الأسئلة المعقدة: كيف تغير البريد؟ كيف تتجنب حظر الحساب؟ وهي الطبقة التي جلبت اقتباسات ChatGPT وGoogle AI Overviews.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Growth Curve -->
+        <section class="case-section" id="growth-curve">
+          <div class="section-tag">تحليل منحنى Search Console</div>
+          <h2 id="growth-curve">منحنى النمو العضوي: كيف يسبق الظهور في Google تدفق النقرات والمبيعات؟</h2>
+
+          <p>
+            يوضح تحليل المنحنى الزمني في Google Search Console سلوكاً كلاسيكياً لأفضل ممارسات السيو التقني:
+          </p>
+
+          <div class="growth-phases-grid">
+            <div class="phase-card">
+              <div class="phase-badge">المرحلة الأولى: الاستكشاف</div>
+              <h4>6 أغسطس – 9 سبتمبر (قبل الـ SEO)</h4>
+              <p>خط أفقي منخفض ومتقطع بمتوسط 10 إلى 20 ظهوراً يومياً ونقرة واحدة أو صفر نقرات. محرك Google يتعامل مع الموقع ككيان غير معروف لا يملك سلطة موضوعية.</p>
+            </div>
+
+            <div class="phase-card active-phase">
+              <div class="phase-badge">المرحلة الثانية: الانفجار الهيكلي</div>
+              <h4>10 سبتمبر – 20 سبتمبر (إطلاق الـ SEO)</h4>
+              <p>بدء صعود حاد في منحنى الظهور؛ قفز من 20 إلى 150 ثم 200 ظهور يومياً فور فهرسة الخرائط والبيانات المهيكلة وتصنيفات الألعاب العنقودية.</p>
+            </div>
+
+            <div class="phase-card milestone-phase">
+              <div class="phase-badge">المرحلة الثالثة: ذروة التصدر والتحويل</div>
+              <h4>21 سبتمبر – 9 أكتوبر (تدفق المبيعات)</h4>
+              <p>تثبيت متوسط يومي يتجاوز 150 ظهوراً، وتسجيل قمم قياسية وصلت إلى <strong>318 ظهوراً في يوم واحد (24 سبتمبر)</strong>، مصحوبة ببدء تدفق استفسارات الشراء المغلقة عبر واتساب.</p>
+            </div>
+          </div>
+
+          <div class="takeaway-box">
+            <strong>القاعدة النفسية المستفادة للعميل التجاري:</strong> في التسويق العضوي، <em>«الظهور يسبق النقرة، والنقرة تسبق الثقة، والثقة تصنع البيع»</em>. المستثمر الذكي يعلم أن بناء قاعدة ظهور متينة هو الأساس الذي لا يمكن لأي منافس تجاوزه بسهولة.
+          </div>
+        </section>
+
+        <!-- Section 6: Query Quality -->
+        <section class="case-section" id="query-quality">
+          <div class="section-tag">تحليل الكلمات المفتاحية</div>
+          <h2 id="query-quality">جودة الكلمات المفتاحية: التحول من البحث الاسمي إلى كلمات الشراء عالية القيمة</h2>
+
+          <p>
+            خلال أول 30 يوماً، تنوعت الكلمات المفتاحية التي قادت الزوار إلى المتجر لتثبت اكتمال النضج العضوي عبر مسارين متوازيين:
+          </p>
+
+          <div class="queries-comparison-grid">
+            <div class="query-col">
+              <h4>أولاً: الكلمات ذات النية التجارية الفورية</h4>
+              <p>كلمات يبحث بها أشخاص اتخذوا قرار الشراء ويبحثون عن الحساب المناسب:</p>
+              <ul class="query-list">
+                <li><code>متجر كلاش</code> — المرتبة الأولى بنسبة نقر تجاوزت 20%</li>
+                <li><code>حساب كلاش اوف كلانس للبيع</code> — ترتيب الصفحة الأولى</li>
+                <li><code>متجر كلاش اوف كلانس</code> — نية شراء مباشرة عالية القيمة</li>
+                <li><code>شراء قرية كلاش تاون 15</code> — بحث دقيق بنية دفع فورية</li>
+              </ul>
+            </div>
+
+            <div class="query-col">
+              <h4>ثانياً: كلمات الثقة والمعرفة الاستكشافية</h4>
+              <p>كلمات يدخل بها الباحث للقراءة والتأكد ثم يتحول إلى مشترٍ داخل المتجر:</p>
+              <ul class="query-list">
+                <li><code>كيف اغير ايميل سوبر سيل</code> — زيارات متكررة وبناء ثقة</li>
+                <li><code>شراء حسابات كلاش بأمان</code> — بحث عن الضمان والمصداقية</li>
+                <li><code>اسعار حسابات كلاش في السعودية</code> — مقارنة أسعار وتقييم</li>
+                <li><code>طريقة نقل قرية كلاش للايفون</code> — استفسار تقني عالي التحويل</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7: Saudi Market & Mobile -->
+        <section class="case-section" id="saudi-mobile">
+          <div class="section-tag">استهداف السوق والسرعة</div>
+          <h2 id="saudi-mobile">السوق السعودي وتجربة الجوال أولاً: سرعة خارقة في أيدي المشترين</h2>
+
+          <p>
+            أظهرت تحليلات الزيارات أن <strong>السوق السعودي (KSA)</strong> هو القوة الدافعة الأولى للمتجر بإجمالي <strong>85 زائراً سعودياً مؤكداً</strong> بنسبة تفوق 54% من إجمالي الزيارات المفلترة، وتجاوزت نسبة متصفحي الجوال <strong>92%</strong> من إجمالي المستخدمين.
+          </p>
+
+          <div class="mobile-features-grid">
+            <div class="mob-card">
+              <h4>سرعة تحميل أقل من 1.4 ثانية</h4>
+              <p>تم تحسين كود المتجر وتخفيف أحجام الصور والخطوط ليعمل بكفاءة مطلقة على شبكات الجوال 4G و5G في مدن الرياض، جدة، الدمام، ومكة.</p>
+            </div>
+            <div class="mob-card">
+              <h4>إتمام الاستفسار بنقرة واحدة عبر واتساب</h4>
+              <p>تصميم أزرار الشراء والاستفسار لفتح محادثة واتساب مجهزة مسبقاً برابط الحساب المطلوب ورقم المعرف، مما أزال أي احتكاك في رحلة الشراء.</p>
+            </div>
+            <div class="mob-card">
+              <h4>وضوح تفاصيل الضمان على الشاشات الصغيرة</h4>
+              <p>عرض شارات الأمان، وضمان استرجاع الحساب، وطريقة استلام الرمز بشكل بارز ومريح للعين دون الحاجة لتكبير الشاشة.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8: Page Analysis -->
+        <section class="case-section" id="pages-analysis">
+          <div class="section-tag">تحليل الصفحات والمخزون</div>
+          <h2 id="pages-analysis">تحليل أداء الصفحات: الهيكل العنقودي الذي ضاعف اكتشاف المنتجات</h2>
+
+          <p>
+            في الشهر الأول، حملت الصفحة الرئيسية وصفحات تصنيف الألعاب النسبة الأكبر من الظهور، بينما أثبتت البيانات وجود فرصة تجارية هائلة للمنتجات المفردة:
+          </p>
+
+          <div class="funnel-breakdown">
+            <div class="funnel-step">
+              <span class="funnel-pct">62%</span>
+              <div class="funnel-desc">
+                <strong>الصفحة الرئيسية (Homepage):</strong> بوابة الدخول الرئيسية، جذبت معظم البحث عن اسم المتجر والتصنيفات العامة.
+              </div>
+            </div>
+            <div class="funnel-step">
+              <span class="funnel-pct">24%</span>
+              <div class="funnel-desc">
+                <strong>صفحات تصنيف الألعاب (Game Hubs):</strong> صفحة كلاش أوف كلانس قادت الزوار المهتمين بمنتجات اللعبة المحددة.
+              </div>
+            </div>
+            <div class="funnel-step">
+              <span class="funnel-pct">14%</span>
+              <div class="funnel-desc">
+                <strong>صفحات المقالات الإرشادية (Trust & GEO Guides):</strong> مقالات تغيير البريد والتحقق التي جذبت محركات الذكاء الاصطناعي.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 9: AI Search & GEO -->
+        <section class="case-section" id="ai-search-geo">
+          <div class="section-tag">الثورة الجديدة في محركات البحث</div>
+          <h2 id="ai-search-geo">الظهور داخل ميزات الذكاء الاصطناعي (GEO & AI Overviews): زوار مجانيون من ChatGPT</h2>
+
+          <p>
+            في الوقت الذي لا تزال فيه المتاجر التقليدية تتسابق على نتائج البحث العادية، قادت <strong>webinOO</strong> متجر <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market</a> ليكون مهيئاً من اليوم الأول لمحركات الذكاء الاصطناعي:
+          </p>
+
+          <div class="ai-stats-banner">
+            <div class="ai-stat-card">
+              <span class="ai-stat-number">190</span>
+              <span class="ai-stat-title">ظهوراً في ميزات الذكاء الاصطناعي (Google AI Overviews)</span>
+              <span class="ai-stat-detail">بمعدل نقر استثنائي 5.8% فاق معدل النقر العادي للموقع</span>
+            </div>
+            <div class="ai-stat-card">
+              <span class="ai-stat-number">20</span>
+              <span class="ai-stat-title">زائراً مباشراً عبر إحالات ChatGPT Search</span>
+              <span class="ai-stat-detail">مستخدمون سألوا الذكاء الاصطناعي عن متاجر موثوقة لحسابات كلاش</span>
+            </div>
+          </div>
+
+          <p>
+            تعد هذه النتيجة دليلاً عملياً قاطعاً على نجاح استراتيجية <strong>تهيئة محركات التوليد والذكاء الاصطناعي (GEO)</strong>، حيث تحول ChatGPT وGoogle AI من مجرد أدوات دردشة إلى <strong>قنوات اكتساب عملاء مجانية تدر مبيعات حقيقية</strong> للمتجر دون دفع سنت واحد.
+          </p>
+        </section>
+
+        <!-- Section 10: webinOO GEO Framework -->
+        <section class="case-section" id="webinoo-geo-method">
+          <div class="section-tag">المنهجية الحصرية</div>
+          <h2 id="webinoo-geo-method">منهجية webinOO في تهيئة المتاجر لمحركات الذكاء الاصطناعي (GEO Framework)</h2>
+
+          <p>
+            كيف استطاع متجر جديد لم يتجاوز عمره أسابيع قليلة أن يقتبسه ChatGPT وGoogle AI كمصدر موثوق؟ الإجابة تكمن في 4 ركائز هندسية طبقتها webinOO:
+          </p>
+
+          <div class="geo-pillars-list">
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">1</div>
+              <div>
+                <h4>الإجابات المباشرة الخالية من الحشو (Direct Knowledge Extraction)</h4>
+                <p>صياغة فقرات تعريفية موجزة في بداية كل صفحة تجيب بدقة رقمية ومنطقية على استفسارات المستخدم، مما يسهل على نماذج اللغة الكبيرة (LLMs) اقتباسها حرفياً.</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">2</div>
+              <div>
+                <h4>مخطط البيانات المهيكلة المتشابك (Schema.org Graph Network)</h4>
+                <p>ربط الكيانات ببعضها برمجياً عبر <code>Organization</code> و<code>OnlineStore</code> و<code>Product</code> و<code>FAQPage</code> ليصبح المتجر مفهوماً بالكامل في الـ Knowledge Graph.</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">3</div>
+              <div>
+                <h4>معالجة مخاوف المشتري الحقيقية (Entity-Level Trust Verification)</h4>
+                <p>تضمين أدلة أمان واضحة حول التعامل المالي، ملكية الحسابات، وضمانات استرداد الأموال، مما يرفع تصنيف الموقع في معايير الجودة والموثوقية (E-E-A-T).</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">4</div>
+              <div>
+                <h4>سرعة الاستجابة اللحظية وعناكب الذكاء الاصطناعي</h4>
+                <p>بناء الموقع بأكواد خفيفة بدون أطر عمل ثقيلة تتيح لعناكب GPTBot وPerplexityBot وGoogle-Extended قراءة وفهرسة المحتوى دون استهلاك الموارد.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 11: 90-Day Roadmap -->
+        <section class="case-section" id="roadmap-90">
+          <div class="section-tag">خارطة الطريق المستقبلية</div>
+          <h2 id="roadmap-90">الفرص التالية: خطة الـ 90 يوماً القادمة لمضاعفة المبيعات العضوية</h2>
+
+          <p>
+            بناءً على نتائج الشهر الأول، وضعت <strong>webinOO</strong> خارطة طريق تنفيذية من 3 مراحل تصاعدية لمضاعفة مبيعات المتجر وتوسيع حصته السوقية:
+          </p>
+
+          <div class="roadmap-timeline">
+            <div class="roadmap-step">
+              <div class="step-badge">الشهر الثاني (أيام 31 – 60)</div>
+              <h4>توسيع قاعدة المنتجات والألعاب المضافة</h4>
+              <p>تفعيل صفحات مخصصة لكل منتج على حدة مع إضافة ألعاب جديدة (مثل Brawl Stars وHay Day) لتوسيع مظلة الكلمات المفتاحية المصنفة في Google.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">الشهر الثالث (أيام 61 – 90)</div>
+              <h4>تحسين معدل التحويل (CRO) وتجربة الإغلاق</h4>
+              <p>إضافة مراجعات وتقييمات المشترين الخمسة الأوائل، وتطوير نماذج دفع سريعة وآمنة تقلل خطوات الشراء من 3 نقرات إلى نقرة واحدة مباشرة.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">ما بعد 90 يوماً</div>
+              <h4>التصدر الإقليمي الكامل ومضاعفة المبيعات اليومية</h4>
+              <p>الاستحواذ على الكلمات المفتاحية ذات الحجم البحثي الأكبر في السعودية والكويت والإمارات، والوصول إلى معدل مبيعات عضوي يومي مستقر بدون إعلانات.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 12: Transparency & Measurement Methodology (Replaces internal checklist cleanly!) -->
+        <section class="case-section" id="limitations">
+          <div class="section-tag">الأمانة العلمية والتدقيق الإحصائي</div>
+          <h2 id="limitations">الشفافية ومنهجية القياس الإحصائي: عزل الزيارات الآلية وتوثيق النتائج</h2>
+
+          <p>
+            الأرقام المذكورة في هذه الدراسة مستخرجة مباشرة من مصدرين رئيسيين: <strong>Google Search Console</strong> (لقياس مرات الظهور والنقرات ومعدل الترتيب) و<strong>Ahrefs Web Analytics</strong> (لقياس الزيارات الجغرافية ومصادر الإحالة).
+          </p>
+
+          <p>
+            ولأننا في <strong>webinOO</strong> نلتزم بأعلى معايير النزاهة المهنية ونرفض تضخيم الأرقام التسويقية كما تفعل بعض الوكالات، نضع هذه الإيضاحات المنهجية بكل فخر:
+          </p>
+
+          <div class="transparency-rules-card">
+            <div class="rule-item">
+              <CheckCircle size={18} class="rule-check" />
+              <div>
+                <strong>عزل الزيارات الآلية ومراكز البيانات السحابية:</strong>
+                سجلت التحليلات 138 زائر من الولايات المتحدة، تبين أن 83 منهم مصدرهم مركز بيانات سحابي (AWS) في مدينة بوردمان، وصفحات لوحة التحكم استقبلت 27 زيارة فريق. لذلك <em>استبعدنا هذه الأرقام تماماً</em> واعتمدنا حصراً زوار البحث العضوي الحقيقي وزوار السعودية.
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <CheckCircle size={18} class="rule-check" />
+              <div>
+                <strong>تصفية نقرات الواتساب الاحتيالية:</strong>
+                تم تسجيل 20 نقرة واتساب آلية من ألمانيا حدثت خلال 60 ثانية واحدة بنمط Bot؛ فتم استبعادها فوراً. النقرات المعتمدة (53 نقرة) هي نقرات مشترين حقيقيين من الخليج، أغلقت منها 5 مبيعات كاملة ومؤكدة.
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <CheckCircle size={18} class="rule-check" />
+              <div>
+                <strong>عزل تام عن الإعلانات الممولة:</strong>
+                نؤكد مجدداً أن هذه النتائج تحققت بميزانية إعلانات تساوي 0.00$، مما يثبت الجدوى الاقتصادية المطلقة للاستثمار في السيو عالي الجودة.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 13: FAQ for AEO -->
+        <section class="case-section" id="faq-aeo">
+          <div class="section-tag">محركات الإجابة الذكية (AEO)</div>
+          <h2 id="faq-aeo">أسئلة شائعة حول سيو المتاجر ونمو المبيعات العضوي (AEO FAQs)</h2>
+
+          <div class="aeo-faq-grid">
+            <details class="faq-item" open>
+              <summary>كيف استطاع متجر جديد دخول الصفحة الأولى في Google خلال 30 يوماً؟</summary>
+              <p>
+                من خلال بناء الموقع بهيكل عنقودي من 5 طبقات يعكس نية البحث الحقيقية للمشتري (صفحات الألعاب، صفحات مستويات القرية Town Hall، صفحات الحسابات الفردية، المدونة الإرشادية، وصفحات الثقة)، مما سمح لـ Google بفهم تخصص الكيان فوراً وترقيته من متوسط ترتيب 11.2 إلى 7.8 دون الحاجة لأي روابط خلفية مدفوعة.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>لماذا ظهر المتجر في Google AI Overviews و ChatGPT بهذه السرعة؟</summary>
+              <p>
+                لأن webinOO ضمنت منذ الإطلاق مقالات إرشادية تجيب بشكل مباشر ومهيكل عن أسئلة حساسة للمشتري (مثل تغيير بريد Supercell ID وحماية الحساب من الحظر وتسعير الحسابات)، مما أنتج 190 ظهوراً في ميزات الذكاء الاصطناعي و20 زيارة مباشرة من ChatGPT.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>هل جميع المبيعات والزوار جاءت بدون إعلانات ممولة على الإطلاق؟</summary>
+              <p>
+                نعم، بنسبة 100%. لم يتم تشغيل أي حملة إعلانية على سناب شات، تيك توك، جوجل، أو ميتا، ولم يتم التعاقد مع مشاهير. جميع المبيعات الخمس وزيارات المتجر جاءت عبر الظهور العضوي وتوصيات الذكاء الاصطناعي المجانية.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>كم يستغرق بناء متجر إلكتروني مماثل وتجهيزه للسيو مع webinOO؟</summary>
+              <p>
+                تستغرق مرحلة التطوير البرمجي والهندسة المعمارية وإطلاق البنية الأولية للسيو بين أسبوعين إلى 3 أسابيع، تليها مرحلة متابعة الفهرسة وتصعيد الكلمات المفتاحية في أول 30 إلى 60 يوماً بعد الإطلاق.
+              </p>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sticky Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">فهرس دراسة الحالة</div>
+          <nav aria-label="فهرس المحتويات">
+            <ul class="toc-list" id="toc-list">
+              <li><a href="#month-one-numbers">1. أرقام الشهر الأول الفعلية</a></li>
+              <li><a href="#executive-summary">2. ملخص 65 يوماً في Search Console</a></li>
+              <li><a href="#challenge">3. التحدي التجاري وسيكولوجية السوق</a></li>
+              <li><a href="#architecture">4. الهيكل المعماري الخماسي</a></li>
+              <li><a href="#growth-curve">5. قراءة منحنى النمو العضوي</a></li>
+              <li><a href="#query-quality">6. جودة كلمات البحث ونية الشراء</a></li>
+              <li><a href="#saudi-mobile">7. السوق السعودي والجوال أولاً</a></li>
+              <li><a href="#pages-analysis">8. تحليل أداء الصفحات والمخزون</a></li>
+              <li><a href="#ai-search-geo">9. الظهور في الذكاء الاصطناعي (GEO)</a></li>
+              <li><a href="#webinoo-geo-method">10. منهجية webinOO الحصرية</a></li>
+              <li><a href="#roadmap-90">11. خطة الـ 90 يوماً القادمة</a></li>
+              <li><a href="#limitations">12. الشفافية وعزل الزيارات الآلية</a></li>
+              <li><a href="#faq-aeo">13. أسئلة شائعة (AEO)</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Project Snapshot Card with Verified Dofollow Live Link -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">بطاقة المشروع المعتمدة</div>
+          <div class="snapshot-list">
+            <div class="snapshot-row">
+              <span>اسم المشروع:</span>
+              <strong>Clash Market</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>رابط المتجر:</span>
+              <a
+                href="https://clashmarket.online"
+                target="_blank"
+                rel="dofollow"
+                class="snapshot-link"
+                dir="ltr"
+              >
+                clashmarket.online
+              </a>
+            </div>
+            <div class="snapshot-row">
+              <span>السوق المستهدف:</span>
+              <strong>السعودية ودول الخليج</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>نطاق العمل:</span>
+              <strong>بناء برمجي + SEO + GEO</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>تكلفة الإعلانات:</span>
+              <strong class="zero-cost">0$ (صفر دولار)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>نتيجة الظهور:</span>
+              <strong class="metric-highlight">8.1X ضعف (4,270 ظهوراً)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>المبيعات الأولى:</span>
+              <strong>5 صفقات مغلقة عبر واتساب</strong>
+            </div>
+          </div>
+
+          <div class="snapshot-actions">
+            <a
+              href="https://clashmarket.online"
+              target="_blank"
+              rel="dofollow"
+              class="snapshot-btn"
+            >
+              <span>معاينة المتجر الحي</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- High-Conversion Psychological Consultation Card -->
+        <div class="sidebar-cta-card">
+          <span class="badge-pill badge-coral">تحليل مجاني لفرص متجرك</span>
+          <h4>تبي نبني لمتجرك نفس هذا الأصل الرقمي المستدام؟</h4>
+          <p>
+            توقف عن حرق ميزانيتك في إعلانات مؤقتة تتبخر كل مساء. دعنا نبني لك متجراً فائق السرعة يسيطر على نتائج Google وتوصيات ChatGPT في الكويت والسعودية.
+          </p>
+          <a
+            href="https://wa.me/201554637673?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D9%82%D8%B1%D8%A3%D8%AA%20%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%AD%D8%A7%D9%84%D8%A9%20Clash%20Market%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AD%D9%84%D9%8A%D9%84%20%D9%85%D8%AA%D8%AC%D8%B1%D9%8A%20%D9%84%D9%84%D8%B3%D9%8A%D9%88%20%D8%A8%D8%AF%D9%88%D9%86%20%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-whatsapp-btn"
+          >
+            تحدث مباشرة مع مستشار webinOO عبر واتساب
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container bottom-cta-section">
+      <CTA
+        eyebrow="النمو الحقيقي الذي تملكه ولا تستأجره"
+        title="هل متجرك مبني ليفهمه Google ويقتبسه الذكاء الاصطناعي؟"
+        description="سواء كنت تؤسس متجراً جديداً في الخليج أو تملك متجراً يعاني من تكاليف الإعلانات المرتفعة، فريق webinOO جاهز لبناء بنية رقمية تقودك إلى المبيعات المستدامة."
+        ctaText="احصل على استشارة سيو مخصصة"
+        whatsappMessage="السلام عليكم، أريد بناء متجر إلكتروني بنظام السيو والذكاء الاصطناعي بنفس منهجية Clash Market."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
+
+<style is:global>
+  /* Scoped Styling for Clash Market Case Study Page */
+  .clash-case-study {
+    padding-bottom: 80px;
+    color: var(--color-ink-primary, #292239);
+    background-color: var(--color-bg-body, #f8f6f1);
+  }
+
+  /* Hero Section */
+  .case-hero {
+    background: linear-gradient(180deg, #f3ebf8 0%, #f8f6f1 100%);
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+    padding: 36px 0 54px;
+  }
+  .hero-container {
+    max-width: 1180px;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 16px;
+  }
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 13px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .badge-primary {
+    background: var(--color-primary-subtle, #f4eafa);
+    color: var(--color-primary, #6518ac);
+    border: 1px solid rgba(101, 24, 172, 0.2);
+  }
+  .badge-green {
+    background: #e6f7f2;
+    color: #1b7a60;
+    border: 1px solid rgba(27, 122, 96, 0.25);
+  }
+  .badge-coral {
+    background: rgba(240, 121, 86, 0.12);
+    color: #c94f2d;
+    border: 1px solid rgba(240, 121, 86, 0.25);
+  }
+
+  .hero-title {
+    font-size: clamp(30px, 4.2vw, 50px);
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+    color: var(--color-ink-primary, #292239);
+    margin: 18px 0 20px;
+    font-weight: 800;
+  }
+  .hero-lead {
+    font-size: 18.5px;
+    line-height: 1.85;
+    color: var(--color-ink-secondary, #595264);
+    max-width: 980px;
+    margin-bottom: 24px;
+  }
+  .inline-store-link {
+    color: var(--color-primary, #6518ac);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 700;
+  }
+
+  /* Live Store Action Button */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .live-store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(101, 24, 172, 0.25);
+    transition: all 0.2s ease;
+  }
+  .live-store-button:hover {
+    background: var(--color-primary-hover, #4e0d90);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(101, 24, 172, 0.35);
+  }
+  .live-status-note {
+    font-size: 13px;
+    color: var(--color-ink-muted, #716b7a);
+  }
+
+  /* Philosophy Callout */
+  .philosophy-banner {
+    background: #ffffff;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-right: 4px solid var(--color-primary, #6518ac);
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin-bottom: 36px;
+    box-shadow: 0 4px 16px rgba(41, 34, 57, 0.04);
+  }
+  .banner-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .banner-tag {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary, #6518ac);
+  }
+  .banner-stat {
+    font-size: 11.5px;
+    background: #f1ecf6;
+    padding: 3px 9px;
+    border-radius: 999px;
+    color: var(--color-ink-primary, #292239);
+    font-weight: 600;
+  }
+  .banner-text {
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: var(--color-ink-primary, #292239);
+    margin: 0;
+  }
+
+  /* Bento KPI Grid */
+  .bento-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+  .kpi-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 18px;
+    padding: 24px 22px;
+    box-shadow: 0 4px 14px rgba(41, 34, 57, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(101, 24, 172, 0.08);
+  }
+  .kpi-card.highlight-card {
+    background: linear-gradient(145deg, #ffffff 0%, #fcf7ff 100%);
+    border: 1.5px solid rgba(101, 24, 172, 0.35);
+  }
+  .kpi-card.conversion-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f0fbf7 100%);
+    border: 1.5px solid rgba(27, 122, 96, 0.35);
+  }
+  .kpi-label {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-ink-muted, #716b7a);
+    margin-bottom: 8px;
+  }
+  .kpi-value {
+    font-size: clamp(32px, 3.5vw, 44px);
+    font-weight: 800;
+    color: var(--color-ink-primary, #292239);
+    line-height: 1.1;
+    margin-bottom: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .kpi-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .kpi-delta.positive {
+    color: #1b7a60;
+  }
+  .kpi-delta.neutral {
+    color: var(--color-primary, #6518ac);
+  }
+  .kpi-sub {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--color-ink-secondary, #595264);
+  }
+
+  /* Zero Ad Alert */
+  .zero-ad-alert {
+    background: #edf8f4;
+    border: 1px solid #b7e3d6;
+    border-radius: 14px;
+    padding: 16px 22px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #115340;
+  }
+  .zero-ad-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #0b4333;
+  }
+  .alert-icon {
+    color: #1b7a60;
+    flex-shrink: 0;
+  }
+  .zero-ad-alert p {
+    margin: 0;
+  }
+
+  /* Case Layout */
+  .case-layout {
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 36px;
+    margin-top: 48px;
+    align-items: start;
+  }
+
+  /* Case Article */
+  .case-article {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 24px;
+    padding: 44px 38px;
+    box-shadow: 0 4px 20px rgba(41, 34, 57, 0.03);
+  }
+  .case-section {
+    padding-bottom: 44px;
+    margin-bottom: 44px;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .case-section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .section-tag {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--color-primary, #6518ac);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .case-section h2 {
+    font-size: clamp(22px, 2.5vw, 29px);
+    line-height: 1.35;
+    color: var(--color-ink-primary, #292239);
+    margin: 0 0 18px;
+    font-weight: 800;
+  }
+  .case-section p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--color-ink-secondary, #595264);
+    margin-bottom: 20px;
+  }
+
+  /* Data Table */
+  .data-table-wrap {
+    overflow-x: auto;
+    margin: 24px 0 28px;
+    border-radius: 14px;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: right;
+  }
+  .data-table th {
+    background: #f4ecf8;
+    color: var(--color-ink-primary, #292239);
+    font-weight: 800;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--color-border-default, #ddd5e1);
+  }
+  .data-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+    color: var(--color-ink-secondary, #595264);
+  }
+  .data-table tr:last-child td {
+    border-bottom: none;
+  }
+  .data-table tr:hover td {
+    background: #fbf9fd;
+  }
+  .pill-growth {
+    display: inline-block;
+    background: #e6f7f2;
+    color: #1b7a60;
+    font-weight: 700;
+    font-size: 12.5px;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .pill-neutral {
+    display: inline-block;
+    background: #f1ecf6;
+    color: var(--color-primary, #6518ac);
+    font-weight: 700;
+    font-size: 12.5px;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  /* Psychology Box */
+  .psych-card {
+    background: #fff8f5;
+    border: 1px solid #f9ded5;
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin: 28px 0;
+  }
+  .psych-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16.5px;
+    font-weight: 800;
+    color: #ab3a19;
+    margin-bottom: 12px;
+  }
+  .psych-card p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #63220e;
+    margin-bottom: 12px;
+  }
+  .psych-card ul {
+    margin: 0;
+    padding-right: 20px;
+    color: #63220e;
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+  .psych-card li {
+    margin-bottom: 8px;
+  }
+
+  /* Metrics Row Card */
+  .metrics-row-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    background: #f8f3fb;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 20px 16px;
+    margin: 22px 0 24px;
+    text-align: center;
+  }
+  .metric-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--color-primary, #6518ac);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .metric-lbl {
+    font-size: 12px;
+    color: var(--color-ink-secondary, #595264);
+    font-weight: 600;
+  }
+  .highlight-callout {
+    background: #ffffff;
+    border-right: 3px solid var(--color-primary, #6518ac);
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 15px !important;
+  }
+
+  /* Challenges Grid */
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 22px 0;
+  }
+  .challenge-item {
+    background: #fcfbfe;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 20px 18px;
+  }
+  .challenge-item h4 {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--color-ink-primary, #292239);
+    margin: 0 0 10px;
+  }
+  .challenge-item p {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+  }
+
+  /* Architecture Layers */
+  .arch-layers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .arch-layer-card {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 18px 20px;
+    transition: border-color 0.2s;
+  }
+  .arch-layer-card:hover {
+    border-color: var(--color-primary, #6518ac);
+  }
+  .layer-num {
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    font-weight: 800;
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .layer-content h4 {
+    font-size: 16px;
+    margin: 0 0 6px;
+    color: var(--color-ink-primary, #292239);
+  }
+  .layer-content p {
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Growth Phases */
+  .growth-phases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 22px 0;
+  }
+  .phase-card {
+    background: #fdfcff;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 20px 18px;
+  }
+  .phase-card.active-phase {
+    border-color: rgba(101, 24, 172, 0.4);
+    background: #faf6fd;
+  }
+  .phase-card.milestone-phase {
+    border-color: rgba(27, 122, 96, 0.4);
+    background: #f3fbf7;
+  }
+  .phase-badge {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #eee8f4;
+    color: var(--color-ink-primary, #292239);
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .phase-card h4 {
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: var(--color-ink-primary, #292239);
+  }
+  .phase-card p {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+  }
+  .takeaway-box {
+    background: #f5eff9;
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 14.5px;
+    color: var(--color-ink-primary, #292239);
+    margin-top: 18px;
+  }
+
+  /* Queries Comparison */
+  .queries-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 22px 0;
+  }
+  .query-col {
+    background: #fcfbfe;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 22px 20px;
+  }
+  .query-col h4 {
+    font-size: 15.5px;
+    margin: 0 0 10px;
+    color: var(--color-ink-primary, #292239);
+  }
+  .query-col p {
+    font-size: 13.5px !important;
+    margin-bottom: 14px !important;
+  }
+  .query-list {
+    margin: 0;
+    padding-right: 20px;
+    font-size: 13.5px;
+    line-height: 1.8;
+  }
+  .query-list code {
+    background: #f0eaf5;
+    color: var(--color-primary, #6518ac);
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* Mobile Features */
+  .mobile-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 22px 0;
+  }
+  .mob-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 20px 18px;
+  }
+  .mob-card h4 {
+    font-size: 15px;
+    margin: 0 0 8px;
+    color: var(--color-ink-primary, #292239);
+  }
+  .mob-card p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+
+  /* Funnel Breakdown */
+  .funnel-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 22px 0;
+  }
+  .funnel-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fcfbfe;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .funnel-pct {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-primary, #6518ac);
+    min-width: 60px;
+  }
+  .funnel-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-ink-secondary, #595264);
+  }
+
+  /* AI Stats Banner */
+  .ai-stats-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 24px 0 28px;
+  }
+  .ai-stat-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f7f1fb 100%);
+    border: 1.5px solid rgba(101, 24, 172, 0.25);
+    border-radius: 16px;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .ai-stat-number {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--color-primary, #6518ac);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .ai-stat-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-ink-primary, #292239);
+    margin-bottom: 6px;
+  }
+  .ai-stat-detail {
+    font-size: 13px;
+    color: var(--color-ink-muted, #716b7a);
+    line-height: 1.5;
+  }
+
+  /* GEO Pillars */
+  .geo-pillars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 22px 0;
+  }
+  .geo-pillar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #ffffff;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .pillar-bullet {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primary-light, #eee5f5);
+    color: var(--color-primary, #6518ac);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .geo-pillar-item h4 {
+    font-size: 16px;
+    margin: 0 0 6px;
+    color: var(--color-ink-primary, #292239);
+  }
+  .geo-pillar-item p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+  }
+
+  /* Roadmap Timeline */
+  .roadmap-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .roadmap-step {
+    background: #ffffff;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-right: 4px solid var(--color-primary, #6518ac);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .step-badge {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--color-primary, #6518ac);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .roadmap-step h4 {
+    font-size: 16px;
+    margin: 0 0 6px;
+    color: var(--color-ink-primary, #292239);
+  }
+  .roadmap-step p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+  }
+
+  /* Transparency Rules */
+  .transparency-rules-card {
+    background: #f7faf9;
+    border: 1px solid #d3e7e1;
+    border-radius: 16px;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 22px 0;
+  }
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #174f41;
+  }
+  .rule-check {
+    color: #1b7a60;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .rule-item strong {
+    display: block;
+    color: #0d382d;
+    margin-bottom: 2px;
+    font-size: 14.5px;
+  }
+
+  /* AEO FAQ Grid */
+  .aeo-faq-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 24px;
+  }
+  details.faq-item {
+    background: #fbf9fd;
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 14px;
+    padding: 18px 22px;
+  }
+  details.faq-item summary {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-ink-primary, #292239);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  details.faq-item summary::after {
+    content: '+';
+    font-size: 20px;
+    color: var(--color-primary, #6518ac);
+    font-weight: 800;
+  }
+  details.faq-item[open] summary::after {
+    content: '−';
+  }
+  details.faq-item p {
+    margin: 14px 0 0 !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border-subtle, #eee7f0);
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+
+  /* Sticky Sidebar */
+  .case-sidebar {
+    position: sticky;
+    top: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sidebar-card {
+    background: var(--color-bg-card, #fffefa);
+    border: 1px solid var(--color-border-subtle, #eee7f0);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(41, 34, 57, 0.03);
+  }
+  .sidebar-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--color-ink-primary, #292239);
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .toc-list a {
+    display: block;
+    padding: 7px 10px;
+    font-size: 13.5px;
+    color: var(--color-ink-secondary, #595264);
+    text-decoration: none;
+    border-radius: 8px;
+    border-right: 2px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .toc-list a:hover {
+    background: var(--color-primary-subtle, #f4eafa);
+    color: var(--color-primary, #6518ac);
+    border-right-color: var(--color-primary, #6518ac);
+    font-weight: 700;
+  }
+
+  /* Snapshot List */
+  .snapshot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .snapshot-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--color-border-subtle, #eee7f0);
+  }
+  .snapshot-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .snapshot-row span {
+    color: var(--color-ink-muted, #716b7a);
+  }
+  .snapshot-link {
+    color: var(--color-primary, #6518ac);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  .zero-cost {
+    color: #1b7a60;
+    font-weight: 800;
+  }
+  .metric-highlight {
+    color: var(--color-primary, #6518ac);
+  }
+  .snapshot-actions {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .snapshot-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #f4eafa;
+    color: var(--color-primary, #6518ac);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+  .snapshot-btn:hover {
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+  }
+
+  /* Sidebar CTA Card */
+  .sidebar-cta-card {
+    background: linear-gradient(160deg, #37204b 0%, #251633 100%);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 24px rgba(41, 34, 57, 0.15);
+  }
+  .sidebar-cta-card h4 {
+    font-size: 18px;
+    margin: 0;
+    color: #ffffff;
+    line-height: 1.4;
+  }
+  .sidebar-cta-card p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #d8cde3;
+    margin: 0;
+  }
+  .sidebar-whatsapp-btn {
+    display: inline-block;
+    background: #25d366;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-top: 6px;
+    transition: background 0.2s;
+  }
+  .sidebar-whatsapp-btn:hover {
+    background: #20ba5a;
+  }
+
+  /* Bottom CTA */
+  .bottom-cta-section {
+    max-width: 1180px;
+    margin-top: 60px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .case-layout {
+      grid-template-columns: 1fr;
+    }
+    .bento-kpi-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .metrics-row-card {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .case-sidebar {
+      position: static;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bento-kpi-grid {
+      grid-template-columns: 1fr;
+    }
+    .challenges-grid,
+    .growth-phases-grid,
+    .queries-comparison-grid,
+    .mobile-features-grid,
+    .ai-stats-banner {
+      grid-template-columns: 1fr;
+    }
+    .arch-layer-card {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .case-article {
+      padding: 26px 20px;
+    }
+    .hero-title {
+      font-size: 26px;
+    }
+  }
+</style>

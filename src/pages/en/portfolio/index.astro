@@ -13,12 +13,24 @@ const breadcrumbs = [
 
 const projects = [
   {
+    title: 'Clash Market Saudi Storefront — SEO & GEO Case Study',
+    category: 'E-Commerce & Organic SEO',
+    scope: 'Custom storefront from scratch + Technical SEO + Generative Engine Optimization (GEO)',
+    results: '8.1X Google impressions growth (4,270 impressions), 20 ChatGPT referrals, and 5 closed WhatsApp sales with $0 ad spend.',
+    badge: 'Verified Performance Study',
+    isConcept: false,
+    caseStudyUrl: '/en/portfolio/clash-market/',
+    isFeatured: true,
+  },
+  {
     title: 'DAR Studio Interior Architecture Prototype',
     category: 'Interior Design & Architecture',
     scope: 'Complete website design + Local SEO Kuwait + Visual art direction',
     results: '1.2s rapid load time and immersive storytelling on mobile screens.',
     badge: 'Approved Concept Prototype',
     isConcept: true,
+    caseStudyUrl: null,
+    isFeatured: false,
   },
   {
     title: 'Kuwait General Contracting & Construction',
@@ -27,6 +39,8 @@ const projects = [
     results: 'Dedicated landing pages for Al-Mutlaa, Sabah Al-Ahmad, and modern housing areas.',
     badge: '[Client Review & Update]',
     isConcept: false,
+    caseStudyUrl: null,
+    isFeatured: false,
   },
   {
     title: 'Specialized Medical Clinic & Wellness Center',
@@ -35,6 +49,8 @@ const projects = [
     results: 'Streamlined WhatsApp reception bookings and verified patient trust.',
     badge: '[Client Review & Update]',
     isConcept: false,
+    caseStudyUrl: null,
+    isFeatured: false,
   },
   {
     title: 'Kuwait Direct E-Commerce Storefront',
@@ -43,13 +59,15 @@ const projects = [
     results: 'Full mobile checkout completed in under 40 seconds.',
     badge: '[Client Review & Update]',
     isConcept: false,
+    caseStudyUrl: null,
+    isFeatured: false,
   },
 ];
 ---
 
 <BaseLayout
   title="Portfolio & Case Studies | webinOO Kuwait"
-  description="Explore our website showcases and case studies designed for businesses across Kuwait. Authentic craft, rapid load speeds, and measurable ROI."
+  description="Explore our website showcases and empirical case studies designed for businesses across Kuwait and the GCC. Authentic craft, rapid load speeds, and measurable ROI."
   lang="en"
 >
   <Header slot="header" lang="en" />
@@ -57,10 +75,10 @@ const projects = [
   <main class="portfolio-page">
     <section class="container page-header">
       <Breadcrumbs items={breadcrumbs} />
-      <div class="eyebrow">Proven Craftsmanship</div>
+      <div class="eyebrow">Proven Craftsmanship & Real Data</div>
       <h1>Work that demonstrates speed, prestige, and search authority.</h1>
       <p class="page-lead">
-        We do not rely on generic templates or superficial mockups. Every project is crafted from clean static code to solve real commercial bottlenecks for businesses in Kuwait.
+        We do not rely on generic templates or superficial mockups. Every project is crafted from clean static code to solve real commercial bottlenecks for businesses in Kuwait and the GCC.
       </p>
     </section>
 
@@ -69,7 +87,7 @@ const projects = [
       <div class="transparency-card">
         <ShieldCheck size={22} class="shield-icon" />
         <p>
-          <strong>Transparency Notice:</strong> In compliance with webinOO professional integrity guidelines, experimental prototypes are explicitly labeled as illustrative examples. We never fabricate unverified client reviews or vanity statistics.
+          <strong>Transparency Notice:</strong> In compliance with webinOO professional integrity guidelines, all published case studies are audited with official Search Console and analytics data. We never fabricate unverified client claims or vanity statistics.
         </p>
       </div>
     </section>
@@ -79,10 +97,10 @@ const projects = [
       <div class="projects-grid">
         {
           projects.map((proj) => (
-            <article class="project-card">
+            <article class={`project-card ${proj.isFeatured ? 'featured-card' : ''}`}>
               <div class="project-header">
                 <span class="project-cat">{proj.category}</span>
-                <span class={`project-badge ${proj.isConcept ? 'badge-concept' : 'badge-prod'}`}>
+                <span class={`project-badge ${proj.isFeatured ? 'badge-featured' : proj.isConcept ? 'badge-concept' : 'badge-prod'}`}>
                   {proj.badge}
                 </span>
               </div>
@@ -98,9 +116,16 @@ const projects = [
                 </div>
               </div>
               <div class="project-footer">
-                <a href="/en/contact/" class="project-link">
-                  Request a similar solution <ArrowRight size={15} />
-                </a>
+                {proj.caseStudyUrl ? (
+                  <a href={proj.caseStudyUrl} class="case-study-action">
+                    <span>Read Verified Case Study with Data</span>
+                    <ArrowRight size={16} />
+                  </a>
+                ) : (
+                  <a href="/en/contact/" class="project-link">
+                    Request a similar solution <ArrowRight size={15} />
+                  </a>
+                )}
               </div>
             </article>
           ))
@@ -113,9 +138,9 @@ const projects = [
       <CTA
         eyebrow="Start Your Success Story"
         title="Ready to build your company's primary digital asset?"
-        description="Share your project vision and we will engineer a website that commands respect in the Kuwait market."
+        description="Share your project vision and we will engineer a website that commands respect and rankings in the Kuwait and GCC markets."
         ctaText="Discuss Your Project on WhatsApp"
-        whatsappMessage="Hello, I reviewed your portfolio and would like to discuss building a website for my business in Kuwait."
+        whatsappMessage="Hello, I reviewed your portfolio and case studies and would like to discuss building a website for my business."
       />
     </section>
   </main>
@@ -208,6 +233,12 @@ const projects = [
     border-color: var(--color-primary, #6518ac);
   }
 
+  .project-card.featured-card {
+    background: linear-gradient(150deg, #ffffff 0%, #fcf7ff 100%);
+    border: 1.5px solid rgba(101, 24, 172, 0.45);
+    box-shadow: 0 10px 30px rgba(101, 24, 172, 0.07);
+  }
+
   .project-header {
     display: flex;
     align-items: center;
@@ -239,6 +270,13 @@ const projects = [
     background: rgba(101, 24, 172, 0.08);
     color: var(--color-primary, #6518ac);
     border: 1px solid rgba(101, 24, 172, 0.2);
+  }
+
+  .badge-featured {
+    background: #e6f7f2;
+    color: #1b7a60;
+    border: 1px solid rgba(27, 122, 96, 0.25);
+    font-weight: 700;
   }
 
   .project-title {
@@ -296,6 +334,25 @@ const projects = [
 
   .project-link:hover {
     gap: 12px;
+  }
+
+  .case-study-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .case-study-action:hover {
+    background: var(--color-primary-hover, #4e0d90);
+    transform: translateY(-1px);
   }
 
   .cta-wrap {

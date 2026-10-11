@@ -1,0 +1,872 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import {
+  TrendingUp,
+  Search,
+  Bot,
+  ShieldCheck,
+  CheckCircle,
+  ArrowUpRight,
+  ExternalLink,
+  Target,
+  Sparkles,
+  Zap,
+  DollarSign
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Portfolio & Case Studies', href: '/en/portfolio/' },
+  { label: 'Clash Market SEO Case Study' },
+];
+
+const caseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': 'https://webinoo.online/en/portfolio/clash-market/#article',
+    'headline': 'E-Commerce SEO Case Study: How Clash Market Scaled 8X and Closed High-Ticket Sales with $0 Ad Spend',
+    'name': 'E-Commerce SEO Case Study: Clash Market Saudi Storefront',
+    'description': 'Verified case study: How webinOO engineered Saudi e-commerce store Clash Market from scratch, generating 4,270 Google impressions (+815%), 20 ChatGPT leads, and 5 closed sales with $0 ad spend in month 1.',
+    'inLanguage': 'en-US',
+    'url': 'https://webinoo.online/en/portfolio/clash-market/',
+    'datePublished': '2026-10-11T09:00:00+03:00',
+    'dateModified': '2026-10-12T00:00:00+03:00',
+    'author': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'about': [
+      { '@type': 'Thing', 'name': 'E-Commerce SEO Case Study' },
+      { '@type': 'Thing', 'name': 'GCC Search Engine Optimization' },
+      { '@type': 'Thing', 'name': 'Generative Engine Optimization (GEO)' },
+      { '@type': 'Thing', 'name': 'Zero Ad Spend Customer Acquisition' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'How did a brand-new store reach Page 1 of Google in 30 days without paid advertising?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'By engineering a custom 5-layer topical cluster architecture matching buyer intent (Game hubs, Town Hall tiers, Individual product decision pages, GEO knowledge guides, and trust signals). This allowed Google algorithms to recognize topical authority immediately, advancing average search position from 11.2 to 7.8 with zero ad expenditure.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Why did the storefront get cited so rapidly in Google AI Overviews and ChatGPT Search?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'webinOO integrated structured knowledge guides addressing high-anxiety buyer questions (such as Supercell ID email migration, anti-ban protections, and account valuation). This generated 190 AI feature impressions with a 5.8% CTR and 20 direct referral visits from ChatGPT.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'Were all reported visits and sales generated purely organically without paid media?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Yes, 100%. Exactly zero dollars were allocated to Google Ads, Meta, TikTok, Snapchat, or paid influencer promotions. Every single visitor and closed sale resulted entirely from organic Google search rankings and conversational AI recommendations.'
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="E-Commerce SEO Case Study: Scaling Clash Market 8X with $0 Ad Spend | webinOO"
+  description="Verified case study: How webinOO engineered Saudi e-commerce store Clash Market from scratch, generating 4,270 Google impressions (+815%), 20 ChatGPT leads, and 5 closed sales with $0 ad spend in month 1."
+  lang="en"
+  schema={caseSchema}
+>
+  <Header slot="header" lang="en" />
+
+  <main class="clash-case-study en-version" dir="ltr">
+    <!-- Hero / Header Section -->
+    <header class="case-hero">
+      <div class="container hero-container">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="hero-badges">
+          <span class="badge-pill badge-primary">Verified Performance Case Study</span>
+          <span class="badge-pill badge-green">$0 Ad Spend (100% Organic Acquisition)</span>
+          <span class="badge-pill badge-coral">E-Commerce SEO & GEO — GCC Markets</span>
+        </div>
+
+        <h1 class="hero-title">
+          E-Commerce SEO Case Study: How Clash Market Scaled 8X and Closed High-Ticket Sales with $0 Ad Spend
+        </h1>
+
+        <p class="hero-lead">
+          <strong>webinOO</strong> engineered Saudi e-commerce platform <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market (clashmarket.online)</a> from scratch, deploying custom static architecture built specifically for search algorithms and generative AI models. Within the first 30 days of active SEO, organic Google search impressions skyrocketed from 524 to <strong>4,270 (+815% growth)</strong>, attracting <strong>157 organic Google search visitors</strong>, <strong>20 direct ChatGPT Search referrals</strong>, and converting <strong>5 confirmed high-ticket sales via WhatsApp</strong> — with zero dollars allocated to paid ads, boosted social posts, or influencer contracts.
+        </p>
+
+        <!-- Live Store Preview Action Button -->
+        <div class="hero-actions">
+          <a
+            href="https://clashmarket.online"
+            target="_blank"
+            rel="dofollow"
+            class="live-store-button"
+          >
+            <span>Inspect Live Storefront: clashmarket.online</span>
+            <ArrowUpRight size={18} />
+          </a>
+          <span class="live-status-note">
+            Verified production deployment (DoFollow link)
+          </span>
+        </div>
+
+        <!-- Philosophical / Psychological Core Premise Callout -->
+        <div class="philosophy-banner">
+          <div class="banner-top">
+            <span class="banner-tag">Compounding Digital Assets vs. The Rented Ad Treadmill</span>
+            <span class="banner-stat">Empirical Commercial Law</span>
+          </div>
+          <p class="banner-text">
+            <strong>The GCC Merchant Dilemma:</strong> Every riyal or dinar spent on Snapchat and TikTok is temporary rent; the moment you pause ad payments, your traffic collapses to absolute zero. Technical organic SEO & GEO is the engineering of an <strong>appreciating digital asset that you own outright</strong>. It compounds week after week, placing your high-margin catalog directly in front of motivated buyers at the exact moment of commercial purchase intent — with zero marginal ad costs.
+          </p>
+        </div>
+
+        <!-- Bento KPI Grid (Before vs After) -->
+        <div class="bento-kpi-grid">
+          <div class="kpi-card highlight-card">
+            <div class="kpi-label">Organic Google Search Impressions</div>
+            <div class="kpi-value">4,270</div>
+            <div class="kpi-delta positive">
+              <TrendingUp size={16} /> 8.1X Increase (Up from 524)
+            </div>
+            <div class="kpi-sub">+715% expansion in the first 30 days of active SEO deployment</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">AI Engine Quotations (AI Overviews)</div>
+            <div class="kpi-value">190</div>
+            <div class="kpi-delta positive">
+              <Bot size={16} /> Direct Authoritative Source Citation
+            </div>
+            <div class="kpi-sub">Appeared in Google generative AI features with a commanding 5.8% CTR</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Organic Google Search Visitors</div>
+            <div class="kpi-value">157</div>
+            <div class="kpi-delta neutral">
+              <Search size={16} /> Verified Commercial Intent
+            </div>
+            <div class="kpi-sub">High-intent buyers discovering the storefront organically at $0 acquisition cost</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Direct ChatGPT Search Referrals</div>
+            <div class="kpi-value">20</div>
+            <div class="kpi-delta positive">
+              <Sparkles size={16} /> AI Conversational Recommendations
+            </div>
+            <div class="kpi-sub">Qualified buyers referred directly from generative AI chat queries</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Saudi Arabia Market Visitors (KSA)</div>
+            <div class="kpi-value">85</div>
+            <div class="kpi-delta neutral">
+              <Target size={16} /> Primary Commercial Target
+            </div>
+            <div class="kpi-sub">Verified domestic buyers with high session duration across mobile devices</div>
+          </div>
+
+          <div class="kpi-card conversion-card">
+            <div class="kpi-label">Confirmed WhatsApp Transactions</div>
+            <div class="kpi-value">5 Deals</div>
+            <div class="kpi-delta positive">
+              <DollarSign size={16} /> Closed with $0.00 Ad Spend
+            </div>
+            <div class="kpi-sub">High-ticket sales closed directly through organic search inquiries</div>
+          </div>
+        </div>
+
+        <!-- Psychological Zero-Ad Affirmation Box -->
+        <div class="zero-ad-alert">
+          <div class="zero-ad-header">
+            <ShieldCheck size={22} class="alert-icon" />
+            <strong>Absolute Transparency Guarantee:</strong>
+          </div>
+          <p>
+            Every metric presented on this page was generated exclusively through <strong>organic search algorithms (Google SEO) and Generative Engine Optimization (GEO)</strong>. Zero dollars were spent on sponsored ads, zero paid social promotions, zero influencer fees, and zero paid referral loops. The store converted sales because its code placed it at the top of organic rankings precisely when buyers were ready to purchase.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout (Article + Sticky Sidebar) -->
+    <div class="container case-layout">
+      <!-- Article Body -->
+      <article class="case-article">
+        <!-- Section 1: Month 1 Numbers -->
+        <section class="case-section" id="month-one-numbers">
+          <div class="section-tag">Empirical Data Verification</div>
+          <h2 id="month-one-numbers">Month 1 Verified Metrics: 815% Organic Search Growth with Zero Ad Spend</h2>
+          
+          <p>
+            The empirical comparison between the baseline month (prior to technical SEO execution while the site was live) and the first 30 days of active SEO deployment by <strong>webinOO</strong> demonstrates an unprecedented inflection across every vital customer acquisition indicator:
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Performance Metric</th>
+                  <th>Pre-SEO Baseline (Aug 10 – Sep 9)</th>
+                  <th>Post-SEO Month 1 (Sep 10 – Oct 9)</th>
+                  <th>Observed Growth Factor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Google Search Impressions</strong></td>
+                  <td>524 impressions</td>
+                  <td><strong>4,270 impressions</strong></td>
+                  <td><span class="pill-growth">+715% (8.1X Increase)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Organic Store Clicks</strong></td>
+                  <td>25 clicks</td>
+                  <td><strong>199 clicks</strong></td>
+                  <td><span class="pill-growth">+696% (8.0X Increase)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Average Google Ranking Position</strong></td>
+                  <td>11.2 (Page 2)</td>
+                  <td><strong>7.8 (Page 1)</strong></td>
+                  <td><span class="pill-growth">+3.4 Positions Gained</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Click-Through Rate (CTR)</strong></td>
+                  <td>4.8%</td>
+                  <td><strong>4.7%</strong></td>
+                  <td><span class="pill-neutral">Stable CTR despite 8X impression expansion</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Google Search Visitors (Ahrefs Analytics)</strong></td>
+                  <td>Unregistered (New Site)</td>
+                  <td><strong>157 visitors</strong></td>
+                  <td><span class="pill-growth">Foundation customer base with $0 ads</span></td>
+                </tr>
+                <tr>
+                  <td><strong>ChatGPT Search Referrals</strong></td>
+                  <td>0</td>
+                  <td><strong>20 visitors</strong></td>
+                  <td><span class="pill-growth">Direct AI conversational acquisition</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Target Saudi Visitors (KSA)</strong></td>
+                  <td>Unregistered</td>
+                  <td><strong>85 visitors</strong></td>
+                  <td><span class="pill-growth">Primary high-ticket geographical cohort</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Closed WhatsApp Transactions</strong></td>
+                  <td>0</td>
+                  <td><strong>5 confirmed sales</strong></td>
+                  <td><span class="pill-growth">Commercial revenue generated at $0 ad cost</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Loss Aversion Psychological Box -->
+          <div class="psych-card loss-aversion">
+            <div class="psych-title">
+              <Zap size={20} />
+              <span>Loss Aversion Principle: The Compounding Cost of Postponing SEO</span>
+            </div>
+            <p>
+              Many store operators mistakenly believe that delaying SEO saves capital. Behavioral economics and commercial data prove the exact opposite: <strong>every day your business remains absent from Google Page 1 is an active double loss</strong>:
+            </p>
+            <ul>
+              <li><strong>Direct Loss:</strong> Burning liquid capital on social media ads where GCC cost-per-click rates rise by over 35% annually.</li>
+              <li><strong>Opportunity Loss:</strong> Handing hundreds of high-intent searchers actively looking for your products directly to competitors who secured the top three organic slots.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 2: Executive Summary (65 Days) -->
+        <section class="case-section" id="executive-summary">
+          <div class="section-tag">Search Console Lifetime Audit</div>
+          <h2 id="executive-summary">65-Day Search Console Lifetime: From Zero Presence to Commercial Search Authority</h2>
+
+          <p>
+            The complete indexed lifecycle of <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market</a> spans 65 days (from August 6 to October 9, 2026). Google Search Console logs the following lifetime data:
+          </p>
+
+          <div class="metrics-row-card">
+            <div class="metric-item">
+              <div class="metric-num">5,310</div>
+              <div class="metric-lbl">Total Lifetime Impressions</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">254</div>
+              <div class="metric-lbl">Total Organic Clicks</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">4.8%</div>
+              <div class="metric-lbl">Cumulative Average CTR</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">8.4</div>
+              <div class="metric-lbl">Lifetime Mean Position</div>
+            </div>
+          </div>
+
+          <p class="highlight-callout">
+            <strong>Statistical Insight:</strong> 80.4% of total lifetime impressions and 78.3% of total clicks were generated <strong>during the first 30 days of active SEO deployment</strong>. This proves empirically that simply launching a website yields minimal returns; purposeful search engineering is the sole catalyst of compounding growth.
+          </p>
+        </section>
+
+        <!-- Section 3: The Challenge -->
+        <section class="case-section" id="challenge">
+          <div class="section-tag">Commercial Obstacles & Solution</div>
+          <h2 id="challenge">The Commercial Dilemma: The Paid Ads Treadmill vs. Compounding Organic Assets</h2>
+
+          <p>
+            The digital gaming accounts sector in Saudi Arabia and the GCC is among the most competitive niches, fraught with structural challenges that generic templates cannot solve:
+          </p>
+
+          <div class="challenges-grid">
+            <div class="challenge-item">
+              <h4>1. High-Friction Trust & Safety Barriers</h4>
+              <p>Purchasing gaming assets requires absolute certainty regarding account ownership transfer (Supercell ID) and zero ban risk. Buyers demand clear, authoritative proof before initiating contact.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>2. Paid Advertising Restrictions & Crushed Margins</h4>
+              <p>Ad platforms enforce stringent reviews on secondary digital goods. Simultaneously, surging Customer Acquisition Costs (CAC) on Snapchat and Instagram destroy operational profit margins.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>3. Inherent Flaws in Generic Store Platforms</h4>
+              <p>Default themes on turnkey platforms suffer from sluggish code bloat, fragile mobile responsiveness, and an utter lack of structured Schema.org knowledge graphs required by ChatGPT and Google AI.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Architecture (5 Layers) -->
+        <section class="case-section" id="architecture">
+          <div class="section-tag">Advanced Engineering Architecture</div>
+          <h2 id="architecture">The 5-Layer Technical Architecture: Custom Code Engineered for Google and AI Discovery</h2>
+
+          <p>
+            Rather than relying on cookie-cutter themes, <strong>webinOO</strong> engineered <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market</a> upon an interconnected 5-layer topical cluster architecture that captures the complete search intent spectrum:
+          </p>
+
+          <div class="arch-layers-list">
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 1</div>
+              <div class="layer-content">
+                <h4>Homepage Authority Hub</h4>
+                <p>Establishes foundational domain authority, captures branded keywords and primary seed terms, and displays instant trust certifications, payment options, and consumer guarantees.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 2</div>
+              <div class="layer-content">
+                <h4>Game Category Hubs</h4>
+                <p>Top-level category silos (such as Clash of Clans and Clash Royale) that capture broad navigational search traffic and direct search crawlers into deep inventory clusters.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 3</div>
+              <div class="layer-content">
+                <h4>Town Hall Tier Cluster Hubs</h4>
+                <p>Hyper-targeted transactional landing pages (e.g., TH16, TH15, TH14 villages) capturing users with immediate buying intent. These pages delivered the highest conversion velocity.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 4</div>
+              <div class="layer-content">
+                <h4>Individual Product Decision Pages</h4>
+                <p>Dedicated item pages equipped with rich <code>Product Schema</code> markup, verified specs, authentic gallery snapshots, and a frictionless 1-tap WhatsApp consultation CTA.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 5</div>
+              <div class="layer-content">
+                <h4>GEO & AI Trust Knowledge Engine</h4>
+                <p>Authoritative guides resolving high-friction buyer fears: How to transfer Supercell IDs safely, how to prevent account locks, and price benchmarking. This layer earned our ChatGPT citations.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Growth Curve -->
+        <section class="case-section" id="growth-curve">
+          <div class="section-tag">Search Console Dynamics</div>
+          <h2 id="growth-curve">The Organic Growth Curve: Why Google Impressions Precede Exponential Clicks and Sales</h2>
+
+          <p>
+            Detailed analysis of Google Search Console's trajectory illustrates the classic three-phase maturation curve of precision technical SEO:
+          </p>
+
+          <div class="growth-phases-grid">
+            <div class="phase-card">
+              <div class="phase-badge">Phase 1: Dormancy</div>
+              <h4>Aug 6 – Sep 9 (Pre-SEO Baseline)</h4>
+              <p>A flat, disjointed baseline averaging 10 to 20 daily impressions and 0 to 1 click. Google treated the unoptimized domain as an unverified entity with zero topical authority.</p>
+            </div>
+
+            <div class="phase-card active-phase">
+              <div class="phase-badge">Phase 2: Structural Breakout</div>
+              <h4>Sep 10 – Sep 20 (SEO Activation)</h4>
+              <p>A sharp vertical ascent; daily impressions jumped from 20 to 150+ within 48 hours as sitemaps, structured schema, and hierarchical category silos were indexed.</p>
+            </div>
+
+            <div class="phase-card milestone-phase">
+              <div class="phase-badge">Phase 3: Commercial Velocity</div>
+              <h4>Sep 21 – Oct 9 (Sales Conversion)</h4>
+              <p>Stabilization above 150 impressions daily, reaching an all-time peak of <strong>318 impressions in a single day (Sep 24)</strong> alongside the first closed WhatsApp sales.</p>
+            </div>
+          </div>
+
+          <div class="takeaway-box">
+            <strong>The Psychological Law for Business Owners:</strong> In organic search acquisition, <em>«Impressions precede Clicks, Clicks precede Trust, and Trust commands High-Margin Sales»</em>. Sophisticated merchants recognize that building foundational search visibility creates an enduring barrier against competitors.
+          </div>
+        </section>
+
+        <!-- Section 6: Query Quality -->
+        <section class="case-section" id="query-quality">
+          <div class="section-tag">Search Intent Evolution</div>
+          <h2 id="query-quality">Search Intent Evolution: Transitioning from Branded Queries to Lucrative Transactional Terms</h2>
+
+          <p>
+            During the initial 30 days, incoming search queries bifurcated into two mutually reinforcing commercial funnels:
+          </p>
+
+          <div class="queries-comparison-grid">
+            <div class="query-col">
+              <h4>1. High-Intent Transactional Queries</h4>
+              <p>Users who have finalized their intent to purchase and are actively evaluating inventory:</p>
+              <ul class="query-list">
+                <li><code>متجر كلاش (Clash Store)</code> — Ranked #1 with CTR exceeding 20%</li>
+                <li><code>حساب كلاش اوف كلانس للبيع (Clash accounts for sale)</code> — Page 1 ranking</li>
+                <li><code>متجر كلاش اوف كلانس (Clash of Clans store)</code> — Direct high-ticket purchase intent</li>
+                <li><code>شراء قرية كلاش تاون 15 (Buy TH15 village)</code> — Precision transactional search</li>
+              </ul>
+            </div>
+
+            <div class="query-col">
+              <h4>2. Trust & Informational Authority Queries</h4>
+              <p>Searchers researching safety before transitioning to paying customers:</p>
+              <ul class="query-list">
+                <li><code>كيف اغير ايميل سوبر سيل (How to change Supercell email)</code> — High-authority traffic</li>
+                <li><code>شراء حسابات كلاش بأمان (Buy Clash accounts safely)</code> — Buyer risk mitigation</li>
+                <li><code>اسعار حسابات كلاش في السعودية (Clash account prices KSA)</code> — Commercial benchmarking</li>
+                <li><code>طريقة نقل قرية كلاش للايفون (Transfer Clash account to iPhone)</code> — High conversion guide</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7: Saudi Market & Mobile -->
+        <section class="case-section" id="saudi-mobile">
+          <div class="section-tag">Market Cohort & Speed</div>
+          <h2 id="saudi-mobile">Targeting the Saudi Market: Mobile-First Speed for High-Value GCC Consumers</h2>
+
+          <p>
+            Web analytics verified that <strong>Saudi Arabia (KSA)</strong> served as the primary commercial engine, accounting for <strong>85 verified Saudi domestic visitors</strong> (representing over 54% of filtered geographic traffic), with <strong>92%+ of all sessions conducted on mobile devices</strong>.
+          </p>
+
+          <div class="mobile-features-grid">
+            <div class="mob-card">
+              <h4>Sub-1.4s First Contentful Paint</h4>
+              <p>Zero framework bloat and optimized media assets ensured instantaneous rendering across 4G and 5G cellular networks in Riyadh, Jeddah, Dammam, and Makkah.</p>
+            </div>
+            <div class="mob-card">
+              <h4>1-Tap Pre-Populated WhatsApp Checkout</h4>
+              <p>Direct CTA buttons initiated WhatsApp chats pre-filled with the exact account SKU and title, removing all friction from mobile customer acquisition.</p>
+            </div>
+            <div class="mob-card">
+              <h4>Transparent Guarantee Badges on Small Screens</h4>
+              <p>Security assurances, escrow guarantees, and instant delivery details were engineered for instant legibility on handheld screens without pinch-to-zoom.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8: Page Analysis -->
+        <section class="case-section" id="pages-analysis">
+          <div class="section-tag">Inventory Discovery Funnel</div>
+          <h2 id="pages-analysis">Page Performance Analysis: Cluster Architecture that Unlocks Commercial Product Discovery</h2>
+
+          <p>
+            During month one, the homepage and game category hubs bore the majority of initial algorithmic recognition, setting the stage for massive product inventory indexation:
+          </p>
+
+          <div class="funnel-breakdown">
+            <div class="funnel-step">
+              <span class="funnel-pct">62%</span>
+              <div class="funnel-desc">
+                <strong>Homepage Authority Hub:</strong> The primary gateway, capturing brand recognition and general seed commercial queries.
+              </div>
+            </div>
+            <div class="funnel-step">
+              <span class="funnel-pct">24%</span>
+              <div class="funnel-desc">
+                <strong>Game Category Hubs:</strong> Clash of Clans and Clash Royale silos funneling users with specific game-level intent.
+              </div>
+            </div>
+            <div class="funnel-step">
+              <span class="funnel-pct">14%</span>
+              <div class="funnel-desc">
+                <strong>Trust & GEO Knowledge Guides:</strong> In-depth safety articles that unlocked citations across generative AI search engines.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 9: AI Search & GEO -->
+        <section class="case-section" id="ai-search-geo">
+          <div class="section-tag">Next-Generation Search Capabilities</div>
+          <h2 id="ai-search-geo">Generative Engine Optimization (GEO): Securing 20 ChatGPT Visitors and 190 AI Impressions</h2>
+
+          <p>
+            While conventional agencies struggle with legacy search paradigms, <strong>webinOO</strong> positioned <a href="https://clashmarket.online" target="_blank" rel="dofollow" class="inline-store-link">Clash Market</a> from day one to be consumed, understood, and recommended by conversational AI engines:
+          </p>
+
+          <div class="ai-stats-banner">
+            <div class="ai-stat-card">
+              <span class="ai-stat-number">190</span>
+              <span class="ai-stat-title">Google AI Overviews Impressions</span>
+              <span class="ai-stat-detail">Achieved an exceptional 5.8% CTR, substantially outperforming standard organic search averages</span>
+            </div>
+            <div class="ai-stat-card">
+              <span class="ai-stat-number">20</span>
+              <span class="ai-stat-title">Direct Referrals via ChatGPT Search</span>
+              <span class="ai-stat-detail">Active prospective buyers asking AI models for reputable, verified account platforms</span>
+            </div>
+          </div>
+
+          <p>
+            This empirical outcome demonstrates the commercial power of <strong>Generative Engine Optimization (GEO)</strong>. Platforms like ChatGPT and Google AI are no longer merely chat interfaces; they are <strong>zero-marginal-cost customer acquisition channels</strong> delivering paying buyers directly to properly architected websites.
+          </p>
+        </section>
+
+        <!-- Section 10: webinOO GEO Framework -->
+        <section class="case-section" id="webinoo-geo-method">
+          <div class="section-tag">Proprietary Methodology</div>
+          <h2 id="webinoo-geo-method">webinOO's Proprietary GEO Framework: How We Position Websites for AI Engine Quotation</h2>
+
+          <p>
+            How did a new storefront operating for only a few weeks get quoted by ChatGPT and Google AI Overviews as a trusted recommendation? The answer lies in four engineering pillars deployed by webinOO:
+          </p>
+
+          <div class="geo-pillars-list">
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">1</div>
+              <div>
+                <h4>Direct Knowledge Extraction Blocks</h4>
+                <p>Synthesizing concise, mathematically clear introductory paragraphs that directly answer user inquiries, allowing Large Language Models (LLMs) to quote definitions verbatim.</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">2</div>
+              <div>
+                <h4>Interconnected Schema.org Knowledge Graphs</h4>
+                <p>Linking programmatic entities seamlessly via <code>Organization</code>, <code>OnlineStore</code>, <code>Product</code>, and <code>FAQPage</code> schemas to feed knowledge engines complete entity context.</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">3</div>
+              <div>
+                <h4>Entity-Level Trust Verification (E-E-A-T)</h4>
+                <p>Documenting explicit consumer safeguards regarding financial transactions, digital escrow transfers, and refund policies to satisfy high algorithmic quality thresholds.</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">4</div>
+              <div>
+                <h4>High-Velocity Crawler Accessibility</h4>
+                <p>Lightweight static HTML architecture enabling GPTBot, PerplexityBot, and Google-Extended crawlers to parse content without consuming rendering quotas.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 11: 90-Day Roadmap -->
+        <section class="case-section" id="roadmap-90">
+          <div class="section-tag">Growth Strategy</div>
+          <h2 id="roadmap-90">Strategic 90-Day Scaling Roadmap: Expanding Inventory Indexing and High-Value Keywords</h2>
+
+          <p>
+            Informed by Month 1 performance analytics, <strong>webinOO</strong> established a three-stage execution roadmap to compound revenue and expand market capture:
+          </p>
+
+          <div class="roadmap-timeline">
+            <div class="roadmap-step">
+              <div class="step-badge">Month 2 (Days 31 – 60)</div>
+              <h4>Catalog Deep-Indexing & Multi-Game Expansion</h4>
+              <p>Deploying dedicated indexing pipelines for individual inventory items while expanding into adjacent titles (such as Brawl Stars and Hay Day) to multiply keyword coverage.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">Month 3 (Days 61 – 90)</div>
+              <h4>Conversion Rate Optimization (CRO) & Frictionless Closing</h4>
+              <p>Publishing verified customer feedback from initial cohorts and refining checkout flows to compress the transaction pathway into a single tap.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">Beyond 90 Days</div>
+              <h4>Regional GCC Dominance & Daily Organic Sales Volume</h4>
+              <p>Capturing the highest volume seed keywords across Saudi Arabia, Kuwait, and the UAE to sustain an uninterrupted, automated organic sales pipeline without paid ads.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 12: Transparency & Methodology -->
+        <section class="case-section" id="limitations">
+          <div class="section-tag">Audit Rigor & Empirical Honesty</div>
+          <h2 id="limitations">Statistical Integrity & Measurement Methodology: Filtering Bot Noise to Verify Real Buyers</h2>
+
+          <p>
+            All figures reported herein originate directly from two verified audit platforms: <strong>Google Search Console</strong> (monitoring search impressions, click counts, and average ranking positions) and <strong>Ahrefs Web Analytics</strong> (tracking geographic sessions and referral vectors).
+          </p>
+
+          <p>
+            Because <strong>webinOO</strong> adheres to uncompromising standards of professional integrity and rejects inflated vanity marketing, we publish these methodological disclosures:
+          </p>
+
+          <div class="transparency-rules-card">
+            <div class="rule-item">
+              <CheckCircle size={18} class="rule-check" />
+              <div>
+                <strong>Datacenter & Cloud Bot Traffic Filtering:</strong>
+                Analytics recorded 138 sessions originating from the United States, of which 83 came from an Amazon Web Services (AWS) cloud facility in Boardman, Oregon, alongside 27 administrative internal team views. <em>We completely removed these automated hits</em>, reporting strictly verified organic search users and genuine Saudi domestic sessions.
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <CheckCircle size={18} class="rule-check" />
+              <div>
+                <strong>Elimination of Automated Click Spam:</strong>
+                A surge of 20 automated bot clicks originating from Germany occurred within a single 60-second window across all product pages; these were isolated immediately. The 53 verified WhatsApp inquiries represent legitimate GCC prospects, from which 5 high-ticket transactions were successfully closed.
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <CheckCircle size={18} class="rule-check" />
+              <div>
+                <strong>Zero Paid Advertising Verification:</strong>
+                We unequivocally confirm that zero dollars ($0.00) were spent on paid media, sponsored campaigns, or influencer deals, demonstrating the uncontested capital efficiency of high-performance SEO.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 13: FAQ for AEO -->
+        <section class="case-section" id="faq-aeo">
+          <div class="section-tag">Answer Engine Optimization (AEO)</div>
+          <h2 id="faq-aeo">Frequently Asked Questions (AEO & AI Search Optimization)</h2>
+
+          <div class="aeo-faq-grid">
+            <details class="faq-item" open>
+              <summary>How did a brand-new store reach Page 1 of Google in 30 days without paid advertising?</summary>
+              <p>
+                By engineering a custom 5-layer topical cluster architecture matching buyer intent (Game hubs, Town Hall tiers, Individual product decision pages, GEO knowledge guides, and trust signals). This allowed Google algorithms to recognize topical authority immediately, advancing average search position from 11.2 to 7.8 with zero ad expenditure.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Why did the storefront get cited so rapidly in Google AI Overviews and ChatGPT Search?</summary>
+              <p>
+                webinOO integrated structured knowledge guides addressing high-anxiety buyer questions (such as Supercell ID email migration, anti-ban protections, and account valuation). This generated 190 AI feature impressions with a 5.8% CTR and 20 direct referral visits from ChatGPT.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Were all reported visits and sales generated purely organically without paid media?</summary>
+              <p>
+                Yes, 100%. Exactly zero dollars were allocated to Google Ads, Meta, TikTok, Snapchat, or paid influencer promotions. Every single visitor and closed sale resulted entirely from organic Google search rankings and conversational AI recommendations.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>How long does it take to engineer an equivalent search-optimized store with webinOO?</summary>
+              <p>
+                Full technical architecture, custom static development, and initial SEO deployment are completed within 2 to 3 weeks, followed by algorithmic indexing tracking and ranking ascension over the initial 30 to 60 days post-launch.
+              </p>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sticky Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">Case Study Index</div>
+          <nav aria-label="Table of Contents">
+            <ul class="toc-list" id="toc-list">
+              <li><a href="#month-one-numbers">1. Month 1 Verified Metrics</a></li>
+              <li><a href="#executive-summary">2. 65-Day Search Console Lifetime</a></li>
+              <li><a href="#challenge">3. The Commercial Dilemma & Economics</a></li>
+              <li><a href="#architecture">4. The 5-Layer Technical Architecture</a></li>
+              <li><a href="#growth-curve">5. The Organic Growth Maturation Curve</a></li>
+              <li><a href="#query-quality">6. Search Intent & Transactional Keywords</a></li>
+              <li><a href="#saudi-mobile">7. Targeting the Saudi Market via Mobile</a></li>
+              <li><a href="#pages-analysis">8. Page Performance & Inventory Funnels</a></li>
+              <li><a href="#ai-search-geo">9. Generative AI Search & GEO Discovery</a></li>
+              <li><a href="#webinoo-geo-method">10. webinOO's Proprietary GEO Framework</a></li>
+              <li><a href="#roadmap-90">11. Strategic 90-Day Scaling Roadmap</a></li>
+              <li><a href="#limitations">12. Statistical Rigor & Bot Filtering</a></li>
+              <li><a href="#faq-aeo">13. Frequently Asked Questions (AEO)</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Project Snapshot Card with Verified Dofollow Live Link -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">Project Execution Dossier</div>
+          <div class="snapshot-list">
+            <div class="snapshot-row">
+              <span>Client Name:</span>
+              <strong>Clash Market</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Domain URL:</span>
+              <a
+                href="https://clashmarket.online"
+                target="_blank"
+                rel="dofollow"
+                class="snapshot-link"
+                dir="ltr"
+              >
+                clashmarket.online
+              </a>
+            </div>
+            <div class="snapshot-row">
+              <span>Target Market:</span>
+              <strong>Saudi Arabia & GCC Region</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Scope of Work:</span>
+              <strong>Custom Code + SEO + GEO</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Paid Ad Spend:</span>
+              <strong class="zero-cost">$0.00 (Zero Ad Spend)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Impression Scaling:</span>
+              <strong class="metric-highlight">8.1X Factor (4,270 Impressions)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Month 1 Conversions:</span>
+              <strong>5 Closed WhatsApp Sales</strong>
+            </div>
+          </div>
+
+          <div class="snapshot-actions">
+            <a
+              href="https://clashmarket.online"
+              target="_blank"
+              rel="dofollow"
+              class="snapshot-btn"
+            >
+              <span>Inspect Live Production Store</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- High-Conversion Psychological Consultation Card -->
+        <div class="sidebar-cta-card">
+          <span class="badge-pill badge-coral">Complimentary Technical Audit</span>
+          <h4>Ready to build a compounding organic asset for your brand?</h4>
+          <p>
+            Stop burning operational margins on ephemeral paid clicks. Let webinOO engineer an ultra-fast digital storefront that dominates Google rankings and ChatGPT citations in Kuwait and Saudi Arabia.
+          </p>
+          <a
+            href="https://wa.me/201554637673?text=Hello%2C%20I%20reviewed%20the%20Clash%20Market%20SEO%20case%20study%20and%20would%20like%20to%20discuss%20engineering%20organic%20search%20growth%20for%20my%20business."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-whatsapp-btn"
+          >
+            Consult with a webinOO Strategist on WhatsApp
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container bottom-cta-section">
+      <CTA
+        eyebrow="Asset Equity vs. Rented Traffic"
+        title="Is your digital storefront engineered for search algorithms and AI citations?"
+        description="Whether launching a new e-commerce venture or rehabilitating an existing store burdened by ad costs, webinOO delivers empirical, verifiable commercial growth across Kuwait and the GCC."
+        ctaText="Request a Tailored Strategy Consultation"
+        whatsappMessage="Hello, I want to engineer a high-performance e-commerce store with SEO and Generative AI optimization using webinOO's framework."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
+
+<style is:global>
+  /* English Styles & LTR Adjustments for Clash Market Case Study */
+  .clash-case-study.en-version {
+    font-family: var(--font-latin, 'Manrope', -apple-system, sans-serif);
+    text-align: left;
+  }
+  .clash-case-study.en-version .data-table {
+    text-align: left;
+  }
+  .clash-case-study.en-version .psych-card {
+    border-left: 4px solid #f07956;
+    border-right: 1px solid #f9ded5;
+  }
+  .clash-case-study.en-version .philosophy-banner {
+    border-left: 4px solid var(--color-primary, #6518ac);
+    border-right: 1px solid var(--color-border-default, #ddd5e1);
+  }
+  .clash-case-study.en-version .highlight-callout {
+    border-left: 3px solid var(--color-primary, #6518ac);
+    border-right: none;
+  }
+  .clash-case-study.en-version .roadmap-step {
+    border-left: 4px solid var(--color-primary, #6518ac);
+    border-right: 1px solid var(--color-border-subtle, #eee7f0);
+  }
+  .clash-case-study.en-version .toc-list a {
+    border-left: 2px solid transparent;
+    border-right: none;
+  }
+  .clash-case-study.en-version .toc-list a:hover {
+    border-left-color: var(--color-primary, #6518ac);
+    border-right-color: transparent;
+  }
+  .clash-case-study.en-version .psych-card ul {
+    padding-left: 20px;
+    padding-right: 0;
+  }
+  .clash-case-study.en-version .query-list {
+    padding-left: 20px;
+    padding-right: 0;
+  }
+</style>
