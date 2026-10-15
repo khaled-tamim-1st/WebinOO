@@ -20,10 +20,11 @@ const targetHref = is404
 
 <a
   href={targetHref}
-  class={`lang-switch ${className}`.trim()}
+  class={`lang-switch lang-switch-${targetLang} ${className}`.trim()}
+  data-target={targetLang}
   aria-label={currentLang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'}
 >
-  {targetLabel}
+  <span class="lang-text">{targetLabel}</span>
 </a>
 
 <style>
@@ -32,18 +33,42 @@ const targetHref = is404
     align-items: center;
     justify-content: center;
     padding: 6px 14px;
+    min-height: 34px;
+    box-sizing: border-box;
     border-radius: var(--radius-pill, 999px);
     border: 1px solid var(--color-border-default, #ddd5e1);
     background: var(--color-bg-card, #fffefa);
     color: var(--color-ink-primary, #292239);
-    font-size: 13px;
-    font-weight: 700;
     text-decoration: none;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    line-height: 1;
   }
   .lang-switch:hover {
     border-color: var(--color-primary, #6518ac);
     color: var(--color-primary, #6518ac);
+    background: var(--color-primary-light, #eee5f5);
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(101, 24, 172, 0.12);
+  }
+
+  /* Modern geometric typography for 'EN' */
+  .lang-switch-en,
+  .lang-switch[data-target="en"],
+  .lang-switch-en .lang-text {
+    font-family: 'Plus Jakarta Sans', 'Inter', var(--font-latin), system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Specific typography for 'عربي' */
+  .lang-switch-ar,
+  .lang-switch[data-target="ar"],
+  .lang-switch-ar .lang-text {
+    font-family: var(--font-arabic);
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0;
   }
 </style>

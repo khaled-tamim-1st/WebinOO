@@ -20,6 +20,16 @@ function formatDate(date: Date | string) {
     year: 'numeric',
   }).format(d);
 }
+
+const categories = [
+  'All',
+  'Kuwait Web Design',
+  'Local SEO',
+  'AI Search',
+  'E-Commerce',
+  'Healthcare Web Design',
+  'Digital Marketing Strategy'
+];
 ---
 
 <BaseLayout
@@ -41,14 +51,29 @@ function formatDate(date: Date | string) {
       <p class="hero-desc">
         Straightforward, research-backed guides based on actual Kuwait market dynamics, consumer behavior, and search engine algorithms. Built to help you make informed digital decisions.
       </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="category-tabs-wrap">
+        <div class="category-tabs" id="category-tabs">
+          {categories.map((cat, idx) => (
+            <button
+              type="button"
+              class={`cat-tab ${idx === 0 ? 'active' : ''}`}
+              data-cat={cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
     </section>
 
     <!-- Articles Grid -->
     <section class="container articles-grid-section">
-      <div class="articles-grid">
+      <div class="articles-grid" id="articles-grid">
         {
           enBlogPosts.map((post) => (
-            <article class="article-card">
+            <article class="article-card" data-category={post.category}>
               <div class="card-meta-top">
                 <span class="category-badge">{post.category}</span>
                 <span class="read-time">
@@ -100,6 +125,41 @@ function formatDate(date: Date | string) {
   </main>
 
   <Footer slot="footer" lang="en" />
+
+  <!-- Client-side script for category filtering -->
+  <script is:inline>
+    function initBlogCategoryTabs() {
+      const tabs = document.querySelectorAll('.cat-tab');
+      const cards = document.querySelectorAll('.article-card');
+
+      if (!tabs.length) return;
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', (e) => {
+          e.preventDefault();
+          tabs.forEach((t) => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          const selectedCat = tab.getAttribute('data-cat') || 'All';
+
+          cards.forEach((card) => {
+            const cardCat = card.getAttribute('data-category');
+            if (selectedCat === 'All' || cardCat === selectedCat) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBlogCategoryTabs);
+    } else {
+      initBlogCategoryTabs();
+    }
+  </script>
 </BaseLayout>
 
 <style>
@@ -141,6 +201,46 @@ function formatDate(date: Date | string) {
     font-size: 17px;
     line-height: 1.85;
     color: var(--color-ink-muted, #716b7a);
+    margin-bottom: 28px;
+  }
+
+  /* Category Tabs */
+  .category-tabs-wrap {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  .category-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .cat-tab {
+    white-space: nowrap;
+    padding: 8px 18px;
+    background: #ffffff;
+    border: 1px solid var(--color-border-default, #ddd5e1);
+    border-radius: var(--radius-pill, 999px);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-ink-secondary, #595264);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .cat-tab:hover {
+    border-color: var(--color-primary, #6518ac);
+    color: var(--color-primary, #6518ac);
+    background: var(--color-primary-subtle, #f4eafa);
+  }
+
+  .cat-tab.active {
+    background: var(--color-primary, #6518ac);
+    color: #ffffff;
+    border-color: var(--color-primary, #6518ac);
+    box-shadow: 0 4px 12px rgba(101, 24, 172, 0.25);
   }
 
   .articles-grid-section {

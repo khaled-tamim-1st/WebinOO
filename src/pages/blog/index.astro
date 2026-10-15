@@ -229,16 +229,20 @@ const blogSchema = {
 
   <!-- Client-side script for category filtering -->
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
+    function initBlogCategoryTabs() {
       const tabs = document.querySelectorAll('.cat-tab');
       const cards = document.querySelectorAll('.article-card');
+      const featured = document.querySelector('.featured-post-section');
+
+      if (!tabs.length) return;
 
       tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
+        tab.addEventListener('click', (e) => {
+          e.preventDefault();
           tabs.forEach((t) => t.classList.remove('active'));
           tab.classList.add('active');
 
-          const selectedCat = tab.getAttribute('data-cat');
+          const selectedCat = tab.getAttribute('data-cat') || 'الكل';
 
           cards.forEach((card) => {
             const cardCat = card.getAttribute('data-category');
@@ -248,9 +252,24 @@ const blogSchema = {
               card.style.display = 'none';
             }
           });
+
+          if (featured) {
+            const featCat = featured.getAttribute('data-category');
+            if (selectedCat === 'الكل' || featCat === selectedCat) {
+              featured.style.display = 'block';
+            } else {
+              featured.style.display = 'none';
+            }
+          }
         });
       });
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBlogCategoryTabs);
+    } else {
+      initBlogCategoryTabs();
+    }
   </script>
 </BaseLayout>
 

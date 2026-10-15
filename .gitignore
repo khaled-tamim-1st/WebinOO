@@ -35,3 +35,10 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scratch files
+/Prep3*
+/convert*
+/exam*
+/generate*
+/rebuild*
