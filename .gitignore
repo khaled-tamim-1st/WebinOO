@@ -42,3 +42,5 @@ next-env.d.ts
 /exam*
 /generate*
 /rebuild*
+/scratch/
+
