@@ -1,4 +1,5 @@
 ---
+import '@/styles/case-study.css';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
@@ -828,45 +829,3 @@ const caseSchema = [
   <Footer slot="footer" lang="en" />
 </BaseLayout>
 
-<style is:global>
-  /* English Styles & LTR Adjustments for Clash Market Case Study */
-  .clash-case-study.en-version {
-    font-family: var(--font-latin, 'Manrope', -apple-system, sans-serif);
-    text-align: left;
-  }
-  .clash-case-study.en-version .data-table {
-    text-align: left;
-  }
-  .clash-case-study.en-version .psych-card {
-    border-left: 4px solid #f07956;
-    border-right: 1px solid #f9ded5;
-  }
-  .clash-case-study.en-version .philosophy-banner {
-    border-left: 4px solid var(--color-primary, #6518ac);
-    border-right: 1px solid var(--color-border-default, #ddd5e1);
-  }
-  .clash-case-study.en-version .highlight-callout {
-    border-left: 3px solid var(--color-primary, #6518ac);
-    border-right: none;
-  }
-  .clash-case-study.en-version .roadmap-step {
-    border-left: 4px solid var(--color-primary, #6518ac);
-    border-right: 1px solid var(--color-border-subtle, #eee7f0);
-  }
-  .clash-case-study.en-version .toc-list a {
-    border-left: 2px solid transparent;
-    border-right: none;
-  }
-  .clash-case-study.en-version .toc-list a:hover {
-    border-left-color: var(--color-primary, #6518ac);
-    border-right-color: transparent;
-  }
-  .clash-case-study.en-version .psych-card ul {
-    padding-left: 20px;
-    padding-right: 0;
-  }
-  .clash-case-study.en-version .query-list {
-    padding-left: 20px;
-    padding-right: 0;
-  }
-</style>
