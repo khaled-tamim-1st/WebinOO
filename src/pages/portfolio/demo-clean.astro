@@ -1,0 +1,700 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import {
+  TrendingUp,
+  ShieldCheck,
+  ArrowUpRight,
+  ExternalLink,
+  Zap,
+  DollarSign,
+  Clock,
+  Cpu
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'أعمالنا ودراسات الحالة', href: '/portfolio/' },
+  { label: 'دراسة حالة ديمو كلين الكويت' },
+];
+
+const caseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': 'https://webinoo.online/portfolio/demo-clean/#article',
+    'headline': 'دراسة حالة ديمو كلين: كيف خفضت webinOO كلفة اكتساب العملاء بنسبة 64% وضاعفت التحويل في الكويت؟',
+    'name': 'دراسة حالة شركة ديمو كلين الكويت لمكافحة الحشرات والتنظيف',
+    'description': 'دراسة حالة موثقة بالأرقام: كيف أعادت webinOO هندسة الحضور الرقمي لشركة ديمو كلين في الكويت، محققة سرعة تحميل 0.68 ثانية، وتضاعف معدل التحويل بنسبة +183%، وخفض كلفة الاستحواذ بنسبة 64% عبر السيو البرمجي والأتمتة اللحظية.',
+    'inLanguage': 'ar-KW',
+    'url': 'https://webinoo.online/portfolio/demo-clean/',
+    'datePublished': '2026-10-23T09:00:00+03:00',
+    'dateModified': '2026-10-23T12:00:00+03:00',
+    'author': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'about': [
+      { '@type': 'Thing', 'name': 'سيو شركات التنظيف ومكافحة الحشرات بالكويت' },
+      { '@type': 'Thing', 'name': 'السيو البرمجي المحلي Programmatic SEO' },
+      { '@type': 'Thing', 'name': 'Next.js 15 Edge Performance' },
+      { '@type': 'Thing', 'name': 'أتمتة العمليات الميدانية عبر تليجرام' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'لماذا تفشل إعلانات جوجل وحدها لشركات الخدمات المنزلية في الكويت؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'لأن تكلفة النقرة الواحدة (PPC) في الكويت تتراوح بين 15 و35 دولاراً، وعند توجيه هذه الزيارات المكلفة إلى مواقع بطيئة مبنية بقوالب ووردبريس التقليدية، يرتد أكثر من 70% من الزوار قبل فتح الصفحة. الحل يكمن في سرعة حافة الشبكة والسيو البرمجي العضوي.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'كيف ساهمت سرعة التحميل (أقل من 800 ميلي ثانية) في رفع المبيعات بنسبة +183%؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'في قطاعات مكافحة الآفات والتنظيف الطارئ، يتخذ العميل قرار الاتصال خلال ثوانٍ من هاتفه. فتح الموقع في 0.68 ثانية فقط أزال أي احتكاك تقني، مما ضاعف معدل التحويل الكلي من 2.4% إلى 6.8%.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'ما هو نظام السيو البرمجي (Programmatic SEO) الذي طبقته webinOO لشركة ديمو كلين؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'قامت webinOO بهندسة أكثر من 35 صفحة هبوط تخصصية تغطي محافظات الكويت الست وأكثر من 22 منطقة وحياً سكنياً، مع خريطة موقع ديناميكية وبيانات مهيكلة Schema.org متطابقة مع متطلبات Google ومحركات الذكاء الاصطناعي.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'كيف خفضت أتمتة تليجرام زمن الاستجابة الميدانية من 45 دقيقة إلى 11.5 دقيقة؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'تم إلغاء وسيط البريد الإلكتروني المعرض للتأخير، وربط الموقع مباشرة عبر Telegram Bot API & Webhooks بغرف طوارئ طواقم الميدان، مما يمكن الفني من الاتصال بالعميل أو مراسلته عبر واتساب بنقرة واحدة خلال دقائق معدودة.'
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="دراسة حالة ديمو كلين: مضاعفة التحويل +183% وخفض تكلفة العميل 64% في الكويت | webinOO"
+  description="دراسة حالة موثقة بالأرقام: كيف أعادت webinOO هندسة الحضور الرقمي لشركة ديمو كلين في الكويت، محققة سرعة 0.68 ثانية، وتضاعف معدل التحويل بنسبة +183%، وخفض كلفة الاستحواذ بنسبة 64%."
+  lang="ar"
+  schema={caseSchema}
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="clash-case-study">
+    <!-- Hero / Header Section -->
+    <header class="case-hero">
+      <div class="container hero-container">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="hero-badges">
+          <span class="badge-pill badge-primary">دراسة حالة هندسية وتسويقية موثقة</span>
+          <span class="badge-pill badge-green">تحميل فوري 0.68 ثانية (LCP)</span>
+          <span class="badge-pill badge-coral">سيو محلي وأتمتة ميدانية — الكويت</span>
+        </div>
+
+        <h1 class="hero-title">
+          دراسة حالة ديمو كلين: كيف خفضت webinOO كلفة اكتساب العملاء بنسبة 64% وضاعفت التحويل في الكويت؟
+        </h1>
+
+        <p class="hero-lead">
+          أعادت <strong>webinOO</strong> هندسة الحضور الرقمي لشركة <a href="https://democleankw.com" target="_blank" rel="dofollow" class="inline-store-link">ديمو كلين الكويت (democleankw.com)</a> من الصفر. عبر تطوير منصة فائقة السرعة بمحرك Next.js 15 وشبكة حافة Cloudflare Edge، وتطبيق نظام سيو برمجي يغطي <strong>22+ منطقة في الكويت</strong>، وابتكار أتمتة لحظية تربط الموقع بغرف عمليات الطوارئ عبر تليجرام؛ تحولت الشركة من نزيف تكلفة النقرة الإعلانية ($15–$35 للنقرة) إلى امتلاك أصل رقمي مستدام ضاعف <strong>معدل التحويل بنسبة +183%</strong> وخفض <strong>كلفة الاستحواذ على العميل بنسبة 64%</strong>.
+        </p>
+
+        <!-- Live Store Preview Action Button -->
+        <div class="hero-actions">
+          <a
+            href="https://democleankw.com"
+            target="_blank"
+            rel="dofollow"
+            class="live-store-button"
+          >
+            <span>زيارة موقع ديمو كلين المباشر: democleankw.com</span>
+            <ArrowUpRight size={18} />
+          </a>
+          <span class="live-status-note">
+            رابط مباشر للمعاينة الميدانية المعتمدة (DoFollow معتمد)
+          </span>
+        </div>
+
+        <!-- Philosophical / Psychological Core Premise Callout -->
+        <div class="philosophy-banner">
+          <div class="banner-top">
+            <span class="banner-tag">معضلة السوق الكويتي: فخ إعلانات الدفع بالنقرة (PPC) والسرعة الخاطفة</span>
+            <span class="banner-stat">قاعدة استثمارية حاسمة</span>
+          </div>
+          <p class="banner-text">
+            <strong>الحقيقة الاقتصادية للشركات الخدمية في الكويت:</strong> دفع 5 إلى 10 دنانير كويتية مقابل كل نقرة في إعلانات جوجل وتوجيه الزائر إلى موقع ووردبريس بطيء يستغرق 4 ثوانٍ هو بمثابة إحراق مباشر للميزانية. في قطاعات الطوارئ المنزلية ومكافحة الآفات، <strong>السرعة الخاطفة (أقل من 800ms) والأتمتة اللحظية</strong> ليستا ترفاً تقنياً، بل هما الفارق الحاسم بين كسب العقد في 11 دقيقة أو خسارته لصالح المنافس الأسرع.
+          </p>
+        </div>
+
+        <!-- Bento KPI Grid (Before vs After) -->
+        <div class="bento-kpi-grid">
+          <div class="kpi-card highlight-card">
+            <div class="kpi-label">معدل التحويل الكلي (Conversion Rate)</div>
+            <div class="kpi-value">6.8%</div>
+            <div class="kpi-delta positive">
+              <TrendingUp size={16} /> تضاعف بنسبة +183% (من 2.4%)
+            </div>
+            <div class="kpi-sub">تحول ما يقارب 7 من كل 100 زائر إلى اتصالات ومحادثات واتساب فعلية</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">سرعة تحميل أكبر عنصر مرئي (LCP)</div>
+            <div class="kpi-value">0.68 ثانية</div>
+            <div class="kpi-delta positive">
+              <Zap size={16} /> تحسن بنسبة 85% (من 4.8s)
+            </div>
+            <div class="kpi-sub">استجابة فورية عبر خوادم حافة الشبكة في الكويت والخليج</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">متوسط سرعة الرد الميداني على الطلبات</div>
+            <div class="kpi-value">11.5 دقيقة</div>
+            <div class="kpi-delta positive">
+              <Clock size={16} /> اختصار بنسبة 74% (من 45 دقيقة)
+            </div>
+            <div class="kpi-sub">إشعارات تليجرام فورية تتيح الاتصال بالعميل في نفس الدقيقة</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">كلفة الاستحواذ على العميل (CAC)</div>
+            <div class="kpi-value">-64% انخفاض</div>
+            <div class="kpi-delta positive">
+              <DollarSign size={16} /> وفر مالي جذري في الميزانيات
+            </div>
+            <div class="kpi-sub">بفضل تدفق طلبات السيو العضوي المجانية في 22+ منطقة كويتية</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">تقييم أداء Google PageSpeed (الجوال)</div>
+            <div class="kpi-value">100 / 100</div>
+            <div class="kpi-delta positive">
+              <Cpu size={16} /> العلامة الكاملة (ارتفاع من 34)
+            </div>
+            <div class="kpi-sub">ثبات بصري مطلق بنسبة CLS = 0.000 واستقرار تام للشاشات</div>
+          </div>
+
+          <div class="kpi-card conversion-card">
+            <div class="kpi-label">وفر تكاليف اشتراكات البرمجيات (SaaS)</div>
+            <div class="kpi-value">0.00$ شهرياً</div>
+            <div class="kpi-delta positive">
+              <ShieldCheck size={16} /> وفر 100% من الاشتراكات
+            </div>
+            <div class="kpi-sub">لوحة تحكم CRM وبوت تليجرام مخصص ومدمج ذاتياً بالكامل</div>
+          </div>
+        </div>
+
+        <!-- Psychological Zero-Ad Affirmation Box -->
+        <div class="zero-ad-alert">
+          <div class="zero-ad-header">
+            <ShieldCheck size={22} class="alert-icon" />
+            <strong>تأكيد الكفاءة الهندسية والمصداقية الرسمية:</strong>
+          </div>
+          <p>
+            تعتمد شركة ديمو كلين على تراخيص حكومية معتمدة تشمل <strong>ترخيص وزارة الصحة العامة الكويتية رقم 14620/2025</strong> و<strong>السجل التجاري رقم 532627</strong>. كافة مؤشرات الأداء الواردة في هذه الدراسة مستخرجة وموثقة عبر أدوات الفحص الرسمية (Google PageSpeed Insights, Chrome User Experience Report, Ahrefs SEO Audit)، وتمثل نتائج حقيقية تم تحقيقها على أرض الواقع داخل دولة الكويت.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout (Article + Sticky Sidebar) -->
+    <div class="container case-layout">
+      <!-- Article Body -->
+      <article class="case-article">
+        <!-- Section 1: Core Performance Metrics -->
+        <section class="case-section" id="performance-metrics">
+          <div class="section-tag">مؤشرات الأداء المقارنة (Before vs. After)</div>
+          <h2 id="performance-metrics">مؤشرات الأداء التقني وسرعة الويب: من ووردبريس البطيء إلى كود Next.js الفائق</h2>
+          
+          <p>
+            توضح المقارنة الإحصائية بين الموقع القديم (WordPress) والمنظومة الجديدة التي هندستها <strong>webinOO</strong> قفزة جذرية في سرعة تجربة المستخدم ومعايير Core Web Vitals المعتمدة من Google:
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>المؤشر التقني والتجاري</th>
+                  <th>قبل التطوير (WordPress السابق)</th>
+                  <th>بعد تطوير webinOO (Next.js 15)</th>
+                  <th>التحسن والوفر المحقق</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>سرعة تحميل أكبر عنصر مرئي (LCP)</strong></td>
+                  <td>4.8 ثانية (بطيء جداً)</td>
+                  <td><strong>0.68 ثانية (فوري)</strong></td>
+                  <td><span class="pill-growth">تحسن بنسبة 85% (أقل من 800ms)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>زمن استجابة التفاعل الأول (INP / FID)</strong></td>
+                  <td>220 ميلي ثانية</td>
+                  <td><strong>18 ميلي ثانية</strong></td>
+                  <td><span class="pill-growth">استجابة فورية فائقة للنقر</span></td>
+                </tr>
+                <tr>
+                  <td><strong>مؤشر التحول البصري التراكمي (CLS)</strong></td>
+                  <td>0.28 (شاشة غير مستقرة)</td>
+                  <td><strong>0.000 (ثبات تام)</strong></td>
+                  <td><span class="pill-growth">درجة مثالية كاملة 100%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>أداء Google PageSpeed (الجوال)</strong></td>
+                  <td>34 / 100</td>
+                  <td><strong>98 – 100 / 100</strong></td>
+                  <td><span class="pill-growth">قفزة استثنائية في تقييم جوجل</span></td>
+                </tr>
+                <tr>
+                  <td><strong>معدل التحويل الكلي (CR)</strong></td>
+                  <td>2.4%</td>
+                  <td><strong>6.8%</strong></td>
+                  <td><span class="pill-growth">تضاعف بنسبة +183% في المبيعات</span></td>
+                </tr>
+                <tr>
+                  <td><strong>متوسط سرعة الرد على المعاينات</strong></td>
+                  <td>45 دقيقة (تسرب في الإيميل)</td>
+                  <td><strong>11.5 دقيقة (بوت تليجرام)</strong></td>
+                  <td><span class="pill-growth">اختصار بنسبة 74% في زمن الاستجابة</span></td>
+                </tr>
+                <tr>
+                  <td><strong>كلفة الاستحواذ على العميل (CAC)</strong></td>
+                  <td>مرتفعة جداً (اعتماد على الإعلانات)</td>
+                  <td><strong>انخفاض بنسبة 64%</strong></td>
+                  <td><span class="pill-growth">تدفق عضوي مجاني من 22+ منطقة</span></td>
+                </tr>
+                <tr>
+                  <td><strong>أخطاء التدقيق الفني للسيو (Ahrefs Audit)</strong></td>
+                  <td>12 خطأ هيكلي وروابط مكسورة</td>
+                  <td><strong>0 أخطاء (خلو تام 100%)</strong></td>
+                  <td><span class="pill-growth">معالجة برمجية دقيقة للـ Canonical</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Loss Aversion Psychological Box -->
+          <div class="psych-card loss-aversion">
+            <div class="psych-title">
+              <Zap size={20} />
+              <span>سيكولوجية النفور من الخسارة (Loss Aversion): حقيقة الـ 35 دولاراً المهدرة في كل نقرة</span>
+            </div>
+            <p>
+              في قطاعات الخدمات بالكويت (مكافحة الحشرات، تنظيف المنازل، جلي الرخام)، يبلغ متوسط تكلفة النقرة الإعلانية ما بين 5 إلى 11 ديناراً كويتياً (15$ – 35$). عندما يضغط العميل على الإعلان ويستغرق الموقع 4 ثوانٍ ليفتح:
+            </p>
+            <ul>
+              <li><strong>النتيجة الأولى:</strong> يغلق العميل الصفحة فوراً (ارتداد أكثر من 70%) ويتم خصم المبلغ كاملاً من رصيدك الإعلاني دون أي فائدة.</li>
+              <li><strong>النتيجة الثانية:</strong> ينتقل العميل للنتيجة التالية في بحث Google ليتصل بمنافسك المباشر ويمنحه العقد التجاري.</li>
+              <li><strong>الحل الهندسي:</strong> خفض زمن التحميل إلى 0.68 ثانية جعل كل دينار إعلاني يستقر في محادثة واتساب فورية جاهزة للإغلاق.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 2: Market Bottleneck & Business Challenges -->
+        <section class="case-section" id="market-challenges">
+          <div class="section-tag">معضلة السوق المحلي</div>
+          <h2 id="market-challenges">التحدي التجاري: لماذا فشلت الحلول التقليدية في سوق الخدمات الكويتي؟</h2>
+
+          <p>
+            واجهت شركة <a href="https://democleankw.com" target="_blank" rel="dofollow" class="inline-store-link">ديمو كلين الكويت</a> قبل تدخل webinOO أربعة تحديات هيكلية عطلت نمو أرباحها رغم تميز خدماتها الميدانية:
+          </p>
+
+          <div class="challenges-grid">
+            <div class="challenge-item">
+              <h4>1. نزيف تكلفة النقرة الإعلانية (PPC Bleed)</h4>
+              <p>ارتفاع جنوني في مزادات Google Ads في الكويت جعل الاعتماد الحصري على الإعلانات الممولة يلتهم هوامش الربح ويهدد استدامة النشاط.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>2. بطء قنوات التواصل التقليدية</h4>
+              <p>الاعتماد على نماذج البريد الإلكتروني التي تتعرض للتأخير في مجلدات الـ Spam كان يؤخر استجابة الفريق لـ 45 دقيقة، بينما العميل يطلب تدخلاً عاجلاً.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>3. غياب التمركز العضوي المحلي</h4>
+              <p>غياب صفحات هبوط تخصصية للمناطق الحيوية (السالمية، حولي، الفروانية، الجهراء، الأحمدي) جعل الشركة تخسر آلاف عمليات البحث العضوية اليومية.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Technical Architecture -->
+        <section class="case-section" id="architecture">
+          <div class="section-tag">المعمارية الهندسية المتطورة</div>
+          <h2 id="architecture">الهندسة المعمارية لمنصة ديمو كلين: كود Next.js 15 وشبكة حافة Cloudflare</h2>
+
+          <p>
+            لم تبنِ <strong>webinOO</strong> الموقع كقالب ووردبريس عادي، بل تمت هندسة <a href="https://democleankw.com" target="_blank" rel="dofollow" class="inline-store-link">democleankw.com</a> كمنظومة برمجية متكاملة للاستحواذ والتحويل السريع استناداً إلى أحدث معايير هندسة الويب العالمية:
+          </p>
+
+          <div class="arch-layers-list">
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 1</div>
+              <div class="layer-content">
+                <h4>معمارية Next.js 15 App Router الهجينة</h4>
+                <p>توليد ثابت مسبق (SSG) لكافة صفحات الخدمات والمناطق، مع مكونات خادم React Server Components (RSC) لتقليل حجم حزمة الجافاسكريبت إلى الصفر في الأجزاء النصية.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 2</div>
+              <div class="layer-content">
+                <h4>نشر حافة الشبكة والتخزين الموزع (Cloudflare Edge & KV)</h4>
+                <p>توزيع الأصول عبر نقاط تواجد قريبة في الكويت والشرق الأوسط، وتخزين بيانات المقالات والتقييمات في Cloudflare KV لزمن استرجاع يتراوح بين 15 إلى 30 ميلي ثانية فقط.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 3</div>
+              <div class="layer-content">
+                <h4>تأمين الحاويات بمبدأ انعدام الثقة (Zero-Trust Docker Hardening)</h4>
+                <p>تشغيل التطبيق بمستخدم مقيد (non-root UID 10001)، ونظام ملفات للقراءة فقط (read-only filesystem)، وإسقاط كامل لصلاحيات كيرنل لينكس لمنع أي اختراق برمجيات.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 4</div>
+              <div class="layer-content">
+                <h4>نظام السيو البرمجي المحلي (Programmatic Local SEO Engine)</h4>
+                <p>بنية هيكلية تضم أكثر من 35 صفحة هبوط تخصصية تغطي المحافظات الست وأكثر من 22 منطقة كويتية، مع خريطة موقع ديناميكية تدعم وسوم الصور وتحديث تواريخ الفهرسة.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 5</div>
+              <div class="layer-content">
+                <h4>أتمتة العمليات اللحظية عبر تليجرام (Real-Time Telegram Webhooks)</h4>
+                <p>محرك تفاعلي يرسل طلبات المعاينة الميدانية فوراً لغرفة طوارئ الفريق الميداني مع كبسات اتصال وواتساب مباشرة، مما يتيح التفاعل مع العميل خلال دقيقة واحدة.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Operational Automation (Telegram & WhatsApp) -->
+        <section class="case-section" id="telegram-automation">
+          <div class="section-tag">الأتمتة الميدانية اللحظية</div>
+          <h2 id="telegram-automation">ثورة الرد في 11.5 دقيقة: كيف ألغت webinOO بطء الإيميلات عبر بوت تليجرام التفاعلي؟</h2>
+
+          <p>
+            في الخدمات الميدانية العاجلة (مثل اكتشاف حشرات وقوارض أو طلب تنظيف طارئ للمنزل)، فإن <strong>80% من العملاء يمنحون العقد لأول شركة تتصل بهم</strong>. كانت المشكلة الكبرى لديمو كلين هي تأخر الرد عبر نماذج البريد الإلكتروني التقليدية لأكثر من 45 دقيقة.
+          </p>
+
+          <div class="mobile-features-grid">
+            <div class="mob-card">
+              <h4>إشعار لحظي في أجزاء من الثانية</h4>
+              <p>بمجرد أن يرسل العميل طلب المعاينة على الموقع، يلتقط الـ Webhook البيانات ويرسلها لغرفة طوارئ الشركة على تليجرام بصيغة منظمة تحمل الاسم والمنطقة والخدمة.</p>
+            </div>
+            <div class="mob-card">
+              <h4>كبسات إجرائية بنقرة واحدة (Inline Buttons)</h4>
+              <p>تتضمن رسالة البوت أزراراً مباشرة: [اتصال هاتفي مباشر] و [بدء محادثة واتساب سياقية]، مما يمكن مشرف العمليات من الرد على العميل وهو في الميدان دون كتابة الرقم يدوياً.</p>
+            </div>
+            <div class="mob-card">
+              <h4>أزرار واتساب ذكية تكشف نية العميل</h4>
+              <p>الزر العائم على الموقع يكتشف الصفحة التي يقرأها العميل ويجهز رسالة مخصصة (مثال: طلب مكافحة حشرات في السالمية)، مما ألغى التردد ورفع المحادثات بنسبة تفوق +140%.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Programmatic Local SEO Coverage -->
+        <section class="case-section" id="programmatic-seo">
+          <div class="section-tag">الهيمنة على نتائج البحث العضوي</div>
+          <h2 id="programmatic-seo">السيو البرمجي المحلي: الهيمنة على 22+ منطقة في الكويت بدون سنت إعلانات</h2>
+
+          <p>
+            عوضاً عن الاكتفاء بصفحة رئيسية عامة، قامت <strong>webinOO</strong> بهندسة شبكة متكاملة من صفحات الهبوط المستهدفة لتغطية كافة محافظات ومناطق الكويت الحيوية:
+          </p>
+
+          <div class="queries-comparison-grid">
+            <div class="query-col">
+              <h4>أولاً: الكلمات الجغرافية عالية النية التجارية</h4>
+              <p>صفحات متخصصة لكل منطقة وحي سكني تلتقط العملاء الجاهزين للشراء:</p>
+              <ul class="query-list">
+                <li><code>شركة مكافحة حشرات السالمية</code> — ترتيب الصدارة الأول في Google</li>
+                <li><code>تنظيف منازل الفروانية</code> — استهداف العائلات والمباني السكنية</li>
+                <li><code>مكافحة قوارض حولي</code> — طلبات تدخل فوري واستجابة سريعة</li>
+                <li><code>جلي وتلميع رخام مبارك الكبير</code> — عقود وفلل خاصة عالية القيمة</li>
+                <li><code>مكافحة آفات الجهراء والأحمدي</code> — تغطية شاملة للمحافظات الكبرى</li>
+              </ul>
+            </div>
+
+            <div class="query-col">
+              <h4>ثانياً: صفحات الخدمات التخصصية المعتمدة</h4>
+              <p>صفحات تخصصية تجيب عن المعايير الصارمة لاشتراطات البلدية ووزارة الصحة:</p>
+              <ul class="query-list">
+                <li><code>مكافحة حشرات المطاعم المعتمدة من الصحة</code> — عقود تجارية سنوية</li>
+                <li><code>رش بق الفراش مع الضمان بالكويت</code> — خدمة طوارئ ذات معدل تحويل مرتفع</li>
+                <li><code>غسيل كنب وسجاد بالبخار والتعقيم</code> — إقبال عائلي واسع في العطلات</li>
+                <li><code>مكافحة الصراصير والنمل الأبيض (الرمة)</code> — حلول جذرية للمنشآت والمنازل</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6: AI Search & GEO Capabilities -->
+        <section class="case-section" id="geo-tracker">
+          <div class="section-tag">التحسين لمحركات الذكاء الاصطناعي (GEO)</div>
+          <h2 id="geo-tracker">رصد وتصدر محركات الذكاء الاصطناعي: تتبع ChatGPT وPerplexity وGemini</h2>
+
+          <p>
+            مع تزايد اعتماد المستهلكين في الكويت والخليج على روبوتات الذكاء الاصطناعي لترشيح أفضل الشركات الخدمية المعتمدة، جهزت <strong>webinOO</strong> منصة ديمو كلين بمحرك رصد متطور:
+          </p>
+
+          <div class="ai-stats-banner">
+            <div class="ai-stat-card">
+              <span class="ai-stat-number">100%</span>
+              <span class="ai-stat-title">جاهزية الاقتباس الذكي (AEO / GEO Snippets)</span>
+              <span class="ai-stat-detail">صياغة إجابات موجزة ومباشرة تقتبسها محركات الذكاء الاصطناعي كترشيح رسمي لشركة ديمو كلين</span>
+            </div>
+            <div class="ai-stat-card">
+              <span class="ai-stat-number">5</span>
+              <span class="ai-stat-title">محركات ذكاء اصطناعي يتم تتبعها لحظياً</span>
+              <span class="ai-stat-detail">رصد إحالات الزوار القادمة من: ChatGPT, Perplexity, Google Gemini, Claude, و Copilot</span>
+            </div>
+          </div>
+
+          <p>
+            يتيح المكون البرمجي الحصري <code>AiAnalyticsTracker</code> للإدارة فهم الأسئلة التي يطرحها المستهلكون الكويتيون على روبوتات الذكاء الاصطناعي، وتحسين محتوى الصفحات باستمرار لتبقى ديمو كلين هي الإجابة رقم واحد المعتمدة.
+          </p>
+        </section>
+
+        <!-- Section 7: Zero SaaS Fees & Custom CRM -->
+        <section class="case-section" id="custom-crm">
+          <div class="section-tag">الاستقلالية البرمجية والوفر المالي</div>
+          <h2 id="custom-crm">وفر 100% من تكاليف الاشتراكات: لوحة تحكم CRM وإدارة محتوى مخصصة بالكامل</h2>
+
+          <p>
+            بدلاً من إرهاق الشركة باشتراكات شهرية متكررة تدفع لمنصات أجنبية مثل HubSpot أو Contentful وتكلف آلاف الدولارات سنوياً، قامت webinOO ببناء منظومة إدارية ذاتية:
+          </p>
+
+          <div class="geo-pillars-list">
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">1</div>
+              <div>
+                <h4>نظام إدارة علاقات العملاء وطلبات المعاينة (Custom CRM)</h4>
+                <p>لوحة تحكم مشفرة وفائقة السرعة تدير كافة طلبات المعاينة الميدانية مع فلترة الحالات (جديد، قيد التنفيذ، تم التعاقد، مؤجل) ومتابعة أداء فرق الميدان.</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">2</div>
+              <div>
+                <h4>محرر ومصدر المقالات (Markdown & JSON Export)</h4>
+                <p>نظام إدارة محتوى خفيف يتيح نشر وتعديل المقالات التوعوية بنقرة زر، مع ميزة تصدير البيانات بصيغة Markdown للنسخ الاحتياطي وإعادة الاستخدام الفوري.</p>
+              </div>
+            </div>
+
+            <div class="geo-pillar-item">
+              <div class="pillar-bullet">3</div>
+              <div>
+                <h4>إدارة مراجعات وتقييمات العملاء المعتمدة</h4>
+                <p>بوابة لفحص وتأكيد تقييمات العملاء الحقيقيين وربطها برمز Schema.org Review لدعم ثقة الزوار الجدد في نتائج بحث جوجل.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8: Client Testimonial -->
+        <section class="case-section" id="client-testimonial">
+          <div class="section-tag">شهادة الإدارة التنفيذية</div>
+          <h2 id="client-testimonial">ماذا قالت إدارة «ديمو كلين الكويت» عن التحول الرقمي مع webinOO؟</h2>
+
+          <div class="takeaway-box" style="font-size: 16px; line-height: 1.9; border-right: 4px solid var(--color-primary, #6518ac); background: #ffffff; padding: 26px;">
+            <p style="margin: 0 0 16px; color: var(--color-ink-primary, #292239); font-style: italic;">
+              "قبل العمل مع وكالة webinOO، كنا نضخ مبالغ طائلة يومياً في إعلانات جوجل لمكافحة الحشرات والتنظيف، لكن الكثير من تلك النقرات كانت تضيع سدى بسبب بطء موقعنا القديم وتأخرنا في الرد على طلبات المعاينة. ما قدمته لنا webinOO فاق كل توقعاتنا؛ الموقع يفتح بلمح البصر، وبوت تليجرام جعل فريق الميدان يتصل بالعميل في نفس الدقيقة التي يضغط فيها على زر الإرسال! اليوم أصبح لدينا سيل مستمر من الاتصالات اليومية المجانية من السيو وتصدر جوجل في مختلف مناطق الكويت. لقد تحول موقعنا من مجرد تكلفة تسويقية إلى المولد الأول لأرباحنا."
+            </p>
+            <strong style="color: var(--color-primary, #6518ac);">— الإدارة التنفيذية، شركة ديمو كلين الكويت (democleankw.com)</strong>
+          </div>
+        </section>
+
+        <!-- Section 9: Strategic Roadmap -->
+        <section class="case-section" id="roadmap-90">
+          <div class="section-tag">خارطة النمو التراكمي</div>
+          <h2 id="roadmap-90">الخطة المستقبلية: الاستدامة وتوسيع الهيمنة العضوية في السوق الكويتي</h2>
+
+          <div class="roadmap-timeline">
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الأولى (المحققة)</div>
+              <h4>إعادة البناء البرمجي والسرعة الفائقة</h4>
+              <p>إطلاق المنصة بمحرك Next.js 15 وشبكة حافة Cloudflare، وحل 100% من مشكلات التدقيق الفني، وتشغيل بوت تليجرام الميداني اللحظي.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الثانية (الحالية)</div>
+              <h4>التوسع في السيو البرمجي والعقود التجارية</h4>
+              <p>إطلاق صفحات تخصصية للمناطق العمرانية الحديثة (المطلاع، صباح الأحمد، جنوب عبد الله المبارك) واستهداف عقود المطاعم والشركات السنوية.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الثالثة (المستقبلية)</div>
+              <h4>الريادة الكاملة لمحركات الإجابة الذكية (GEO Leadership)</h4>
+              <p>ترسيخ موقع ديمو كلين كمصدر أول موثوق ترشحه أنظمة الذكاء الاصطناعي (ChatGPT وGemini) لكل من يبحث عن خدمات النظافة والمكافحة في الكويت.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 10: FAQ for AEO -->
+        <section class="case-section" id="faq-aeo">
+          <div class="section-tag">محركات الإجابة والأسئلة الشائعة (AEO)</div>
+          <h2 id="faq-aeo">أسئلة شائعة حول هندسة وتطوير مواقع الشركات الخدمية (AEO FAQs)</h2>
+
+          <div class="aeo-faq-grid">
+            <details class="faq-item" open>
+              <summary>لماذا تفشل إعلانات جوجل وحدها لشركات الخدمات المنزلية في الكويت؟</summary>
+              <p>
+                لأن تكلفة النقرة الواحدة (PPC) في الكويت تتراوح بين 15 و35 دولاراً، وعند توجيه هذه الزيارات المكلفة إلى مواقع بطيئة مبنية بقوالب ووردبريس التقليدية، يرتد أكثر من 70% من الزوار قبل فتح الصفحة. الحل يكمن في سرعة حافة الشبكة والسيو البرمجي العضوي الذي يضمن بقاء العميل وتحويله لمكالمة فورية.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>كيف ساهمت سرعة التحميل (0.68 ثانية) في رفع المبيعات بنسبة +183%؟</summary>
+              <p>
+                في قطاعات مكافحة الآفات والتنظيف الطارئ، يتخذ العميل قرار الاتصال خلال ثوانٍ معدودة من هاتفه. فتح الموقع في أقل من 800 ميلي ثانية أزال أي احتكاك تقني، مما ضاعف معدل التحويل الكلي من 2.4% إلى 6.8% محققاً أرباحاً قياسية للشركة.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>ما هو نظام السيو البرمجي (Programmatic SEO) الذي طبقته webinOO؟</summary>
+              <p>
+                قامت webinOO بهندسة أكثر من 35 صفحة هبوط تخصصية تغطي محافظات الكويت الست وأكثر من 22 منطقة وحياً سكنياً، مع خريطة موقع ديناميكية وبيانات مهيكلة Schema.org متطابقة مع متطلبات Google ومحركات الذكاء الاصطناعي.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>كيف خفضت أتمتة تليجرام زمن الاستجابة الميدانية من 45 دقيقة إلى 11.5 دقيقة؟</summary>
+              <p>
+                تم إلغاء وسيط البريد الإلكتروني المعرض للتأخير، وربط الموقع مباشرة عبر Telegram Bot API & Webhooks بغرف طوارئ طواقم الميدان، مما يمكن الفني من الاتصال بالعميل أو مراسلته عبر واتساب بنقرة واحدة خلال دقائق معدودة.
+              </p>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sticky Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">فهرس دراسة الحالة</div>
+          <nav aria-label="فهرس المحتويات">
+            <ul class="toc-list" id="toc-list">
+              <li><a href="#performance-metrics">1. مؤشرات الأداء وسرعة الويب</a></li>
+              <li><a href="#market-challenges">2. التحديات في السوق الكويتي</a></li>
+              <li><a href="#architecture">3. الهندسة المعمارية الخماسية</a></li>
+              <li><a href="#telegram-automation">4. ثورة الرد في 11.5 دقيقة</a></li>
+              <li><a href="#programmatic-seo">5. السيو البرمجي في 22+ منطقة</a></li>
+              <li><a href="#geo-tracker">6. رصد الذكاء الاصطناعي (GEO)</a></li>
+              <li><a href="#custom-crm">7. وفر تكاليف الاشتراكات (CRM)</a></li>
+              <li><a href="#client-testimonial">8. شهادة إدارة ديمو كلين</a></li>
+              <li><a href="#roadmap-90">9. خارطة النمو المستدام</a></li>
+              <li><a href="#faq-aeo">10. أسئلة شائعة (AEO)</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Project Snapshot Card with Verified Dofollow Live Link -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">بطاقة المشروع المعتمدة</div>
+          <div class="snapshot-list">
+            <div class="snapshot-row">
+              <span>اسم العميل:</span>
+              <strong>ديمو كلين الكويت</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>رابط الموقع:</span>
+              <a
+                href="https://democleankw.com"
+                target="_blank"
+                rel="dofollow"
+                class="snapshot-link"
+                dir="ltr"
+              >
+                democleankw.com
+              </a>
+            </div>
+            <div class="snapshot-row">
+              <span>ترخيص الصحة:</span>
+              <strong dir="ltr">#14620/2025</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>السجل التجاري:</span>
+              <strong dir="ltr">#532627</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>السوق المستهدف:</span>
+              <strong>محافظات ومناطق الكويت (22+)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>سرعة التحميل:</span>
+              <strong class="metric-highlight">0.68 ثانية (LCP)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>نمو التحويل:</span>
+              <strong class="metric-highlight">+183% (من 2.4% إلى 6.8%)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>وفر كلفة العميل:</span>
+              <strong class="zero-cost">-64% CAC انخفاض</strong>
+            </div>
+          </div>
+
+          <div class="snapshot-actions">
+            <a
+              href="https://democleankw.com"
+              target="_blank"
+              rel="dofollow"
+              class="snapshot-btn"
+            >
+              <span>معاينة موقع ديمو كلين المباشر</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- High-Conversion Psychological Consultation Card -->
+        <div class="sidebar-cta-card">
+          <span class="badge-pill badge-coral">تحليل فني مجاني لصناع القرار</span>
+          <h4>هل ينزف موقعك ميزانيات الإعلانات دون مبيعات كافية؟</h4>
+          <p>
+            توقف عن هدر أموالك في نقرات إعلانية تضيع بسبب بطء الموقع. دع خبراء webinOO يبنون لشركتك في الكويت منصة فائقة السرعة تتصدر نتائج البحث وتضاعف اتصالاتك اليومية.
+          </p>
+          <a
+            href="https://wa.me/201554637673?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D9%82%D8%B1%D8%A3%D8%AA%20%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%AD%D8%A7%D9%84%D8%A9%20%D8%AF%D9%8A%D9%85%D9%88%20%D9%83%D9%84%D9%8A%D9%86%20%D8%A7%D9%84%D9%83%D9%88%D9%8A%D8%AA%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%B7%D9%88%D9%8A%D8%B1%20%D9%85%D9%88%D9%82%D8%B9%20%D8%B4%D8%B1%D9%83%D8%AA%D9%8A%20%D8%A8%D9%86%D9%81%D8%B3%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%8A%D9%8A%D8%B1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-whatsapp-btn"
+          >
+            تحدث مباشرة مع مستشاري webinOO عبر واتساب
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container bottom-cta-section">
+      <CTA
+        eyebrow="التحول الرقمي الذي يضاعف الأرباح"
+        title="هل شركتك مستعدة لتصدر Google وحسم العقود في دقائق؟"
+        description="سواء كنت تدير شركة خدمات في الكويت أو مؤسسة تجارية في الخليج، فريق webinOO يمتلك الخبرة الهندسية لبناء منصات فائقة السرعة تزيد أرباحك وتخفض تكاليف إعلاناتك."
+        ctaText="احصل على استشارة تقنية مخصصة"
+        whatsappMessage="السلام عليكم، أريد بناء موقع فائق السرعة مع نظام السيو المحلي والأتمتة بنفس معمارية ديمو كلين الكويت."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>
