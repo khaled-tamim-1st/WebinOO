@@ -1,0 +1,644 @@
+---
+import '@/styles/case-study.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import {
+  ShieldCheck,
+  ArrowUpRight,
+  ExternalLink,
+  Zap,
+  Clock,
+  Cpu,
+  Layers,
+  BookOpen,
+  Search,
+  Feather,
+  Archive,
+  Compass
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'أعمالنا ومشاريعنا', href: '/portfolio/' },
+  { label: 'استعراض منصة يحدث في الكويت' },
+];
+
+const caseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': 'https://webinoo.online/portfolio/y7duth/#article',
+    'headline': 'تصميم وتطوير مجلة يحدث في الكويت: منصة توثيقية بهندسة Astro ومحتوى أرشيفي بلا إعلانات',
+    'name': 'استعراض مشروع تطوير المنظومة التحريرية لمنصة يحدث في الكويت',
+    'description': 'استعراض هندسي وتصميمي لمشروع منصة يحدث في الكويت (y7duth.online): مجلة وثائقية ثقافية متخصصة في تراث وحكايات الديرة، تم تطويرها بمحرك Astro v5 مع دعم مجموعات المحتوى، وطباعة أرشيفية مخصصة، وبحث لحظي بلا إعلانات تجارية.',
+    'inLanguage': 'ar-KW',
+    'url': 'https://webinoo.online/portfolio/y7duth/',
+    'datePublished': '2026-11-02T10:00:00+03:00',
+    'dateModified': '2026-11-02T10:00:00+03:00',
+    'author': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'about': [
+      { '@type': 'Thing', 'name': 'Astro v5 Publishing Architecture' },
+      { '@type': 'Thing', 'name': 'Editorial Typography & Reader Experience' },
+      { '@type': 'Thing', 'name': 'Entity SEO & Cultural Archiving' },
+      { '@type': 'Thing', 'name': 'Client-Side Instant Modal Search' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'لماذا تم اختيار محرك Astro v5 لبناء منصة يحدث في الكويت بدلاً من ووردبريس؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'لأن مجلة يحدث في الكويت منصة توثيقية ثقافية تركز على عمق القراءة والأرشفة التاريخية المستدامة. يوفر محرك Astro v5 توليداً مسبقاً كاملاً للصفحات (SSG) مع صفر شفرات جافاسكريبت غير ضرورية، مما يمنح القارئ سرعة تصفح فورية وتجربة خالية من ثغرات الأمان وبطء الإضافات التي تعاني منها منصات إدارة المحتوى التقليدية.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'كيف تدعم مجموعات المحتوى (Content Collections) جودة الأرشفة في المنصة؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'تتيح Content Collections التحقق البرمجي الدقيق من بيانات كل مقال وحكاية (العنوان، الكاتب، الفريج أو الموقع التاريخي، التصنيف، الوثائق المصورة) قبل النشر، مما يضمن خلو الأرشيف من الأخطاء البرمجية ويؤسس لبنية سيو دلالية متينة.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'كيف يعمل نظام البحث اللحظي داخل المنصة بدون قاعدة بيانات سحابية؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'يعتمد محرك البحث على فهرس بيانات خفيف يتم تحميله مسبقاً وتصفيته فورياً داخل متصفح المستخدم عبر اختصار لوحة المفاتيح Cmd+K، مما يسمح بالوصول اللحظي لأي حكاية أو شخصية أو وثيقة خلال أجزاء من الثانية دون استهلاك موارد الخادم.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'ما الذي يميز الهوية البصرية وتجربة القراءة في يحدث في الكويت؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'صُممت واجهة المنصة بألوان ورقية دافئة تحاكي الصحف والكتب التراثية القديمة مع ملمس ورقي ناعم (Paper Grain)، مع تنسيق خطي يجمع بين خط IBM Plex Sans Arabic وPlayfair Display اللاتيني، وخلو تام من البانرات الإعلانية المزعجة.'
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="تصميم وتطوير موقع مجلة ومدونة في الكويت: استعراض منصة يحدث في الكويت | webinOO"
+  description="استعراض مشروع تطوير منصة يحدث في الكويت (y7duth.online): مجلة وثائقية ثقافية بهندسة Astro v5 فائقة السرعة، طباعة تحريرية مخصصة، وبحث لحظي بلا إعلانات مزعجة."
+  lang="ar"
+  schema={caseSchema}
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="clash-case-study">
+    <!-- Hero / Header Section -->
+    <header class="case-hero">
+      <div class="container hero-container">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="hero-badges">
+          <span class="badge-pill badge-primary">استعراض مشروع ومنصة نشر</span>
+          <span class="badge-pill badge-green">معمارية Astro v5 التحريرية</span>
+          <span class="badge-pill badge-coral">توثيق تراثي بلا إعلانات — الكويت</span>
+        </div>
+
+        <h1 class="hero-title">
+          تصميم وتطوير منصة «يحدث في الكويت»: كيف بنينا مجلة وثائقية سريعة بهندسة Astro وتجربة قراءة أرشيفية بلا ضجيج؟
+        </h1>
+
+        <p class="hero-lead">
+          أنجزت <strong>webinOO</strong> التصميم والتطوير الهندسي الكامل لمنصة <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">يحدث في الكويت (y7duth.online)</a>، المجلة الوثائقية المستقلة المتخصصة في تدوين حكايات وتراث الديرة وسِيَر الرواد والفرجان القديمة. تم بناء المنصة بمحرك <strong>Astro v5 الحديث</strong> مع مجموعات المحتوى النمطية (Content Collections)، وطباعة تحريرية رصينة مستوحاة من دفء الورق الأرشيفي، ومحرك بحث تفاعلي لحظي، وبنية سيو دلالية متقدمة دون أي إعلانات تجارية مشوشة.
+        </p>
+
+        <!-- Live Website Preview Action Button -->
+        <div class="hero-actions">
+          <a
+            href="https://y7duth.online"
+            target="_blank"
+            rel="dofollow"
+            class="live-store-button"
+          >
+            <span>معاينة مجلة يحدث في الكويت: y7duth.online</span>
+            <ArrowUpRight size={18} />
+          </a>
+          <span class="live-status-note">
+            رابط مباشر لمعاينة المنصة التوثيقية بالإنتاج (رابط DoFollow معتمد)
+          </span>
+        </div>
+
+        <!-- Strategic Vision Callout -->
+        <div class="philosophy-banner">
+          <div class="banner-top">
+            <span class="banner-tag">الرؤية الهندسية لمنصات النشر والمجلات الرقمية</span>
+            <span class="banner-stat">مواصفات الإطلاق المعتمدة</span>
+          </div>
+          <p class="banner-text">
+            <strong>مبدأ الأصالة المعمارية في webinOO:</strong> هذا العمل يمثل استعراضاً تقنياً وتصميمياً لمنصة نشر وثائقية حديثة الإطلاق، يركز على جودة البناء البرمجي وحرفية التصميم التحريري وسرعة الوصول للمحتوى بعيداً عن ادعاء أي أرقام أو إحصائيات سابقة لأوانها. هدفنا هو تقديم نموذج يحتذى به في المجلات الثقافية التخصصية: سرعة تصفح خارقة، طباعة نقية تريح العين، وصفر إعلانات تجارية مشتتة.
+          </p>
+        </div>
+
+        <!-- Bento Grid: Verified Technical & Editorial Deliverables -->
+        <div class="bento-kpi-grid">
+          <div class="kpi-card highlight-card">
+            <div class="kpi-label">محرك النشر ومجموعات المحتوى</div>
+            <div class="kpi-value">Astro v5</div>
+            <div class="kpi-delta positive">
+              <Cpu size={16} /> Content Collections + SSG
+            </div>
+            <div class="kpi-sub">توليد مسبق كامل للمقالات مع فحص صارم لصحة البيانات وصفر شفرات جافاسكريبت زائدة على المتصفح</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">الهوية البصرية وتجربة القراءة</div>
+            <div class="kpi-value">Editorial Vintage</div>
+            <div class="kpi-delta positive">
+              <Feather size={16} /> تدرجات ورق عتيق وخلفية Grain
+            </div>
+            <div class="kpi-sub">مواءمة خطية راقية بين IBM Plex Sans Arabic وPlayfair Display اللاتيني بألوان ترابية كويتية دافئة</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">محرك البحث التفاعلي الفوري</div>
+            <div class="kpi-value">Instant Modal</div>
+            <div class="kpi-delta positive">
+              <Search size={16} /> اختصار لوحة المفاتيح Cmd+K
+            </div>
+            <div class="kpi-sub">نافذة بحث لحظية تفرز العناوين والكتّاب والأقسام داخل المتصفح بأقل استهلاك لموارد الخادم</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">معمارية السيو الدلالي والكيانات</div>
+            <div class="kpi-value">Entity SEO</div>
+            <div class="kpi-delta positive">
+              <BookOpen size={16} /> Schema.org WebSite & Articles
+            </div>
+            <div class="kpi-sub">بيانات مهيكلة غنية توثق الشخصيات والفرجان والأحداث التاريخية مع خلاصة RSS ديناميكية كاملة</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">شريط النبض الكويتي الحي</div>
+            <div class="kpi-value">Live Ribbon</div>
+            <div class="kpi-delta positive">
+              <Clock size={16} /> وقت وطقس الكويت المباشر
+            </div>
+            <div class="kpi-sub">شريط علوي يربط القارئ بنبض دولة الكويت اللحظي عبر عرض التاريخ المحلي والتوقيت والطقس المحدث</div>
+          </div>
+
+          <div class="kpi-card conversion-card">
+            <div class="kpi-label">بيئة قراءة نقية ومستقلة</div>
+            <div class="kpi-value">0 إعلانات تجارية</div>
+            <div class="kpi-delta positive">
+              <Layers size={16} /> خلو تام من النوافذ المنبثقة
+            </div>
+            <div class="kpi-sub">تركيز كامل على نقاء النص والوثيقة التاريخية لترسيخ وقار المحتوى واحترام وقت وتركيز القارئ</div>
+          </div>
+        </div>
+
+        <!-- Official Editorial Mission Alert Box -->
+        <div class="zero-ad-alert">
+          <div class="zero-ad-header">
+            <ShieldCheck size={22} class="alert-icon" />
+            <strong>رسالة المنصة ومبادئ التوثيق المستقل:</strong>
+          </div>
+          <p>
+            تأسست مجلة <strong>يحدث في الكويت</strong> كمساحة توثيقية ثقافية مستقلة تُعنى بحكايات المكان وأهله. لا تهدف المنصة إلى مطاردة التريندات السريعة، بل تنصت لأسرار الفرجان العتيقة، وتوثق سِيَر الرواد الكويتيين، وتبرز الهوية الثقافية الأصيلة بالصور والوثائق النادرة، بصياغة بصرية وبرمجية متكاملة صُنعت بإتقان بواسطة <strong>webinOO</strong>.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout (Article + Sticky Sidebar) -->
+    <div class="container case-layout">
+      <!-- Article Body -->
+      <article class="case-article">
+        <!-- Section 1: Project Specs Table -->
+        <section class="case-section" id="project-specs">
+          <div class="section-tag">بطاقة المشروع والمواصفات المعتمدة</div>
+          <h2 id="project-specs">المواصفات الفنية والمعمارية لمنصة يحدث في الكويت</h2>
+          
+          <p>
+            يوضح الجدول التالي بطاقة البيانات الهندسية والتصميمية لمنصة <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">y7duth.online</a> التي تولت <strong>webinOO</strong> هندستها وتطويرها بالكامل:
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>المعيار الفني</th>
+                  <th>المواصفات الهندسية والتصميمية</th>
+                  <th>الحالة والجاهزية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>العميل والمشروع</strong></td>
+                  <td>مجلة يحدث في الكويت — منصة توثيقية مستقلة لحكايات وتراث الديرة</td>
+                  <td><span class="pill-growth">مُطلق بالإنتاج وجاهز للنشر</span></td>
+                </tr>
+                <tr>
+                  <td><strong>الرابط المباشر</strong></td>
+                  <td><a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">https://y7duth.online</a></td>
+                  <td><span class="pill-growth">نشط ومفهرس بالكامل</span></td>
+                </tr>
+                <tr>
+                  <td><strong>طبيعة المنصة</strong></td>
+                  <td>مجلة رقمية وثائقية، مدونة ثقافية، وأرشيف تاريخي مصور</td>
+                  <td><span class="pill-neutral">منظومة نشر متخصصة</span></td>
+                </tr>
+                <tr>
+                  <td><strong>المحرك البرمجي الأساسي</strong></td>
+                  <td>Astro v5.18 مع Content Collections وTypeScript وTailwind CSS</td>
+                  <td><span class="pill-growth">توليد ثابت فائق السرعة SSG</span></td>
+                </tr>
+                <tr>
+                  <td><strong>نظام الطباعة والخطوط</strong></td>
+                  <td>IBM Plex Sans Arabic للنصوص وPlayfair Display للعناوين مع ملمس ورقي</td>
+                  <td><span class="pill-neutral">هوية تحريرية كلاسيكية</span></td>
+                </tr>
+                <tr>
+                  <td><strong>أقسام التوثيق الرئيسية</strong></td>
+                  <td>أهل الديرة، في الفريج، سوالف وتراث، سفرة الديرة، ألبوم الذاكرة</td>
+                  <td><span class="pill-growth">5 تبويبات تخصصية متكاملة</span></td>
+                </tr>
+                <tr>
+                  <td><strong>محرك البحث الداخلي</strong></td>
+                  <td>نافذة بحث تفاعلية منبثقة بنظام فلترة مسبقة للمحتوى واختصار لوحة المفاتيح</td>
+                  <td><span class="pill-growth">بحث فوري داخل المتصفح</span></td>
+                </tr>
+                <tr>
+                  <td><strong>البيانات المهيكلة والسيو</strong></td>
+                  <td>Schema.org WebSite, Article, Organization, BreadcrumbList مع RSS Feed</td>
+                  <td><span class="pill-growth">جاهز لمحركات البحث والذكاء الاصطناعي</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 2: Editorial & Archival Challenge -->
+        <section class="case-section" id="editorial-challenge">
+          <div class="section-tag">سياق المشروع وتحدي النشر التحريري</div>
+          <h2 id="editorial-challenge">لماذا تفشل قوالب المجلات والمدونات التقليدية في تقديم تجربة توثيقية حقيقية؟</h2>
+
+          <p>
+            عندما يفكر أصحاب المشاريع الثقافية أو المجلات المتخصصة في إطلاق موقع، غالباً ما يلجؤون إلى قوالب ووردبريس الجاهزة أو منصات النشر المكتظة. في قطاع التوثيق والتراث، تتسبب هذه القوالب في ثلاث مشكلات حاسمة تنفر القارئ وتضر بالمحتوى:
+          </p>
+
+          <div class="challenges-grid">
+            <div class="challenge-item">
+              <h4>1. طغيان الإعلانات والبانرات على قيمة النص</h4>
+              <p>تكتظ المواقع التقليدية بإعلانات الفيديو المنبثقة والبانرات الترويجية العشوائية، مما يشتت القارئ المهتم بالوثيقة التاريخية ويفقد المحتوى الثقافي وقاره وهيبته التحريرية.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>2. بطء التصفح وانهيار الأداء مع كثرة الصور</h4>
+              <p>المحتوى التراثي غني بالصور الأرشيفية والوثائق النادرة. استخدام أنظمة إدارة محتوى ثقيلة يؤدي لبطء شديد في فتح المقالات على الهواتف واستهلاك باقات إنترنت المستخدمين.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>3. مخاطر تلف قواعد البيانات وضياع الأرشيف</h4>
+              <p>الاعتماد على قواعد بيانات MySQL المعقدة يجعل الأرشيف عرضة للتلف البرمجي أو هجمات الاختراق وثغرات الإضافات، وهو ما يتعارض مع رسالة التوثيق التاريخي طويل الأمد.</p>
+            </div>
+          </div>
+
+          <div class="psych-card loss-aversion">
+            <div class="psych-title">
+              <Zap size={20} />
+              <h3>الهدف الاستراتيجي من منصة يحدث في الكويت: بناء ذاكرة رقمية خالدة</h3>
+            </div>
+            <p>
+              لم تُبنَ منصة <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">يحدث في الكويت</a> لتكون مجرد موقع إخباري عابر، بل صُممت لتكون مستودعاً توثيقياً أنيقاً يجمع بين قوة الأداء الرقمي ورقي الصحافة الأرشيفية. قراءة مقال عن تاريخ إذاعة الكويت 1951 أو مجلة كاظمة 1948 يجب أن تمنح القارئ شعوراً بمطالعة وثيقة ثمينة في مكتبة وطنية هادئة.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 3: Technical Publishing Architecture -->
+        <section class="case-section" id="publishing-architecture">
+          <div class="section-tag">المعمارية التقنية الخماسية</div>
+          <h2 id="publishing-architecture">المعمارية البرمجية لمنصة يحدث في الكويت: كود نظيف وتجربة بلا تعقيد</h2>
+
+          <p>
+            قامت <strong>webinOO</strong> ببناء منصة <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">y7duth.online</a> وفق معمارية برمجية حديثة تضمن الاستقلالية التامة والأمان المطلق عبر خمس طبقات تقنية:
+          </p>
+
+          <div class="arch-layers-list">
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 1</div>
+              <div class="layer-content">
+                <h4>محرك التوليد الثابت ومجموعات المحتوى (Astro v5 Content Collections)</h4>
+                <p>تخزين كافة الحكايات والمقالات كملفات نصية منظمة بمخططات Type-Safe صارمة، وتوليد صفحات HTML ثابتة بنسبة 100% مسبقاً، مما يمنع ثغرات الاختراق ويجعل تصفح المقالات لحظياً.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 2</div>
+              <div class="layer-content">
+                <h4>نظام التصميم التحريري وطباعة الورق الكلاسيكي (Editorial Archival System)</h4>
+                <p>بناء واجهة مخصصة بدرجات الورق العتيق (#f4f0e7) وحبر بترولي عميق (#18323c) مع لمسات خضراء كويتية (#126447)، وملمس حبيبات الورق (Paper Grain) لمنح القارئ إحساساً مريحاً وممتعاً.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 3</div>
+              <div class="layer-content">
+                <h4>محرك البحث اللحظي الداخلي (Instant Modal Search Engine)</h4>
+                <p>تطوير نافذة بحث خفيفة تعمل مباشرة داخل المتصفح وتستدعى باختصار Cmd+K أو زر البحث، تمكن الزائر من تصفية المقالات والبحث بالعناوين والمناطق والكتّاب دون أي تحميل للصفحة.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 4</div>
+              <div class="layer-content">
+                <h4>شريط المؤشرات الحية الكويتية (Live Kuwait Indicators Ribbon)</h4>
+                <p>ودجت مخصص في الترويسة العلوية يعرض التاريخ المحلي والتوقيت الرسمي لدولة الكويت وحالة الطقس المحدثة، لربط التجربة التوثيقية بالواقع المعاش للمجتمع الكويتي.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة 5</div>
+              <div class="layer-content">
+                <h4>السيو الدلالي وخلاصات النشر (Entity SEO & Dynamic RSS Architecture)</h4>
+                <p>تضمين ترميز Schema.org كامل يدعم الكيانات الثقافية والتاريخية وخرائط المواقع الديناميكية وخلاصة RSS مؤتمتة، لضمان استيعاب محركات البحث والذكاء الاصطناعي للمحتوى التوثيقي بدقة.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Content Taxonomy & Archival Sections -->
+        <section class="case-section" id="content-taxonomy">
+          <div class="section-tag">هيكلة المحتوى والتبويبات التوثيقية</div>
+          <h2 id="content-taxonomy">أبواب المحتوى في «يحدث في الكويت»: تصنيف مدروس لحفظ التراث</h2>
+
+          <p>
+            قسّمت <strong>webinOO</strong> التجربة التحريرية لمنصة <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">يحدث في الكويت</a> إلى خمسة أبواب رئيسية تغطي كافة جوانب الحياة والهوية الكويتية:
+          </p>
+
+          <div class="queries-comparison-grid">
+            <div class="query-col">
+              <h4>أولاً: توثيق الشخصيات والأماكن القديمة</h4>
+              <p>أقسام تسلط الضوء على البعد الإنساني والجغرافي لدولة الكويت عبر العقود:</p>
+              <ul class="query-list">
+                <li><code>أهل الديرة</code> — سِيَر الرواد والشخصيات التي أسهمت في بناء ملامح الكويت الحديثة في التعليم والطب والصحافة والتجارة</li>
+                <li><code>في الفريج</code> — استكشاف الفرجان والسكيك القديمة كفريج المرقاب والشرق وجبلة وبراحات الطين والأسواق العتيقة</li>
+                <li><code>ألبوم الذاكرة</code> — معارض صور ووثائق نادرة تؤرخ لمحطات التحول وبدايات البث الإذاعي والتلفزيوني ودور السينما الأولى</li>
+              </ul>
+            </div>
+
+            <div class="query-col">
+              <h4>ثانياً: التراث الشعبي والمائدة الكويتية</h4>
+              <p>أبواب تخلد العادات والتقاليد والذاكرة الشفهية والغذائية للمجتمع:</p>
+              <ul class="query-list">
+                <li><code>سوالف وتراث</code> — حكايات البحر والبادية وأمثال أهل الكويت ومصطلحاتهم القديمة وقصص الطفولة والجمعة الطيبة</li>
+                <li><code>سفرة الديرة</code> — أسرار المطبخ الكويتي التقليدي، تاريخ الأطباق الشعبية، وثقافة الضيافة والموائد العريقة</li>
+                <li><code>المقالات التفاعلية المطولة</code> — تصميم تحريري يستوعب الاقتباسات الوثائقية والشهادات التاريخية بأناقة بصرية بالغة</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Architectural Comparison (Astro vs WordPress) -->
+        <section class="case-section" id="comparison-analysis">
+          <div class="section-tag">التحليل المعماري للمجلات والمدونات</div>
+          <h2 id="comparison-analysis">مقارنة معمارية: Astro v5 مقابل ووردبريس في المجلات والمنصات الثقافية</h2>
+
+          <p>
+            توضح المقارنة التالية الفروق التقنية والتشغيلية بين المعمارية المخصصة التي نفذتها <strong>webinOO</strong> لمنصة يحدث في الكويت وبين قوالب النشر التقليدية الشائعة:
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>وجه المقارنة</th>
+                  <th>معمارية Astro v5 في يحدث في الكويت</th>
+                  <th>قوالب ووردبريس التقليدية (WordPress)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>سرعة فتح الصفحات</strong></td>
+                  <td>تصفح فوري وتوليد مسبق كامل (أجزاء من الثانية)</td>
+                  <td>بطء ملحوظ بسبب استعلامات قواعد البيانات المتكررة</td>
+                </tr>
+                <tr>
+                  <td><strong>استهلاك الجافاسكريبت</strong></td>
+                  <td>صفر جافاسكريبت بالوضع الافتراضي (Zero JS by Default)</td>
+                  <td>عشرات السكربتات والإضافات المحملة إجبارياً على المتصفح</td>
+                </tr>
+                <tr>
+                  <td><strong>أمان المحتوى والبيانات</strong></td>
+                  <td>ملفات نصية ثابتة ومحمية لا تقبل الاختراق أو الحقن</td>
+                  <td>مخاطر اختراق دورية عبر ثغرات الإضافات وقواعد البيانات</td>
+                </tr>
+                <tr>
+                  <td><strong>تكاليف الخوادم الشهرية</strong></td>
+                  <td>تكلفة استضافة تقارب الصفر عبر شبكات الحافة العالمية</td>
+                  <td>اشتراكات استضافة مرتفعة لاستيعاب استهلاك الذاكرة والمعالج</td>
+                </tr>
+                <tr>
+                  <td><strong>تجربة القراءة والراحة</strong></td>
+                  <td>نقاء تام، طباعة ورقية كلاسيكية، وصفر إعلانات مزعجة</td>
+                  <td>بانرات متحركة وإعلانات منبثقة ونوافذ اشتراك متكررة</td>
+                </tr>
+                <tr>
+                  <td><strong>استدامة الأرشيف التاريخي</strong></td>
+                  <td>ملفات Markdown مفتوحة تدوم لعشرات السنين دون تبعيات</td>
+                  <td>ارتهان تام لقواعد بيانات مغلقة يصعب ترحيلها عند التحديث</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 6: Editorial Continuity Roadmap -->
+        <section class="case-section" id="editorial-roadmap">
+          <div class="section-tag">استدامة المنظومة التحريرية</div>
+          <h2 id="editorial-roadmap">خارطة النمو التحريري لمنصة يحدث في الكويت: حفظ الذاكرة باستدامة</h2>
+
+          <p>
+            بُنيت المنصة لتكون قابلة للتوسع التوثيقي المستمر بكل سلاسة وبدون الحاجة لإعادة هيكلة برمجية:
+          </p>
+
+          <div class="roadmap-timeline">
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الأولى: الإطلاق المنجز</div>
+              <h4>اكتمال البنية البرمجية ونظام النشر</h4>
+              <p>تسليم الموقع بمحرك Astro v5 مع دعم كامل لمجموعات المحتوى والأقسام الخمسة، وتدشين محرك البحث الفوري وشريط النبض الكويتي الحي، وإتاحة المنصة بالكامل للقراء.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الثانية: التوسع في التوثيق الشفهي والأرشيفي</div>
+              <h4>إثراء أقسام ألبوم الذاكرة وسِيَر أهل الديرة</h4>
+              <p>نشر وثائق وصور تاريخية إضافية بمشاركة المؤرخين والمهتمين بتراث الكويت، واستثمار بنية السيو الدلالي لتصدر عمليات البحث التوثيقية والثقافية في Google.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الثالثة: الأرشيف التفاعلي الشامل</div>
+              <h4>توسيع قدرات البحث التاريخي والخرائط التفاعلية</h4>
+              <p>تطوير خريطة تفاعلية للفرجان القديمة تتيح للزائر استكشاف حكايات كل فريج على الخريطة مباشرة، مع الحفاظ الكامل على سرعة التصفح ونقاء تجربة القراءة.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7: FAQ for AEO -->
+        <section class="case-section" id="faq-aeo">
+          <div class="section-tag">محركات الإجابة والأسئلة الشائعة (AEO)</div>
+          <h2 id="faq-aeo">أسئلة شائعة حول هندسة وتطوير منصة يحدث في الكويت</h2>
+
+          <div class="aeo-faq-grid">
+            <details class="faq-item" open>
+              <summary>لماذا تم اختيار محرك Astro v5 لبناء منصة يحدث في الكويت بدلاً من ووردبريس؟</summary>
+              <p>
+                لأن مجلة يحدث في الكويت منصة توثيقية ثقافية تركز على عمق القراءة والأرشفة التاريخية المستدامة. يوفر محرك Astro v5 توليداً مسبقاً كاملاً للصفحات (SSG) مع صفر شفرات جافاسكريبت غير ضرورية، مما يمنح القارئ سرعة تصفح فورية وتجربة خالية من ثغرات الأمان وبطء الإضافات التي تعاني منها منصات إدارة المحتوى التقليدية.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>كيف تدعم مجموعات المحتوى (Content Collections) جودة الأرشفة في المنصة؟</summary>
+              <p>
+                تتيح Content Collections التحقق البرمجي الدقيق من بيانات كل مقال وحكاية (العنوان، الكاتب، الفريج أو الموقع التاريخي، التصنيف، الوثائق المصورة) قبل النشر، مما يضمن خلو الأرشيف من الأخطاء البرمجية ويؤسس لبنية سيو دلالية متينة.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>كيف يعمل نظام البحث اللحظي داخل المنصة بدون استهلاك لموارد الخادم؟</summary>
+              <p>
+                يعتمد محرك البحث على فهرس بيانات خفيف يتم تحميله مسبقاً وتصفيته فورياً داخل متصفح المستخدم عبر اختصار لوحة المفاتيح Cmd+K، مما يسمح بالوصول اللحظي لأي حكاية أو شخصية أو وثيقة خلال أجزاء من الثانية دون استهلاك موارد الخادم.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>ما الذي يميز الهوية البصرية وتجربة القراءة في يحدث في الكويت؟</summary>
+              <p>
+                صُممت واجهة المنصة بألوان ورقية دافئة تحاكي الصحف والكتب التراثية القديمة مع ملمس ورقي ناعم (Paper Grain)، مع تنسيق خطي يجمع بين خط IBM Plex Sans Arabic وPlayfair Display اللاتيني، وخلو تام من البانرات الإعلانية المزعجة.
+              </p>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sticky Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">فهرس استعراض المشروع</div>
+          <nav aria-label="فهرس المحتويات">
+            <ul class="toc-list" id="toc-list">
+              <li><a href="#project-specs">1. بطاقة ومواصفات المشروع</a></li>
+              <li><a href="#editorial-challenge">2. سياق وتحدي النشر التحريري</a></li>
+              <li><a href="#publishing-architecture">3. المعمارية التقنية الخماسية</a></li>
+              <li><a href="#content-taxonomy">4. تصنيف وأبواب المحتوى</a></li>
+              <li><a href="#comparison-analysis">5. مقارنة Astro مع ووردبريس</a></li>
+              <li><a href="#editorial-roadmap">6. خارطة النمو التحريري</a></li>
+              <li><a href="#faq-aeo">7. أسئلة شائعة حول المنصة</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Project Snapshot Card with Verified Dofollow Live Link -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">بطاقة المشروع المعتمدة</div>
+          <div class="snapshot-list">
+            <div class="snapshot-row">
+              <span>اسم المشروع:</span>
+              <strong>يحدث في الكويت</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>رابط المجلة:</span>
+              <a
+                href="https://y7duth.online"
+                target="_blank"
+                rel="dofollow"
+                class="snapshot-link"
+              >
+                y7duth.online
+              </a>
+            </div>
+            <div class="snapshot-row">
+              <span>نوع المشروع:</span>
+              <strong>مجلة وثائقية ومدونة ثقافية</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>المحرك البرمجي:</span>
+              <strong>Astro v5.18 SSG</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>نمط التصميم:</span>
+              <strong>Editorial Vintage الورقي</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>الخطوط التحريرية:</span>
+              <strong>IBM Plex Arabic + Playfair</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>محرك البحث:</span>
+              <strong class="zero-cost">بحث فوري بمودال Cmd+K</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>الإعلانات المزعجة:</span>
+              <strong class="zero-cost">صفر إعلانات تجارية</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>حالة المنصة:</span>
+              <strong class="zero-cost">مطلقة بالإنتاج ونشطة</strong>
+            </div>
+          </div>
+
+          <div class="snapshot-actions">
+            <a
+              href="https://y7duth.online"
+              target="_blank"
+              rel="dofollow"
+              class="snapshot-btn"
+            >
+              <span>معاينة مجلة يحدث في الكويت المباشرة</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- Consultation Card -->
+        <div class="sidebar-cta-card">
+          <span class="badge-pill badge-coral">استشارة لتطوير منصات النشر</span>
+          <h4>هل تخطط لإطلاق مجلة رقمية، مدونة متخصصة، أو منصة محتوى راقية؟</h4>
+          <p>
+            تخلص من بطء ووردبريس ومشاكل الإضافات المتكررة. دع مهندسي webinOO يصممون لمنصتك تجربة قراءة فريدة وسرعة خارقة تخلد محتواك الرقمي بأناقة.
+          </p>
+          <a
+            href="https://wa.me/201554637673?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A7%D8%B7%D9%84%D8%B9%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%AA%D8%B7%D9%88%D9%8A%D8%B1%20%D9%85%D9%86%D8%B5%D8%A9%20%D9%8A%D8%AD%D8%AF%D8%AB%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%83%D9%88%D9%8A%D8%AA%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%85%D8%AC%D9%84%D8%A9%20%D8%A3%D9%88%20%D9%85%D8%AF%D9%88%D9%86%D8%A9%20%D8%A8%D9%86%D9%81%D8%B3%20%D8%A7%D9%84%D8%AC%D9%88%D8%AF%D8%A9%20%D9%88%D8%A7%D9%84%D8%B3%D8%B1%D8%B9%D8%A9"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-whatsapp-btn"
+          >
+            تحدث مباشرة مع مستشاري webinOO عبر واتساب
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container bottom-cta-section">
+      <CTA
+        eyebrow="الجيل القادم من منصات النشر الرقمي"
+        title="هل ترغب في امتلاك منصة محتوى أو مجلة تفوق المواقع التقليدية؟"
+        description="سواء كنت تؤسس مجلة ثقافية، مدونة أعمال، أو منصة نشر متخصصة في الكويت والخليج، يوفر لك فريق webinOO هندسة متطورة تجمع بين جمالية التصميم التحريري وسرعة التوليد الفائقة."
+        ctaText="احصل على استشارة لتطوير منصتك"
+        whatsappMessage="السلام عليكم، أريد تطوير منصة محتوى ومدونة فائقة السرعة بتصميم تحريري مخصص بنفس معمارية يحدث في الكويت."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>

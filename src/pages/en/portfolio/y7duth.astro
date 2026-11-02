@@ -1,0 +1,644 @@
+---
+import '@/styles/case-study.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import {
+  ShieldCheck,
+  ArrowUpRight,
+  ExternalLink,
+  Zap,
+  Clock,
+  Cpu,
+  Layers,
+  BookOpen,
+  Search,
+  Feather,
+  Archive,
+  Compass
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Portfolio & Case Studies', href: '/en/portfolio/' },
+  { label: 'Y7duth Platform Showcase' },
+];
+
+const caseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': 'https://webinoo.online/en/portfolio/y7duth/#article',
+    'headline': 'Cultural Magazine & Editorial Web Design in Kuwait: Y7duth Platform Architecture Showcase',
+    'name': 'Y7duth Fi Al-Kuwait Archival Editorial Platform Architecture Showcase',
+    'description': 'Technical architecture and editorial design review of Y7duth Fi Al-Kuwait (y7duth.online), newly launched: Bespoke Astro v5 publishing architecture with Content Collections, archival vintage typography, and client-side instant modal search without ads.',
+    'inLanguage': 'en-US',
+    'url': 'https://webinoo.online/en/portfolio/y7duth/',
+    'datePublished': '2026-11-02T10:00:00+03:00',
+    'dateModified': '2026-11-02T10:00:00+03:00',
+    'author': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'about': [
+      { '@type': 'Thing', 'name': 'Astro v5 Publishing Architecture' },
+      { '@type': 'Thing', 'name': 'Editorial Typography & Reader Experience' },
+      { '@type': 'Thing', 'name': 'Entity SEO & Cultural Archiving' },
+      { '@type': 'Thing', 'name': 'Client-Side Instant Modal Search' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'Why was Astro v5 chosen for Y7duth Fi Al-Kuwait instead of WordPress?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Y7duth is an independent cultural documentary magazine centered on deep reading and sustainable historical archiving. Astro v5 provides pure static site generation (SSG) with zero unnecessary JavaScript runtime, delivering instantaneous page rendering, bulletproof security, and zero bloated plugin maintenance.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How do Content Collections enforce editorial quality across the platform?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'Astro Content Collections enforce strict schema validation for every story and document (title, author, historic district, category, archival photography, dates) prior to build, preventing runtime errors and establishing robust semantic SEO entities.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'How does the client-side instant search work without a heavy database?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'The search engine utilizes an optimized pre-compiled JSON payload indexed and filtered directly inside the visitor browser via the Cmd+K shortcut, enabling instant sub-millisecond retrieval of stories, personalities, and documents with zero server overhead.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'What defines the visual identity and reader experience of Y7duth?',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'The interface is crafted with warm paper tones (#f4f0e7), an authentic subtle paper grain, and an elegant pairing of IBM Plex Sans Arabic with Playfair Display serif typography, completely free from invasive commercial banners or modal popups.'
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Cultural Magazine & Editorial Web Design in Kuwait: Y7duth Platform Architecture Showcase | webinOO"
+  description="Technical architecture and design showcase of Y7duth Fi Al-Kuwait (y7duth.online): An archival documentary magazine powered by Astro v5, bespoke editorial typography, and instant modal search without ads or bloat."
+  lang="en"
+  schema={caseSchema}
+>
+  <Header slot="header" lang="en" />
+
+  <main class="clash-case-study en-version">
+    <!-- Hero / Header Section -->
+    <header class="case-hero">
+      <div class="container hero-container">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="hero-badges">
+          <span class="badge-pill badge-primary">Editorial Platform Showcase</span>
+          <span class="badge-pill badge-green">Astro v5 Publishing Architecture</span>
+          <span class="badge-pill badge-coral">Ad-Free Archival Experience — Kuwait</span>
+        </div>
+
+        <h1 class="hero-title">
+          How webinOO Engineered "Y7duth Fi Al-Kuwait": An Archival Editorial Magazine Built on Astro v5 Without Ads or Bloat
+        </h1>
+
+        <p class="hero-lead">
+          <strong>webinOO</strong> architected, designed, and deployed the complete digital publishing platform for <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">Y7duth Fi Al-Kuwait (y7duth.online)</a>. Conceived as an independent cultural documentary magazine dedicated to recording Kuwait's historical districts, pioneering biographies, and oral traditions, the system is engineered on <strong>Astro v5</strong> with schema-typed Content Collections, vintage archival typography, an instant client-side modal search, and clean semantic SEO without disruptive advertising.
+        </p>
+
+        <!-- Live Website Preview Action Button -->
+        <div class="hero-actions">
+          <a
+            href="https://y7duth.online"
+            target="_blank"
+            rel="dofollow"
+            class="live-store-button"
+          >
+            <span>Inspect Live Magazine: y7duth.online</span>
+            <ArrowUpRight size={18} />
+          </a>
+          <span class="live-status-note">
+            Direct production platform review (Verified DoFollow link)
+          </span>
+        </div>
+
+        <!-- Strategic Vision Callout -->
+        <div class="philosophy-banner">
+          <div class="banner-top">
+            <span class="banner-tag">Engineering Vision for Editorial & Cultural Platforms</span>
+            <span class="banner-stat">Verified Launch Deliverables</span>
+          </div>
+          <p class="banner-text">
+            <strong>webinOO Architectural Integrity:</strong> As a recently launched digital publishing platform, this showcase documents verified code craftsmanship, typography systems, and infrastructure deliverables without speculative figures or premature statistics. Our commitment is establishing a gold standard for specialized cultural publications: lightning load speeds, dignified reader typography, and absolute freedom from ad noise.
+          </p>
+        </div>
+
+        <!-- Bento Grid: Verified Technical & Editorial Deliverables -->
+        <div class="bento-kpi-grid">
+          <div class="kpi-card highlight-card">
+            <div class="kpi-label">Publishing Engine & Architecture</div>
+            <div class="kpi-value">Astro v5</div>
+            <div class="kpi-delta positive">
+              <Cpu size={16} /> Content Collections + SSG
+            </div>
+            <div class="kpi-sub">Pure static site pre-rendering with strict schema typing and zero unnecessary client-side JavaScript</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Visual Identity & Typography</div>
+            <div class="kpi-value">Editorial Vintage</div>
+            <div class="kpi-delta positive">
+              <Feather size={16} /> Warm Paper Tones & Grain Texture
+            </div>
+            <div class="kpi-sub">Harmonious pairing of IBM Plex Sans Arabic and Playfair Display serif set on historical paper hues</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Client-Side Search Experience</div>
+            <div class="kpi-value">Instant Modal</div>
+            <div class="kpi-delta positive">
+              <Search size={16} /> Keyboard Shortcut Cmd+K
+            </div>
+            <div class="kpi-sub">Instantaneous client-side filtering across titles, writers, and historical categories with zero database latency</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Entity SEO & Structured Data</div>
+            <div class="kpi-value">Entity SEO</div>
+            <div class="kpi-delta positive">
+              <BookOpen size={16} /> Schema.org WebSite & Articles
+            </div>
+            <div class="kpi-sub">Comprehensive semantic markup for cultural entities, historic figures, and districts with automated RSS</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Live Kuwait Indicators Ribbon</div>
+            <div class="kpi-value">Live Ribbon</div>
+            <div class="kpi-delta positive">
+              <Clock size={16} /> Real-Time Local Date & Weather
+            </div>
+            <div class="kpi-sub">Lightweight header component anchoring readers to real-time Kuwait standard time, Hijri date, and climate</div>
+          </div>
+
+          <div class="kpi-card conversion-card">
+            <div class="kpi-label">Ad-Free Reader Experience</div>
+            <div class="kpi-value">0 Commercial Ads</div>
+            <div class="kpi-delta positive">
+              <Layers size={16} /> Zero Invasive Popups
+            </div>
+            <div class="kpi-sub">Uncompromised focus on historical manuscripts, oral narratives, and photographic archives without commercial distraction</div>
+          </div>
+        </div>
+
+        <!-- Official Editorial Mission Alert Box -->
+        <div class="zero-ad-alert">
+          <div class="zero-ad-header">
+            <ShieldCheck size={22} class="alert-icon" />
+            <strong>Editorial Mission & Independent Cultural Archiving:</strong>
+          </div>
+          <p>
+            <strong>Y7duth Fi Al-Kuwait</strong> was conceived as an independent cultural sanctuary celebrating the narratives of Kuwait and its people. Rather than chasing fleeting trends, the magazine listens to old neighborhoods, chronicles pioneering figures, and honors heritage food and oral history with rare archival imagery, meticulously engineered and crafted by <strong>webinOO</strong>.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout (Article + Sticky Sidebar) -->
+    <div class="container case-layout">
+      <!-- Article Body -->
+      <article class="case-article">
+        <!-- Section 1: Project Specs Table -->
+        <section class="case-section" id="project-specs">
+          <div class="section-tag">Project Specifications & Deliverables</div>
+          <h2 id="project-specs">Architectural & Technical Specifications of Y7duth</h2>
+          
+          <p>
+            The table below summarizes the verified technical parameters and architectural specifications of <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">y7duth.online</a> engineered by <strong>webinOO</strong>:
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Technical Metric</th>
+                  <th>Engineering & Design Specification</th>
+                  <th>Production Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Client & Platform</strong></td>
+                  <td>Y7duth Fi Al-Kuwait — Independent Cultural & Archival Magazine</td>
+                  <td><span class="pill-growth">Live in Production</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Production URL</strong></td>
+                  <td><a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">https://y7duth.online</a></td>
+                  <td><span class="pill-growth">Fully Active & Indexed</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Platform Classification</strong></td>
+                  <td>Digital Cultural Magazine, Long-form Editorial, Archival Photography</td>
+                  <td><span class="pill-neutral">Bespoke Publishing Architecture</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Core Framework</strong></td>
+                  <td>Astro v5.18 with Content Collections, TypeScript, and Tailwind CSS</td>
+                  <td><span class="pill-growth">100% Static Pre-rendering (SSG)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Typography System</strong></td>
+                  <td>IBM Plex Sans Arabic for body copy, Playfair Display for display headers</td>
+                  <td><span class="pill-neutral">Classical Archival Identity</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Editorial Taxonomies</strong></td>
+                  <td>Ahl Al-Deera, Fil-Freej, Swalef w Turath, Sofrat Al-Deera, Album Al-Dhakira</td>
+                  <td><span class="pill-growth">5 Distinct Cultural Hubs</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Search Architecture</strong></td>
+                  <td>Client-side interactive modal search with pre-compiled index and Cmd+K</td>
+                  <td><span class="pill-growth">Instant Browser Filtering</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Structured Data & SEO</strong></td>
+                  <td>Schema.org WebSite, Article, Organization, BreadcrumbList with Dynamic RSS</td>
+                  <td><span class="pill-growth">AI Engine & Search Optimized</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 2: Editorial & Archival Challenge -->
+        <section class="case-section" id="editorial-challenge">
+          <div class="section-tag">Context & Editorial Publishing Challenges</div>
+          <h2 id="editorial-challenge">Why Generic Blog & News Templates Fail Cultural Archiving</h2>
+
+          <p>
+            When cultural projects or specialized publications attempt to launch using generic WordPress magazine themes, they inevitably face three critical friction points that alienate discerning readers and degrade historical content:
+          </p>
+
+          <div class="challenges-grid">
+            <div class="challenge-item">
+              <h4>1. Ad Noise Overwhelming Document Dignity</h4>
+              <p>Mainstream templates prioritize programmatic display ads, auto-playing video banners, and cookie prompts that distract readers from historical documentation and diminish editorial gravitas.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>2. Latency Collapse Under Archival Photography</h4>
+              <p>Historical archiving requires heavy high-resolution imagery and scans. Legacy CMS systems suffer severe mobile rendering delays, exhausting mobile data plans and causing visitor bounce.</p>
+            </div>
+            <div class="challenge-item">
+              <h4>3. Fragile Database Dependencies</h4>
+              <p>Relying on complex MySQL relational databases leaves decades of cultural archives vulnerable to database corruption, plugin deprecation, and security exploits.</p>
+            </div>
+          </div>
+
+          <div class="psych-card loss-aversion">
+            <div class="psych-title">
+              <Zap size={20} />
+              <h3>The Strategic Objective: Crafting an Enduring Digital Memory</h3>
+            </div>
+            <p>
+              <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">Y7duth Fi Al-Kuwait</a> was never intended as ephemeral news. It was designed as an enduring digital sanctuary combining engineering speed with archival dignity. Reading about the dawn of Radio Kuwait in 1951 or early print pioneers in 1948 should evoke the tranquility of opening a cherished manuscript in a national library.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 3: Technical Publishing Architecture -->
+        <section class="case-section" id="publishing-architecture">
+          <div class="section-tag">Five-Layer Publishing Architecture</div>
+          <h2 id="publishing-architecture">The Architecture of Y7duth: Clean Code & Pure Reader Focus</h2>
+
+          <p>
+            <strong>webinOO</strong> engineered the platform from scratch across five robust, decoupled layers:
+          </p>
+
+          <div class="arch-layers-list">
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 1</div>
+              <div class="layer-content">
+                <h4>Static Publishing Engine & Content Collections (Astro v5)</h4>
+                <p>Every story is authored in structured Markdown/MDX with strict TypeScript schemas. HTML pages are 100% pre-rendered at build time, eliminating security vectors and providing instantaneous delivery.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 2</div>
+              <div class="layer-content">
+                <h4>Archival Vintage Typography & Material Design</h4>
+                <p>A bespoke palette of warm historic paper tones (#f4f0e7), deep petrol ink (#18323c), and Kuwaiti heritage green (#126447), enriched by tactile paper grain to provide restful reading sessions.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 3</div>
+              <div class="layer-content">
+                <h4>Client-Side Instant Modal Search</h4>
+                <p>A lightweight in-browser search modal triggered via Cmd+K or navigation icon, filtering stories, historical locations, and authors instantly without round-trip database queries.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 4</div>
+              <div class="layer-content">
+                <h4>Live Kuwait Indicators Ribbon</h4>
+                <p>An unobtrusive ribbon displaying Kuwait standard time, Hijri and Gregorian dates, and local weather conditions, seamlessly connecting historical narratives with modern Kuwaiti life.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Layer 5</div>
+              <div class="layer-content">
+                <h4>Entity SEO & Dynamic Syndication (RSS & Schema.org)</h4>
+                <p>Rich semantic JSON-LD structures for cultural entities, historical figures, and regional sitemaps, alongside automated RSS feeds for search engines and generative AI ingestion.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Content Taxonomy & Archival Sections -->
+        <section class="case-section" id="content-taxonomy">
+          <div class="section-tag">Editorial Taxonomy & Cultural Architecture</div>
+          <h2 id="content-taxonomy">Curated Pillars of Y7duth: Preserving Kuwait's Cultural Mosaic</h2>
+
+          <p>
+            The editorial structure of <a href="https://y7duth.online" target="_blank" rel="dofollow" class="inline-store-link">Y7duth Fi Al-Kuwait</a> is categorized into five specialized cultural pillars:
+          </p>
+
+          <div class="queries-comparison-grid">
+            <div class="query-col">
+              <h4>1. Biographies, Districts & Archival Imagery</h4>
+              <p>Pillars capturing the human, spatial, and visual memory of Kuwait:</p>
+              <ul class="query-list">
+                <li><code>Ahl Al-Deera</code> — Biographies of educational, medical, journalistic, and commercial pioneers who built modern Kuwait</li>
+                <li><code>Fil-Freej</code> — Immersive walks through historic alleys: Al-Mirqab, Sharq, Jibla, old souqs, and adobe squares</li>
+                <li><code>Album Al-Dhakira</code> — Curated visual galleries of rare historical photographs and foundational cultural milestones</li>
+              </ul>
+            </div>
+
+            <div class="query-col">
+              <h4>2. Oral Folklore & Culinary Heritage</h4>
+              <p>Pillars dedicated to intangible heritage, vernacular sayings, and gastronomy:</p>
+              <ul class="query-list">
+                <li><code>Swalef w Turath</code> — Maritime lore, desert tales, old Kuwaiti proverbs, and memories of family gatherings</li>
+                <li><code>Sofrat Al-Deera</code> — Culinary heritage, the origins of traditional dishes, and the hospitality rituals of old Kuwait</li>
+                <li><code>Long-form Editorial Craft</code> — Thoughtful layout supporting historic pull quotes, timelines, and archival citations</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Architectural Comparison (Astro vs WordPress) -->
+        <section class="case-section" id="comparison-analysis">
+          <div class="section-tag">Publishing Architecture Comparison</div>
+          <h2 id="comparison-analysis">Architectural Analysis: Astro v5 vs. WordPress for Digital Magazines</h2>
+
+          <p>
+            The comparison below illustrates the structural advantages of webinOO bespoke Astro architecture versus conventional CMS platforms:
+          </p>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Comparison Dimension</th>
+                  <th>Astro v5 Architecture (Y7duth)</th>
+                  <th>Conventional WordPress Magazine</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Page Load Velocity</strong></td>
+                  <td>Instantaneous sub-second delivery via global edge pre-rendering</td>
+                  <td>Frequent server latency due to multi-table SQL queries</td>
+                </tr>
+                <tr>
+                  <td><strong>Client-side JavaScript</strong></td>
+                  <td>Zero JS by default; minimal hydration on interactive components</td>
+                  <td>Dozens of bloated plugin scripts forced into browser memory</td>
+                </tr>
+                <tr>
+                  <td><strong>Archive Security & Hardening</strong></td>
+                  <td>Immutable static files with zero database attack vectors</td>
+                  <td>Continuous vulnerability risks through outdated plugins and themes</td>
+                </tr>
+                <tr>
+                  <td><strong>Operational Cost</strong></td>
+                  <td>Near-zero hosting costs on serverless edge networks</td>
+                  <td>Expensive server tiers required to handle traffic spikes</td>
+                </tr>
+                <tr>
+                  <td><strong>Reader Atmosphere</strong></td>
+                  <td>Serene archival typography with zero intrusive commercial ads</td>
+                  <td>Aggressive popups, floating video banners, and cookie prompts</td>
+                </tr>
+                <tr>
+                  <td><strong>Long-term Preservation</strong></td>
+                  <td>Future-proof open Markdown files preserved across decades</td>
+                  <td>Locked inside proprietary database schemas prone to migration failure</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 6: Editorial Continuity Roadmap -->
+        <section class="case-section" id="editorial-roadmap">
+          <div class="section-tag">Sustainable Archival Growth</div>
+          <h2 id="editorial-roadmap">The Continuity Roadmap: Scaling Kuwait's Digital Memory</h2>
+
+          <p>
+            The platform is built to sustain ongoing historical contributions without necessitating architectural overhauls:
+          </p>
+
+          <div class="roadmap-timeline">
+            <div class="roadmap-step">
+              <div class="step-badge">Phase 1: Production Launch</div>
+              <h4>Core Publishing Architecture & Search Deployment</h4>
+              <p>Full deployment on Astro v5 with 5 active taxonomy hubs, client-side Cmd+K modal search, live Kuwait indicator ribbon, and complete reader access.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">Phase 2: Oral History & Visual Expansion</div>
+              <h4>Enriching Archival Photography & Biographies</h4>
+              <p>Publishing further photographic collections in partnership with cultural researchers, utilizing entity SEO to establish authoritative visibility on Google.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">Phase 3: Interactive Spatial Archiving</div>
+              <h4>Interactive Historical Cartography</h4>
+              <p>Developing an interactive map of old Kuwaiti neighborhoods allowing readers to explore stories geographically while preserving lightning performance.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7: FAQ for AEO -->
+        <section class="case-section" id="faq-aeo">
+          <div class="section-tag">Search & Answer Engine Optimization (AEO)</div>
+          <h2 id="faq-aeo">Frequently Asked Questions: Y7duth Platform Architecture</h2>
+
+          <div class="aeo-faq-grid">
+            <details class="faq-item" open>
+              <summary>Why was Astro v5 chosen for Y7duth Fi Al-Kuwait instead of WordPress?</summary>
+              <p>
+                Y7duth is an independent cultural documentary magazine centered on deep reading and sustainable historical archiving. Astro v5 provides pure static site generation (SSG) with zero unnecessary JavaScript runtime, delivering instantaneous page rendering, bulletproof security, and zero bloated plugin maintenance.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>How do Content Collections enforce editorial quality across the platform?</summary>
+              <p>
+                Astro Content Collections enforce strict schema validation for every story and document (title, author, historic district, category, archival photography, dates) prior to build, preventing runtime errors and establishing robust semantic SEO entities.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>How does the client-side instant search work without a heavy database?</summary>
+              <p>
+                The search engine utilizes an optimized pre-compiled JSON payload indexed and filtered directly inside the visitor browser via the Cmd+K shortcut, enabling instant sub-millisecond retrieval of stories, personalities, and documents with zero server overhead.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>What defines the visual identity and reader experience of Y7duth?</summary>
+              <p>
+                The interface is crafted with warm paper tones (#f4f0e7), an authentic subtle paper grain, and an elegant pairing of IBM Plex Sans Arabic with Playfair Display serif typography, completely free from invasive commercial banners or modal popups.
+              </p>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sticky Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">Showcase Navigation</div>
+          <nav aria-label="Table of Contents">
+            <ul class="toc-list" id="toc-list">
+              <li><a href="#project-specs">1. Project Specifications</a></li>
+              <li><a href="#editorial-challenge">2. Editorial Challenges</a></li>
+              <li><a href="#publishing-architecture">3. 5-Layer Publishing Architecture</a></li>
+              <li><a href="#content-taxonomy">4. Curated Cultural Pillars</a></li>
+              <li><a href="#comparison-analysis">5. Astro vs. WordPress Comparison</a></li>
+              <li><a href="#editorial-roadmap">6. Continuity & Growth Roadmap</a></li>
+              <li><a href="#faq-aeo">7. Technical & AEO FAQ</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Project Snapshot Card with Verified Dofollow Live Link -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">Verified Project Snapshot</div>
+          <div class="snapshot-list">
+            <div class="snapshot-row">
+              <span>Project Name:</span>
+              <strong>Y7duth Fi Al-Kuwait</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Production URL:</span>
+              <a
+                href="https://y7duth.online"
+                target="_blank"
+                rel="dofollow"
+                class="snapshot-link"
+              >
+                y7duth.online
+              </a>
+            </div>
+            <div class="snapshot-row">
+              <span>Platform Type:</span>
+              <strong>Cultural Magazine & Archive</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Publishing Engine:</span>
+              <strong>Astro v5.18 SSG</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Design Style:</span>
+              <strong>Editorial Vintage Paper</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Typography:</span>
+              <strong>IBM Plex Arabic + Playfair</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Search System:</span>
+              <strong class="zero-cost">Instant Cmd+K Modal</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Commercial Ads:</span>
+              <strong class="zero-cost">0 Commercial Banners</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Status:</span>
+              <strong class="zero-cost">Live in Production</strong>
+            </div>
+          </div>
+
+          <div class="snapshot-actions">
+            <a
+              href="https://y7duth.online"
+              target="_blank"
+              rel="dofollow"
+              class="snapshot-btn"
+            >
+              <span>Inspect Live Magazine Platform</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- Consultation Card -->
+        <div class="sidebar-cta-card">
+          <span class="badge-pill badge-coral">Editorial Architecture Inquiry</span>
+          <h4>Planning a Distinguished Digital Magazine, Blog, or Archive?</h4>
+          <p>
+            Eliminate legacy CMS lag and maintenance vulnerabilities. Let webinOO engineers build a bespoke, lightning-fast publishing platform that honors your content.
+          </p>
+          <a
+            href="https://wa.me/201554637673?text=Hello%2C%20I%20reviewed%20the%20Y7duth%20Kuwait%20magazine%20showcase%20and%20want%20to%20develop%20a%20high-performance%20publishing%20platform%20with%20similar%20standards."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-whatsapp-btn"
+          >
+            Connect with webinOO Consultants via WhatsApp
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container bottom-cta-section">
+      <CTA
+        eyebrow="Next-Generation Digital Publishing"
+        title="Ready to Build an Editorial Platform That Transcends Ordinary Sites?"
+        description="Whether you are establishing a cultural publication, enterprise thought-leadership hub, or high-end blog in Kuwait and the Gulf, webinOO delivers bespoke engineering uniting editorial beauty and sub-second performance."
+        ctaText="Request an Editorial Architecture Consultation"
+        whatsappMessage="Hello, I want to develop a high-performance content platform and editorial blog engineered like Y7duth Kuwait."
+      />
+    </section>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
