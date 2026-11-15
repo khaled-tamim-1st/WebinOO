@@ -1,0 +1,712 @@
+---
+import '@/styles/case-study.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import {
+  ShieldCheck,
+  ArrowUpRight,
+  ExternalLink,
+  Zap,
+  Clock,
+  Cpu,
+  Layers,
+  MapPin,
+  Bot,
+  Sparkles,
+  TrendingUp,
+  CheckCircle,
+  Paintbrush
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'أعمالنا ودراسات الحالة', href: '/portfolio/' },
+  { label: 'دراسة حالة منصة صباغ الكويت' },
+];
+
+const caseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': 'https://webinoo.online/portfolio/sabbagh-kuwait/#article',
+    'headline': 'دراسة حالة صباغ الكويت: سيو برمجي في 168 منطقة وتهيئة لمحركات الذكاء الاصطناعي (GEO)',
+    'name': 'دراسة حالة منصة صباغ الكويت: سيو برمجي وتوليد محتوى للذكاء الاصطناعي',
+    'description': 'استعراض المعمارية التقنية واستراتيجية الـ SEO البرمجي لمنصة صباغ الكويت (sabbaghelkuwait.online): تغطية 168 منطقة سكنية، ملفات llms.txt للذكاء الاصطناعي، وقمع تحويل واتساب فوري للخدمات المنزلية.',
+    'inLanguage': 'ar-KW',
+    'url': 'https://webinoo.online/portfolio/sabbagh-kuwait/',
+    'datePublished': '2026-11-15T09:00:00+03:00',
+    'dateModified': '2026-11-15T09:00:00+03:00',
+    'author': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'about': [
+      { '@type': 'Thing', 'name': 'السيو البرمجي Programmatic SEO' },
+      { '@type': 'Thing', 'name': 'Generative Engine Optimization (GEO)' },
+      { '@type': 'Thing', 'name': 'سيو خدمات التشطيب والمقاولات في الكويت' },
+      { '@type': 'Thing', 'name': 'مسارات التحويل السريع للواتساب' }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': 'كيف تغطي المنصة 168 منطقة في محافظات الكويت الست بسيو برمجي مخصص؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'من خلال بنية برمجية مبنية بمحرك توليد ثابت (SSG) ومصفوفات بيانات جغرافية مهيكلة، تُولد صفحات هبوط مستقلة لكل ضاحية ومنطقة (مثل المطلاع، السالمية، حولي، صباح الأحمد) تتضمن معايير التنفيذ والأسعار المرجعية بالدينار الكويتي ونقاط الاتصال المباشرة.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'ما هي ملفات llms.txt و ai-catalog.json وكيف تضمن تصدر محركات الذكاء الاصطناعي (GEO)؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'صُممت هذه الملفات لتزويد روبوتات الذكاء الاصطناعي (مثل Google AI Overviews وChatGPT Search وPerplexity) ببيانات نظيفة وموثوقة تتضمن مواصفات دهانات جوتن وسيجما والأسعار المحدثة 2026، مما يدفع المحركات لاقتباس المنصة كمرجع أول عند سؤال المستخدمين عن صباغين في الكويت.'
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': 'لماذا تم اعتماد قمع تحويل فوري عبر الواتساب بدلاً من النماذج التقليدية؟',
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': 'لأن ثقافة مستخدمي الخدمات المنزلية في الكويت تعتمد بنسبة تزيد عن 85% على الهواتف الذكية والتواصل الفوري عبر واتساب؛ حيث يتيح القمع إرسال فيديو للغرفة وتحديد المنطقة بنقرة واحدة والحصول على رد فوري خلال دقائق.'
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="دراسة حالة منصة صباغ الكويت: سيو برمجي في 168 منطقة وتهيئة الذكاء الاصطناعي (GEO) | webinOO"
+  description="كيف هندست webinOO منصة صباغ الكويت بـ 168 صفحة سيو برمجي، ملفات llms.txt للذكاء الاصطناعي، وقمع واتساب فوري للخدمات والتشطيبات."
+  lang="ar"
+  schema={caseSchema}
+>
+  <Header slot="header" lang="ar" />
+
+  <main class="clash-case-study">
+    <!-- Hero / Header Section -->
+    <header class="case-hero">
+      <div class="container hero-container">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="hero-badges">
+          <span class="badge-pill badge-primary">سيو برمجي في 168+ منطقة</span>
+          <span class="badge-pill badge-green">تهيئة محركات الذكاء الاصطناعي GEO</span>
+          <span class="badge-pill badge-coral">قمع تحويل WhatsApp-First بالكويت</span>
+        </div>
+
+        <h1 class="hero-title">
+          كيف هندست webinOO منصة صباغ الكويت بـ 168 صفحة سيو برمجي وبنية ذكاء اصطناعي لاقتناص طلبات التشطيب؟
+        </h1>
+
+        <p class="hero-lead">
+          أنجزت <strong>webinOO</strong> التطوير التقني والهندسة المعمارية لمنصة <a href="https://sabbaghelkuwait.online" target="_blank" rel="dofollow" class="inline-store-link">صباغ الكويت (sabbaghelkuwait.online)</a>. تم تصميم المنصة بمحرك توليد ثابت فائق السرعة عبر شبكة حافة سحابية، مع بنية <strong>سيو برمجي (Programmatic SEO)</strong> تضم أكثر من <strong>168 صفحة مفهرسة</strong> تغطي جميع مناطق ومحافظات الكويت الست، وبنية معرفية حصرية لمحركات الذكاء الاصطناعي عبر ملفات <strong>llms.txt و ai-catalog.json</strong>، مع مسار تحويل فوري يعتمد على الواتساب المباشر كبديل مستدام لإعلانات جوجل باهظة التكلفة.
+        </p>
+
+        <!-- Live Preview Action Button -->
+        <div class="hero-actions">
+          <a
+            href="https://sabbaghelkuwait.online"
+            target="_blank"
+            rel="dofollow"
+            class="live-store-button"
+          >
+            <span>معاينة منصة صباغ الكويت المباشرة: sabbaghelkuwait.online</span>
+            <ArrowUpRight size={18} />
+          </a>
+          <span class="live-status-note">
+            رابط مباشر للمعاينة الرسمية الحية (رابط DoFollow معتمد)
+          </span>
+        </div>
+
+        <!-- Strategic Vision Callout -->
+        <div class="philosophy-banner">
+          <div class="banner-top">
+            <span class="banner-tag">الرؤية الهندسية لسوق الخدمات والمقاولات في الكويت</span>
+            <span class="banner-stat">المعايير المعتمدة لعام 2026</span>
+          </div>
+          <p class="banner-text">
+            <strong>مبدأ التموضع عالي القيمة في webinOO:</strong> سوق الأصباغ والتشطيب في الكويت يعاني من فوضى الإعلانات المضللة والوسطاء الوهميين. قمنا بإعادة هندسة الحضور الرقمي للمنصة بالانتقال من مجرد دليل عشوائي إلى شبكة معتمدة تبرز مواصفات دهانات جوتن وسيجما الأصلية، معايير المعالجة القلوية للأسمنت في قسائم المطلاع، وحماية الأثاث والأرضيات، مع تسعير مقطوع واضح بالدينار الكويتي (KWD).
+          </p>
+        </div>
+
+        <!-- Bento Grid: Technical & Commercial Deliverables -->
+        <div class="bento-kpi-grid">
+          <div class="kpi-card highlight-card">
+            <div class="kpi-label">التغطية الجغرافية للسيو البرمجي</div>
+            <div class="kpi-value">168+ منطقة</div>
+            <div class="kpi-delta positive">
+              <MapPin size={16} /> محافظات الكويت الست بالكامل
+            </div>
+            <div class="kpi-sub">صفحات هبوط تخصصية لكل منطقة (المطلاع، صباح الأحمد، السالمية، حولي، الفروانية...) مع بيانات سكيما محلية</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">هندسة الذكاء الاصطناعي (GEO)</div>
+            <div class="kpi-value">llms.txt + Full</div>
+            <div class="kpi-delta positive">
+              <Bot size={16} /> محركات البحث التوليدي
+            </div>
+            <div class="kpi-sub">ملفات مهيكلة لاقتباسات Google AI Overviews وChatGPT Search مع تفاصيل الأسعار والمواصفات المعتمدة</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">سرعة الاستجابة على الجوال</div>
+            <div class="kpi-value">&lt; 1.2 ثانية</div>
+            <div class="kpi-delta positive">
+              <Zap size={16} /> Edge-First SSG
+            </div>
+            <div class="kpi-sub">تحميل فوري عبر شبكات الجوال 5G في الكويت مع تخزين مؤقت على شبكة الحافة بدون بطء قواعد البيانات</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">مسار التحويل الميداني (CRO)</div>
+            <div class="kpi-value">WhatsApp-First</div>
+            <div class="kpi-delta positive">
+              <Clock size={16} /> استجابة في دقيقتين
+            </div>
+            <div class="kpi-sub">أزرار اتصال ومحادثة عائمة على الموبايل تنقل العميل فوراً لطلب المعاينة المجانية مع رسالة محددة بالمنطقة</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">المواصفات المناخية للدهانات</div>
+            <div class="kpi-value">50°C+ مقاومة</div>
+            <div class="kpi-delta positive">
+              <ShieldCheck size={16} /> جوتن + سيجما معتمدة
+            </div>
+            <div class="kpi-sub">توثيق مواصفات فينوماستيك وجوتاشيلد إكستريم ورشات السيجما العازلة للحرارة والرطوبة الساحلية</div>
+          </div>
+
+          <div class="kpi-card conversion-card">
+            <div class="kpi-label">تكلفة الإعلانات الممولة اليومية</div>
+            <div class="kpi-value">0.00$ هدر</div>
+            <div class="kpi-delta positive">
+              <TrendingUp size={16} /> أصل رقمي دائم (Organic Asset)
+            </div>
+            <div class="kpi-sub">اقتناص نيات البحث العضوية من جوجل ومحركات الـ AI بدلاً من النزيف الإعلاني اليومي المستمر</div>
+          </div>
+        </div>
+
+        <!-- Official Quality Affirmation -->
+        <div class="zero-ad-alert">
+          <div class="zero-ad-header">
+            <ShieldCheck size={22} class="alert-icon" />
+            <strong>ميثاق النزاهة الهندسية وجودة التنفيذ في الكويت:</strong>
+          </div>
+          <p>
+            تعتمد المنصة دليلاً شاملاً للمواد الأصلية المطابقة للمواصفات الخليجية، وتشدد على معايير الأمان: استخدام دهانات جوتن الأصلية بباركود المصنع، تغليف كامل للأرضيات والرخام والباركود بأشرطة حماية مستوردة، كفالة خطية تصل حتى 5 سنوات، ومعاينة فنية مجانية 100% لكافة مناطق الكويت.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout (Article + Sticky Sidebar) -->
+    <div class="container case-layout">
+      <!-- Article Body -->
+      <article class="case-article">
+        <!-- Mobile Quick Jump Table of Contents -->
+        <details class="mobile-quick-nav">
+          <summary>📑 فهرس استعراض المنصة (انتقال سريع)</summary>
+          <ul>
+            <li><a href="#project-specs">1. بطاقة المواصفات الفنية المعتمدة</a></li>
+            <li><a href="#market-dynamics">2. سيكولوجية سوق الأصباغ الكويتي والشرائح المستهدفة</a></li>
+            <li><a href="#system-architecture">3. المعمارية الهندسية الخماسية للمنصة</a></li>
+            <li><a href="#geo-ai-strategy">4. بنية الذكاء الاصطناعي (GEO) وملفات llms.txt</a></li>
+            <li><a href="#keywords-comparison">5. تحليل الكلمات الدلالية ونية الشراء في الكويت</a></li>
+            <li><a href="#pricing-benchmarks">6. جدول أسعار الأصباغ بالكويت 2026 (KWD)</a></li>
+            <li><a href="#growth-roadmap">7. خارطة طريق التحول الرقمي ومعدل التحويل (CRO)</a></li>
+            <li><a href="#faq-aeo">8. أسئلة شائعة حول المنصة والتقنية (AEO)</a></li>
+          </ul>
+        </details>
+
+        <!-- Section 1: Technical Specs Table -->
+        <section class="case-section" id="project-specs">
+          <div class="section-tag">بطاقة المشروع والمواصفات المعتمدة</div>
+          <h2>المواصفات الفنية والمعمارية لمنصة صباغ الكويت</h2>
+          
+          <p>
+            يوضح الجدول التالي بطاقة البيانات الهندسية والمواصفات المعمارية لمنصة <a href="https://sabbaghelkuwait.online" target="_blank" rel="dofollow" class="inline-store-link">sabbaghelkuwait.online</a> التي تولت <strong>webinOO</strong> هندستها وتطويرها:
+          </p>
+
+          <div class="table-scroll-hint">
+            <span>⟵ مرّر الجدول أفقياً للاطلاع على كافة البيانات ⟶</span>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>المعيار الفني والهندسي</th>
+                  <th>المواصفات المعتمدة في المنصة</th>
+                  <th>حالة الجاهزية والتشغيل</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>اسم المنصة والنطاق</strong></td>
+                  <td>صباغ الكويت — sabbaghelkuwait.online</td>
+                  <td><span class="pill-growth">مطلقة بالإنتاج ونشطة</span></td>
+                </tr>
+                <tr>
+                  <td><strong>التغطية الجغرافية</strong></td>
+                  <td>168+ منطقة وحي سكني في المحافظات الست</td>
+                  <td><span class="pill-growth">مفهرسة بالكامل في Google</span></td>
+                </tr>
+                <tr>
+                  <td><strong>ملفات الـ AI المهيكلة</strong></td>
+                  <td>llms.txt + llms-full.txt + ai-catalog.json</td>
+                  <td><span class="pill-growth">مفعلة لمحركات التوليد الفوري</span></td>
+                </tr>
+                <tr>
+                  <td><strong>معمارية التطبيق</strong></td>
+                  <td>محرك توليد ثابت فائق السرعة مع Edge Caching</td>
+                  <td><span class="pill-neutral">استجابة سريعة على الجوال</span></td>
+                </tr>
+                <tr>
+                  <td><strong>العملة المعتمدة والتسعير</strong></td>
+                  <td>الدينار الكويتي (KWD / د.ك) بأسعار مقطوعة ومحدثة</td>
+                  <td><span class="pill-neutral">شفافية تامة بدون تكاليف خفية</span></td>
+                </tr>
+                <tr>
+                  <td><strong>مسار الاتصال والتحويل</strong></td>
+                  <td>شريط عائم ثابت: مكالمة مباشرة + واتساب مخصص بالمنطقة</td>
+                  <td><span class="pill-growth">استجابة فورية خلال دقيقتين</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 2: Kuwait Market Dynamics -->
+        <section class="case-section" id="market-dynamics">
+          <div class="section-tag">تحليل السوق وسلوك المستهلك</div>
+          <h2>سيكولوجية سوق الأصباغ الكويتي وتشريح الشرائح الأربع</h2>
+
+          <p>
+            سوق التشطيبات والأصباغ في الكويت سوق فريد يتأثر بشكل حاسم بالعوامل المناخية القاسية (حرارة تتجاوز 50° صيفاً ورطوبة ساحلية عالية)، وتتوزع فيه نيات البحث والقرارات التجارية على أربع شرائح رئيسية:
+          </p>
+
+          <div class="challenges-grid">
+            <div class="challenge-item">
+              <h4>1. أصحاب القسائم والفلل الجديدة</h4>
+              <p>
+                <strong>المناطق:</strong> مدينة المطلاع السكنية، صباح الأحمد، جابر الأحمد، غرب عبدالله المبارك.<br />
+                <strong>الاحتياج:</strong> تشطيب فيلا عظم بالكامل، معالجة قلوية الأسمنت 28 يوماً، سحب 3 سكينات معجون مع شاش فايبر لمنع شروخ الترييح، ورشات سيجما خارجية عازلة للحرارة بكفالة 5 سنوات.
+              </p>
+            </div>
+
+            <div class="challenge-item">
+              <h4>2. سكان الشقق والمستأجرون</h4>
+              <p>
+                <strong>المناطق:</strong> السالمية، حولي، الفروانية، خيطان، المهبولة، الرقعي.<br />
+                <strong>الاحتياج:</strong> صبغ تسليم شقة خلال 24-48 ساعة بسعر مقطوع محدد بالدينار، والهدف استرداد مبلغ تأمين الشقة (Deposit) بالكامل دون خصومات من المؤجر، مع نظافة السيراميك والمفاتيح.
+              </p>
+            </div>
+
+            <div class="challenge-item">
+              <h4>3. تجديد الفلل والديوانيات الراقية</h4>
+              <p>
+                <strong>المناطق:</strong> الروضة، العديلية، النزهة، كيفان، الشامية، جنوب السرة، مشرف، بيان.<br />
+                <strong>الاحتياج:</strong> أصباغ إيطالية فاخرة (فالفنت، ستوكو، مارمورينو)، بديل الرخام وبديل الخشب، دهانات بدون رائحة إطلاقاً في المنازل المأهولة، وتغليف مشدد للأثاث والرخام بنايلون سميك.
+              </p>
+            </div>
+          </div>
+
+          <div class="psych-card loss-aversion">
+            <div class="psych-title">
+              <ShieldCheck size={20} />
+              <h3>معالجة مخاوف العميل الكويتي (Risk Reversal Framework)</h3>
+            </div>
+            <p>
+              أهم معايير اتخاذ القرار عند العميل في الكويت ليست السعر الأرخص بل <strong>الأمان ونظافة المكان وموثوقية المواد</strong>. لذلك بنينا الخطاب الإعلاني على 4 ركائز حاسمة:
+            </p>
+            <ul>
+              <li><strong>فتح علب الأصباغ أمام العميل:</strong> للتأكد من أنها أصلية من جوتن فينوماستيك ومختومة بباركود المصنع وليست مخففة بمواد رخيصة.</li>
+              <li><strong>حماية وتغليف الأثاث مجاناً:</strong> فرش نايلون سميك على الأرضيات والباركيه وتغطية المفاتيح الكهربائية بشطرطون لاصق.</li>
+              <li><strong>كفالة خطية موثقة:</strong> ضمان حتى 5 سنوات ضد التقشير والبهتان وعيوب اللياسة.</li>
+              <li><strong>معاينة ميدانية مجانية بالكتالوجات:</strong> زيارة الفني للمنزل مع كتالوجات جوتن وسان ماركو لعام 2026 دون أي التزام مالي مسبق.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 3: 5-Tier Architecture -->
+        <section class="case-section" id="system-architecture">
+          <div class="section-tag">الهندسة المعمارية للمنصة</div>
+          <h2>المعمارية الخماسية لمنصة صباغ الكويت</h2>
+
+          <p>
+            بنت <strong>webinOO</strong> المنصة وفق بنية تقنية من 5 طبقات متكاملة تضمن السرعة الخارقة والتصدر الأورجانيك:
+          </p>
+
+          <div class="arch-layers-list">
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة الأولى</div>
+              <div class="layer-content">
+                <h4>محرك التوليد المسبق وشبكة الحافة (Edge-First Static Architecture)</h4>
+                <p>توليد الصفحات مسبقاً بنظام SSG وتوزيعها بالقرب من مستخدمي شبكات الجوال في الكويت، محققة زمناً لتحميل الصفحة أقل من 1.2 ثانية.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة الثانية</div>
+              <div class="layer-content">
+                <h4>نظام السيو البرمجي الجغرافي (168 Programmatic Landing Pages)</h4>
+                <p>تغطية كافة محافظات الكويت الست بمصفوفات صفحات متطابقة مع نيات البحث المحلي، مدعومة ببيانات مهيكلة Schema.org للمناطق والخدمات.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة الثالثة</div>
+              <div class="layer-content">
+                <h4>البنية المعرفية لمحركات الذكاء الاصطناعي (GEO Knowledge Engine)</h4>
+                <p>تضمين ملفات llms.txt و ai-catalog.json التي تزود محركات البحث التوليدي (AI Overviews, ChatGPT Search) بحقائق حاسمة وأسعار معتمدة بالدينار.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة الرابعة</div>
+              <div class="layer-content">
+                <h4>قمع التحويل الفوري (WhatsApp-First Direct Dispatch)</h4>
+                <p>إلغاء النماذج البريدية التقليدية واعتماد أزرار اتصال وواتساب عائمة على الهاتف تفتح محادثة مجهزة باسم المنطقة والخدمة المطلوبة بنقرة واحدة.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">الطبقة الخامسة</div>
+              <div class="layer-content">
+                <h4>مصفوفة الشفافية والضمان (Verified Pricing & Trust Matrix)</h4>
+                <p>عرض أدلة أسعار حقيقية ومحدثة ومواصفات مناخية واضحة لكسر حاجز الشك وبناء موثوقية لا تقارن مع المنافسين.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: GEO & LLMs Strategy -->
+        <section class="case-section" id="geo-ai-strategy">
+          <div class="section-tag">تهيئة محركات الذكاء الاصطناعي</div>
+          <h2>كيف تستحوذ المنصة على إجابات محركات الذكاء الاصطناعي (GEO)؟</h2>
+
+          <p>
+            تعد منصة صباغ الكويت سبّاقة في اعتماد معايير <strong>Generative Engine Optimization (GEO)</strong>؛ حيث لا تكتفي بالظهور في نتائج البحث التقليدية بل تفرض نفسها كمصدر رئيسي تقتبسه خوارزميات الذكاء الاصطناعي عند سؤال المستخدم عن خدمات الأصباغ في الكويت:
+          </p>
+
+          <div class="ai-stats-banner">
+            <div class="ai-stat-card">
+              <div class="ai-stat-number">100%</div>
+              <div class="ai-stat-title">جاهزية كاملة لملفات llms.txt</div>
+              <div class="ai-stat-detail">ملف مخصص وخفيف يقرأه روبوت الـ AI فوراً دون الحاجة لكشط أكواد JavaScript الثقيلة</div>
+            </div>
+
+            <div class="ai-stat-card">
+              <div class="ai-stat-number">2026</div>
+              <div class="ai-stat-title">بيانات أسعار ومواصفات محدثة</div>
+              <div class="ai-stat-detail">تزويد محركات البحث التوليدي بأسعار دقيقة ومطابقة لمواصفات جوتن وسيجما لحسم نتائج المقارنة</div>
+            </div>
+          </div>
+
+          <div class="highlight-callout">
+            <strong>نصيحة تقنية من webinOO:</strong> عندما يسأل المستخدم في الكويت روبوت الذكاء الاصطناعي: <em>"كم تكلفة صبغ شقة غرفتين في السالمية مع جوتن؟"</em> يقرأ الروبوت ملف <code>llms-full.txt</code> ويقدم إجابة قطعية تتضمن أسعار المنصة (50 - 75 د.ك للأيدي العاملة) مع رابط مباشر لمعاينة الموقع والتواصل عبر واتساب!
+          </div>
+        </section>
+
+        <!-- Section 5: Keywords & Commercial Intent -->
+        <section class="case-section" id="keywords-comparison">
+          <div class="section-tag">تدقيق الكلمات ومعدل التحويل</div>
+          <h2>استهداف الكلمات ذات النية التجارية العالية في الكويت</h2>
+
+          <p>
+            اعتمدت webinOO في بناء المحتوى على المصطلحات الميدانية التي يستخدمها العميل الكويتي فعلياً عند البحث والاتصال:
+          </p>
+
+          <div class="queries-comparison-grid">
+            <div class="query-col">
+              <h4>الكلمات الفصيحة العامة (ضعيفة التحويل)</h4>
+              <p>كلمات عامة يستخدمها بعض المنافسين لكنها تجلب زيارات غير مؤهلة للشراء:</p>
+              <ul class="query-list">
+                <li><code>دهان منازل حديثة</code></li>
+                <li><code>ألوان غرف نوم 2026</code></li>
+                <li><code>شركات الصيانة العامة</code></li>
+                <li><code>ديكورات جبس بورد كلاسيك</code></li>
+              </ul>
+            </div>
+
+            <div class="query-col">
+              <h4>الكلمات الميدانية الكويتية (عالية الإغلاق والتحويل)</h4>
+              <p>الكلمات التي يستهدفها نظام السيو البرمجي لمنصة صباغ الكويت مباشرة:</p>
+              <ul class="query-list">
+                <li><code>صباغ شاطر ورخيص بالكويت</code></li>
+                <li><code>صباغ المطلاع تشطيب قسائم</code></li>
+                <li><code>صبغ شقة تسليم مفتاح السالمية</code></li>
+                <li><code>صبغ بيبان خشب لاكيه وناري</code></li>
+                <li><code>علاج رطوبة الطوفة ونش الجدران</code></li>
+                <li><code>تركيب بديل الرخام وبديل الخشب</code></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6: Pricing Benchmarks (KWD) -->
+        <section class="case-section" id="pricing-benchmarks">
+          <div class="section-tag">الشفافية الإحصائية المعتمدة</div>
+          <h2>دليل ومؤشرات أسعار الأصباغ في الكويت لعام 2026 (KWD)</h2>
+
+          <p>
+            تلتزم المنصة بنشر أسعار استرشادية واقعية بالدينار الكويتي لمنح العميل وضوحاً تاماً قبل طلب المعاينة:
+          </p>
+
+          <div class="table-scroll-hint">
+            <span>⟵ مرّر الجدول أفقياً لمشاهدة كافة الأسعار بالدينار ⟶</span>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>نوع العمل والخدمة</th>
+                  <th>متوسط الأيدي العاملة (مصنعية)</th>
+                  <th>شامل المواد (جوتن أصلي)</th>
+                  <th>ملاحظات التنفيذ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>صبغ غرفة مفردة (4×4 م)</strong></td>
+                  <td>18 - 25 د.ك</td>
+                  <td>30 - 45 د.ك</td>
+                  <td>سكينتين معجون + وجهين فينوماستيك</td>
+                </tr>
+                <tr>
+                  <td><strong>صبغ شقة كاملة غرفتين وصالة</strong></td>
+                  <td>50 - 75 د.ك</td>
+                  <td>75 - 110 د.ك</td>
+                  <td>تسليم شقة سريع خلال 24-48 ساعة</td>
+                </tr>
+                <tr>
+                  <td><strong>صبغ شقة 3 غرف وصالة وموزع</strong></td>
+                  <td>70 - 100 د.ك</td>
+                  <td>95 - 145 د.ك</td>
+                  <td>شامل معالجة الشروخ والمسامير</td>
+                </tr>
+                <tr>
+                  <td><strong>خلفية شاشة (بديل رخام + خشب)</strong></td>
+                  <td>35 - 55 د.ك (تركيب)</td>
+                  <td>60 - 95 د.ك (شامل الألواح)</td>
+                  <td>مع إنارة مخفية LED وشريط ذهبي</td>
+                </tr>
+                <tr>
+                  <td><strong>أصباغ إيطالية ديكورية (ستوكو/مارمورينو)</strong></td>
+                  <td>3.5 - 6 د.ك / م²</td>
+                  <td>5.5 - 9 د.ك / م²</td>
+                  <td>مواد سان ماركو الإيطالية الأصلية</td>
+                </tr>
+                <tr>
+                  <td><strong>واجهات خارجية ورشة سيجما</strong></td>
+                  <td>1.8 - 3 د.ك / م²</td>
+                  <td>2.8 - 4.5 د.ك / م²</td>
+                  <td>مقاومة للحرارة والغبار والرطوبة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 7: Strategic Growth Roadmap -->
+        <section class="case-section" id="growth-roadmap">
+          <div class="section-tag">خارطة الطريق لرفع معدل التحويل</div>
+          <h2>خارطة طريق التطوير ونمو المبيعات خلال 90 يوماً</h2>
+
+          <div class="roadmap-timeline">
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الأولى (اليوم 1 – 30)</div>
+              <h4>تفعيل قمع الواتساب الفوري وإلغاء معضلة "0 صباغين"</h4>
+              <p>تثبيت الشريط السفلي العائم على الهواتف، تحويل الخطاب إلى شبكة معتمدة موحدة، وحذف أي رسائل سلبية تؤدي لارتداد الزوار.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الثانية (اليوم 31 – 60)</div>
+              <h4>إطلاق حاسبة التكلفة التفاعلية ومعرض قبل/بعد الحي</h4>
+              <p>إتاحة حاسبة سريعة من 3 خطوات تعطي العميل متوسط التكلفة بالدينار وتنقله للواتساب، مع صور مقارنة واقعية قبل الصبغ وبعده في شقق وفلل الكويت.</p>
+            </div>
+
+            <div class="roadmap-step">
+              <div class="step-badge">المرحلة الثالثة (اليوم 61 – 90)</div>
+              <h4>توسيع تغطية السيو المحلي لقسائم المطلاع ومناطق الجنوب</h4>
+              <p>إطلاق حملات استهداف مخصصة لمدن التوزيع الإسكاني الحديثة مع أدلة تفصيلية لتشطيب القسائم بالباركود والكفالة الخطية.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8: FAQ (AEO) -->
+        <section class="case-section" id="faq-aeo">
+          <div class="section-tag">محركات الإجابة الذكية</div>
+          <h2>أسئلة شائعة حول هندسة منصة صباغ الكويت (AEO)</h2>
+
+          <div class="aeo-faq-grid">
+            <details class="faq-item" open>
+              <summary>كيف تضمن بنية الـ 168 صفحة عدم الوقوع في عقوبة المحتوى المكرر؟</summary>
+              <p>
+                يتم بناء كل صفحة ببيانات جغرافية خاصة بالمنطقة (Governorate & District Data)، وتضمين معايير البناء الشائعة فيها (مثل قسائم المطلاع مقابل شقق السالمية)، وربطها بروابط Canonical وخريطة موقع ديناميكية معتمدة من Google Search Console.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>ما الفارق بين زيارة تأتي عبر Google وأخرى عبر محركات الذكاء الاصطناعي؟</summary>
+              <p>
+                الزائر القادم من محركات الذكاء الاصطناعي (مثل Perplexity أو ChatGPT) يكون زائرًا عالي التأهيل (High Intent)؛ حيث قرأ ملخص الخدمة والأسعار مسبقاً في إجابة الروبوت ويدخل الموقع بهدف واحد فقط: النقر على زر الواتساب وتأكيد المعاينة.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>لماذا تعتبر هذه المنصة بديلاً مستداماً لإعلانات Google Ads في الكويت؟</summary>
+              <p>
+                تكلفة النقرة في قطاع التشطيبات والأصباغ في الكويت تصل إلى أرقام مرتفعة في إعلانات قوقل. ببناء أصل رقمي دائم (Organic Asset) يضم 168 صفحة مفهرسة وملفات LLMs، تجني المنصة اتصالات يومية مستمرة بميزانية إعلانات 0 دولار.
+              </p>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sticky Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">فهرس استعراض المنصة</div>
+          <nav aria-label="فهرس المحتويات">
+            <ul class="toc-list" id="toc-list">
+              <li><a href="#project-specs">1. بطاقة المواصفات الفنية</a></li>
+              <li><a href="#market-dynamics">2. سيكولوجية السوق والشرائح</a></li>
+              <li><a href="#system-architecture">3. المعمارية الخماسية</a></li>
+              <li><a href="#geo-ai-strategy">4. بنية الذكاء الاصطناعي (GEO)</a></li>
+              <li><a href="#keywords-comparison">5. كلمات البحث ونية الشراء</a></li>
+              <li><a href="#pricing-benchmarks">6. مؤشرات الأسعار 2026</a></li>
+              <li><a href="#growth-roadmap">7. خارطة طريق التحول (CRO)</a></li>
+              <li><a href="#faq-aeo">8. أسئلة شائعة (AEO)</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Project Snapshot Card with Verified Dofollow Live Link -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">بطاقة المشروع المعتمدة</div>
+          <div class="snapshot-list">
+            <div class="snapshot-row">
+              <span>اسم المشروع:</span>
+              <strong>صباغ الكويت</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>رابط المنصة:</span>
+              <a
+                href="https://sabbaghelkuwait.online"
+                target="_blank"
+                rel="dofollow"
+                class="snapshot-link"
+              >
+                sabbaghelkuwait.online
+              </a>
+            </div>
+            <div class="snapshot-row">
+              <span>التغطية الجغرافية:</span>
+              <strong>168+ منطقة بالكويت</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>المحرك البرمجي:</span>
+              <strong>Edge-First SSG</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>هندسة الـ AI:</span>
+              <strong>llms.txt + GEO</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>العملة المعتمدة:</span>
+              <strong>الدينار الكويتي (KWD)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>مسار التحويل:</span>
+              <strong class="zero-cost">WhatsApp-First فوري</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>تكلفة الإعلانات:</span>
+              <strong class="zero-cost">0$ (سيو عضوي دائم)</strong>
+            </div>
+          </div>
+
+          <div class="snapshot-actions">
+            <a
+              href="https://sabbaghelkuwait.online"
+              target="_blank"
+              rel="dofollow"
+              class="snapshot-btn"
+            >
+              <span>معاينة منصة صباغ الكويت المباشرة</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- Consultation Card -->
+        <div class="sidebar-card sidebar-cta-card">
+          <span class="badge-pill badge-coral">استشارة سيو ومقاولات</span>
+          <h4>هل تدير شركة خدمات أو مقاولات في الكويت وتريد تصدر جوجل والـ AI؟</h4>
+          <p>
+            توقف عن حرق ميزانيتك في إعلانات قوقل اليومية المكلفة. دع مهندسي webinOO يبنون لك منصة سيو برمجي وبنية ذكاء اصطناعي تجلب لك مكالمات وواتسابات العملاء الجاهزين للتعاقد يومياً.
+          </p>
+          <a
+            href="https://wa.me/201554637673?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A7%D8%B7%D9%84%D8%B9%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%AD%D8%A7%D9%84%D8%A9%20%D8%B5%D8%A8%D8%A7%D8%BA%20%D8%A7%D9%84%D9%83%D9%88%D9%8A%D8%AA%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A8%D9%86%D8%A7%D8%A1%20%D9%85%D9%86%D8%B5%D8%A9%20%D9%85%D8%B4%D8%A7%D8%A8%D9%87%D8%A9%20%D9%84%D8%B4%D8%B1%D9%83%D8%AA%D9%8A"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-whatsapp-btn"
+          >
+            تحدث مباشرة مع مستشاري webinOO عبر واتساب
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container bottom-cta-section">
+      <CTA
+        eyebrow="التحول البرمجي للخدمات والمقاولات بالكويت"
+        title="هل شركتك مستعدة لتصدر نتائج البحث والذكاء الاصطناعي دون إعلانات؟"
+        description="سواء كنت تدير شركة تشطيب ومقاولات، خدمات منزلية، أو مؤسسة تجارية في الكويت والخليج، يوفر لك فريق webinOO هندسة متطورة تجمع بين السيو البرمجي الواسع وأتمتة التحويل الفوري."
+        ctaText="احصل على استشارة سيو مخصصة"
+        whatsappMessage="السلام عليكم، أريد بناء منصة سيو برمجي وتهيئة للذكاء الاصطناعي بنفس معمارية صباغ الكويت."
+      />
+    </section>
+
+    <!-- Floating Mobile Quick Action Bar -->
+    <div class="case-mobile-bar" role="region" aria-label="أزرار التفاعل السريع">
+      <a
+        href="https://wa.me/201554637673?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A7%D8%B7%D9%84%D8%B9%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%AD%D8%A7%D9%84%D8%A9%20%D8%B5%D8%A8%D8%A7%D8%BA%20%D8%A7%D9%84%D9%83%D9%88%D9%8A%D8%AA%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D9%84%D8%B4%D8%B1%D9%83%D8%AA%D9%8A"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mob-cta-whatsapp"
+      >
+        <span>💬 استشارة واتساب</span>
+      </a>
+      <a
+        href="https://sabbaghelkuwait.online"
+        target="_blank"
+        rel="dofollow"
+        class="mob-cta-preview"
+      >
+        <span>↗ معاينة المنصة المباشرة</span>
+      </a>
+    </div>
+  </main>
+
+  <Footer slot="footer" lang="ar" />
+</BaseLayout>

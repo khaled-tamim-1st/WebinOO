@@ -1,0 +1,558 @@
+---
+import '@/styles/case-study.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import CTA from '@/components/common/CTA.astro';
+import {
+  ShieldCheck,
+  ArrowUpRight,
+  ExternalLink,
+  Zap,
+  Clock,
+  Cpu,
+  Layers,
+  MapPin,
+  Bot,
+  Sparkles,
+  TrendingUp,
+  CheckCircle,
+  Paintbrush
+} from '@lucide/astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Portfolio & Case Studies', href: '/en/portfolio/' },
+  { label: 'Sabbagh Kuwait Platform Case Study' },
+];
+
+const caseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': 'https://webinoo.online/en/portfolio/sabbagh-kuwait/#article',
+    'headline': 'Sabbagh Kuwait Case Study: 168-Area Programmatic SEO & Generative AI Optimization (GEO)',
+    'name': 'Sabbagh Kuwait Engineering & Local SEO Case Study',
+    'description': 'How webinOO engineered Sabbagh Kuwait (sabbaghelkuwait.online): 168 residential district landing pages, structured llms.txt integration for Google AI Overviews & ChatGPT, and a high-converting WhatsApp dispatch funnel.',
+    'inLanguage': 'en-KW',
+    'url': 'https://webinoo.online/en/portfolio/sabbagh-kuwait/',
+    'datePublished': '2026-11-15T09:00:00+03:00',
+    'dateModified': '2026-11-15T09:00:00+03:00',
+    'author': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'webinOO',
+      'url': 'https://webinoo.online'
+    },
+    'about': [
+      { '@type': 'Thing', 'name': 'Programmatic SEO' },
+      { '@type': 'Thing', 'name': 'Generative Engine Optimization (GEO)' },
+      { '@type': 'Thing', 'name': 'Kuwait Home Services & Painting Architecture' },
+      { '@type': 'Thing', 'name': 'WhatsApp-First Conversion Funnel' }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Sabbagh Kuwait Case Study: 168-Area Programmatic SEO & AI Search (GEO) | webinOO"
+  description="How webinOO engineered Sabbagh Kuwait with 168 programmatic landing pages, llms.txt for AI search engines, and an instant WhatsApp dispatch funnel."
+  lang="en"
+  schema={caseSchema}
+>
+  <Header slot="header" lang="en" />
+
+  <main class="clash-case-study en-version">
+    <!-- Hero / Header Section -->
+    <header class="case-hero">
+      <div class="container hero-container">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="hero-badges">
+          <span class="badge-pill badge-primary">168+ Districts Programmatic SEO</span>
+          <span class="badge-pill badge-green">Generative Engine Optimization (GEO)</span>
+          <span class="badge-pill badge-coral">WhatsApp-First Conversion Funnel</span>
+        </div>
+
+        <h1 class="hero-title">
+          How webinOO Engineered Sabbagh Kuwait with 168 Programmatic Landing Pages and AI Engine Discovery
+        </h1>
+
+        <p class="hero-lead">
+          <strong>webinOO</strong> delivered full-stack technical engineering and organic search architecture for <a href="https://sabbaghelkuwait.online" target="_blank" rel="dofollow" class="inline-store-link">Sabbagh Kuwait (sabbaghelkuwait.online)</a>. Built with an ultra-fast Edge-First static architecture, the platform features a comprehensive <strong>Programmatic SEO system covering 168+ residential areas</strong> across all 6 Kuwait governorates, tailored <strong>llms.txt and ai-catalog.json</strong> knowledge models for generative AI engines (Google AI Overviews, ChatGPT Search, Perplexity), and a frictionless WhatsApp dispatch mechanism engineered as a sustainable alternative to costly paid Google ads.
+        </p>
+
+        <!-- Live Preview Action Button -->
+        <div class="hero-actions">
+          <a
+            href="https://sabbaghelkuwait.online"
+            target="_blank"
+            rel="dofollow"
+            class="live-store-button"
+          >
+            <span>Live Platform Preview: sabbaghelkuwait.online</span>
+            <ArrowUpRight size={18} />
+          </a>
+          <span class="live-status-note">
+            Official Production Link (Verified DoFollow Reference)
+          </span>
+        </div>
+
+        <!-- Strategic Vision Callout -->
+        <div class="philosophy-banner">
+          <div class="banner-top">
+            <span class="banner-tag">Engineering Vision for Kuwait Contracting & Home Services</span>
+            <span class="banner-stat">2026 Industry Benchmark</span>
+          </div>
+          <p class="banner-text">
+            <strong>webinOO's High-Value Positioning Principle:</strong> The Kuwait home painting and finishes market is saturated with noisy paid ads and unverified brokers. We re-engineered Sabbagh Kuwait into a verified platform spotlighting authentic Jotun Fenomastic and Sigma coatings, alkaline curing protocols for new Al-Mutlaa villas, marble/furniture protection, and transparent flat pricing in Kuwaiti Dinar (KWD).
+          </p>
+        </div>
+
+        <!-- Bento Grid: Technical & Commercial Deliverables -->
+        <div class="bento-kpi-grid">
+          <div class="kpi-card highlight-card">
+            <div class="kpi-label">Geographic Programmatic Footprint</div>
+            <div class="kpi-value">168+ Districts</div>
+            <div class="kpi-delta positive">
+              <MapPin size={16} /> All 6 Kuwait Governorates
+            </div>
+            <div class="kpi-sub">Dedicated programmatic landing pages for Al-Mutlaa, Sabah Al-Ahmad, Salmiya, Hawalli, Farwaniya, and beyond.</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Generative AI Optimization (GEO)</div>
+            <div class="kpi-value">llms.txt + Full</div>
+            <div class="kpi-delta positive">
+              <Bot size={16} /> AI Search Ready
+            </div>
+            <div class="kpi-sub">Structured datasets engineered for direct citation in Google AI Overviews and ChatGPT Search with 2026 price benchmarks.</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Mobile Edge Load Speed</div>
+            <div class="kpi-value">&lt; 1.2s TTFB</div>
+            <div class="kpi-delta positive">
+              <Zap size={16} /> Edge-First SSG
+            </div>
+            <div class="kpi-sub">Instant delivery over Kuwait 5G mobile networks cached at Cloudflare edge nodes with zero database latency.</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Field Dispatch Pipeline</div>
+            <div class="kpi-value">WhatsApp-First</div>
+            <div class="kpi-delta positive">
+              <Clock size={16} /> Sub-2 Min Response
+            </div>
+            <div class="kpi-sub">Mobile sticky dispatch buttons triggering pre-populated district messages for instant free on-site inspections.</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-label">Extreme Climate Paint Standards</div>
+            <div class="kpi-value">50°C+ UV Shield</div>
+            <div class="kpi-delta positive">
+              <ShieldCheck size={16} /> Jotun & Sigma Certified
+            </div>
+            <div class="kpi-sub">Documented specs for Jotashield Extreme, Fenomastic Pure Colours, and heat-reflective exterior Sigma textures.</div>
+          </div>
+
+          <div class="kpi-card conversion-card">
+            <div class="kpi-label">Recurring Daily Ad Spend</div>
+            <div class="kpi-value">$0.00 / Mo</div>
+            <div class="kpi-delta positive">
+              <TrendingUp size={16} /> Compounding Organic Asset
+            </div>
+            <div class="kpi-sub">Capturing high-intent organic search queries continuously instead of burning margins on temporary paid clicks.</div>
+          </div>
+        </div>
+
+        <!-- Official Quality Affirmation -->
+        <div class="zero-ad-alert">
+          <div class="zero-ad-header">
+            <ShieldCheck size={22} class="alert-icon" />
+            <strong>Quality Standards & Kuwait Consumer Protection:</strong>
+          </div>
+          <p>
+            The platform enforces strict standards: authentic Jotun paints with factory barcodes opened in front of homeowners, floor and furniture protection with heavy-duty polyethylene sheets, written warranties up to 5 years, and 100% free technical on-site evaluations across Kuwait.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout (Article + Sticky Sidebar) -->
+    <div class="container case-layout">
+      <!-- Article Body -->
+      <article class="case-article">
+        <!-- Mobile Quick Jump Table of Contents -->
+        <details class="mobile-quick-nav">
+          <summary>📑 Case Study Contents (Quick Jump)</summary>
+          <ul>
+            <li><a href="#project-specs">1. Technical Specifications</a></li>
+            <li><a href="#market-dynamics">2. Kuwait Market Dynamics & Personas</a></li>
+            <li><a href="#system-architecture">3. 5-Tier System Architecture</a></li>
+            <li><a href="#geo-ai-strategy">4. Generative AI Search & llms.txt Strategy</a></li>
+            <li><a href="#keywords-comparison">5. Keyword Intent & Commercial Targeting</a></li>
+            <li><a href="#pricing-benchmarks">6. 2026 Kuwait Price Benchmarks (KWD)</a></li>
+            <li><a href="#growth-roadmap">7. 90-Day Conversion Scaling Roadmap</a></li>
+            <li><a href="#faq-aeo">8. Technical & AEO FAQ</a></li>
+          </ul>
+        </details>
+
+        <!-- Section 1: Technical Specs Table -->
+        <section class="case-section" id="project-specs">
+          <div class="section-tag">Dossier & Specifications</div>
+          <h2>Technical Architecture of the Sabbagh Kuwait Platform</h2>
+          
+          <p>
+            The following table summarizes the verified engineering parameters and architectural specifications of <a href="https://sabbaghelkuwait.online" target="_blank" rel="dofollow" class="inline-store-link">sabbaghelkuwait.online</a> developed by <strong>webinOO</strong>:
+          </p>
+
+          <div class="table-scroll-hint">
+            <span>⟵ Swipe horizontally to view full metrics ⟶</span>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Technical Metric</th>
+                  <th>Verified Architecture & Scope</th>
+                  <th>Production Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Platform & Domain</strong></td>
+                  <td>Sabbagh Kuwait — sabbaghelkuwait.online</td>
+                  <td><span class="pill-growth">Live & Active in Production</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Geographic Coverage</strong></td>
+                  <td>168+ Residential Districts across 6 Governorates</td>
+                  <td><span class="pill-growth">100% Google Indexation</span></td>
+                </tr>
+                <tr>
+                  <td><strong>AI Engine Formats</strong></td>
+                  <td>llms.txt + llms-full.txt + ai-catalog.json</td>
+                  <td><span class="pill-growth">Optimized for LLM Citations</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Render Engine</strong></td>
+                  <td>Edge-First SSG with Global Edge CDN</td>
+                  <td><span class="pill-neutral">Sub-1.2s Mobile Speed</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Standard Currency</strong></td>
+                  <td>Kuwaiti Dinar (KWD) with Transparent Pricing</td>
+                  <td><span class="pill-neutral">Zero Hidden Margins</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Conversion Pathway</strong></td>
+                  <td>Sticky Bottom Bar: Direct Call + Geo-Tagged WhatsApp</td>
+                  <td><span class="pill-growth">Sub-2 Min Inbound Response</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 2: Market Dynamics -->
+        <section class="case-section" id="market-dynamics">
+          <div class="section-tag">Market Analysis & Buyer Personas</div>
+          <h2>Kuwait Painting Market Dynamics & Four Core Segments</h2>
+
+          <p>
+            The Kuwait finishing market is shaped by extreme summer heat (50°C+) and coastal humidity, creating 4 distinct commercial buyer personas:
+          </p>
+
+          <div class="challenges-grid">
+            <div class="challenge-item">
+              <h4>1. New Villa Owners (High-Ticket)</h4>
+              <p>
+                <strong>Areas:</strong> Al-Mutlaa, Sabah Al-Ahmad, Jaber Al-Ahmad, West Abdullah Al-Mubarak.<br />
+                <strong>Need:</strong> Full turnkey villa finishing, 28-day alkaline cement curing, 3-coat putty with fiberglass mesh against structural settling cracks, and heat-reflective Sigma coatings with 5-year warranty.
+              </p>
+            </div>
+
+            <div class="challenge-item">
+              <h4>2. Flat Tenants & Movers (Fast Turnover)</h4>
+              <p>
+                <strong>Areas:</strong> Salmiya, Hawalli, Farwaniya, Khaitan, Mahboula.<br />
+                <strong>Need:</strong> Rapid 24-48h apartment repaint before handover to recover 100% of the rental security deposit with clean switches and ceramic tiles.
+              </p>
+            </div>
+
+            <div class="challenge-item">
+              <h4>3. Luxury Villa & Diwaniya Refurbishment</h4>
+              <p>
+                <strong>Areas:</strong> Rawda, Adailiya, Nuzha, Kaifan, Shamiya, South Surra, Mishref.<br />
+                <strong>Need:</strong> Italian decorative lime stucco, Marmorino, PVC marble & WPC fluted panels, zero-odor paints, and heavy-duty protective masking for marble and expensive furniture.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Architecture -->
+        <section class="case-section" id="system-architecture">
+          <div class="section-tag">Technical Architecture</div>
+          <h2>The 5-Tier Architecture of Sabbagh Kuwait</h2>
+
+          <div class="arch-layers-list">
+            <div class="arch-layer-card">
+              <div class="layer-num">Tier 1</div>
+              <div class="layer-content">
+                <h4>Edge-First Static Architecture (SSG)</h4>
+                <p>Pre-rendered pages served from global edge caches, achieving sub-1.2-second load times over Kuwait 5G mobile networks.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Tier 2</div>
+              <div class="layer-content">
+                <h4>168 Programmatic Landing Pages</h4>
+                <p>Granular geographic targeting for each Kuwait district, structured with Schema.org LocalBusiness microdata.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Tier 3</div>
+              <div class="layer-content">
+                <h4>GEO Knowledge Engine (llms.txt)</h4>
+                <p>Lightweight markdown files engineered specifically for generative AI search engines like Google AI Overviews and ChatGPT.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Tier 4</div>
+              <div class="layer-content">
+                <h4>WhatsApp-First Direct Inbound Dispatch</h4>
+                <p>Bypassing slow web forms with 1-tap mobile sticky triggers routing directly to on-duty field teams.</p>
+              </div>
+            </div>
+
+            <div class="arch-layer-card">
+              <div class="layer-num">Tier 5</div>
+              <div class="layer-content">
+                <h4>Verified Pricing & Trust Matrix</h4>
+                <p>Upfront KWD price transparency that de-risks the buying decision and dramatically cuts bounce rates.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Pricing Benchmarks (KWD) -->
+        <section class="case-section" id="pricing-benchmarks">
+          <div class="section-tag">2026 Kuwait Benchmarks</div>
+          <h2>Kuwait Painting Price Benchmarks 2026 (KWD)</h2>
+
+          <div class="table-scroll-hint">
+            <span>⟵ Swipe horizontally to view full price list ⟶</span>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Scope of Work</th>
+                  <th>Labor Only (KWD)</th>
+                  <th>All-Inclusive with Jotun (KWD)</th>
+                  <th>Execution Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Standard Room (4×4m)</strong></td>
+                  <td>18 - 25 KWD</td>
+                  <td>30 - 45 KWD</td>
+                  <td>2 coats putty + 2 coats Fenomastic</td>
+                </tr>
+                <tr>
+                  <td><strong>2-Bedroom Apartment Repaint</strong></td>
+                  <td>50 - 75 KWD</td>
+                  <td>75 - 110 KWD</td>
+                  <td>Fast 24-48h move-out turnaround</td>
+                </tr>
+                <tr>
+                  <td><strong>3-Bedroom Apartment Full Refresh</strong></td>
+                  <td>70 - 100 KWD</td>
+                  <td>95 - 145 KWD</td>
+                  <td>Includes wall crack patching & smoothing</td>
+                </tr>
+                <tr>
+                  <td><strong>Modern TV Wall (PVC Marble + Wood Slats)</strong></td>
+                  <td>35 - 55 KWD (Labor)</td>
+                  <td>60 - 95 KWD (Materials inc.)</td>
+                  <td>Includes hidden LED cove channel</td>
+                </tr>
+                <tr>
+                  <td><strong>Italian Stucco / Marmorino</strong></td>
+                  <td>3.5 - 6 KWD / m²</td>
+                  <td>5.5 - 9 KWD / m²</td>
+                  <td>San Marco authentic imported lime stucco</td>
+                </tr>
+                <tr>
+                  <td><strong>Exterior Facade & Sigma</strong></td>
+                  <td>1.8 - 3 KWD / m²</td>
+                  <td>2.8 - 4.5 KWD / m²</td>
+                  <td>50°C UV-resistant exterior acrylic finish</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 5: FAQ -->
+        <section class="case-section" id="faq-aeo">
+          <div class="section-tag">Answer Engine Optimization</div>
+          <h2>Frequently Asked Questions & Technical Specifications (AEO)</h2>
+
+          <div class="aeo-faq-grid">
+            <details class="faq-item" open>
+              <summary>How does the 168-district structure prevent duplicate content penalties?</summary>
+              <p>
+                Each page is enriched with unique geographic context (housing age, predominant building type like Al-Mutlaa villas vs. Salmiya flats), unique title tags, canonical links, and custom Schema.org microdata recognized by Google.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Why is this platform a compounding alternative to Google Ads in Kuwait?</summary>
+              <p>
+                Home service click costs in Kuwait are among the highest in the GCC. By building a permanent organic footprint across 168 districts and AI knowledge files, Sabbagh Kuwait generates continuous inbound calls at $0 marginal cost.
+              </p>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sticky Sidebar -->
+      <aside class="case-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">Case Study Index</div>
+          <nav aria-label="Table of Contents">
+            <ul class="toc-list" id="toc-list">
+              <li><a href="#project-specs">1. Technical Specifications</a></li>
+              <li><a href="#market-dynamics">2. Kuwait Market Dynamics</a></li>
+              <li><a href="#system-architecture">3. 5-Tier Architecture</a></li>
+              <li><a href="#pricing-benchmarks">4. 2026 Price Benchmarks (KWD)</a></li>
+              <li><a href="#faq-aeo">5. Technical & AEO FAQ</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Project Snapshot Card -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">Project Execution Dossier</div>
+          <div class="snapshot-list">
+            <div class="snapshot-row">
+              <span>Platform:</span>
+              <strong>Sabbagh Kuwait</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Live URL:</span>
+              <a
+                href="https://sabbaghelkuwait.online"
+                target="_blank"
+                rel="dofollow"
+                class="snapshot-link"
+              >
+                sabbaghelkuwait.online
+              </a>
+            </div>
+            <div class="snapshot-row">
+              <span>Geographic Reach:</span>
+              <strong>168+ Districts in Kuwait</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Stack:</span>
+              <strong>Edge-First SSG</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>AI Engine:</span>
+              <strong>llms.txt + GEO</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Currency:</span>
+              <strong>Kuwaiti Dinar (KWD)</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Dispatch:</span>
+              <strong class="zero-cost">WhatsApp-First</strong>
+            </div>
+            <div class="snapshot-row">
+              <span>Ad Budget:</span>
+              <strong class="zero-cost">$0 (Pure Organic)</strong>
+            </div>
+          </div>
+
+          <div class="snapshot-actions">
+            <a
+              href="https://sabbaghelkuwait.online"
+              target="_blank"
+              rel="dofollow"
+              class="snapshot-btn"
+            >
+              <span>Visit Sabbagh Kuwait Platform</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- Consultation Card -->
+        <div class="sidebar-card sidebar-cta-card">
+          <span class="badge-pill badge-coral">Contracting & SEO Strategy</span>
+          <h4>Managing a Kuwait service company burdened by rising ad costs?</h4>
+          <p>
+            Stop burning profit margins on ephemeral Google search clicks. Let webinOO engineer a programmatic local SEO platform and AI search engine integration that commands inbound client calls every day.
+          </p>
+          <a
+            href="https://wa.me/201554637673?text=Hello%2C%20I%20reviewed%20the%20Sabbagh%20Kuwait%20case%20study%20and%20would%20like%20to%20discuss%20engineering%20a%20similar%20high-performance%20platform%20for%20my%20business."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-whatsapp-btn"
+          >
+            Consult with a webinOO Strategist on WhatsApp
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Full Width CTA -->
+    <section class="container bottom-cta-section">
+      <CTA
+        eyebrow="Custom Platforms for Kuwait Services"
+        title="Is your enterprise engineered for search and generative AI discovery?"
+        description="Whether you run a contracting company, home services business, or commercial brand in Kuwait and the GCC, webinOO delivers edge architecture, programmatic local SEO, and conversion-engineered dispatch funnels."
+        ctaText="Request a Technical Architecture Review"
+        whatsappMessage="Hello, I want to engineer a programmatic local SEO platform with AI search optimization like Sabbagh Kuwait."
+      />
+    </section>
+
+    <!-- Floating Mobile Quick Action Bar -->
+    <div class="case-mobile-bar" role="region" aria-label="Mobile quick actions">
+      <a
+        href="https://wa.me/201554637673?text=Hello%2C%20I%20reviewed%20the%20Sabbagh%20Kuwait%20case%20study%20and%20would%20like%20to%20discuss%20engineering%20a%20similar%20platform%20for%20my%20business."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mob-cta-whatsapp"
+      >
+        <span>💬 WhatsApp Us</span>
+      </a>
+      <a
+        href="https://sabbaghelkuwait.online"
+        target="_blank"
+        rel="dofollow"
+        class="mob-cta-preview"
+      >
+        <span>↗ Live Platform</span>
+      </a>
+    </div>
+  </main>
+
+  <Footer slot="footer" lang="en" />
+</BaseLayout>
