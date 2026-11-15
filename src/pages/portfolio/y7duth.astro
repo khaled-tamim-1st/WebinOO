@@ -225,6 +225,19 @@ const caseSchema = [
     <div class="container case-layout">
       <!-- Article Body -->
       <article class="case-article">
+        <!-- Mobile Quick Jump Table of Contents -->
+        <details class="mobile-quick-nav">
+          <summary>📑 فهرس استعراض المشروع (انتقال سريع)</summary>
+          <ul>
+            <li><a href="#project-specs">1. بطاقة ومواصفات المشروع</a></li>
+            <li><a href="#editorial-challenge">2. سياق وتحدي النشر التحريري</a></li>
+            <li><a href="#publishing-architecture">3. المعمارية التقنية الخماسية</a></li>
+            <li><a href="#content-taxonomy">4. تصنيف وأبواب المحتوى</a></li>
+            <li><a href="#comparison-analysis">5. مقارنة Astro مع ووردبريس</a></li>
+            <li><a href="#editorial-roadmap">6. خارطة النمو التحريري</a></li>
+            <li><a href="#faq-aeo">7. أسئلة شائعة حول المنصة</a></li>
+          </ul>
+        </details>
         <!-- Section 1: Project Specs Table -->
         <section class="case-section" id="project-specs">
           <div class="section-tag">بطاقة المشروع والمواصفات المعتمدة</div>
@@ -638,6 +651,25 @@ const caseSchema = [
         whatsappMessage="السلام عليكم، أريد تطوير منصة محتوى ومدونة فائقة السرعة بتصميم تحريري مخصص بنفس معمارية يحدث في الكويت."
       />
     </section>
+    <!-- Floating Mobile Quick Action Bar -->
+    <div class="case-mobile-bar" role="region" aria-label="أزرار التفاعل السريع">
+      <a
+        href="https://wa.me/201554637673?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A7%D8%B7%D9%84%D8%B9%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%AA%D8%B7%D9%88%D9%8A%D8%B1%20%D9%85%D9%86%D8%B5%D8%A9%20%D9%8A%D8%AD%D8%AF%D8%AB%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%83%D9%88%D9%8A%D8%AA%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D9%84%D9%85%D8%AC%D9%84%D8%AA%D9%8A"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mob-cta-whatsapp"
+      >
+        <span>💬 استشارة واتساب</span>
+      </a>
+      <a
+        href="https://y7duth.online"
+        target="_blank"
+        rel="dofollow"
+        class="mob-cta-preview"
+      >
+        <span>↗ معاينة المجلة المباشرة</span>
+      </a>
+    </div>
   </main>
 
   <Footer slot="footer" lang="ar" />
